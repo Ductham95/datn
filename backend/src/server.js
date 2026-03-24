@@ -7,13 +7,16 @@
 
 require('dotenv').config();
 
+// Fix lệch giờ: Buộc quá trình Node.js sử dụng múi giờ Việt Nam
+process.env.TZ = 'Asia/Ho_Chi_Minh';
+
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
+const helmet = require('helmet');
 const { Server } = require('socket.io');
 const { initDatabase } = require('./models/database');
-const { initMQTT } = require('./mqtt/subscriber');
-const apiRoutes = require('./routes/api');
+const apiRoutes = require('./routes/userApi');
 
 const PORT = process.env.PORT || 3000;
 
@@ -22,19 +25,9 @@ const app = express();
 const server = http.createServer(app);
 
 // Middleware
+app.use(helmet());
 app.use(cors());
 app.use(express.json());
-
-// Serve static frontend files (sau khi build)
-app.use(express.static('../frontend/dist'));
-
-// API Routes
-app.use('/api', apiRoutes);
-
-// Health check
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok', uptime: process.uptime() });
-});
 
 // ==================== SOCKET.IO ====================
 const io = new Server(server, {
@@ -43,6 +36,19 @@ const io = new Server(server, {
     methods: ['GET', 'POST'],
   },
 });
+
+app.use((req, res, next) => {
+  req.io = io;
+  next();
+});
+
+// Serve static frontend files (sau khi build)
+app.use(express.static('../frontend/dist'));
+
+// API Routes
+app.use('/api/v1', apiRoutes);
+app.use('/api/v1/telemetry', require('./routes/gatewayApi'));
+app.use('/api/v1/admin', require('./routes/adminApi')); // Endpoint cho Admin Dashboard
 
 io.on('connection', (socket) => {
   console.log(`[Socket.io] Client kết nối: ${socket.id}`);
@@ -63,9 +69,13 @@ async function start() {
     console.log('\n[1/3] Khởi tạo Database...');
     await initDatabase();
 
-    // 2. Khởi tạo MQTT
-    console.log('\n[2/3] Khởi tạo MQTT Subscriber...');
-    initMQTT(io);
+    // 2. Khởi tạo MQTT (Sẽ làm ở giai đoạn sau)
+    // console.log('\n[2/3] Khởi tạo MQTT Subscriber...');
+    // initMQTT(io);
+
+    // 2.5 Khởi động Background Jobs (Cronjob quét mạng IoT offline)
+    const { startBackgroundJobs } = require('./services/cronJobs');
+    startBackgroundJobs();
 
     // 3. Start Express Server
     console.log('\n[3/3] Khởi động HTTP Server...');

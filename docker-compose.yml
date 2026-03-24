@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  db:
+    image: timescale/timescaledb-ha:pg15
+    container_name: datn_postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: datn_admin
+      POSTGRES_PASSWORD: datn_password
+      POSTGRES_DB: air_quality_db
+      TZ: Asia/Ho_Chi_Minh
+    ports:
+      - "5432:5432"
+    volumes:
+      - custom_pg_data:/var/lib/postgresql/data
+      - ./backend/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  custom_pg_data:
