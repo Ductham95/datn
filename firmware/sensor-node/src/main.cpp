@@ -51,11 +51,11 @@
 #define LORA_SYNC_WORD    0x12    // Sync word riêng cho mạng
 
 // ==================== PACKET STRUCTURE ====================
-// Total: 14 bytes
-// [NodeID:1][PktType:1][PM25:2][PM10:2][CO2:2][TVOC:2][Temp:2][Hum:2][Bat:1]
+// Total: 16 bytes
+// [NodeID:1][PktType:1][MsgID:1][PM25:2][PM10:2][CO2:2][TVOC:2][Temp:2][Hum:2][Bat:1]
 #define PKT_TYPE_DATA     0x01
 #define PKT_TYPE_HEARTBEAT 0x02
-#define PACKET_SIZE       15
+#define PACKET_SIZE       16
 
 // ==================== KHỞI TẠO ĐỐI TƯỢNG ====================
 HardwareSerial pmsSerial(2);       // UART2 cho PMS7003
@@ -69,6 +69,8 @@ DHT dht(DHT_PIN, DHT_TYPE);
 bool ccs811Ready = false;
 unsigned long ccs811StartTime = 0;
 #define CCS811_WARMUP_MS  1200000  // 20 phút warm-up
+
+uint8_t msgIdCounter = 0; // Bộ đếm Msg ID (từ 0 đến 255)
 
 // Dữ liệu cảm biến
 struct SensorData {
@@ -307,6 +309,7 @@ void sendLoRaPacket(const SensorData &data) {
   // Header
   packet[idx++] = NODE_ID;
   packet[idx++] = PKT_TYPE_DATA;
+  packet[idx++] = msgIdCounter++; // Thêm Msg ID (1 byte)
 
   // PM2.5 (2 bytes, big-endian)
   packet[idx++] = (data.pm25 >> 8) & 0xFF;
