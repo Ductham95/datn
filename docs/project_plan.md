@@ -97,13 +97,14 @@ ESP32 VSPI (18,19,23,5) ◄───► LoRa SX1278 (SPI)
 | Hạng mục | Chi tiết |
 |---|---|
 | **Ngôn ngữ** | Node.js (Express) hoặc Python (Flask/FastAPI) |
-| **Database** | InfluxDB (time-series, tối ưu cho IoT) hoặc MySQL/PostgreSQL |
+| **Database** | PostgreSQL (kết hợp extension TimescaleDB và PostGIS) |
 | **Giao thức** | MQTT subscriber + REST API |
 
 **Công việc cần làm:**
-- [ ] Thiết kế database schema
-  - [ ] Bảng `nodes` (id, tên, vị trí GPS, trạng thái)
-  - [ ] Bảng `measurements` (node_id, pm25, pm10, co2, tvoc, temp, humidity, battery, timestamp)
+- [ ] Thiết kế database schema (PostgreSQL)
+  - [ ] Bảng `nodes` (id, tên, vị trí GPS dùng PostGIS, trạng thái)
+  - [ ] Bảng hypertable `measurements` dùng TimescaleDB (node_id, pm25, pm10, co2, tvoc, temp, humidity, battery, time)
+  - [ ] Thiết lập Continuous Aggregates cho dữ liệu trung bình theo Giờ/Ngày
 - [ ] Viết MQTT subscriber nhận dữ liệu từ Gateway
 - [ ] Viết REST API endpoints:
   - [ ] `GET /api/nodes` — danh sách node
@@ -318,7 +319,7 @@ AQI = ((AQI_hi - AQI_lo) / (BP_hi - BP_lo)) × (Cp - BP_lo) + AQI_lo
 |---|---|
 | Node.js + Express | REST API server |
 | MQTT.js | MQTT subscriber |
-| InfluxDB hoặc MySQL | Lưu trữ time-series data |
+| PostgreSQL (TimescaleDB + PostGIS) | Lưu trữ time-series, thiết bị, hệ thống và định vị |
 | Nodemailer | Gửi email cảnh báo |
 
 ### Frontend
