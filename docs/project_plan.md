@@ -181,19 +181,22 @@ gantt
     Test truyền nhận LoRa                 :b4, after b2, 5d
 
     section Backend
-    Setup database & MQTT                 :c1, after a2, 5d
-    Viết REST API                        :c2, after c1, 7d
-    Tính toán AQI & cảnh báo             :c3, after c2, 5d
+    Setup CSDL & Server (ExpressJS)       :c1, after a2, 5d
+    Phát triển API cho User               :c2, after c1, 7d
+    Phát triển API cho Admin              :c3, after c2, 7d
+    Tính toán AQI & HTTP Post Gateway    :c4, after c3, 5d
 
     section Frontend
-    Thiết kế UI/UX                       :d1, after c1, 5d
-    Phát triển Dashboard                 :d2, after d1, 10d
-    Kết nối API & real-time              :d3, after d2, 5d
+    Thiết kế UI/UX Web/App & Dashboard   :d1, after c1, 7d
+    Giao diện Người dùng (Web/App)       :d2, after d1, 8d
+    Dashboard Quản trị viên (React)      :d3, after d2, 8d
+    Tích hợp API, Bản đồ & Real-time      :d4, after d3, 7d
 
     section Tích hợp & Kiểm thử
-    Tích hợp toàn hệ thống              :e1, after d3, 7d
-    Triển khai thực tế & thu dữ liệu    :e2, after e1, 7d
-    Viết báo cáo & slide                 :e3, after e2, 10d
+    Tích hợp thiết bị HW với Server       :e1, after d4, 7d
+    Testing chức năng Admin & User       :e2, after e1, 5d
+    Triển khai thực tế & thu dữ liệu    :e3, after e2, 7d
+    Viết báo cáo & slide                 :e4, after e3, 10d
 ```
 
 ---
