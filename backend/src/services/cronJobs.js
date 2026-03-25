@@ -1,5 +1,5 @@
 const cron = require('node-cron');
-const { pool } = require('../models/database');
+const { pool } = require('../config/db.config');
 
 /**
  * Khởi chạy các công việc chạy nền (Background Jobs)

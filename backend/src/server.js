@@ -15,8 +15,10 @@ const http = require('http');
 const cors = require('cors');
 const helmet = require('helmet');
 const { Server } = require('socket.io');
-const { initDatabase } = require('./models/database');
+const { initDatabase } = require('./config/db.config');
 const apiRoutes = require('./routes/userApi');
+const adminRoutes = require('./routes/adminapi');
+const gatewayRoutes = require('./routes/gatewayApi');
 
 const PORT = process.env.PORT || 3000;
 
@@ -47,8 +49,8 @@ app.use(express.static('../frontend/dist'));
 
 // API Routes
 app.use('/api/v1', apiRoutes);
-app.use('/api/v1/telemetry', require('./routes/gatewayApi'));
-app.use('/api/v1/admin', require('./routes/adminApi')); // Endpoint cho Admin Dashboard
+app.use('/api/v1/telemetry', gatewayRoutes);
+app.use('/api/v1/admin', adminRoutes); // Endpoint cho Admin Dashboard
 
 io.on('connection', (socket) => {
   console.log(`[Socket.io] Client kết nối: ${socket.id}`);
@@ -68,10 +70,6 @@ async function start() {
     // 1. Khởi tạo Database
     console.log('\n[1/3] Khởi tạo Database...');
     await initDatabase();
-
-    // 2. Khởi tạo MQTT (Sẽ làm ở giai đoạn sau)
-    // console.log('\n[2/3] Khởi tạo MQTT Subscriber...');
-    // initMQTT(io);
 
     // 2.5 Khởi động Background Jobs (Cronjob quét mạng IoT offline)
     const { startBackgroundJobs } = require('./services/cronJobs');
