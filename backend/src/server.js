@@ -15,7 +15,7 @@ const http = require('http');
 const cors = require('cors');
 const helmet = require('helmet');
 const { Server } = require('socket.io');
-const { initDatabase } = require('./config/db.config');
+const prisma = require('./config/prismaClient');
 const apiRoutes = require('./routes/userApi');
 const adminRoutes = require('./routes/adminapi');
 const gatewayRoutes = require('./routes/gatewayApi');
@@ -67,11 +67,21 @@ async function start() {
     console.log('  AIR QUALITY MONITORING - SERVER');
     console.log('========================================');
 
-    // 1. Khởi tạo Database
-    console.log('\n[1/3] Khởi tạo Database...');
-    await initDatabase();
+    // 1. Khởi tạo Prisma Client (kết nối Database)
+    console.log('\n[1/3] Khởi tạo Prisma Client...');
+    await prisma.$connect();
+    console.log('[DB] Prisma Client kết nối PostgreSQL (TimescaleDB) thành công!');
 
-    // 2.5 Khởi động Background Jobs (Cronjob quét mạng IoT offline)
+    // Thiết lập múi giờ Việt Nam cho Database (non-critical)
+    try {
+      const dbName = process.env.DB_NAME || 'air_quality_db';
+      await prisma.$executeRawUnsafe(`ALTER DATABASE "${dbName}" SET timezone TO 'Asia/Ho_Chi_Minh';`);
+      console.log('[DB] Đã thiết lập múi giờ: Asia/Ho_Chi_Minh');
+    } catch (tzError) {
+      console.warn('[DB] Cảnh báo: Không thể thiết lập múi giờ DB:', tzError.message);
+    }
+
+    // 2. Khởi động Background Jobs (Cronjob quét mạng IoT offline)
     const { startBackgroundJobs } = require('./services/cronJobs');
     startBackgroundJobs();
 
@@ -89,5 +99,16 @@ async function start() {
     process.exit(1);
   }
 }
+
+// Graceful shutdown: Đóng Prisma Client khi tắt server
+process.on('SIGINT', async () => {
+  await prisma.$disconnect();
+  process.exit(0);
+});
+
+process.on('SIGTERM', async () => {
+  await prisma.$disconnect();
+  process.exit(0);
+});
 
 start();

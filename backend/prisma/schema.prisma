@@ -1,0 +1,64 @@
+// =====================================================
+// PRISMA SCHEMA - Hệ thống giám sát chất lượng không khí
+// =====================================================
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  extensions = [timescaledb, postgis, uuid_ossp(map: "uuid-ossp")]
+}
+
+model User {
+  id            String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  username      String   @unique @db.VarChar(100)
+  password_hash String   @db.VarChar(255)
+  role          String   @default("user") @db.VarChar(20)
+  created_at    DateTime @default(now()) @db.Timestamptz()
+
+  @@map("users")
+}
+
+model Gateway {
+  id            String       @id @db.VarChar(50)
+  name          String       @db.VarChar(100)
+  location_desc String?      @db.VarChar(255)
+  status        String       @default("offline") @db.VarChar(20)
+  last_seen     DateTime?    @db.Timestamptz()
+  sensor_nodes  SensorNode[]
+
+  @@map("gateways")
+}
+
+model SensorNode {
+  id            String                            @id @db.VarChar(50)
+  gateway_id    String?                           @db.VarChar(50)
+  name          String                            @db.VarChar(100)
+  geom          Unsupported("geometry(Point,4326)")?
+  status        String                            @default("active") @db.VarChar(20)
+  battery_level Int                               @default(100)
+  lora_rssi     Int?
+
+  gateway Gateway? @relation(fields: [gateway_id], references: [id], onDelete: Cascade)
+
+  @@map("sensor_nodes")
+}
+
+/// Lưu ý: Đây là TimescaleDB Hypertable. 
+/// Hypertable + Retention Policy + Continuous Aggregate được thiết lập qua init.sql
+model Measurement {
+  time        DateTime @db.Timestamptz()
+  node_id     String   @db.VarChar(50)
+  pm25        Float?
+  pm10        Float?
+  co2         Int?
+  tvoc        Int?
+  temperature Float?
+  humidity    Float?
+
+  @@id([time, node_id])
+  @@map("measurements")
+}

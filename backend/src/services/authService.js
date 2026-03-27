@@ -1,15 +1,15 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const { pool } = require('../config/db.config');
+const prisma = require('../config/prismaClient');
 const { JWT_SECRET } = require('../middlewares/authMiddleware');
 
 const checkLogin = async (username, password) => {
-  const { rows } = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
-  if (rows.length === 0) {
+  const user = await prisma.user.findUnique({ where: { username } });
+  
+  if (!user) {
     throw new Error('Tài khoản không tồn tại');
   }
-  
-  const user = rows[0];
+
   let isMatch = false;
 
   if (user.password_hash === password) {

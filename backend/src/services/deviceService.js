@@ -1,18 +1,23 @@
-const { pool } = require('../config/db.config');
+const prisma = require('../config/prismaClient');
 
 const getAllGateways = async () => {
-  const { rows } = await pool.query('SELECT * FROM gateways ORDER BY last_seen DESC NULLS LAST');
-  return rows;
+  return prisma.gateway.findMany({
+    orderBy: { last_seen: { sort: 'desc', nulls: 'last' } },
+  });
 };
 
 const getAllNodes = async () => {
-  const { rows } = await pool.query(`
-    SELECT n.*, g.name as gateway_name 
-    FROM sensor_nodes n 
-    LEFT JOIN gateways g ON n.gateway_id = g.id
-    ORDER BY n.id ASC
-  `);
-  return rows;
+  const nodes = await prisma.sensorNode.findMany({
+    include: { gateway: { select: { name: true } } },
+    orderBy: { id: 'asc' },
+  });
+
+  // Map gateway.name thành gateway_name để giữ nguyên API response format
+  return nodes.map(node => ({
+    ...node,
+    gateway_name: node.gateway?.name || null,
+    gateway: undefined,
+  }));
 };
 
 module.exports = { getAllGateways, getAllNodes };

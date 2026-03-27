@@ -1,21 +1,27 @@
 const { Parser } = require('json2csv');
-const { pool } = require('../config/db.config');
+const prisma = require('../config/prismaClient');
 
 const getExportCsvData = async (node_id, limit) => {
   const qLimit = parseInt(limit) || 1000;
-  
-  let queryStr = 'SELECT time, node_id, pm25, pm10, co2, tvoc, temperature, humidity FROM measurements';
-  let params = [qLimit];
 
-  if (node_id) {
-    queryStr += ' WHERE node_id = $2 ORDER BY time DESC LIMIT $1';
-    params.push(node_id);
-  } else {
-    queryStr += ' ORDER BY time DESC LIMIT $1';
-  }
-
-  const { rows } = await pool.query(queryStr, params);
+  const where = node_id ? { node_id } : {};
   
+  const rows = await prisma.measurement.findMany({
+    where,
+    orderBy: { time: 'desc' },
+    take: qLimit,
+    select: {
+      time: true,
+      node_id: true,
+      pm25: true,
+      pm10: true,
+      co2: true,
+      tvoc: true,
+      temperature: true,
+      humidity: true,
+    },
+  });
+
   if (rows.length === 0) {
     throw new Error('Không có dữ liệu để xuất');
   }
