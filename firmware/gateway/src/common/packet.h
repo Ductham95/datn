@@ -4,7 +4,7 @@
 // =============================================================================
 //  LoRa PACKET DEFINITION
 //  Cấu trúc gói tin LoRa - Dùng chung cho Sensor Node & Gateway
-//  Tổng kích thước: 16 bytes
+//  Tổng kích thước: 18 bytes
 // =============================================================================
 
 // --- Packet Types ---

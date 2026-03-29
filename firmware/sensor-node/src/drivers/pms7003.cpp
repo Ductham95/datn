@@ -42,8 +42,9 @@ void pms7003_powerOff() {
     LOG_MSG("PMS7003", "Tắt quạt (sleep)");
 }
 
-bool pms7003_read(uint16_t* pm25, uint16_t* pm10) {
+bool pms7003_read(uint16_t* pm1, uint16_t* pm25, uint16_t* pm10) {
     // Mặc định: giá trị lỗi
+    *pm1  = SENSOR_ERROR_U16;
     *pm25 = SENSOR_ERROR_U16;
     *pm10 = SENSOR_ERROR_U16;
 
@@ -54,11 +55,12 @@ bool pms7003_read(uint16_t* pm25, uint16_t* pm10) {
         if (pms.readUntil(pmsData, 3000)) {  // Timeout 3 giây
             // PMS Library trả về giá trị nguyên (µg/m³)
             // Nhân ×10 theo thiết kế gói tin LoRa
+            *pm1  = (uint16_t)(pmsData.PM_AE_UG_1_0 * 10);
             *pm25 = (uint16_t)(pmsData.PM_AE_UG_2_5 * 10);
             *pm10 = (uint16_t)(pmsData.PM_AE_UG_10_0 * 10);
 
-            LOG_INFO("PMS7003", "PM2.5: %d (raw) | PM10: %d (raw)",
-                        pmsData.PM_AE_UG_2_5, pmsData.PM_AE_UG_10_0);
+            LOG_INFO("PMS7003", "PM1.0: %d | PM2.5: %d | PM10: %d (raw µg/m³)",
+                        pmsData.PM_AE_UG_1_0, pmsData.PM_AE_UG_2_5, pmsData.PM_AE_UG_10_0);
             return true;
         }
 

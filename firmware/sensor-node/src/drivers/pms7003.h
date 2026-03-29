@@ -26,10 +26,11 @@ void pms7003_powerOn();
 void pms7003_powerOff();
 
 /**
- * Đọc dữ liệu PM2.5 và PM10 từ PMS7003
+ * Đọc dữ liệu PM1.0, PM2.5 và PM10 từ PMS7003
  * Giá trị đã nhân ×10 để giữ 1 chữ số thập phân
+ * @param pm1  Con trỏ nhận giá trị PM1.0 (µg/m³ × 10)
  * @param pm25 Con trỏ nhận giá trị PM2.5 (µg/m³ × 10)
  * @param pm10 Con trỏ nhận giá trị PM10  (µg/m³ × 10)
  * @return true nếu đọc thành công, false nếu lỗi (giá trị = SENSOR_ERROR_U16)
  */
-bool pms7003_read(uint16_t* pm25, uint16_t* pm10);
+bool pms7003_read(uint16_t* pm1, uint16_t* pm25, uint16_t* pm10);

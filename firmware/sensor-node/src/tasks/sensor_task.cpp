@@ -78,9 +78,11 @@ void sensorTask(void* parameter) {
         // ═══════════════════════════════════════════
         // Giai đoạn 3: Đọc PMS7003
         // ═══════════════════════════════════════════
+        uint16_t pm1  = SENSOR_ERROR_U16;
         uint16_t pm25 = SENSOR_ERROR_U16;
         uint16_t pm10 = SENSOR_ERROR_U16;
-        pms7003_read(&pm25, &pm10);
+        pms7003_read(&pm1, &pm25, &pm10);
+        payload.pm1  = pm1;
         payload.pm25 = pm25;
         payload.pm10 = pm10;
 
@@ -104,7 +106,8 @@ void sensorTask(void* parameter) {
 
         // Log tổng hợp
         LOG_MSG("SENSOR", "━━ Kết thúc chu kỳ đo ━━");
-        LOG_INFO("SENSOR", "PM2.5:%.1f PM10:%.1f CO2:%d TVOC:%d T:%.1f H:%.1f Bat:%d%%",
+        LOG_INFO("SENSOR", "PM1:%.1f PM2.5:%.1f PM10:%.1f CO2:%d TVOC:%d T:%.1f H:%.1f Bat:%d%%",
+            payload.pm1  == SENSOR_ERROR_U16 ? -1.0f : payload.pm1  / 10.0f,
             payload.pm25 == SENSOR_ERROR_U16 ? -1.0f : payload.pm25 / 10.0f,
             payload.pm10 == SENSOR_ERROR_U16 ? -1.0f : payload.pm10 / 10.0f,
             payload.co2, payload.tvoc,
@@ -114,8 +117,20 @@ void sensorTask(void* parameter) {
 
         // ═══════════════════════════════════════════
         // Giai đoạn 5: Ngủ đến chu kỳ tiếp theo
+        // Chia thành các giấc 30s, mỗi giấc cập nhật heartbeat
+        // để WatchdogTask không báo treo
         // ═══════════════════════════════════════════
         LOG_INFO("SENSOR", "Ngủ %d phút...", SEND_INTERVAL_MS / 60000);
-        vTaskDelay(pdMS_TO_TICKS(SEND_INTERVAL_MS - PMS_WARMUP_MS));
+        {
+            uint32_t sleepRemaining = SEND_INTERVAL_MS - PMS_WARMUP_MS;
+            const uint32_t sleepChunk = 30000;  // 30 giây mỗi lần
+
+            while (sleepRemaining > 0) {
+                uint32_t thisDelay = (sleepRemaining > sleepChunk) ? sleepChunk : sleepRemaining;
+                vTaskDelay(pdMS_TO_TICKS(thisDelay));
+                sleepRemaining -= thisDelay;
+                taskHeartbeat[TASK_SENSOR] = xTaskGetTickCount();
+            }
+        }
     }
 }

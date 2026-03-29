@@ -1,0 +1,126 @@
+#include "http_client.h"
+#include <Arduino.h>
+#include <HTTPClient.h>
+#include <ArduinoJson.h>
+#include "config.h"
+#include "common/debug.h"
+#include "common/packet.h"
+
+// =============================================================================
+//  HTTP CLIENT IMPLEMENTATION
+//  Serialize BufferedPacket[] → JSON → HTTP POST đến Cloud Server
+//
+//  JSON format (khớp với gatewayValidation.js + telemetryService.js):
+//  {
+//    "gateway_id": "GW-001",
+//    "secret": "super-secret-key",
+//    "data": [
+//      {
+//        "node_id": "0x01",
+//        "pm1": 9.5, "pm25": 12.3, "pm10": 45.6,
+//        "co2": 800, "tvoc": 50,
+//        "temperature": 27.5, "humidity": 65.0,
+//        "battery": 85, "rssi": -67
+//      }
+//    ]
+//  }
+// =============================================================================
+
+bool http_sendBatch(const BufferedPacket* packets, uint8_t count) {
+    if (count == 0) return true;
+
+    // Tạo JSON document
+    // Ước tính kích thước: ~200 bytes/packet + overhead
+    JsonDocument doc;
+
+    doc["gateway_id"] = GATEWAY_ID;
+    doc["secret"]     = GATEWAY_SECRET;
+
+    JsonArray dataArray = doc["data"].to<JsonArray>();
+
+    for (uint8_t i = 0; i < count; i++) {
+        const SensorPayload* p = &packets[i].payload;
+        JsonObject item = dataArray.add<JsonObject>();
+
+        // Node ID format: "0x01"
+        char nodeIdStr[8];
+        snprintf(nodeIdStr, sizeof(nodeIdStr), "0x%02X", p->nodeId);
+        item["node_id"] = nodeIdStr;
+
+        // Chuyển đổi scaled values → float (÷10)
+        // Nếu sensor lỗi (SENSOR_ERROR) → gửi null
+        if (p->pm1 != SENSOR_ERROR_U16)
+            item["pm1"] = p->pm1 / 10.0f;
+        else
+            item["pm1"] = (char*)NULL;
+
+        if (p->pm25 != SENSOR_ERROR_U16)
+            item["pm25"] = p->pm25 / 10.0f;
+        else
+            item["pm25"] = (char*)NULL;
+
+        if (p->pm10 != SENSOR_ERROR_U16)
+            item["pm10"] = p->pm10 / 10.0f;
+        else
+            item["pm10"] = (char*)NULL;
+
+        item["co2"]  = p->co2;
+        item["tvoc"] = p->tvoc;
+
+        if (p->temperature != SENSOR_ERROR_I16)
+            item["temperature"] = p->temperature / 10.0f;
+        else
+            item["temperature"] = (char*)NULL;
+
+        if (p->humidity != SENSOR_ERROR_U16)
+            item["humidity"] = p->humidity / 10.0f;
+        else
+            item["humidity"] = (char*)NULL;
+
+        item["battery"] = p->battery;
+        item["rssi"]    = packets[i].rssi;
+    }
+
+    // Serialize JSON → String
+    String jsonPayload;
+    serializeJson(doc, jsonPayload);
+
+    LOG_INFO("HTTP", "Gửi %d gói tin (%d bytes JSON)", count, jsonPayload.length());
+
+    // Gửi HTTP POST với retry
+    HTTPClient http;
+    bool success = false;
+
+    for (int attempt = 1; attempt <= HTTP_RETRY_COUNT; attempt++) {
+        http.begin(API_URL);
+        http.addHeader("Content-Type", "application/json");
+        http.setTimeout(API_TIMEOUT_MS);
+
+        int httpCode = http.POST(jsonPayload);
+
+        if (httpCode == 200) {
+            String response = http.getString();
+            LOG_INFO("HTTP", "✅ Gửi OK! Server: %s", response.c_str());
+            success = true;
+            http.end();
+            break;
+        } else {
+            LOG_INFO("HTTP", "❌ Lỗi %d (lần %d/%d)", httpCode, attempt, HTTP_RETRY_COUNT);
+            if (httpCode > 0) {
+                String response = http.getString();
+                LOG_INFO("HTTP", "  Response: %s", response.c_str());
+            }
+            http.end();
+
+            if (attempt < HTTP_RETRY_COUNT) {
+                delay(1000 * attempt);  // Exponential-ish backoff
+            }
+        }
+    }
+
+    if (!success) {
+        LOG_INFO("HTTP", "🔴 Gửi THẤT BẠI sau %d lần thử!", HTTP_RETRY_COUNT);
+    }
+
+    return success;
+}

@@ -98,7 +98,7 @@ void setup() {
     Serial.println("  AIR QUALITY SENSOR NODE (FreeRTOS)");
     Serial.printf("  Node ID  : 0x%02X\n", NODE_ID);
     Serial.printf("  Interval : %d phút\n", SEND_INTERVAL_MS / 60000);
-    Serial.printf("  LoRa     : %.0f MHz, SF%d\n", LORA_FREQUENCY / 1E6, LORA_SPREAD_FACTOR);
+    Serial.printf("  LoRa     : AS32-TTL-100 (UART %d baud)\n", LORA_BAUD);
     Serial.println("========================================");
 
     // ── 1. Init tất cả phần cứng ──

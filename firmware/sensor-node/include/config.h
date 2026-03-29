@@ -8,17 +8,16 @@
 // ===== NODE IDENTITY =====
 #define NODE_ID             0x01    // Thay đổi cho mỗi node: 0x01, 0x02, 0x03
 
-// ===== LoRa SX1278 Config =====
-#define LORA_FREQUENCY      433E6   // 433 MHz (Việt Nam & Châu Á)
-#define LORA_SPREAD_FACTOR  7       // SF7: tốc độ nhanh, phạm vi gần (~1km ngoài trời)
-#define LORA_BANDWIDTH      125E3   // 125 kHz (mặc định)
-#define LORA_TX_POWER       17      // 17 dBm (công suất phát)
-#define LORA_SYNC_WORD      0x12    // Sync Word chung với Gateway
-
-// ===== LoRa SPI Pins =====
-#define LORA_CS_PIN         5       // NSS / Chip Select
-#define LORA_RST_PIN        14      // Reset
-#define LORA_DIO0_PIN       2       // Interrupt (DIO0)
+// ===== LoRa AS32-TTL-100 (UART) =====
+// Module giao tiếp qua UART, không dùng SPI
+// Dùng Serial1 (remap GPIO32/33) vì Serial2 đã dùng cho PMS7003
+#define LORA_UART_NUM       1       // HardwareSerial(1)
+#define LORA_RX_PIN         32      // ESP32 RX ← Module TXD
+#define LORA_TX_PIN         33      // ESP32 TX → Module RXD
+#define LORA_MD0_PIN        25      // Mode bit 0
+#define LORA_MD1_PIN        26      // Mode bit 1
+#define LORA_AUX_PIN        27      // AUX (LOW = module đang bận)
+#define LORA_BAUD           9600    // UART baud rate (mặc định AS32)
 
 // ===== PMS7003 UART Pins =====
 #define PMS_RX_PIN          16      // ESP32 RX2 ← PMS7003 TX
@@ -66,4 +65,4 @@
 #define WDT_TASK_CORE           0       // Core 0
 
 #define DATA_QUEUE_SIZE         3       // Buffer 3 gói tin nếu LoRa đang bận
-#define WDT_TIMEOUT_MS          60000   // 60 giây không heartbeat → reset ESP32
+#define WDT_TIMEOUT_MS          360000  // 6 phút không heartbeat → reset ESP32 (> SEND_INTERVAL)

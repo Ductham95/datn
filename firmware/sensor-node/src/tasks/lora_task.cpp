@@ -13,8 +13,9 @@
 //  - Nếu timeout 10 phút không có data → gửi Heartbeat
 // =============================================================================
 
-#define LORA_QUEUE_TIMEOUT_MS  600000  // 10 phút timeout
+#define LORA_QUEUE_TIMEOUT_MS  600000  // 10 phút timeout tổng
 #define LORA_SEND_RETRIES      2       // Số lần retry gửi LoRa
+#define LORA_HB_CHUNK_MS       30000   // 30 giây mỗi lần chờ Queue (cập nhật heartbeat)
 
 void loraTask(void* parameter) {
     SensorPayload rxPayload;
@@ -26,15 +27,32 @@ void loraTask(void* parameter) {
         taskHeartbeat[TASK_LORA] = xTaskGetTickCount();
 
         // Block chờ data từ SensorTask (Queue)
-        if (xQueueReceive(dataQueue, &rxPayload, pdMS_TO_TICKS(LORA_QUEUE_TIMEOUT_MS)) == pdTRUE) {
+        // Chia timeout thành các chunk nhỏ để cập nhật heartbeat
+        bool received = false;
+        uint32_t waitRemaining = LORA_QUEUE_TIMEOUT_MS;
+
+        while (waitRemaining > 0) {
+            uint32_t thisWait = (waitRemaining > LORA_HB_CHUNK_MS) ? LORA_HB_CHUNK_MS : waitRemaining;
+
+            if (xQueueReceive(dataQueue, &rxPayload, pdMS_TO_TICKS(thisWait)) == pdTRUE) {
+                received = true;
+                break;
+            }
+
+            waitRemaining -= thisWait;
+            taskHeartbeat[TASK_LORA] = xTaskGetTickCount();  // Heartbeat
+        }
+
+        if (received) {
             // ═══ Nhận được data → gửi LoRa ═══
             bool sent = false;
 
             for (int attempt = 1; attempt <= LORA_SEND_RETRIES; attempt++) {
                 if (lora_sendPacket(&rxPayload)) {
                     sent = true;
-                    LOG_INFO("LoRa TX", "MsgID:%d PM2.5:%.1f PM10:%.1f CO2:%d TVOC:%d T:%.1f H:%.1f Bat:%d%%",
+                    LOG_INFO("LoRa TX", "MsgID:%d PM1:%.1f PM2.5:%.1f PM10:%.1f CO2:%d TVOC:%d T:%.1f H:%.1f Bat:%d%%",
                         rxPayload.msgId,
+                        rxPayload.pm1  == SENSOR_ERROR_U16 ? -1.0f : rxPayload.pm1  / 10.0f,
                         rxPayload.pm25 == SENSOR_ERROR_U16 ? -1.0f : rxPayload.pm25 / 10.0f,
                         rxPayload.pm10 == SENSOR_ERROR_U16 ? -1.0f : rxPayload.pm10 / 10.0f,
                         rxPayload.co2, rxPayload.tvoc,
