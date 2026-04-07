@@ -117,3 +117,21 @@ CREATE INDEX idx_alerts_node_id ON alerts(node_id);
 CREATE INDEX idx_alerts_created_at ON alerts(created_at);
 CREATE INDEX idx_alerts_acknowledged ON alerts(acknowledged);
 
+-- =====================================================
+-- Bảng audit logs (lịch sử hành động quản trị)
+-- =====================================================
+CREATE TABLE audit_logs (
+    id SERIAL PRIMARY KEY,
+    user_id UUID NOT NULL,
+    username VARCHAR(100) NOT NULL,
+    action VARCHAR(20) NOT NULL,
+    resource VARCHAR(50) NOT NULL,
+    resource_id VARCHAR(100),
+    details TEXT,
+    ip_address VARCHAR(45),
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_audit_logs_user_id ON audit_logs(user_id);
+CREATE INDEX idx_audit_logs_created_at ON audit_logs(created_at);
+CREATE INDEX idx_audit_logs_resource ON audit_logs(resource);

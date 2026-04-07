@@ -87,6 +87,29 @@ Lấy thông tin thời tiết hiện tại (proxy từ OpenWeatherMap API).
 
 ---
 
+### `GET /api/v1/stations/ranking`
+
+Xếp hạng các trạm theo mức AQI từ cao đến thấp. **Public API.**
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "rank": 1,
+      "node_id": "NODE_001",
+      "name": "Node 1 - Thư viện",
+      "aqi": 85,
+      "aqi_info": { "level": "moderate", "label": "Trung bình" },
+      "...": "(các field giống dashboard)"
+    }
+  ]
+}
+```
+
+---
+
 ## 2. Gateway API — Nhận dữ liệu từ Gateway
 
 ### `POST /api/v1/telemetry`
@@ -502,6 +525,117 @@ Xóa 1 cảnh báo. **Yêu cầu auth.**
 ```
 
 **Errors:** `404` nếu alert không tồn tại.
+
+---
+
+### Quản lý tài khoản (User Management API)
+
+#### `GET /api/v1/admin/users`
+
+Lấy danh sách tất cả users (ẩn password). **Yêu cầu auth.**
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": [
+    { "id": "uuid", "username": "admin", "role": "admin", "created_at": "..." }
+  ]
+}
+```
+
+---
+
+#### `POST /api/v1/admin/users`
+
+Tạo user mới. **Yêu cầu auth.**
+
+**Request Body:**
+```json
+{ "username": "newuser", "password": "123456", "role": "user" }
+```
+
+| Field | Kiểu | Bắt buộc | Validation |
+|---|---|---|---|
+| `username` | string | ✅ | 3-100 ký tự, unique |
+| `password` | string | ✅ | Tối thiểu 6 ký tự |
+| `role` | string | ❌ | `admin` / `user` (mặc định: `user`) |
+
+**Errors:** `409` nếu username đã tồn tại.
+
+---
+
+#### `PUT /api/v1/admin/users/:id`
+
+Cập nhật thông tin user (username, role). **Yêu cầu auth.**
+
+**Errors:** `404`, `409` (trùng username), `403` (hạ quyền admin cuối).
+
+---
+
+#### `DELETE /api/v1/admin/users/:id`
+
+Xóa user. **Chặn xóa admin cuối cùng.** **Yêu cầu auth.**
+
+**Errors:** `404`, `403` (admin cuối cùng).
+
+---
+
+#### `PUT /api/v1/admin/users/change-password`
+
+Đổi mật khẩu của chính mình (dùng user ID từ JWT). **Yêu cầu auth.**
+
+**Request Body:**
+```json
+{ "oldPassword": "123456", "newPassword": "newpass123" }
+```
+
+**Errors:** `401` nếu mật khẩu cũ sai.
+
+---
+
+### Log hệ thống (Audit Logs API)
+
+> [!NOTE]
+> Audit logs được tự động ghi bởi middleware cho mọi thao tác POST/PUT/PATCH/DELETE trên admin API.
+> Thông tin nhạy cảm (password) được ẩn trong details.
+
+#### `GET /api/v1/admin/logs`
+
+Xem lịch sử hành động admin. **Yêu cầu auth.**
+
+**Query Parameters:**
+
+| Param | Kiểu | Mặc định | Mô tả |
+|---|---|---|---|
+| `username` | string | — | Lọc theo username (partial match) |
+| `action` | string | — | `CREATE` / `UPDATE` / `DELETE` / `LOGIN` / `CHANGE_PASSWORD` |
+| `resource` | string | — | `gateway` / `node` / `user` / `config` / `alert` / `auth` |
+| `from` | ISO datetime | — | Thời gian bắt đầu |
+| `to` | ISO datetime | — | Thời gian kết thúc |
+| `page` | int | 1 | Trang |
+| `limit` | int | 50 | Số lượng mỗi trang |
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "logs": [
+    {
+      "id": 1,
+      "user_id": "uuid",
+      "username": "admin",
+      "action": "CREATE",
+      "resource": "user",
+      "resource_id": null,
+      "details": "{\"username\":\"newuser\",\"password\":\"***\",\"role\":\"user\"}",
+      "ip_address": "::1",
+      "created_at": "2026-04-07T08:26:52.834Z"
+    }
+  ],
+  "pagination": { "page": 1, "limit": 50, "total": 4, "totalPages": 1 }
+}
+```
 
 ---
 

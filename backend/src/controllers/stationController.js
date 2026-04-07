@@ -43,4 +43,14 @@ const getStationHistory = async (req, res) => {
   }
 };
 
-module.exports = { getDashboardStations, getNearestStation, getStationHistory };
+const getStationRanking = async (req, res) => {
+  try {
+    const data = await stationService.getRankingData();
+    res.json({ success: true, data });
+  } catch (error) {
+    console.error('[Ranking API]', error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
+};
+
+module.exports = { getDashboardStations, getNearestStation, getStationHistory, getStationRanking };

@@ -106,4 +106,18 @@ const getHistoryData = async (id, type, limit) => {
   }
 };
 
-module.exports = { getDashboardData, getNearestStationData, getHistoryData };
+// ==================== RANKING ====================
+
+/**
+ * Xếp hạng các trạm theo AQI từ cao → thấp
+ * Reuse getDashboardData() rồi sort
+ */
+const getRankingData = async () => {
+  const stations = await getDashboardData();
+  return stations
+    .filter(s => s.aqi != null)
+    .sort((a, b) => b.aqi - a.aqi)
+    .map((s, index) => ({ rank: index + 1, ...s }));
+};
+
+module.exports = { getDashboardData, getNearestStationData, getHistoryData, getRankingData };

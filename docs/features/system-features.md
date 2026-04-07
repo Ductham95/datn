@@ -73,5 +73,6 @@
 | Admin: CRUD Gateways/Nodes | ✅ | ❌ |
 | Admin: Cảnh báo (Alerts) | ✅ | ❌ |
 | Admin: Cấu hình ngưỡng (Config) | ✅ | ❌ |
-| Admin: Quản lý tài khoản | ❌ | ❌ |
-| Xếp hạng ô nhiễm | ❌ | ❌ |
+| Admin: Quản lý tài khoản | ✅ | ❌ |
+| Admin: Log hệ thống (Audit) | ✅ | ❌ |
+| Xếp hạng ô nhiễm | ✅ | ❌ |
