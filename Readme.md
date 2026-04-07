@@ -1,186 +1,134 @@
-# Hệ Thống Giám Sát Chất Lượng Không Khí Đô Thị
+# 🌍 Hệ Thống Giám Sát Chất Lượng Không Khí Đô Thị
 
-Hệ thống IoT giám sát chất lượng không khí theo thời gian thực sử dụng **ESP32**, **LoRa SX1278**, cảm biến bụi mịn **PMS7003**, cảm biến khí **CCS811**, cảm biến nhiệt độ/độ ẩm **DHT22**. Dữ liệu được truyền qua LoRa đến Gateway, đẩy lên server qua MQTT và hiển thị trên giao diện web React.
+Hệ thống IoT giám sát chất lượng không khí theo thời gian thực sử dụng **ESP32**, **LoRa AS32-TTL-100** (433 MHz), cảm biến bụi mịn **PMS7003**, cảm biến khí **CCS811**, cảm biến nhiệt độ/độ ẩm **DHT22**. Dữ liệu được truyền qua LoRa đến Gateway, gửi lên server qua HTTP POST và hiển thị trên dashboard web React.
+
+---
 
 ## Kiến trúc hệ thống
 
 ```
 [Sensor Node]              [Gateway]              [Backend]           [Frontend]
- ESP32 + LoRa    --LoRa-->  ESP32 + LoRa  --MQTT-->  Node.js   <--HTTP/WS-->  React
- PMS7003                    WiFi + MQTT       MySQL + Socket.IO      ECharts
- CCS811                                                              Leaflet
- DHT22
+ ESP32 + LoRa    --LoRa-->  ESP32 + LoRa  --HTTP-->  Node.js   <--HTTP/WS-->  React
+ PMS7003                    WiFi + HTTP       PostgreSQL           ECharts
+ CCS811                     POST batch        TimescaleDB          Leaflet
+ DHT22                                        PostGIS + Prisma     Socket.IO
 ```
 
 ## Cấu trúc thư mục
 
 ```
 datn/
-├── backend/          # Backend Node.js (Express + MQTT + Socket.IO)
-│   ├── src/
-│   │   ├── models/   # Kết nối & truy vấn database MySQL
-│   │   ├── mqtt/     # MQTT subscriber nhận dữ liệu từ gateway
-│   │   ├── routes/   # REST API endpoints
-│   │   ├── services/ # Business logic
-│   │   └── server.js # Entry point
-│   └── .env          # Biến môi trường
-├── frontend/         # Frontend React (Vite)
+├── backend/              # Backend Node.js (Express + Prisma + PostgreSQL)
+│   ├── database/         # SQL init scripts (TimescaleDB + PostGIS)
+│   ├── prisma/           # Prisma schema (ORM)
 │   └── src/
-│       ├── pages/    # Dashboard, NodeDetail, Alerts
-│       └── App.jsx
-├── firmware/         # Firmware ESP32 (PlatformIO)
-│   ├── sensor-node/  # Code cho node cảm biến
-│   └── gateway/      # Code cho gateway LoRa → MQTT
-├── hardware/         # Sơ đồ nguyên lý mạch
-│   └── schematic/
-└── docs/             # Tài liệu, báo cáo, slide
+│       ├── controllers/  # Request handlers
+│       ├── services/     # Business logic (AQI, telemetry, cron...)
+│       ├── routes/       # REST API endpoints
+│       ├── middlewares/  # Auth (JWT), validation
+│       └── server.js     # Entry point
+├── firmware/             # Firmware ESP32 (PlatformIO)
+│   ├── sensor-node/      # FreeRTOS (4 task: Sensor, LoRa, Battery, Watchdog)
+│   └── gateway/          # Superloop (WiFi + LoRa RX + HTTP POST batch)
+├── frontend/             # Frontend React + Vite (đang phát triển)
+├── hardware/             # Sơ đồ nguyên lý mạch
+├── docs/                 # 📖 Tài liệu kỹ thuật
+└── docker-compose.yml    # Docker cho TimescaleDB
 ```
 
-## Yêu cầu
+## Quick Start
 
-### Phần mềm
-
-| Công cụ        | Phiên bản   | Mục đích                    |
-| --------------- | ----------- | --------------------------- |
-| Node.js         | >= 18       | Chạy backend server         |
-| MySQL           | >= 8.0      | Cơ sở dữ liệu              |
-| PlatformIO CLI  | >= 6.0      | Nạp firmware ESP32          |
-| Git             | >= 2.0      | Quản lý mã nguồn            |
-
-### Phần cứng
-
-- 2x ESP32 DevKit v1
-- 2x Module LoRa SX1278 (433MHz)
-- 1x Cảm biến bụi mịn PMS7003
-- 1x Cảm biến khí CCS811
-- 1x Cảm biến nhiệt độ/độ ẩm DHT22
-- Breadboard, dây nối, nguồn 5V
-
-## Hướng dẫn cài đặt & chạy
-
-### 1. Clone dự án
+### 1. Clone
 
 ```bash
 git clone <repository-url>
 cd datn
 ```
 
-### 2. Cài đặt database MySQL
+### 2. Khởi động Database
 
-Tạo database và bảng:
-
-```sql
-CREATE DATABASE airquality;
+```bash
+docker compose up -d
 ```
 
-### 3. Cấu hình Backend
+### 3. Chạy Backend
 
 ```bash
 cd backend
-```
-
-Chỉnh sửa file `.env` với thông tin của bạn:
-
-```env
-# Database
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
-DB_PASSWORD=your_password
-DB_NAME=airquality
-
-# MQTT Broker
-MQTT_BROKER=mqtt://broker.hivemq.com:1883
-MQTT_TOPIC=airquality/data
-
-# Server
-PORT=3000
-```
-
-Cài đặt dependencies và chạy:
-
-```bash
 npm install
-
-# Chạy ở chế độ development (auto-reload)
+npx prisma generate
 npm run dev
-
-# Hoặc chạy production
-npm start
 ```
 
-Backend sẽ chạy tại: `http://localhost:3000`
+Server chạy tại: `http://localhost:3000`
 
-### 4. Cài đặt & chạy Frontend
+### 4. Chạy Frontend
 
 ```bash
 cd frontend
 npm install
-
-# Chạy development server
 npm run dev
 ```
 
-Frontend sẽ chạy tại: `http://localhost:5173`
+Frontend chạy tại: `http://localhost:5173`
 
-Build cho production:
-
-```bash
-npm run build
-```
-
-Thư mục `dist/` sẽ được tạo và backend tự động serve các file tĩnh này.
-
-### 5. Nạp firmware cho ESP32
-
-Cần cài đặt [PlatformIO](https://platformio.org/) (extension VS Code hoặc CLI).
-
-#### Sensor Node
+### 5. Flash Firmware (nếu có ESP32)
 
 ```bash
-cd firmware/sensor-node
-pio run --target upload --upload-port <COM_PORT>
+cd firmware/sensor-node    # hoặc firmware/gateway
+pio run -e esp32dev -t upload --upload-port <COM_PORT>
 pio device monitor --port <COM_PORT> --baud 115200
 ```
 
-#### Gateway
+---
 
-```bash
-cd firmware/gateway
-pio run --target upload --upload-port <COM_PORT>
-pio device monitor --port <COM_PORT> --baud 115200
-```
+## Yêu cầu
 
-> Thay `<COM_PORT>` bằng cổng COM thực tế của ESP32 (ví dụ: `COM3` trên Windows).
+### Phần mềm
 
-## API Endpoints
+| Công cụ | Phiên bản | Mục đích |
+|---------|-----------|----------|
+| Node.js | >= 18 | Chạy backend server |
+| Docker | >= 20 | Chạy database (TimescaleDB) |
+| PlatformIO | >= 6.0 | Nạp firmware ESP32 |
+| Git | >= 2.0 | Quản lý mã nguồn |
 
-| Method | Endpoint            | Mô tả                          |
-| ------ | ------------------- | ------------------------------- |
-| GET    | `/api/...`          | Lấy dữ liệu cảm biến          |
-| GET    | `/health`           | Kiểm tra trạng thái server     |
+### Phần cứng
 
-## Giao thức truyền dữ liệu
-
-```
-Sensor Node  --(LoRa 433MHz)-->  Gateway  --(WiFi/MQTT)-->  Backend
-                                                                |
-                                                          Socket.IO (realtime)
-                                                                |
-                                                            Frontend
-```
-
-- **LoRa**: Truyền dữ liệu từ node cảm biến đến gateway (khoảng cách xa, tiết kiệm năng lượng)
-- **MQTT**: Gateway publish dữ liệu lên broker, backend subscribe nhận dữ liệu
-- **Socket.IO**: Đẩy dữ liệu realtime từ backend đến frontend
-- **REST API**: Frontend truy vấn dữ liệu lịch sử
+- 4x ESP32 DevKit V1 (3 node + 1 gateway)
+- 4x Module LoRa AS32-TTL-100 (433MHz, UART)
+- 3x Cảm biến bụi mịn PMS7003
+- 3x Cảm biến khí CCS811
+- 3x Cảm biến nhiệt độ/độ ẩm DHT22
+- Pin 18650, TP4056, breadboard, dây nối
 
 ## Công nghệ sử dụng
 
-| Thành phần | Công nghệ                                   |
-| ---------- | -------------------------------------------- |
-| Frontend   | React, Vite, ECharts, Leaflet, Socket.IO     |
-| Backend    | Node.js, Express, MQTT.js, Socket.IO, MySQL2 |
-| Database   | MySQL                                        |
-| Firmware   | Arduino (PlatformIO), LoRa, PubSubClient     |
-| MQTT Broker| HiveMQ (public broker)                       |
+| Thành phần | Công nghệ |
+|------------|-----------|
+| Frontend | React, Vite, ECharts, Leaflet, Socket.IO |
+| Backend | Node.js, Express, Prisma, Socket.IO |
+| Database | PostgreSQL + TimescaleDB + PostGIS |
+| Firmware | ESP32 Arduino (PlatformIO), FreeRTOS |
+| LoRa | AS32-TTL-100 (UART, 433 MHz) |
+| Infrastructure | Docker, PM2, Nginx |
+
+## Tài liệu
+
+📖 Xem tài liệu đầy đủ tại [docs/README.md](docs/README.md)
+
+## API Endpoints
+
+| Method | Endpoint | Mô tả |
+|--------|----------|-------|
+| GET | `/api/v1/stations/dashboard` | Dashboard tất cả trạm + AQI |
+| GET | `/api/v1/stations/nearest?lat=&lng=` | Trạm gần nhất (PostGIS) |
+| GET | `/api/v1/stations/:id/history` | Lịch sử dữ liệu |
+| GET | `/api/v1/weather?lat=&lng=` | Thời tiết (OpenWeatherMap) |
+| POST | `/api/v1/telemetry` | Nhận dữ liệu từ Gateway |
+| POST | `/api/v1/admin/login` | Đăng nhập admin (JWT) |
+| GET | `/api/v1/admin/gateways` | Danh sách gateways |
+| GET | `/api/v1/admin/nodes` | Danh sách sensor nodes |
+| GET | `/api/v1/admin/export/measurements` | Xuất CSV |
+
+Xem chi tiết: [docs/backend/api-reference.md](docs/backend/api-reference.md)

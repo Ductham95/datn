@@ -5,7 +5,11 @@ const ingestTelemetryData = async (req, res) => {
   const { gateway_id, data } = req.body;
 
   try {
+    console.log('Date: ', new Date());
+    console.log('[Ingestion API] Dữ liệu đã được xử lý và lưu vào CSDL.');
+
     await telemetryService.processTelemetry(gateway_id, data);
+    //log
 
     // 3. Đánh thức Frontend bằng sự kiện Realtime Socket.io
     if (req.io) {

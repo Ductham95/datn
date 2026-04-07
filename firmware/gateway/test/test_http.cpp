@@ -15,7 +15,8 @@
 
 static uint16_t sendCount = 0;
 
-void setup() {
+void setup()
+{
     Serial.begin(115200);
     delay(1000);
 
@@ -33,10 +34,13 @@ void setup() {
     Serial.print("[WiFi] Đang kết nối");
 
     unsigned long start = millis();
-    while (WiFi.status() != WL_CONNECTED) {
-        if (millis() - start > WIFI_CONNECT_TIMEOUT_MS) {
+    while (WiFi.status() != WL_CONNECTED)
+    {
+        if (millis() - start > WIFI_CONNECT_TIMEOUT_MS)
+        {
             Serial.println("\n[WiFi] ❌ Timeout! Không kết nối được.");
-            while (true) delay(1000);
+            while (true)
+                delay(1000);
         }
         Serial.print(".");
         delay(500);
@@ -47,8 +51,10 @@ void setup() {
     Serial.println("────────────────────────────────────────");
 }
 
-void loop() {
-    if (WiFi.status() != WL_CONNECTED) {
+void loop()
+{
+    if (WiFi.status() != WL_CONNECTED)
+    {
         Serial.println("[WiFi] ⚠ Mất kết nối!");
         delay(5000);
         return;
@@ -64,16 +70,15 @@ void loop() {
     JsonArray dataArray = doc["data"].to<JsonArray>();
     JsonObject item = dataArray.add<JsonObject>();
 
-    item["node_id"]     = "0x01";
-    item["pm1"]         = 9.5;
-    item["pm25"]        = 12.3 + (sendCount % 10) * 0.5;
-    item["pm10"]        = 45.6;
-    item["co2"]         = 800 + sendCount;
-    item["tvoc"]        = 50;
+    item["node_id"] = "NODE_001";
+    item["pm25"] = 12.3 + (sendCount % 10) * 0.5;
+    item["pm10"] = 45.6;
+    item["co2"] = 800 + sendCount;
+    item["tvoc"] = 50;
     item["temperature"] = 27.5;
-    item["humidity"]    = 65.0;
-    item["battery"]     = 85;
-    item["rssi"]        = -67;
+    item["humidity"] = 65.0;
+    item["battery"] = 85;
+    item["rssi"] = -67;
 
     String jsonPayload;
     serializeJson(doc, jsonPayload);
@@ -89,17 +94,22 @@ void loop() {
     int httpCode = http.POST(jsonPayload);
     unsigned long txTime = millis() - txStart;
 
-    if (httpCode == 200) {
+    if (httpCode == 200)
+    {
         String response = http.getString();
         Serial.printf("[HTTP] ✅ 200 OK (%lu ms)\n", txTime);
         Serial.printf("[HTTP]    Response: %s\n", response.c_str());
-    } else if (httpCode > 0) {
+    }
+    else if (httpCode > 0)
+    {
         String response = http.getString();
         Serial.printf("[HTTP] ❌ HTTP %d (%lu ms)\n", httpCode, txTime);
         Serial.printf("[HTTP]    Response: %s\n", response.c_str());
-    } else {
+    }
+    else
+    {
         Serial.printf("[HTTP] ❌ Connection failed: %s (%lu ms)\n",
-                       http.errorToString(httpCode).c_str(), txTime);
+                      http.errorToString(httpCode).c_str(), txTime);
     }
 
     http.end();

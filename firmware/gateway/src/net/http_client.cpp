@@ -12,15 +12,15 @@
 //
 //  JSON format (khớp với gatewayValidation.js + telemetryService.js):
 //  {
-//    "gateway_id": "GW-001",
+//    "gateway_id": "GW_001",
 //    "secret": "super-secret-key",
 //    "data": [
 //      {
-//        "node_id": "0x01",
-//        "pm1": 9.5, "pm25": 12.3, "pm10": 45.6,
-//        "co2": 800, "tvoc": 50,
-//        "temperature": 27.5, "humidity": 65.0,
-//        "battery": 85, "rssi": -67
+//        "node_id": "NODE_001",
+//        "pm25": 70.0, "pm10": 60.0,
+//        "co2": 800, "tvoc": 120,
+//        "temperature": 32.5, "humidity": 70,
+//        "battery": 92, "rssi": -65
 //      }
 //    ]
 //  }
@@ -42,18 +42,13 @@ bool http_sendBatch(const BufferedPacket* packets, uint8_t count) {
         const SensorPayload* p = &packets[i].payload;
         JsonObject item = dataArray.add<JsonObject>();
 
-        // Node ID format: "0x01"
-        char nodeIdStr[8];
-        snprintf(nodeIdStr, sizeof(nodeIdStr), "0x%02X", p->nodeId);
+        // Node ID format: "NODE_001"
+        char nodeIdStr[16];
+        snprintf(nodeIdStr, sizeof(nodeIdStr), "NODE_%03d", p->nodeId);
         item["node_id"] = nodeIdStr;
 
         // Chuyển đổi scaled values → float (÷10)
         // Nếu sensor lỗi (SENSOR_ERROR) → gửi null
-        if (p->pm1 != SENSOR_ERROR_U16)
-            item["pm1"] = p->pm1 / 10.0f;
-        else
-            item["pm1"] = (char*)NULL;
-
         if (p->pm25 != SENSOR_ERROR_U16)
             item["pm25"] = p->pm25 / 10.0f;
         else
