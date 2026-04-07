@@ -45,22 +45,28 @@ backend/src/
 │   ├── stationController.js      # getDashboardStations, getNearestStation, getStationHistory
 │   ├── telemetryController.js    # ingestTelemetryData
 │   ├── authController.js         # login
-│   ├── adminDeviceController.js  # getGateways, getNodes
+│   ├── adminDeviceController.js  # CRUD gateways/nodes
+│   ├── alertConfigController.js  # getConfig, updateConfig
+│   ├── alertController.js        # getAlerts, acknowledgeAlert, deleteAlert
 │   ├── exportController.js       # exportMeasurements (CSV)
 │   └── weatherController.js      # getWeather
 ├── services/
 │   ├── stationService.js         # Business logic cho station data
-│   ├── telemetryService.js       # Lưu measurement + cập nhật device status
+│   ├── telemetryService.js       # Lưu measurement + cập nhật device status + check thresholds
 │   ├── aqiService.js             # Tính AQI (US EPA), đánh giá CO₂/TVOC
 │   ├── authService.js            # Xác thực + JWT
-│   ├── deviceService.js          # Quản lý thiết bị
+│   ├── deviceService.js          # Quản lý thiết bị (CRUD)
+│   ├── alertConfigService.js     # Quản lý cấu hình ngưỡng
+│   ├── alertService.js           # Quản lý cảnh báo + threshold check + retention
 │   ├── exportService.js          # Xuất CSV
 │   ├── weatherService.js         # Proxy OpenWeatherMap
-│   └── cronJobs.js               # Background jobs (kiểm tra offline)
+│   └── cronJobs.js               # Background jobs (offline detection, alert cleanup)
 ├── middlewares/
 │   └── authMiddleware.js         # JWT verification (verifyAdmin)
 ├── validations/
-│   └── gatewayValidation.js      # Validate payload từ gateway
+│   ├── gatewayValidation.js      # Validate payload từ gateway
+│   ├── adminValidation.js        # Validate CRUD gateway/node
+│   └── configValidation.js       # Validate cấu hình ngưỡng
 ├── models/                       # (Legacy — không dùng, Prisma thay thế)
 └── utils/                        # Utility functions
 ```

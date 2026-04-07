@@ -352,12 +352,166 @@ Xuất dữ liệu đo lường ra CSV. **Yêu cầu auth.**
 
 ---
 
+### Cấu hình ngưỡng cảnh báo (Config API)
+
+#### `GET /api/v1/admin/config`
+
+Lấy cấu hình ngưỡng cảnh báo hiện tại. **Yêu cầu auth.**
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "pm25_warn": 35.4,
+    "pm25_danger": 55.4,
+    "pm10_warn": 154,
+    "pm10_danger": 254,
+    "co2_warn": 1000,
+    "co2_danger": 2000,
+    "tvoc_warn": 500,
+    "tvoc_danger": 1000,
+    "temp_min": 15,
+    "temp_max": 40,
+    "sampling_interval": 300,
+    "updated_at": "2026-04-07T14:30:00.000Z"
+  }
+}
+```
+
+---
+
+#### `PUT /api/v1/admin/config`
+
+Cập nhật cấu hình ngưỡng cảnh báo (partial update). **Yêu cầu auth.**
+
+**Request Body** (chỉ gửi các field cần cập nhật):
+```json
+{
+  "pm25_warn": 25,
+  "pm25_danger": 50,
+  "sampling_interval": 600
+}
+```
+
+| Field | Kiểu | Validation |
+|---|---|---|
+| `pm25_warn` | float | Số dương, phải < `pm25_danger` |
+| `pm25_danger` | float | Số dương, phải > `pm25_warn` |
+| `pm10_warn` | float | Số dương, phải < `pm10_danger` |
+| `pm10_danger` | float | Số dương, phải > `pm10_warn` |
+| `co2_warn` | int | Số nguyên dương, phải < `co2_danger` |
+| `co2_danger` | int | Số nguyên dương, phải > `co2_warn` |
+| `tvoc_warn` | int | Số nguyên dương, phải < `tvoc_danger` |
+| `tvoc_danger` | int | Số nguyên dương, phải > `tvoc_warn` |
+| `temp_min` | float | Phải < `temp_max` |
+| `temp_max` | float | Phải > `temp_min` |
+| `sampling_interval` | int | Số nguyên ≥ 60 (giây) |
+
+**Response (200):** Trả về config sau khi cập nhật.
+
+---
+
+### Cảnh báo (Alerts API)
+
+> [!NOTE]
+> Alerts được tạo tự động bởi hệ thống khi:
+> - **Threshold alert**: Dữ liệu cảm biến vượt ngưỡng (PM2.5, PM10, CO₂, TVOC, nhiệt độ)
+> - **Connectivity alert**: Gateway/Node mất kết nối (phát hiện bởi cron job mỗi 5 phút)
+>
+> Cooldown: Không tạo alert trùng (cùng node + cùng metric) trong 15 phút.
+> Retention: Alerts cũ hơn 30 ngày sẽ tự động bị xóa.
+
+#### `GET /api/v1/admin/alerts`
+
+Lấy danh sách cảnh báo, hỗ trợ filter + phân trang. **Yêu cầu auth.**
+
+**Query Parameters:**
+
+| Param | Kiểu | Mặc định | Mô tả |
+|---|---|---|---|
+| `node_id` | string | — | Lọc theo node ID |
+| `type` | string | — | `threshold` hoặc `connectivity` |
+| `severity` | string | — | `warn` hoặc `danger` |
+| `acknowledged` | boolean | — | `true` / `false` |
+| `from` | ISO datetime | — | Thời gian bắt đầu |
+| `to` | ISO datetime | — | Thời gian kết thúc |
+| `page` | int | 1 | Trang hiện tại |
+| `limit` | int | 50 | Số lượng mỗi trang |
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "alerts": [
+    {
+      "id": 1,
+      "node_id": "NODE_001",
+      "type": "threshold",
+      "severity": "danger",
+      "metric": "pm25",
+      "value": 60.5,
+      "threshold": 55.4,
+      "message": "[NGUY HIỂM] PM2.5 tại NODE_001: 60.5 (ngưỡng: 55.4)",
+      "acknowledged": false,
+      "created_at": "2026-04-07T14:30:00.000Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 50,
+    "total": 1,
+    "totalPages": 1
+  }
+}
+```
+
+---
+
+#### `PATCH /api/v1/admin/alerts/:id/ack`
+
+Xác nhận (acknowledge) 1 cảnh báo. **Yêu cầu auth.**
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "id": 1,
+    "acknowledged": true,
+    "..."
+  }
+}
+```
+
+**Errors:** `404` nếu alert không tồn tại.
+
+---
+
+#### `DELETE /api/v1/admin/alerts/:id`
+
+Xóa 1 cảnh báo. **Yêu cầu auth.**
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "message": "Đã xóa cảnh báo thành công",
+  "data": { "id": 1, "message": "..." }
+}
+```
+
+**Errors:** `404` nếu alert không tồn tại.
+
+---
+
 ## 4. Realtime — Socket.IO
 
 | Event | Hướng | Mô tả |
 |---|---|---|
 | `connection` | Client → Server | Kết nối WebSocket |
-| `new-measurement` | Server → Client | Broadcast khi có dữ liệu mới từ Gateway |
+| `new_telemetry_data` | Server → Client | Broadcast khi có dữ liệu mới từ Gateway |
+| `new-alert` | Server → Client | Broadcast khi có cảnh báo mới (vượt ngưỡng) |
 | `disconnect` | Client → Server | Ngắt kết nối |
 
 **Frontend kết nối:**
@@ -365,8 +519,11 @@ Xuất dữ liệu đo lường ra CSV. **Yêu cầu auth.**
 import { io } from 'socket.io-client';
 
 const socket = io('http://localhost:3000');
-socket.on('new-measurement', (data) => {
+socket.on('new_telemetry_data', (data) => {
   console.log('Dữ liệu mới:', data);
+});
+socket.on('new-alert', ({ alerts }) => {
+  console.log('Cảnh báo mới:', alerts);
 });
 ```
 
@@ -379,3 +536,4 @@ socket.on('new-measurement', (data) => {
 Kiểm tra server đang chạy.
 
 **Response:** `200 OK`
+

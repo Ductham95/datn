@@ -8,10 +8,10 @@ const ingestTelemetryData = async (req, res) => {
     console.log('Date: ', new Date());
     console.log('[Ingestion API] Dữ liệu đã được xử lý và lưu vào CSDL.');
 
-    await telemetryService.processTelemetry(gateway_id, data);
-    //log
+    // processTelemetry giờ trả về danh sách alerts mới (nếu có)
+    const newAlerts = await telemetryService.processTelemetry(gateway_id, data);
 
-    // 3. Đánh thức Frontend bằng sự kiện Realtime Socket.io
+    // Broadcast dữ liệu telemetry mới qua Socket.IO
     if (req.io) {
       const enrichedData = data.map(item => ({
         ...item,
@@ -19,6 +19,12 @@ const ingestTelemetryData = async (req, res) => {
         time: new Date()
       }));
       req.io.emit('new_telemetry_data', { gateway_id, data: enrichedData });
+
+      // Broadcast alerts mới (nếu có) cho Admin Dashboard
+      if (newAlerts && newAlerts.length > 0) {
+        req.io.emit('new-alert', { alerts: newAlerts });
+        console.log(`[Socket.IO] Broadcast ${newAlerts.length} alert(s) mới`);
+      }
     }
 
     res.status(200).json({ success: true, message: 'Telemetry data ingested successfully' });
@@ -30,3 +36,4 @@ const ingestTelemetryData = async (req, res) => {
 };
 
 module.exports = { ingestTelemetryData };
+

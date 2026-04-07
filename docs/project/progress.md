@@ -1,7 +1,7 @@
 # 📋 Progress Tracker — Tiến độ dự án
 
 > **Cập nhật lần cuối**: 07/04/2026  
-> **Tiến độ tổng thể**: 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ **~20%**
+> **Tiến độ tổng thể**: 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ **~22%**
 
 ---
 
@@ -20,8 +20,8 @@
 - [x] API Admin: Xuất CSV (`GET /admin/export/measurements`)
 - [x] API Admin: CRUD Gateway (Create/Update/Delete)
 - [x] API Admin: CRUD Sensor Node (Create/Update/Delete)
-- [ ] API Admin: Cảnh báo (Alerts API)
-- [ ] API Admin: Cấu hình ngưỡng (Config API)
+- [x] API Admin: Cảnh báo (Alerts API)
+- [x] API Admin: Cấu hình ngưỡng (Config API)
 
 #### Frontend User
 - [ ] Khởi tạo React + Vite
@@ -129,7 +129,7 @@
 
 | Giai đoạn | Tiến độ | Trạng thái |
 |---|---|---|
-| GĐ 1: Backend + Frontend User | 10/26 | 🟡 Đang thực hiện |
+| GĐ 1: Backend + Frontend User | 12/26 | 🟡 Đang thực hiện |
 | GĐ 2: Admin + Hardware | 0/13 | ⬜ Chưa bắt đầu |
 | GĐ 3: Tích hợp | 0/8 | ⬜ Chưa bắt đầu |
 | GĐ 4: Deploy + Dữ liệu | 0/7 | ⬜ Chưa bắt đầu |

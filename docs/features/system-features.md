@@ -71,7 +71,7 @@
 | Admin: List Gateways/Nodes | ✅ | 🚧 |
 | Admin: Xuất CSV | ✅ | 🚧 |
 | Admin: CRUD Gateways/Nodes | ✅ | ❌ |
-| Admin: Cảnh báo | ❌ | ❌ |
-| Admin: Cấu hình ngưỡng | ❌ | ❌ |
+| Admin: Cảnh báo (Alerts) | ✅ | ❌ |
+| Admin: Cấu hình ngưỡng (Config) | ✅ | ❌ |
 | Admin: Quản lý tài khoản | ❌ | ❌ |
 | Xếp hạng ô nhiễm | ❌ | ❌ |

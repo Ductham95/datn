@@ -62,3 +62,41 @@ model Measurement {
   @@id([time, node_id])
   @@map("measurements")
 }
+
+/// Cấu hình ngưỡng cảnh báo hệ thống (singleton row, id = 'default')
+model AlertConfig {
+  id                String   @id @default("default") @db.VarChar(50)
+  pm25_warn         Float    @default(35.4)
+  pm25_danger       Float    @default(55.4)
+  pm10_warn         Float    @default(154)
+  pm10_danger       Float    @default(254)
+  co2_warn          Int      @default(1000)
+  co2_danger        Int      @default(2000)
+  tvoc_warn         Int      @default(500)
+  tvoc_danger       Int      @default(1000)
+  temp_min          Float    @default(15)
+  temp_max          Float    @default(40)
+  sampling_interval Int      @default(300)
+  updated_at        DateTime @default(now()) @updatedAt @db.Timestamptz()
+
+  @@map("alert_configs")
+}
+
+/// Bảng lưu cảnh báo tự động (vượt ngưỡng / mất kết nối)
+model Alert {
+  id           Int      @id @default(autoincrement())
+  node_id      String   @db.VarChar(50)
+  type         String   @db.VarChar(30)
+  severity     String   @db.VarChar(10)
+  metric       String?  @db.VarChar(20)
+  value        Float?
+  threshold    Float?
+  message      String   @db.VarChar(500)
+  acknowledged Boolean  @default(false)
+  created_at   DateTime @default(now()) @db.Timestamptz()
+
+  @@index([node_id])
+  @@index([created_at])
+  @@index([acknowledged])
+  @@map("alerts")
+}

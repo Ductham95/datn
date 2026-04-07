@@ -1,14 +1,16 @@
 const prisma = require('../config/prismaClient');
+const { checkThresholdsAndCreateAlerts } = require('./alertService');
 
 const processTelemetry = async (gateway_id, data) => {
+  // 1. Transaction: Lưu dữ liệu đo lường + cập nhật trạng thái thiết bị
   await prisma.$transaction(async (tx) => {
-    // 1. Cập nhật trạng thái Gateway
+    // Cập nhật trạng thái Gateway
     await tx.gateway.update({
       where: { id: gateway_id },
       data: { status: 'online', last_seen: new Date() },
     });
 
-    // 2. Xử lý từng gói metric của các Sensor Node
+    // Xử lý từng gói metric của các Sensor Node
     for (const item of data) {
       if (!item.node_id) continue;
 
@@ -38,7 +40,21 @@ const processTelemetry = async (gateway_id, data) => {
     }
   });
 
-  return true;
+  // 2. Kiểm tra ngưỡng cảnh báo (chạy ngoài transaction để không block ingestion)
+  const allNewAlerts = [];
+  for (const item of data) {
+    if (!item.node_id) continue;
+    try {
+      const alerts = await checkThresholdsAndCreateAlerts(item.node_id, item);
+      allNewAlerts.push(...alerts);
+    } catch (err) {
+      // Lỗi alert check không được ảnh hưởng đến telemetry pipeline
+      console.error(`[Alert] Lỗi kiểm tra ngưỡng cho ${item.node_id}:`, err.message);
+    }
+  }
+
+  return allNewAlerts;
 };
 
 module.exports = { processTelemetry };
+

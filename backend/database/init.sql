@@ -74,3 +74,46 @@ VALUES ('GW_001', 'Gateway Đại học Bách Khoa', 'Sân H1', 'online');
 INSERT INTO sensor_nodes (id, gateway_id, name, geom, status, battery_level, lora_rssi) 
 VALUES ('NODE_001', 'GW_001', 'Node 1 - Thư viện', ST_SetSRID(ST_MakePoint(106.6575, 10.7733), 4326), 'active', 95, -50),
        ('NODE_002', 'GW_001', 'Node 2 - Sân vận động', ST_SetSRID(ST_MakePoint(106.6580, 10.7740), 4326), 'active', 80, -65);
+
+-- =====================================================
+-- Bảng cấu hình ngưỡng cảnh báo
+-- =====================================================
+CREATE TABLE alert_configs (
+    id VARCHAR(50) PRIMARY KEY DEFAULT 'default',
+    pm25_warn DOUBLE PRECISION DEFAULT 35.4,
+    pm25_danger DOUBLE PRECISION DEFAULT 55.4,
+    pm10_warn DOUBLE PRECISION DEFAULT 154,
+    pm10_danger DOUBLE PRECISION DEFAULT 254,
+    co2_warn INT DEFAULT 1000,
+    co2_danger INT DEFAULT 2000,
+    tvoc_warn INT DEFAULT 500,
+    tvoc_danger INT DEFAULT 1000,
+    temp_min DOUBLE PRECISION DEFAULT 15,
+    temp_max DOUBLE PRECISION DEFAULT 40,
+    sampling_interval INT DEFAULT 300,
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Seed config mặc định
+INSERT INTO alert_configs (id) VALUES ('default');
+
+-- =====================================================
+-- Bảng cảnh báo (alerts)
+-- =====================================================
+CREATE TABLE alerts (
+    id SERIAL PRIMARY KEY,
+    node_id VARCHAR(50) NOT NULL,
+    type VARCHAR(30) NOT NULL,
+    severity VARCHAR(10) NOT NULL,
+    metric VARCHAR(20),
+    value DOUBLE PRECISION,
+    threshold DOUBLE PRECISION,
+    message VARCHAR(500) NOT NULL,
+    acknowledged BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_alerts_node_id ON alerts(node_id);
+CREATE INDEX idx_alerts_created_at ON alerts(created_at);
+CREATE INDEX idx_alerts_acknowledged ON alerts(acknowledged);
+
