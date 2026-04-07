@@ -1,0 +1,153 @@
+{
+  "app": {
+    "name": "Giám sát Không khí",
+    "fullName": "Hệ thống Giám sát Chất lượng Không khí Đô thị"
+  },
+  "nav": {
+    "dashboard": "Tổng quan",
+    "map": "Bản đồ",
+    "history": "Lịch sử",
+    "ranking": "Xếp hạng",
+    "admin": "Quản trị"
+  },
+  "dashboard": {
+    "title": "Chất lượng không khí khu vực của bạn",
+    "nearestStation": "Trạm gần nhất",
+    "distanceAway": "Cách bạn {{distance}}",
+    "mapTitle": "Bản đồ AQI khu vực",
+    "historyTitle": "Lịch sử 24 giờ",
+    "healthTitle": "Khuyến nghị sức khỏe",
+    "weatherTitle": "Thời tiết hiện tại",
+    "lastUpdated": "Cập nhật lần cuối",
+    "realtime": "Thời gian thực",
+    "allStations": "Tất cả trạm",
+    "selectStation": "Chọn trạm",
+    "noData": "Chưa có dữ liệu",
+    "loading": "Đang tải dữ liệu..."
+  },
+  "metrics": {
+    "aqi": "Chỉ số AQI",
+    "pm25": "PM2.5",
+    "pm10": "PM10",
+    "co2": "CO₂",
+    "tvoc": "TVOC",
+    "temperature": "Nhiệt độ",
+    "humidity": "Độ ẩm",
+    "battery": "Pin",
+    "rssi": "Tín hiệu LoRa"
+  },
+  "units": {
+    "ugm3": "µg/m³",
+    "ppm": "ppm",
+    "ppb": "ppb",
+    "celsius": "°C",
+    "percent": "%",
+    "dbm": "dBm"
+  },
+  "aqi": {
+    "good": "Tốt",
+    "moderate": "Trung bình",
+    "sensitive": "Không tốt cho nhóm nhạy cảm",
+    "unhealthy": "Không tốt",
+    "very_bad": "Rất không tốt",
+    "hazardous": "Nguy hiểm"
+  },
+  "health": {
+    "whoWarning": "PM2.5 cao gấp {{times}} lần khuyến nghị WHO",
+    "whoSafe": "PM2.5 trong giới hạn an toàn WHO",
+    "advice": {
+      "good": "Chất lượng không khí tốt. Bạn có thể thoải mái hoạt động ngoài trời.",
+      "moderate": "Chấp nhận được. Nhóm nhạy cảm nên hạn chế hoạt động kéo dài ngoài trời.",
+      "sensitive": "Nhóm nhạy cảm (trẻ em, người già, người bệnh hô hấp) nên hạn chế ra ngoài.",
+      "unhealthy": "Mọi người nên hạn chế hoạt động ngoài trời. Đeo khẩu trang khi ra ngoài.",
+      "very_bad": "Cảnh báo sức khỏe. Hạn chế tối đa việc ra ngoài.",
+      "hazardous": "NGUY HIỂM. Không nên ra ngoài. Đóng cửa sổ, bật máy lọc không khí."
+    }
+  },
+  "station": {
+    "detail": "Chi tiết trạm",
+    "status": "Trạng thái",
+    "location": "Vị trí",
+    "gateway": "Gateway",
+    "lastSeen": "Lần cuối hoạt động",
+    "viewHistory": "Xem lịch sử",
+    "viewOnMap": "Xem trên bản đồ"
+  },
+  "history": {
+    "title": "Lịch sử dữ liệu",
+    "hourly": "Theo giờ",
+    "raw": "Dữ liệu thô",
+    "selectMetric": "Chọn thông số",
+    "from": "Từ ngày",
+    "to": "Đến ngày",
+    "noData": "Không có dữ liệu trong khoảng thời gian này"
+  },
+  "ranking": {
+    "title": "Xếp hạng ô nhiễm",
+    "subtitle": "Sắp xếp theo chỉ số AQI từ cao đến thấp",
+    "rank": "Hạng",
+    "stationName": "Tên trạm",
+    "noData": "Chưa có dữ liệu xếp hạng"
+  },
+  "map": {
+    "title": "Bản đồ Chất lượng Không khí",
+    "legend": "Chú thích",
+    "filterByAQI": "Lọc theo AQI"
+  },
+  "weather": {
+    "temperature": "Nhiệt độ",
+    "humidity": "Độ ẩm",
+    "wind": "Gió",
+    "windSpeed": "{{speed}} m/s"
+  },
+  "status": {
+    "online": "Trực tuyến",
+    "offline": "Ngoại tuyến",
+    "active": "Hoạt động",
+    "inactive": "Không hoạt động",
+    "maintenance": "Bảo trì"
+  },
+  "common": {
+    "loading": "Đang tải...",
+    "error": "Đã xảy ra lỗi",
+    "retry": "Thử lại",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "edit": "Sửa",
+    "add": "Thêm",
+    "search": "Tìm kiếm...",
+    "filter": "Lọc",
+    "export": "Xuất",
+    "confirm": "Xác nhận",
+    "close": "Đóng",
+    "back": "Quay lại",
+    "next": "Tiếp",
+    "previous": "Trước",
+    "noResults": "Không tìm thấy kết quả",
+    "actions": "Thao tác"
+  },
+  "admin": {
+    "title": "Quản trị hệ thống",
+    "dashboard": "Tổng quan",
+    "gateways": "Gateways",
+    "nodes": "Sensor Nodes",
+    "alerts": "Cảnh báo",
+    "config": "Cấu hình",
+    "users": "Tài khoản",
+    "logs": "Nhật ký",
+    "export": "Xuất CSV",
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "username": "Tên đăng nhập",
+    "password": "Mật khẩu",
+    "loginButton": "Đăng nhập",
+    "loginError": "Sai tên đăng nhập hoặc mật khẩu"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Không tìm thấy trang",
+    "description": "Trang bạn đang tìm không tồn tại hoặc đã bị di chuyển.",
+    "goHome": "Về trang chủ"
+  }
+}

@@ -1,0 +1,123 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: var(--z-sticky);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-5);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+  font-size: 1.25rem;
+}
+
+.brandName {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+.nav {
+  flex: 1;
+  padding: var(--space-3);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.navItem:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.navItem.active {
+  background: var(--color-primary-50);
+  color: var(--color-primary-700);
+  font-weight: var(--font-weight-semibold);
+}
+
+.sidebarFooter {
+  padding: var(--space-3);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.langBtn,
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.langBtn:hover,
+.logoutBtn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.logoutBtn:hover {
+  color: var(--color-danger);
+}
+
+.main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  padding: var(--space-8);
+  max-width: var(--content-max-width);
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: var(--sidebar-width-collapsed);
+  }
+  .sidebar .brandName,
+  .sidebar .navItem span,
+  .sidebar .langBtn span,
+  .sidebar .logoutBtn span {
+    display: none;
+  }
+  .nav { align-items: center; }
+  .navItem { justify-content: center; padding: var(--space-3); }
+  .langBtn, .logoutBtn { justify-content: center; }
+  .main { margin-left: var(--sidebar-width-collapsed); }
+}

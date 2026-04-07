@@ -1,0 +1,34 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--aqi-bg);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-3);
+}
+
+.value {
+  font-weight: var(--font-weight-bold);
+  color: var(--aqi-color);
+}
+
+.label {
+  font-size: var(--font-size-xs);
+  color: var(--aqi-color);
+  font-weight: var(--font-weight-medium);
+}
+
+.emoji {
+  font-size: var(--font-size-base);
+}
+
+/* Sizes */
+.sm { padding: 2px 8px; }
+.sm .value { font-size: var(--font-size-xs); }
+.sm .label { font-size: 0.625rem; }
+
+.md .value { font-size: var(--font-size-sm); }
+
+.lg { padding: var(--space-2) var(--space-4); }
+.lg .value { font-size: var(--font-size-xl); }
+.lg .label { font-size: var(--font-size-sm); }

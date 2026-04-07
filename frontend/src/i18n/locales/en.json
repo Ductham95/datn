@@ -1,0 +1,153 @@
+{
+  "app": {
+    "name": "Air Monitor",
+    "fullName": "Urban Air Quality Monitoring System"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "map": "Map",
+    "history": "History",
+    "ranking": "Ranking",
+    "admin": "Admin"
+  },
+  "dashboard": {
+    "title": "Air quality in your area",
+    "nearestStation": "Nearest Station",
+    "distanceAway": "{{distance}} away",
+    "mapTitle": "Regional AQI Map",
+    "historyTitle": "24-Hour History",
+    "healthTitle": "Health Recommendations",
+    "weatherTitle": "Current Weather",
+    "lastUpdated": "Last updated",
+    "realtime": "Real-time",
+    "allStations": "All stations",
+    "selectStation": "Select station",
+    "noData": "No data available",
+    "loading": "Loading data..."
+  },
+  "metrics": {
+    "aqi": "AQI Index",
+    "pm25": "PM2.5",
+    "pm10": "PM10",
+    "co2": "CO₂",
+    "tvoc": "TVOC",
+    "temperature": "Temperature",
+    "humidity": "Humidity",
+    "battery": "Battery",
+    "rssi": "LoRa Signal"
+  },
+  "units": {
+    "ugm3": "µg/m³",
+    "ppm": "ppm",
+    "ppb": "ppb",
+    "celsius": "°C",
+    "percent": "%",
+    "dbm": "dBm"
+  },
+  "aqi": {
+    "good": "Good",
+    "moderate": "Moderate",
+    "sensitive": "Unhealthy for Sensitive Groups",
+    "unhealthy": "Unhealthy",
+    "very_bad": "Very Unhealthy",
+    "hazardous": "Hazardous"
+  },
+  "health": {
+    "whoWarning": "PM2.5 is {{times}}x above WHO guidelines",
+    "whoSafe": "PM2.5 is within WHO safe limits",
+    "advice": {
+      "good": "Air quality is good. You can freely enjoy outdoor activities.",
+      "moderate": "Acceptable. Sensitive groups should limit prolonged outdoor activities.",
+      "sensitive": "Sensitive groups (children, elderly, respiratory patients) should limit outdoor exposure.",
+      "unhealthy": "Everyone should limit outdoor activities. Wear a mask when going outside.",
+      "very_bad": "Health warning. Minimize going outdoors.",
+      "hazardous": "HAZARDOUS. Do not go outside. Close windows, use air purifier."
+    }
+  },
+  "station": {
+    "detail": "Station Detail",
+    "status": "Status",
+    "location": "Location",
+    "gateway": "Gateway",
+    "lastSeen": "Last Active",
+    "viewHistory": "View History",
+    "viewOnMap": "View on Map"
+  },
+  "history": {
+    "title": "Data History",
+    "hourly": "Hourly",
+    "raw": "Raw Data",
+    "selectMetric": "Select metric",
+    "from": "From",
+    "to": "To",
+    "noData": "No data found for this time range"
+  },
+  "ranking": {
+    "title": "Pollution Ranking",
+    "subtitle": "Stations sorted by AQI from highest to lowest",
+    "rank": "Rank",
+    "stationName": "Station Name",
+    "noData": "No ranking data available"
+  },
+  "map": {
+    "title": "Air Quality Map",
+    "legend": "Legend",
+    "filterByAQI": "Filter by AQI"
+  },
+  "weather": {
+    "temperature": "Temperature",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "windSpeed": "{{speed}} m/s"
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline",
+    "active": "Active",
+    "inactive": "Inactive",
+    "maintenance": "Maintenance"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search...",
+    "filter": "Filter",
+    "export": "Export",
+    "confirm": "Confirm",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "noResults": "No results found",
+    "actions": "Actions"
+  },
+  "admin": {
+    "title": "System Administration",
+    "dashboard": "Dashboard",
+    "gateways": "Gateways",
+    "nodes": "Sensor Nodes",
+    "alerts": "Alerts",
+    "config": "Configuration",
+    "users": "Accounts",
+    "logs": "Audit Logs",
+    "export": "Export CSV",
+    "login": "Login",
+    "logout": "Logout",
+    "username": "Username",
+    "password": "Password",
+    "loginButton": "Sign In",
+    "loginError": "Invalid username or password"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go Home"
+  }
+}

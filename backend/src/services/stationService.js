@@ -20,7 +20,7 @@ const getDashboardData = async () => {
       ORDER BY time DESC
       LIMIT 1
     ) m ON true
-    WHERE n.status = 'active'
+    ORDER BY n.name
   `;
 
   return rows.map(row => {
@@ -53,7 +53,6 @@ const getNearestStationData = async (lat, lng) => {
       SELECT pm25, pm10, temperature, humidity FROM measurements
       WHERE node_id = n.id ORDER BY time DESC LIMIT 1
     ) m ON true
-    WHERE n.status = 'active'
     ORDER BY n.geom <-> ST_SetSRID(ST_MakePoint(${lngNum}, ${latNum}), 4326)
     LIMIT 1
   `;

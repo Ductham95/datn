@@ -27,6 +27,10 @@ Tài liệu kỹ thuật đầy đủ cho dự án đồ án tốt nghiệp.
 - [Kiến trúc Server](backend/server-architecture.md) — Cấu trúc Express server, middleware, services
 - [Tính toán AQI](backend/aqi-calculation.md) — Công thức AQI (US EPA), đánh giá CO₂, TVOC
 
+### 🌐 Frontend (`frontend/`)
+- [Kiến trúc Frontend](frontend/frontend-architecture.md) — Cấu trúc React 19 + Vite 6, routing, state management, i18n
+- [UI Components](frontend/components.md) — Thư viện 10 UI components (DataTable, Modal, Badge...)
+
 ### ⚡ Tính năng (`features/`)
 - [Chức năng hệ thống](features/system-features.md) — Danh sách đầy đủ các chức năng cho người dùng và quản trị
 

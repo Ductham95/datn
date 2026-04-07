@@ -41,15 +41,22 @@ Thay vì dùng 3 database riêng (MySQL + InfluxDB + MongoDB), hệ thống sử
 
 ## Frontend
 
-| Công nghệ | Mục đích |
-|---|---|
-| **React** | UI framework |
-| **Vite** | Build tool |
-| **ECharts** | Biểu đồ (line, bar, gauge) |
-| **Leaflet.js** | Bản đồ vị trí node |
-| **Socket.IO Client** | Nhận dữ liệu realtime |
-| **Axios** | HTTP client |
-| **React Router** | Client-side routing |
+| Công nghệ | Phiên bản | Mục đích |
+|---|---|---|
+| **React** | ^19.0 | UI framework |
+| **Vite** | ^6.2 | Build tool (HMR, code splitting) |
+| **Zustand** | ^5.0 | State management (auth, telemetry) |
+| **React Router** | ^7.4 | Client-side routing (13 routes, lazy-loaded) |
+| **Axios** | ^1.8 | HTTP client (interceptors, base URL) |
+| **ECharts** | `echarts-for-react` | Biểu đồ lịch sử (bar chart) |
+| **Leaflet** | `react-leaflet` ^5.0 | Bản đồ AQI (markers, popups) |
+| **Socket.IO Client** | ^4.8 | Nhận dữ liệu realtime |
+| **react-i18next** | ^15.4 | Đa ngôn ngữ (Tiếng Việt / English) |
+| **Lucide React** | ^0.484 | Icon library (200+ icons) |
+| **CSS Modules** | Built-in Vite | Component-scoped styling |
+
+> [!NOTE]
+> Frontend sử dụng **CSS Modules + Design Tokens** (CSS Variables) thay vì TailwindCSS để kiểm soát styling tối đa.
 
 ## Infrastructure
 

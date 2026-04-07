@@ -1,0 +1,6 @@
+.page { animation: fadeIn 300ms ease-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-6); }
+.title { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); color: var(--text-primary); margin: 0; }
+.subtitle { font-size: var(--font-size-sm); color: var(--text-tertiary); margin-top: var(--space-1); }
+.details { font-size: var(--font-size-xs); color: var(--text-tertiary); max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }

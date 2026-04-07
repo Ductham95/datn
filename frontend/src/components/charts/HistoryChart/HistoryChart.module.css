@@ -1,0 +1,11 @@
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
+.noData {
+  color: var(--text-tertiary);
+  font-size: var(--font-size-sm);
+}

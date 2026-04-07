@@ -59,20 +59,20 @@
 
 ## Trạng thái hiện tại (07/04/2026)
 
-| Tính năng | Backend API | Frontend UI |
-|---|---|---|
-| Dashboard AQI | ✅ | 🚧 Đang phát triển |
-| Gợi ý trạm gần nhất | ✅ (PostGIS) | 🚧 |
-| Xem lịch sử | ✅ (TimescaleDB) | 🚧 |
-| Thời tiết | ✅ | 🚧 |
-| Bản đồ AQI | ✅ | 🚧 |
-| Nhận dữ liệu Gateway | ✅ | — |
-| Admin Login (JWT) | ✅ | 🚧 |
-| Admin: List Gateways/Nodes | ✅ | 🚧 |
-| Admin: Xuất CSV | ✅ | 🚧 |
-| Admin: CRUD Gateways/Nodes | ✅ | ❌ |
-| Admin: Cảnh báo (Alerts) | ✅ | ❌ |
-| Admin: Cấu hình ngưỡng (Config) | ✅ | ❌ |
-| Admin: Quản lý tài khoản | ✅ | ❌ |
-| Admin: Log hệ thống (Audit) | ✅ | ❌ |
-| Xếp hạng ô nhiễm | ✅ | ❌ |
+| Tính năng | Backend API | Frontend UI | Ghi chú |
+|---|---|---|---|
+| Dashboard AQI | ✅ | ✅ | 6 MetricCards + Realtime |
+| Gợi ý trạm gần nhất | ✅ (PostGIS) | ✅ | Geolocation + PostGIS |
+| Xem lịch sử | ✅ (TimescaleDB) | ✅ | ECharts bar chart 24h |
+| Thời tiết | ✅ | ✅ | OWM + sensor fallback |
+| Bản đồ AQI | ✅ | ✅ | Leaflet + AQI markers |
+| Nhận dữ liệu Gateway | ✅ | — | HTTP POST endpoint |
+| Admin Login (JWT) | ✅ | ✅ | Form + Zustand store |
+| Admin: CRUD Gateways | ✅ | ✅ | DataTable + Modal |
+| Admin: CRUD Nodes | ✅ | ✅ | DataTable + Battery bar |
+| Admin: Cảnh báo (Alerts) | ✅ | ✅ | Severity filter + Ack |
+| Admin: Cấu hình ngưỡng | ✅ | ✅ | 6 threshold cards |
+| Admin: Quản lý tài khoản | ✅ | ✅ | CRUD + role |
+| Admin: Log hệ thống | ✅ | ✅ | Read-only DataTable |
+| Admin: Xuất CSV | ✅ | ✅ | Node selector + date range |
+| Xếp hạng ô nhiễm | ✅ | ✅ | Sorted by AQI desc |

@@ -1,11 +1,11 @@
 # 📋 Progress Tracker — Tiến độ dự án
 
 > **Cập nhật lần cuối**: 07/04/2026  
-> **Tiến độ tổng thể**: 🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜ **~25%**
+> **Tiến độ tổng thể**: 🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜ **~55%**
 
 ---
 
-## Giai đoạn 1: Backend + Frontend User (Tuần 1–3 / 07–27/04) 🔴
+## Giai đoạn 1: Backend + Frontend User (Tuần 1–3 / 07–27/04) ✅
 
 ### Tuần 1 (07–13/04): Backend CRUD API + Frontend Setup
 
@@ -27,52 +27,51 @@
 - [x] API User: Xếp hạng ô nhiễm (`GET /stations/ranking`)
 
 #### Frontend User
-- [ ] Khởi tạo React + Vite
-- [ ] Design System (colors, typography, components)
-- [ ] Layout chính (Header, Sidebar, Content)
-- [ ] Routing (`react-router-dom`)
-
-### Tuần 2 (14–20/04): Dashboard User
-
-- [ ] Dashboard: Cards thông số (AQI, PM2.5, PM10, CO₂, TVOC, Temp, Humidity)
-- [ ] Dashboard: Bản đồ AQI (Leaflet) với markers mã màu
-- [ ] Dashboard: Cảnh báo sức khỏe WHO
-- [ ] Dashboard: Kết nối Socket.IO realtime
-- [ ] Dashboard: Gợi ý trạm gần nhất (Geolocation API)
-- [ ] Dashboard: Widget thời tiết (OpenWeatherMap)
-
-### Tuần 3 (21–27/04): Biểu đồ + Chi tiết
-
-- [ ] Trang Chi tiết Node: Hiển thị thông tin node
-- [ ] Biểu đồ lịch sử: ECharts cột theo giờ/ngày
-- [ ] Biểu đồ realtime: Cập nhật live qua Socket.IO
-- [ ] Bộ lọc: Chọn thông số, khoảng thời gian
+- [x] Khởi tạo React 19 + Vite 6
+- [x] Design System (CSS variables, tokens, CSS Modules)
+- [x] Layout chính (UserLayout: Header, Sidebar, Content)
+- [x] Routing (`react-router-dom` v7 — 13 lazy-loaded routes)
+- [x] i18n (`react-i18next` — VI/EN)
+- [x] Dashboard: 6 MetricCards (AQI, PM2.5, PM10, CO₂, Temp, Humidity)
+- [x] Dashboard: Bản đồ AQI (Leaflet) với markers mã màu + popup chi tiết
+- [x] Dashboard: Cảnh báo sức khỏe WHO
+- [x] Dashboard: Kết nối Socket.IO realtime
+- [x] Dashboard: Gợi ý trạm gần nhất (Geolocation API + fallback)
+- [x] Dashboard: Widget thời tiết (OpenWeatherMap + sensor fallback)
+- [x] Dashboard: Biểu đồ lịch sử 24h (ECharts bar chart)
+- [x] Trang Bản đồ: Full-page AQI map + legend 6 mức
+- [x] Trang Chi tiết Node: Metrics + history chart
+- [x] Trang Xếp hạng: Sorted list với AQI badge + ranking medals
 
 ---
 
-## Giai đoạn 2: Admin + Hardware (Tuần 4–6 / 28/04–18/05) 🔴
+## Giai đoạn 2: Admin + Hardware (Tuần 4–6 / 28/04–18/05) 🟡
 
-### Tuần 4 (28/04–04/05): Frontend Admin
+### Tuần 4 (28/04–04/05): Frontend Admin ✅ (hoàn thành sớm)
 
-- [ ] Trang Login Admin
-- [ ] Layout Admin Dashboard (sidebar, header, content)
-- [ ] Dashboard Admin: Tổng quan hệ thống (số gateway, nodes, uptime)
+- [x] Trang Login Admin (JWT auth + Zustand store)
+- [x] Layout Admin Dashboard (sidebar nav + content area)
+- [x] Dashboard Admin: Tổng quan hệ thống (3 MetricCards: total/active/offline)
+- [x] UI Component Library: 10 components (DataTable, Select, EmptyState, Pagination, Button, Card, Input, Modal, Badge, Spinner)
 
-### Tuần 5 (05–11/05): CRUD thiết bị + Hardware
+### Tuần 5 (05–11/05): CRUD thiết bị + Hardware ✅ (Frontend hoàn thành sớm)
 
-- [ ] Admin UI: Bảng danh sách Gateways (DataTable)
-- [ ] Admin UI: Bảng danh sách Sensor Nodes (DataTable)
-- [ ] Admin UI: Form thêm/sửa Gateway
-- [ ] Admin UI: Form thêm/sửa Sensor Node
-- [ ] Admin UI: Xóa thiết bị (với confirm dialog)
+- [x] Admin UI: Bảng danh sách Gateways (DataTable + search + sort)
+- [x] Admin UI: Bảng danh sách Sensor Nodes (DataTable + battery bar + RSSI)
+- [x] Admin UI: Form thêm/sửa Gateway (Modal)
+- [x] Admin UI: Form thêm/sửa Sensor Node (Modal)
+- [x] Admin UI: Xóa thiết bị (với confirm dialog)
+- [x] Admin UI: Trang Cảnh báo (severity filter + acknowledge action)
+- [x] Admin UI: Trang Cấu hình ngưỡng (6 threshold cards + validation)
+- [x] Admin UI: Trang Quản lý tài khoản (CRUD + role badges)
+- [x] Admin UI: Trang Nhật ký hệ thống (read-only DataTable)
+- [x] Admin UI: Trang Xuất CSV (node selector + date range + info preview)
 - [ ] Hardware: Lắp ráp Sensor Node hoàn chỉnh
 - [ ] Hardware: Lắp ráp Gateway hoàn chỉnh
 - [ ] Hardware: Test truyền LoRa indoor
 
 ### Tuần 6 (12–18/05): Health Monitor + LoRa Outdoor
 
-- [ ] Admin UI: Health Monitor (trạng thái online/offline, RSSI, battery)
-- [ ] Admin UI: Trang xuất CSV
 - [ ] Hardware: Test LoRa outdoor (đo khoảng cách, packet loss)
 - [ ] Hardware: Đo thời lượng pin thực tế
 
@@ -96,7 +95,7 @@
 
 ---
 
-## Giai đoạn 4: Deploy + Dữ liệu thực (Tuần 9–10 / 02–15/06) 🟡
+## Giai đoạn 4: Deploy + Dữ liệu thực (Tuần 9–10 / 02–15/06) 🔴
 
 ### Tuần 9 (02–08/06): Deploy Production
 
@@ -113,7 +112,7 @@
 
 ---
 
-## Giai đoạn 5: Tài liệu + Bảo vệ (Tuần 11–12 / 16/06–01/07) 🟡
+## Giai đoạn 5: Tài liệu + Bảo vệ (Tuần 11–12 / 16/06–01/07) 🔴
 
 ### Tuần 11 (16–22/06): Slide + Demo
 
@@ -132,8 +131,8 @@
 
 | Giai đoạn | Tiến độ | Trạng thái |
 |---|---|---|
-| GĐ 1: Backend + Frontend User | 15/29 | 🟡 Đang thực hiện |
-| GĐ 2: Admin + Hardware | 0/13 | ⬜ Chưa bắt đầu |
+| GĐ 1: Backend + Frontend User | 30/30 | ✅ Hoàn thành |
+| GĐ 2: Admin + Hardware | 14/17 | 🟡 Frontend xong, Hardware chưa |
 | GĐ 3: Tích hợp | 0/8 | ⬜ Chưa bắt đầu |
 | GĐ 4: Deploy + Dữ liệu | 0/7 | ⬜ Chưa bắt đầu |
 | GĐ 5: Tài liệu + Bảo vệ | 0/5 | ⬜ Chưa bắt đầu |

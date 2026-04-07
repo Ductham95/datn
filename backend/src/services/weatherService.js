@@ -5,7 +5,6 @@ const fetchWeatherData = async (lat, lng) => {
     throw new Error('Chưa cấu hình API Key thời tiết server-side');
   }
 
-  const fetch = (await import('node-fetch')).default;
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${WEATHER_API_KEY}&units=metric&lang=vi`;
   
   const response = await fetch(url);

@@ -1,0 +1,44 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.stationInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.stationName {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.distance {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+.link {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary-600);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.noData {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  text-align: center;
+  padding: var(--space-4) 0;
+}

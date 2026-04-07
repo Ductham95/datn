@@ -105,7 +105,13 @@ DB_NAME=air_quality_db
 DATABASE_URL="postgresql://datn_admin:datn_password@localhost:5432/air_quality_db?schema=public"
 
 PORT=3000
+
+# Optional: OpenWeatherMap API key (đăng ký miễn phí tại https://openweathermap.org/api)
+WEATHER_API_KEY=your_api_key_here
 ```
+
+> [!TIP]
+> Nếu không có `WEATHER_API_KEY`, widget thời tiết trên Dashboard sẽ tự động dùng dữ liệu nhiệt độ/độ ẩm từ cảm biến thay thế.
 
 ### Generate Prisma Client
 

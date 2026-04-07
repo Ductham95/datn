@@ -1,0 +1,77 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+.inputBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg-primary);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.inputBox:focus-within {
+  border-color: var(--color-primary-400);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.hasError {
+  border-color: var(--color-danger);
+}
+
+.hasError:focus-within {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  background: var(--bg-tertiary);
+}
+
+.icon {
+  position: absolute;
+  left: 12px;
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.select {
+  width: 100%;
+  padding: 10px 36px 10px 12px;
+  border: none;
+  background: transparent;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+}
+
+.icon ~ .select {
+  padding-left: 36px;
+}
+
+.chevron {
+  position: absolute;
+  right: 12px;
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.error {
+  font-size: var(--font-size-xs);
+  color: var(--color-danger);
+}

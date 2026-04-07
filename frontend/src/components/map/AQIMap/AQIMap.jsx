@@ -1,0 +1,81 @@
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import { Link } from 'react-router-dom';
+import { getAQIColor, getAQILabel } from '@/utils/aqi';
+import { MAP_CONFIG } from '@/utils/constants';
+import AQIBadge from '@/components/common/AQIBadge/AQIBadge';
+import 'leaflet/dist/leaflet.css';
+import styles from './AQIMap.module.css';
+
+// Create colored circle marker icon
+function createMarkerIcon(aqi) {
+  const color = getAQIColor(aqi);
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+      <circle cx="18" cy="18" r="14" fill="${color}" opacity="0.2"/>
+      <circle cx="18" cy="18" r="10" fill="${color}" opacity="0.9"/>
+      <text x="18" y="22" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Inter, sans-serif">${aqi ?? '?'}</text>
+    </svg>
+  `;
+  return L.divIcon({
+    html: svg,
+    className: styles.markerIcon,
+    iconSize: [36, 36],
+    iconAnchor: [18, 18],
+    popupAnchor: [0, -18],
+  });
+}
+
+export default function AQIMap({ stations = [], center, zoom }) {
+  const mapCenter = center || MAP_CONFIG.CENTER;
+  const mapZoom = zoom || MAP_CONFIG.ZOOM;
+
+  // Calculate bounds from stations if available
+  const hasPositions = stations.some(s => s.latest?.lat || s.lat);
+
+  return (
+    <div className={styles.container}>
+      <MapContainer
+        center={mapCenter}
+        zoom={mapZoom}
+        className={styles.map}
+        scrollWheelZoom={true}
+        zoomControl={true}
+      >
+        <TileLayer
+          url={MAP_CONFIG.TILE_URL}
+          attribution={MAP_CONFIG.TILE_ATTRIBUTION}
+        />
+        {stations.map((station) => {
+          const lat = station.lat || station.latest?.lat;
+          const lng = station.lng || station.latest?.lng;
+          const aqi = station.latest?.aqi;
+
+          if (!lat || !lng) return null;
+
+          return (
+            <Marker
+              key={station.id}
+              position={[lat, lng]}
+              icon={createMarkerIcon(aqi)}
+            >
+              <Popup>
+                <div className={styles.popup}>
+                  <h4 className={styles.popupTitle}>{station.name}</h4>
+                  <AQIBadge value={aqi} size="sm" />
+                  <div className={styles.popupDetails}>
+                    <span>PM2.5: {station.latest?.pm25 ?? '--'} µg/m³</span>
+                    <span>CO₂: {station.latest?.co2 ?? '--'} ppm</span>
+                  </div>
+                  <Link to={`/station/${station.id}`} className={styles.popupLink}>
+                    Chi tiết →
+                  </Link>
+                </div>
+              </Popup>
+            </Marker>
+          );
+        })}
+      </MapContainer>
+    </div>
+  );
+}

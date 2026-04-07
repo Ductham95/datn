@@ -82,13 +82,17 @@
 
 | Thuộc tính | Chi tiết |
 |---|---|
-| **Framework** | React + Vite |
-| **Biểu đồ** | ECharts |
-| **Bản đồ** | Leaflet.js |
+| **Framework** | React 19 + Vite 6 |
+| **State** | Zustand (auth + telemetry stores) |
+| **Routing** | React Router 7 (13 lazy-loaded routes) |
+| **Biểu đồ** | ECharts (bar chart lịch sử 24h) |
+| **Bản đồ** | Leaflet + react-leaflet (AQI markers, popups) |
 | **Realtime** | Socket.IO Client |
+| **Styling** | CSS Modules + Design Tokens |
+| **i18n** | react-i18next (VI/EN) |
+| **UI Pages** | 5 trang User + 8 trang Admin |
 
-> [!NOTE]
-> Tính đến 07/04/2026, frontend đang trong giai đoạn phát triển.
+→ Chi tiết: [frontend/frontend-architecture.md](../frontend/frontend-architecture.md)
 
 ---
 
@@ -126,7 +130,18 @@ datn/
 │       │   ├── net/            # HTTP client
 │       │   └── main.cpp
 │       └── test/
-├── frontend/                   # Frontend React (đang phát triển)
+├── frontend/                   # Frontend React (hoàn thành)
+│   ├── src/
+│   │   ├── components/        # 10 UI components (DataTable, Modal, Badge...)
+│   │   ├── pages/user/        # 5 trang: Dashboard, Map, Ranking, Detail, 404
+│   │   ├── pages/admin/       # 8 trang: Login, Dashboard, CRUD, Config, Export
+│   │   ├── services/          # 6 API services (Axios)
+│   │   ├── hooks/             # 5 custom hooks (dashboard, weather, socket...)
+│   │   ├── stores/            # 2 Zustand stores (auth, telemetry)
+│   │   ├── i18n/              # Vietnamese + English translations
+│   │   ├── styles/            # Design tokens (CSS variables)
+│   │   └── utils/             # AQI calc, formatters, constants
+│   └── package.json
 ├── hardware/                   # Sơ đồ nguyên lý mạch
 │   └── schematic/
 ├── docs/                       # Tài liệu kỹ thuật (bạn đang ở đây)

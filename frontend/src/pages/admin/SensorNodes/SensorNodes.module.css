@@ -1,0 +1,84 @@
+.page {
+  animation: fadeIn 300ms ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-6);
+}
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+}
+.subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  margin-top: var(--space-1);
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.rowFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+.deleteMsg {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-4);
+}
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  color: var(--text-tertiary);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+.actionBtn:hover {
+  background: var(--bg-tertiary);
+  color: var(--color-primary-600);
+}
+.dangerBtn:hover {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+/* Battery cell */
+.batteryCell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+}
+.batteryBar {
+  width: 40px;
+  height: 8px;
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.batteryFill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--transition-normal);
+}

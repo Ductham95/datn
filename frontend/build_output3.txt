@@ -1,0 +1,95 @@
+﻿[36mvite v8.0.6 [32mbuilding client environment for production...[36m[39m
+[2K
+transforming...Γ£ô 2575 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                2.42 kB Γöé gzip:   0.82 kB
+dist/assets/AuditLogs-oxVq2ymH.css             0.60 kB Γöé gzip:   0.32 kB
+dist/assets/AdminDashboard-DnSRDFG-.css        0.68 kB Γöé gzip:   0.36 kB
+dist/assets/Config-BnOZKhrP.css                0.77 kB Γöé gzip:   0.39 kB
+dist/assets/AQIBadge-CmLkjEbg.css              0.77 kB Γöé gzip:   0.28 kB
+dist/assets/Spinner-CVepb6_Q.css               0.83 kB Γöé gzip:   0.42 kB
+dist/assets/Badge-Cob4gzxF.css                 1.06 kB Γöé gzip:   0.49 kB
+dist/assets/Alerts-CX7f8il-.css                1.07 kB Γöé gzip:   0.46 kB
+dist/assets/Users-C1G4R1FJ.css                 1.14 kB Γöé gzip:   0.48 kB
+dist/assets/Gateways-DB9ATeSe.css              1.15 kB Γöé gzip:   0.48 kB
+dist/assets/Select-DITtlt8l.css                1.18 kB Γöé gzip:   0.50 kB
+dist/assets/NotFound-Ddltg_l0.css              1.20 kB Γöé gzip:   0.53 kB
+dist/assets/Export-DyTq-iHU.css                1.21 kB Γöé gzip:   0.52 kB
+dist/assets/MapView-DnPFuWey.css               1.26 kB Γöé gzip:   0.53 kB
+dist/assets/Card-y8NGwPw5.css                  1.47 kB Γöé gzip:   0.53 kB
+dist/assets/Modal-DKGkiNAL.css                 1.50 kB Γöé gzip:   0.61 kB
+dist/assets/SensorNodes-DYrAHi07.css           1.57 kB Γöé gzip:   0.61 kB
+dist/assets/Input-BxQJCSL_.css                 1.59 kB Γöé gzip:   0.68 kB
+dist/assets/Login-gJHKeP6J.css                 1.61 kB Γöé gzip:   0.65 kB
+dist/assets/MetricCard-GyHyZ0-B.css            1.65 kB Γöé gzip:   0.66 kB
+dist/assets/Button-COVVYryU.css                2.00 kB Γöé gzip:   0.71 kB
+dist/assets/Ranking-CIWz6eOS.css               2.17 kB Γöé gzip:   0.74 kB
+dist/assets/StationDetail-EiOzWy7O.css         3.23 kB Γöé gzip:   0.91 kB
+dist/assets/Dashboard-DCBp7352.css             4.30 kB Γöé gzip:   1.10 kB
+dist/assets/DataTable-wBwlDTyl.css             4.41 kB Γöé gzip:   1.25 kB
+dist/assets/index-C0DmRBdn.css                13.92 kB Γöé gzip:   3.53 kB
+dist/assets/AQIMap-DfbZHBjz.css               15.69 kB Γöé gzip:   6.57 kB
+dist/assets/download-x2ZDSjLH.js               0.23 kB Γöé gzip:   0.19 kB
+dist/assets/triangle-alert-BIxZLb4g.js         0.26 kB Γöé gzip:   0.21 kB
+dist/assets/users-DOd_uRfK.js                  0.30 kB Γöé gzip:   0.22 kB
+dist/assets/layout-dashboard-DUyJi3qm.js       0.35 kB Γöé gzip:   0.20 kB
+dist/assets/useTelemetryStore-FVMV0h69.js      0.35 kB Γöé gzip:   0.22 kB
+dist/assets/radio-CxB-J3cI.js                  0.37 kB Γöé gzip:   0.25 kB
+dist/assets/plus-De_yX_mv.js                   0.37 kB Γöé gzip:   0.26 kB
+dist/assets/router-ppOwXg8A.js                 0.37 kB Γöé gzip:   0.25 kB
+dist/assets/stationService-wVQ-ix6M.js         0.38 kB Γöé gzip:   0.24 kB
+dist/assets/clipboard-list-J4yWO75N.js         0.41 kB Γöé gzip:   0.26 kB
+dist/assets/trophy-DtLZVl2S.js                 0.47 kB Γöé gzip:   0.27 kB
+dist/assets/deviceService-DNVZiAJ9.js          0.53 kB Γöé gzip:   0.21 kB
+dist/assets/useDashboard-BmRqOaO6.js           0.55 kB Γöé gzip:   0.37 kB
+dist/assets/react-Di_Peo-X.js                  0.65 kB Γöé gzip:   0.40 kB
+dist/assets/Badge-bV137sB2.js                  0.70 kB Γöé gzip:   0.43 kB
+dist/assets/useAuthStore-DLFsqn5N.js           0.75 kB Γöé gzip:   0.40 kB
+dist/assets/NotFound-Bsm9Qk9R.js               0.81 kB Γöé gzip:   0.42 kB
+dist/assets/Button-akcDEO2B.js                 0.84 kB Γöé gzip:   0.46 kB
+dist/assets/Input-DZZfm9F1.js                  0.87 kB Γöé gzip:   0.42 kB
+dist/assets/Spinner-BzxrozT3.js                0.87 kB Γöé gzip:   0.41 kB
+dist/assets/adminService-DJDnNLxr.js           1.09 kB Γöé gzip:   0.50 kB
+dist/assets/Card-DHvTO9uD.js                   1.15 kB Γöé gzip:   0.49 kB
+dist/assets/Select-CAchcTqB.js                 1.17 kB Γöé gzip:   0.58 kB
+dist/assets/AdminDashboard-Ci5Xv0FW.js         1.30 kB Γöé gzip:   0.67 kB
+dist/assets/MetricCard-CxBTUfJ0.js             1.37 kB Γöé gzip:   0.71 kB
+dist/assets/createLucideIcon-B2vQ0IXK.js       1.38 kB Γöé gzip:   0.77 kB
+dist/assets/MapView-CPlARn0L.js                1.42 kB Γöé gzip:   0.60 kB
+dist/assets/Modal-Q-Rc_y0L.js                  1.61 kB Γöé gzip:   0.79 kB
+dist/assets/AQIBadge-Do72fyS4.js               1.79 kB Γöé gzip:   0.95 kB
+dist/assets/AuditLogs-BnW5VtcY.js              1.86 kB Γöé gzip:   1.01 kB
+dist/assets/Login-CP20hk1M.js                  2.33 kB Γöé gzip:   1.10 kB
+dist/assets/Ranking-SKy_4Icp.js                2.72 kB Γöé gzip:   1.08 kB
+dist/assets/react-dom-ChuZRMZu.js              3.54 kB Γöé gzip:   1.34 kB
+dist/assets/Export-BErnSIIg.js                 3.67 kB Γöé gzip:   1.68 kB
+dist/assets/Config-oDR9HeTM.js                 3.91 kB Γöé gzip:   1.70 kB
+dist/assets/Alerts-DdlQPEQ3.js                 3.92 kB Γöé gzip:   1.75 kB
+dist/assets/Users--yFBELmb.js                  4.53 kB Γöé gzip:   1.86 kB
+dist/assets/Gateways-DR3FZ_7C.js               4.70 kB Γöé gzip:   1.88 kB
+dist/assets/DataTable-DzbjCoQA.js              5.45 kB Γöé gzip:   2.21 kB
+dist/assets/StationDetail-BPT-hW-G.js          5.66 kB Γöé gzip:   2.25 kB
+dist/assets/SensorNodes-Bs95eQu-.js            5.92 kB Γöé gzip:   2.35 kB
+dist/assets/formatters-BQfp4X4l.js            10.35 kB Γöé gzip:   4.32 kB
+dist/assets/Dashboard-CbFiBbIY.js             10.97 kB Γöé gzip:   4.24 kB
+dist/assets/dist-DylCesKW.js                  11.88 kB Γöé gzip:   4.72 kB
+dist/assets/jsx-runtime-Bqawe28F.js           13.72 kB Γöé gzip:   5.49 kB
+dist/assets/api-Dzdh7WVt.js                   37.80 kB Γöé gzip:  15.12 kB
+dist/assets/chunk-QFMPRPBF-OqIChN-I.js        41.48 kB Γöé gzip:  14.66 kB
+dist/assets/AQIMap-CRl953cs.js               154.91 kB Γöé gzip:  45.72 kB
+dist/assets/index-D1LWGIy_.js                283.45 kB Γöé gzip:  89.98 kB
+dist/assets/useStationHistory-ByNIHTs4.js  1,130.63 kB Γöé gzip: 371.21 kB
+
+[32mΓ£ô built in 891ms[39m
+node.exe : [33m[plugin builtin:vite-reporter] 
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecifie    d: ([33m[plugin builtin:vite-reporte    r] :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeComma    ndError
+ 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
