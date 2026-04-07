@@ -70,7 +70,7 @@
 | Admin Login (JWT) | ✅ | 🚧 |
 | Admin: List Gateways/Nodes | ✅ | 🚧 |
 | Admin: Xuất CSV | ✅ | 🚧 |
-| Admin: CRUD Gateways/Nodes | ❌ Chưa có | ❌ |
+| Admin: CRUD Gateways/Nodes | ✅ | ❌ |
 | Admin: Cảnh báo | ❌ | ❌ |
 | Admin: Cấu hình ngưỡng | ❌ | ❌ |
 | Admin: Quản lý tài khoản | ❌ | ❌ |

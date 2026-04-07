@@ -154,25 +154,189 @@ Nhận batch dữ liệu cảm biến từ Gateway.
 **Response (200):**
 ```json
 {
+  "success": true,
   "token": "eyJhbGciOiJIUzI1NiIs..."
 }
 ```
 
 ---
 
-### `GET /api/v1/admin/gateways`
+### Gateway CRUD
+
+#### `GET /api/v1/admin/gateways`
 
 Lấy danh sách tất cả gateways. **Yêu cầu auth.**
 
 ---
 
-### `GET /api/v1/admin/nodes`
+#### `POST /api/v1/admin/gateways`
+
+Thêm gateway mới. ID được hệ thống tự sinh theo format `GW_XXX`.
+
+**Request Body:**
+```json
+{
+  "name": "Gateway Đại học Bách Khoa",
+  "location_desc": "Sân H1"
+}
+```
+
+| Field | Kiểu | Bắt buộc | Mô tả |
+|---|---|---|---|
+| `name` | string | ✅ | Tên gateway, tối đa 100 ký tự |
+| `location_desc` | string | ❌ | Mô tả vị trí, tối đa 255 ký tự |
+
+**Response (201):**
+```json
+{
+  "success": true,
+  "data": {
+    "id": "GW_002",
+    "name": "Gateway Đại học Bách Khoa",
+    "location_desc": "Sân H1",
+    "status": "offline",
+    "last_seen": null
+  }
+}
+```
+
+---
+
+#### `PUT /api/v1/admin/gateways/:id`
+
+Cập nhật thông tin gateway.
+
+**Request Body** (chỉ gửi các field cần cập nhật):
+```json
+{
+  "name": "Gateway Updated",
+  "status": "online"
+}
+```
+
+| Field | Kiểu | Giá trị hợp lệ |
+|---|---|---|
+| `name` | string | Tối đa 100 ký tự |
+| `location_desc` | string | Tối đa 255 ký tự |
+| `status` | string | `online`, `offline` |
+
+**Response (200):** Trả về gateway sau khi cập nhật.
+
+**Errors:** `404` nếu gateway không tồn tại.
+
+---
+
+#### `DELETE /api/v1/admin/gateways/:id`
+
+Xóa gateway. **Chặn xóa** nếu còn sensor nodes liên kết.
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "message": "Đã xóa gateway \"Gateway Test\" thành công",
+  "data": { "id": "GW_002", "name": "Gateway Test" }
+}
+```
+
+**Response (409) — Có phụ thuộc:**
+```json
+{
+  "success": false,
+  "error": "Không thể xóa Gateway \"Gateway BK\" vì còn 3 sensor node đang liên kết. Vui lòng xóa hoặc chuyển tất cả sensor nodes trước khi xóa gateway.",
+  "details": { "nodeCount": 3 }
+}
+```
+
+---
+
+### Sensor Node CRUD
+
+#### `GET /api/v1/admin/nodes`
 
 Lấy danh sách tất cả sensor nodes. **Yêu cầu auth.**
 
 ---
 
-### `GET /api/v1/admin/export/measurements`
+#### `POST /api/v1/admin/nodes`
+
+Thêm sensor node mới. ID được hệ thống tự sinh theo format `NODE_XXX`.
+
+**Request Body:**
+```json
+{
+  "name": "Node 3 - Canteen",
+  "gateway_id": "GW_001",
+  "lat": 10.7733,
+  "lng": 106.6575,
+  "status": "active",
+  "battery_level": 100
+}
+```
+
+| Field | Kiểu | Bắt buộc | Mô tả |
+|---|---|---|---|
+| `name` | string | ✅ | Tên node, tối đa 100 ký tự |
+| `gateway_id` | string | ✅ | ID gateway cha (phải tồn tại) |
+| `lat` | float | ❌ | Vĩ độ (-90 → 90) |
+| `lng` | float | ❌ | Kinh độ (-180 → 180) |
+| `status` | string | ❌ | `active` / `inactive` / `maintenance` (mặc định: `active`) |
+| `battery_level` | int | ❌ | 0–100 (mặc định: 100) |
+
+> [!NOTE]
+> Nếu cung cấp tọa độ, phải gửi cả `lat` và `lng`.
+
+**Response (201):** Trả về node vừa tạo.
+
+**Errors:** `400` nếu `gateway_id` không tồn tại.
+
+---
+
+#### `PUT /api/v1/admin/nodes/:id`
+
+Cập nhật thông tin sensor node.
+
+**Request Body** (chỉ gửi các field cần cập nhật):
+```json
+{
+  "name": "Node 3 - Thư viện mới",
+  "battery_level": 85
+}
+```
+
+**Response (200):** Trả về node sau khi cập nhật.
+
+**Errors:** `404` nếu node không tồn tại, `400` nếu `gateway_id` mới không hợp lệ.
+
+---
+
+#### `DELETE /api/v1/admin/nodes/:id`
+
+Xóa sensor node. **Chặn xóa** nếu còn dữ liệu đo lường liên quan.
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "message": "Đã xóa sensor node \"Node Test\" thành công",
+  "data": { "id": "NODE_003", "name": "Node Test" }
+}
+```
+
+**Response (409) — Có phụ thuộc:**
+```json
+{
+  "success": false,
+  "error": "Không thể xóa Sensor Node \"Node 1\" vì còn 1500 bản ghi đo lường liên quan. Vui lòng xóa dữ liệu đo lường trước hoặc liên hệ quản trị viên hệ thống.",
+  "details": { "measurementCount": 1500 }
+}
+```
+
+---
+
+### Export
+
+#### `GET /api/v1/admin/export/measurements`
 
 Xuất dữ liệu đo lường ra CSV. **Yêu cầu auth.**
 
