@@ -48,6 +48,11 @@ app.use((req, res, next) => {
 // Serve static frontend files (sau khi build)
 app.use(express.static('../frontend/dist'));
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', uptime: process.uptime(), timestamp: new Date().toISOString() });
+});
+
 // API Routes
 app.use('/api/v1', apiRoutes);
 app.use('/api/v1/telemetry', gatewayRoutes);
