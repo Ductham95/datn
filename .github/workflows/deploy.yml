@@ -33,6 +33,10 @@ jobs:
             echo "🔨 Building and restarting containers..."
             docker compose --env-file .env.production -f docker-compose.prod.yml up --build -d
 
+            echo "🗄️ Running database migrations..."
+            docker cp /opt/datn/backend/database/migrations.sql datn_db:/tmp/migrations.sql
+            docker compose --env-file .env.production -f docker-compose.prod.yml exec -T db psql -U ${POSTGRES_USER:-datn_admin} -d ${POSTGRES_DB:-air_quality_db} -f /tmp/migrations.sql 2>&1 || true
+
             echo "🧹 Cleaning up old images..."
             docker image prune -f
 

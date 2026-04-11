@@ -41,6 +41,7 @@ model SensorNode {
   status        String                            @default("active") @db.VarChar(20)
   battery_level Int                               @default(100)
   lora_rssi     Int?
+  last_seen     DateTime?                         @db.Timestamptz()
 
   gateway Gateway? @relation(fields: [gateway_id], references: [id], onDelete: Cascade)
 

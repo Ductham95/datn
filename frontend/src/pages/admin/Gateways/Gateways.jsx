@@ -18,7 +18,7 @@ export default function Gateways() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editItem, setEditItem] = useState(null);
   const [deleteItem, setDeleteItem] = useState(null);
-  const [form, setForm] = useState({ gateway_id: '', name: '', location_desc: '', ip_address: '' });
+  const [form, setForm] = useState({ name: '', location_desc: '', ip_address: '' });
   const [saving, setSaving] = useState(false);
 
   const fetchData = useCallback(async () => {
@@ -36,14 +36,13 @@ export default function Gateways() {
 
   const openCreate = () => {
     setEditItem(null);
-    setForm({ gateway_id: '', name: '', location_desc: '', ip_address: '' });
+    setForm({ name: '', location_desc: '', ip_address: '' });
     setModalOpen(true);
   };
 
   const openEdit = (item) => {
     setEditItem(item);
     setForm({
-      gateway_id: item.gateway_id || '',
       name: item.name || '',
       location_desc: item.location_desc || '',
       ip_address: item.ip_address || '',
@@ -56,7 +55,7 @@ export default function Gateways() {
     setSaving(true);
     try {
       if (editItem) {
-        await deviceService.updateGateway(editItem.gateway_id, form);
+        await deviceService.updateGateway(editItem.id, form);
         toast.success('Cập nhật gateway thành công');
       } else {
         await deviceService.createGateway(form);
@@ -74,7 +73,7 @@ export default function Gateways() {
   const handleDelete = async () => {
     if (!deleteItem) return;
     try {
-      await deviceService.deleteGateway(deleteItem.gateway_id);
+      await deviceService.deleteGateway(deleteItem.id);
       toast.success('Xóa gateway thành công');
       setDeleteItem(null);
       fetchData();
@@ -84,15 +83,15 @@ export default function Gateways() {
   };
 
   const columns = [
-    { key: 'gateway_id', label: 'ID', sortable: true, width: '140px' },
+    { key: 'id', label: 'ID', sortable: true, width: '140px' },
     { key: 'name', label: 'Tên', sortable: true },
     { key: 'location_desc', label: 'Vị trí', sortable: true },
     { key: 'ip_address', label: 'IP', sortable: true, width: '140px' },
     {
       key: 'status', label: 'Trạng thái', sortable: true, width: '130px',
       render: (val) => (
-        <Badge variant={val === 'active' ? 'success' : 'default'} dot pulse={val === 'active'}>
-          {val === 'active' ? 'Online' : 'Offline'}
+        <Badge variant={val === 'online' ? 'success' : 'default'} dot pulse={val === 'online'}>
+          {val === 'online' ? 'Online' : 'Offline'}
         </Badge>
       ),
     },
@@ -116,7 +115,7 @@ export default function Gateways() {
         data={gateways}
         loading={loading}
         searchPlaceholder="Tìm gateway..."
-        searchKeys={['gateway_id', 'name', 'location_desc']}
+        searchKeys={['id', 'name', 'location_desc']}
         emptyTitle="Chưa có gateway nào"
         emptyIcon={Router}
         toolbar={
@@ -139,11 +138,13 @@ export default function Gateways() {
       {/* Create/Edit Modal */}
       <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} title={editItem ? 'Sửa Gateway' : 'Thêm Gateway'}>
         <form onSubmit={handleSave} className={styles.form}>
-          <Input
-            id="gateway_id" label="Gateway ID" placeholder="GW_001"
-            value={form.gateway_id} onChange={(e) => setForm({ ...form, gateway_id: e.target.value })}
-            required disabled={!!editItem}
-          />
+          {editItem && (
+            <Input
+              id="gateway_id" label="Gateway ID"
+              value={editItem.id}
+              disabled
+            />
+          )}
           <Input
             id="name" label="Tên gateway" placeholder="Gateway Thư viện"
             value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}

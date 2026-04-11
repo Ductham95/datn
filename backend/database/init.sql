@@ -29,7 +29,8 @@ CREATE TABLE sensor_nodes (
     geom GEOMETRY(Point, 4326),
     status VARCHAR(20) DEFAULT 'active',
     battery_level INT DEFAULT 100,
-    lora_rssi INT
+    lora_rssi INT,
+    last_seen TIMESTAMPTZ
 );
 
 -- Tạo bảng Measurements
@@ -135,3 +136,8 @@ CREATE TABLE audit_logs (
 CREATE INDEX idx_audit_logs_user_id ON audit_logs(user_id);
 CREATE INDEX idx_audit_logs_created_at ON audit_logs(created_at);
 CREATE INDEX idx_audit_logs_resource ON audit_logs(resource);
+
+-- =====================================================
+-- Migrations (chạy an toàn trên DB đã tồn tại)
+-- =====================================================
+ALTER TABLE sensor_nodes ADD COLUMN IF NOT EXISTS last_seen TIMESTAMPTZ;

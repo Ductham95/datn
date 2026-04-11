@@ -21,6 +21,7 @@ const processTelemetry = async (gateway_id, data) => {
           battery_level: item.battery || 100,
           lora_rssi: item.rssi ? parseInt(item.rssi) : -50,
           status: 'active',
+          last_seen: new Date(),
         },
       });
 

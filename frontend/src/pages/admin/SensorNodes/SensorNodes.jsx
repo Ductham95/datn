@@ -20,7 +20,7 @@ export default function SensorNodes() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editItem, setEditItem] = useState(null);
   const [deleteItem, setDeleteItem] = useState(null);
-  const [form, setForm] = useState({ node_id: '', name: '', gateway_id: '', location_desc: '', lat: '', lng: '' });
+  const [form, setForm] = useState({ name: '', gateway_id: '', location_desc: '', lat: '', lng: '' });
   const [saving, setSaving] = useState(false);
 
   const fetchData = useCallback(async () => {
@@ -42,14 +42,13 @@ export default function SensorNodes() {
 
   const openCreate = () => {
     setEditItem(null);
-    setForm({ node_id: '', name: '', gateway_id: '', location_desc: '', lat: '', lng: '' });
+    setForm({ name: '', gateway_id: '', location_desc: '', lat: '', lng: '' });
     setModalOpen(true);
   };
 
   const openEdit = (item) => {
     setEditItem(item);
     setForm({
-      node_id: item.node_id || '',
       name: item.name || '',
       gateway_id: item.gateway_id || '',
       location_desc: item.location_desc || '',
@@ -69,7 +68,7 @@ export default function SensorNodes() {
         lng: form.lng ? parseFloat(form.lng) : null,
       };
       if (editItem) {
-        await deviceService.updateNode(editItem.node_id, payload);
+        await deviceService.updateNode(editItem.id, payload);
         toast.success('Cập nhật sensor node thành công');
       } else {
         await deviceService.createNode(payload);
@@ -87,7 +86,7 @@ export default function SensorNodes() {
   const handleDelete = async () => {
     if (!deleteItem) return;
     try {
-      await deviceService.deleteNode(deleteItem.node_id);
+      await deviceService.deleteNode(deleteItem.id);
       toast.success('Xóa sensor node thành công');
       setDeleteItem(null);
       fetchData();
@@ -104,7 +103,7 @@ export default function SensorNodes() {
   };
 
   const columns = [
-    { key: 'node_id', label: 'ID', sortable: true, width: '130px' },
+    { key: 'id', label: 'ID', sortable: true, width: '130px' },
     { key: 'name', label: 'Tên', sortable: true },
     { key: 'gateway_id', label: 'Gateway', sortable: true, width: '130px' },
     {
@@ -150,7 +149,7 @@ export default function SensorNodes() {
         data={nodes}
         loading={loading}
         searchPlaceholder="Tìm sensor node..."
-        searchKeys={['node_id', 'name', 'gateway_id']}
+        searchKeys={['id', 'name', 'gateway_id']}
         emptyTitle="Chưa có sensor node nào"
         emptyIcon={Radio}
         toolbar={
@@ -173,11 +172,13 @@ export default function SensorNodes() {
       {/* Create/Edit Modal */}
       <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} title={editItem ? 'Sửa Sensor Node' : 'Thêm Sensor Node'}>
         <form onSubmit={handleSave} className={styles.form}>
-          <Input
-            id="node_id" label="Node ID" placeholder="NODE_001"
-            value={form.node_id} onChange={(e) => setForm({ ...form, node_id: e.target.value })}
-            required disabled={!!editItem}
-          />
+          {editItem && (
+            <Input
+              id="node_id" label="Node ID"
+              value={editItem.id}
+              disabled
+            />
+          )}
           <Input
             id="name" label="Tên node" placeholder="Node Sân trường"
             value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -188,7 +189,7 @@ export default function SensorNodes() {
             value={form.gateway_id}
             onChange={(e) => setForm({ ...form, gateway_id: e.target.value })}
             placeholder="Chọn gateway..."
-            options={gateways.map((gw) => ({ value: gw.gateway_id, label: `${gw.gateway_id} — ${gw.name}` }))}
+            options={gateways.map((gw) => ({ value: gw.id, label: `${gw.id} — ${gw.name}` }))}
             required
           />
           <Input
