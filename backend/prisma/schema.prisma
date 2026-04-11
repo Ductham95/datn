@@ -38,7 +38,7 @@ model SensorNode {
   gateway_id    String?                           @db.VarChar(50)
   name          String                            @db.VarChar(100)
   geom          Unsupported("geometry(Point,4326)")?
-  status        String                            @default("active") @db.VarChar(20)
+  status        String                            @default("offline") @db.VarChar(20)
   battery_level Int                               @default(100)
   lora_rssi     Int?
   last_seen     DateTime?                         @db.Timestamptz()

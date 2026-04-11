@@ -136,14 +136,18 @@ git push
 GitHub Actions sẽ tự động:
 1. SSH vào VPS
 2. `git pull origin main`
-3. `docker compose --env-file .env.production -f docker-compose.prod.yml up --build -d`
-4. Dọn dẹp Docker images cũ
+3. `docker compose up --build -d` (rebuild containers)
+4. Chạy `migrations.sql` trên database (thêm cột/bảng mới nếu có)
+5. Dọn dẹp Docker images cũ
 
 Xem tiến trình: **GitHub → Actions tab**
 
 > **Thời gian deploy**: ~2-3 phút (build frontend + backend)
 
 > **Bỏ qua deploy**: Commit chỉ sửa `docs/`, `firmware/`, `hardware/`, hoặc `*.md` sẽ không trigger deploy.
+
+> [!NOTE]
+> Nếu có thay đổi database schema, đảm bảo đã thêm lệnh migration vào `backend/database/migrations.sql` trước khi push. Xem [Database Migrations](../database/schema-design.md#7-database-migrations) để biết chi tiết.
 
 ### Thủ công
 

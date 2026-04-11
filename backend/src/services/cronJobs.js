@@ -24,14 +24,20 @@ function startBackgroundJobs() {
       const nodesGoingOffline = await prisma.$queryRaw`
         SELECT sn.id, sn.name FROM sensor_nodes sn
         WHERE sn.status != 'offline'
-          AND sn.id IN (
-            SELECT node_id
-            FROM (
-              SELECT node_id, MAX(time) as last_time
-              FROM measurements
-              GROUP BY node_id
-            ) AS latest
-            WHERE EXTRACT(EPOCH FROM (NOW() - last_time)) > 900
+          AND (
+            sn.id IN (
+              SELECT node_id
+              FROM (
+                SELECT node_id, MAX(time) as last_time
+                FROM measurements
+                GROUP BY node_id
+              ) AS latest
+              WHERE EXTRACT(EPOCH FROM (NOW() - last_time)) > 900
+            )
+            OR (
+              sn.last_seen IS NULL
+              AND sn.id NOT IN (SELECT DISTINCT node_id FROM measurements)
+            )
           )
       `;
 
@@ -48,19 +54,27 @@ function startBackgroundJobs() {
           console.log(`[Cron] Đã chuyển trạng thái offline cho ${offlineGatewayCount} Gateway!`);
         }
 
-        // 2. Chuyển Sensor Node thành Offline nếu không có dữ liệu đo mới nhất trong 15 phút
+        // 2. Chuyển Sensor Node thành Offline nếu:
+        //    - Không có dữ liệu đo mới nhất trong 15 phút, HOẶC
+        //    - Chưa bao giờ gửi dữ liệu (last_seen IS NULL và không có measurements)
         const offlineNodeCount = await tx.$executeRaw`
           UPDATE sensor_nodes
           SET status = 'offline'
           WHERE status != 'offline'
-            AND id IN (
-              SELECT node_id
-              FROM (
-                SELECT node_id, MAX(time) as last_time
-                FROM measurements
-                GROUP BY node_id
-              ) AS latest
-              WHERE EXTRACT(EPOCH FROM (NOW() - last_time)) > 900
+            AND (
+              id IN (
+                SELECT node_id
+                FROM (
+                  SELECT node_id, MAX(time) as last_time
+                  FROM measurements
+                  GROUP BY node_id
+                ) AS latest
+                WHERE EXTRACT(EPOCH FROM (NOW() - last_time)) > 900
+              )
+              OR (
+                last_seen IS NULL
+                AND id NOT IN (SELECT DISTINCT node_id FROM measurements)
+              )
             )
         `;
 

@@ -40,6 +40,7 @@ erDiagram
         VARCHAR status
         INT battery_level
         INT lora_rssi
+        TIMESTAMPTZ last_seen
     }
 
     measurements {
@@ -92,6 +93,7 @@ erDiagram
 | `status` | VARCHAR(20) | DEFAULT 'active' | `active` / `inactive` / `lost_connection` |
 | `battery_level` | INT | DEFAULT 100 | Phần trăm pin (0–100) |
 | `lora_rssi` | INT | — | Tín hiệu LoRa (dBm) |
+| `last_seen` | TIMESTAMPTZ | — | Lần cuối node gửi dữ liệu |
 
 ### 3.4. Bảng `measurements` — Dữ liệu đo lường (TimescaleDB Hypertable)
 
@@ -174,3 +176,45 @@ volumes:
 ```
 
 Xem thêm: [Workflow: Khởi tạo Database](../../.agents/workflows/run-database.md)
+
+---
+
+## 7. Database Migrations
+
+Khi cần thay đổi schema trên database **đã tồn tại** (production), sử dụng file migration riêng thay vì sửa `init.sql`.
+
+> [!IMPORTANT]
+> `init.sql` chỉ chạy lần đầu khi tạo container. Các thay đổi schema sau đó **phải** được thêm vào `migrations.sql`.
+
+### File migration
+
+File: [`backend/database/migrations.sql`](../../backend/database/migrations.sql)
+
+Mỗi lệnh migration phải sử dụng `IF NOT EXISTS` / `IF EXISTS` để chạy an toàn nhiều lần (idempotent):
+
+```sql
+-- Đúng ✅
+ALTER TABLE sensor_nodes ADD COLUMN IF NOT EXISTS last_seen TIMESTAMPTZ;
+
+-- Sai ❌ (sẽ lỗi nếu chạy lần 2)
+ALTER TABLE sensor_nodes ADD COLUMN last_seen TIMESTAMPTZ;
+```
+
+### Quy trình thêm cột/bảng mới
+
+1. Cập nhật `backend/prisma/schema.prisma` (thêm field mới)
+2. Chạy `npx prisma generate` để cập nhật Prisma Client
+3. Thêm lệnh `ALTER TABLE` vào `backend/database/migrations.sql`
+4. Cập nhật `backend/database/init.sql` (cho lần khởi tạo mới)
+5. Push code → CI/CD tự động chạy migration trên production
+
+### Chạy migration thủ công
+
+```bash
+# Local
+docker exec datn_postgres_db psql -U datn_admin -d air_quality_db -f /tmp/migrations.sql
+
+# Production (SSH vào VPS)
+docker cp /opt/datn/backend/database/migrations.sql datn_db:/tmp/migrations.sql
+docker exec datn_db psql -U datn_admin -d air_quality_db -f /tmp/migrations.sql
+```

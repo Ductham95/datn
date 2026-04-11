@@ -127,7 +127,7 @@ const createNode = async ({ name, gateway_id, lat, lng, status, battery_level })
       id,
       name: name.trim(),
       gateway_id,
-      status: status || 'active',
+      status: status || 'offline',
       battery_level: battery_level ?? 100,
     },
   });

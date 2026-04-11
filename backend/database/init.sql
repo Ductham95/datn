@@ -27,7 +27,7 @@ CREATE TABLE sensor_nodes (
     gateway_id VARCHAR(50) REFERENCES gateways(id) ON DELETE CASCADE,
     name VARCHAR(100) NOT NULL,
     geom GEOMETRY(Point, 4326),
-    status VARCHAR(20) DEFAULT 'active',
+    status VARCHAR(20) DEFAULT 'offline',
     battery_level INT DEFAULT 100,
     lora_rssi INT,
     last_seen TIMESTAMPTZ
