@@ -23,7 +23,7 @@ export default function AuditLogs() {
   const fetchData = useCallback(async () => {
     try {
       const data = await logService.getLogs();
-      setLogs(data.data || []);
+      setLogs(data.logs || []);
     } catch (err) {
       toast.error('Không thể tải nhật ký');
     } finally {

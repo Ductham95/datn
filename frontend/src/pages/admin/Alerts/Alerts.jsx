@@ -12,6 +12,7 @@ import toast from 'react-hot-toast';
 import styles from './Alerts.module.css';
 
 const SEVERITY_MAP = {
+  warn: { variant: 'warning', label: 'Cảnh báo' },
   warning: { variant: 'warning', label: 'Cảnh báo' },
   danger: { variant: 'danger', label: 'Nguy hiểm' },
   critical: { variant: 'danger', label: 'Nghiêm trọng' },
@@ -29,7 +30,7 @@ export default function Alerts() {
       const params = {};
       if (filterSeverity) params.severity = filterSeverity;
       const data = await alertService.getAlerts(params);
-      setAlerts(data.data || []);
+      setAlerts(data.alerts || []);
     } catch (err) {
       toast.error('Không thể tải danh sách cảnh báo');
     } finally {
@@ -121,9 +122,8 @@ export default function Alerts() {
             onChange={(e) => setFilterSeverity(e.target.value)}
             placeholder="Tất cả mức độ"
             options={[
-              { value: 'warning', label: '⚠️ Cảnh báo' },
+              { value: 'warn', label: '⚠️ Cảnh báo' },
               { value: 'danger', label: '🔴 Nguy hiểm' },
-              { value: 'critical', label: '☠️ Nghiêm trọng' },
             ]}
           />
         }
