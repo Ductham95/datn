@@ -1,1 +1,4 @@
 .agents/
+.env.production
+certbot/
+nginx/active.conf

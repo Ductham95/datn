@@ -1,0 +1,37 @@
+name: Deploy to DigitalOcean
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - 'firmware/**'
+      - 'hardware/**'
+      - '*.md'
+      - '.agents/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to VPS
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd /opt/datn
+
+            echo "📥 Pulling latest code..."
+            git pull origin main
+
+            echo "🔨 Building and restarting containers..."
+            docker compose -f docker-compose.prod.yml up --build -d
+
+            echo "🧹 Cleaning up old images..."
+            docker image prune -f
+
+            echo "✅ Deploy completed at $(date)"

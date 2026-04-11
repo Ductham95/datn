@@ -1,0 +1,78 @@
+# =====================================================
+# Docker Compose - Production
+# Domain: datn.thamnguyen.dev
+# =====================================================
+# Sử dụng: docker compose -f docker-compose.prod.yml up --build -d
+
+services:
+  # ==================== DATABASE ====================
+  db:
+    image: timescale/timescaledb-ha:pg15
+    container_name: datn_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-datn_admin}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME:-air_quality_db}
+      TZ: Asia/Ho_Chi_Minh
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./backend/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app-network
+    # Không expose port ra ngoài, chỉ internal network
+
+  # ==================== BACKEND ====================
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: datn_backend
+    restart: always
+    env_file: .env.production
+    environment:
+      NODE_ENV: production
+      DB_HOST: db
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  # ==================== NGINX (Frontend + Reverse Proxy) ====================
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    container_name: datn_nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/active.conf:/etc/nginx/conf.d/default.conf:ro
+      - certbot_conf:/etc/letsencrypt
+      - certbot_www:/var/www/certbot
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  # ==================== CERTBOT (SSL) ====================
+  certbot:
+    image: certbot/certbot
+    container_name: datn_certbot
+    volumes:
+      - certbot_conf:/etc/letsencrypt
+      - certbot_www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    networks:
+      - app-network
+
+volumes:
+  pg_data:
+  certbot_conf:
+  certbot_www:
+
+networks:
+  app-network:
+    driver: bridge
