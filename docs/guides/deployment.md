@@ -1,185 +1,355 @@
 # Deployment — Hướng dẫn Triển khai Production
 
-## 1. Yêu cầu VPS/Cloud
+## Tổng quan
 
-| Thuộc tính | Tối thiểu | Khuyến nghị |
+Hệ thống được triển khai trên **DigitalOcean Droplet** với domain `datn.thamnguyen.dev`, sử dụng **Docker Compose** để container hóa toàn bộ và **GitHub Actions** để tự động deploy khi push code.
+
+### Kiến trúc triển khai
+
+```
+┌──────────────────────────────────────────────────────┐
+│          DigitalOcean Droplet (Ubuntu 22.04)          │
+│                  168.144.97.168                      │
+│                                                      │
+│  ┌──────────────────────────────────────────────┐    │
+│  │             Docker Compose                    │    │
+│  │                                               │    │
+│  │  ┌─────────┐  ┌──────────┐  ┌────────────┐  │    │
+│  │  │  Nginx  │  │ Backend  │  │TimescaleDB │  │    │
+│  │  │ :80/:443│→ │  :3000   │  │   :5432    │  │    │
+│  │  │  SSL    │  │  Node.js │  │ PostgreSQL │  │    │
+│  │  │Frontend │  │  Prisma  │  │  + PostGIS │  │    │
+│  │  │ static  │  │Socket.IO │  │            │  │    │
+│  │  └─────────┘  └──────────┘  └────────────┘  │    │
+│  │                                               │    │
+│  │  ┌─────────┐                                  │    │
+│  │  │Certbot  │  SSL auto-renewal                │    │
+│  │  └─────────┘                                  │    │
+│  └──────────────────────────────────────────────┘    │
+└──────────────────────────────────────────────────────┘
+         ↑                           ↑
+   datn.thamnguyen.dev        SSH tunnel (pgAdmin4)
+   (A record → IP)            127.0.0.1:5432
+```
+
+### File cấu hình
+
+| File | Mục đích |
+|------|----------|
+| `Dockerfile` | Build backend (Node.js 22 + Prisma) |
+| `nginx/Dockerfile` | Build frontend (Vite) + Nginx |
+| `nginx/nginx.conf` | HTTPS config (SSL + reverse proxy) |
+| `nginx/nginx.init.conf` | HTTP config (dùng lần đầu cho Certbot) |
+| `docker-compose.prod.yml` | Orchestrate 4 services |
+| `.env.production` | Biến môi trường (KHÔNG commit) |
+| `.github/workflows/deploy.yml` | CI/CD GitHub Actions |
+| `scripts/setup-vps.sh` | Script setup VPS lần đầu |
+| `scripts/deploy.sh` | Script deploy thủ công |
+
+---
+
+## 1. Yêu cầu
+
+| Thuộc tính | Tối thiểu | Hiện tại |
 |---|---|---|
-| **CPU** | 1 vCPU | 2 vCPU |
-| **RAM** | 1 GB | 2 GB |
-| **Disk** | 20 GB SSD | 40 GB SSD |
+| **CPU** | 1 vCPU | 1 vCPU |
+| **RAM** | 1 GB + 2 GB Swap | 1 GB + 2 GB Swap |
+| **Disk** | 25 GB SSD | 25 GB SSD |
 | **OS** | Ubuntu 22.04 | Ubuntu 22.04 |
-| **Network** | Public IP | Public IP + domain |
+| **Domain** | Có A record trỏ về IP | `datn.thamnguyen.dev` |
+
+> **Lưu ý**: VPS 1 GB RAM cần thêm **2 GB swap** để build Docker images (Vite + Node.js rất tốn RAM khi build).
 
 ---
 
-## 2. Cài đặt trên VPS
+## 2. Setup lần đầu
 
-### Cài Docker
+### Bước 1: Tạo VPS
+
+1. Tạo DigitalOcean Droplet (Ubuntu 22.04, gói Basic $6/tháng)
+2. Thêm A record: `datn.thamnguyen.dev` → IP Droplet
+
+### Bước 2: SSH vào VPS và thêm swap
 
 ```bash
-# Update system
-sudo apt update && sudo apt upgrade -y
+ssh root@168.144.97.168
 
-# Cài Docker
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-
-# Cài Docker Compose plugin
-sudo apt install docker-compose-plugin -y
-
-# Thêm user vào group docker
-sudo usermod -aG docker $USER
+# Thêm 2 GB swap (bắt buộc cho VPS 1 GB RAM)
+fallocate -l 2G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo '/swapfile none swap sw 0 0' >> /etc/fstab
 ```
 
-### Cài Node.js
+### Bước 3: Clone repo và chạy setup
 
 ```bash
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install -y nodejs
+apt update && apt install -y git curl
+git clone https://github.com/Ductham95/datn.git /opt/datn
+cd /opt/datn
+chmod +x scripts/setup-vps.sh
+./scripts/setup-vps.sh
+```
+
+Script tự động:
+1. Cài Docker + Docker Compose
+2. Tạo `.env.production` với mật khẩu ngẫu nhiên
+3. Build & start containers (HTTP mode)
+4. Lấy SSL certificate từ Let's Encrypt
+5. Chuyển sang HTTPS mode
+6. Thiết lập SSL auto-renewal (cron)
+
+> ⚠️ **Ghi nhớ** mật khẩu DB và Provision Key hiển thị trên terminal!
+
+### Bước 4: Thiết lập CI/CD (GitHub Actions)
+
+Trên VPS, tạo SSH key:
+```bash
+ssh-keygen -t ed25519 -C "github-actions" -f ~/.ssh/github_deploy -N ""
+cat ~/.ssh/github_deploy.pub >> ~/.ssh/authorized_keys
+cat ~/.ssh/github_deploy   # Copy toàn bộ private key
+```
+
+Vào [GitHub Settings → Secrets → Actions](https://github.com/Ductham95/datn/settings/secrets/actions), thêm:
+
+| Secret | Giá trị |
+|--------|---------|
+| `VPS_HOST` | `168.144.97.168` |
+| `VPS_USER` | `root` |
+| `VPS_SSH_KEY` | Private key từ bước trên |
+
+---
+
+## 3. Deploy hàng ngày
+
+### Tự động (khuyên dùng)
+
+Chỉ cần push code lên GitHub:
+
+```bash
+git add .
+git commit -m "mô tả thay đổi"
+git push
+```
+
+GitHub Actions sẽ tự động:
+1. SSH vào VPS
+2. `git pull origin main`
+3. `docker compose --env-file .env.production -f docker-compose.prod.yml up --build -d`
+4. Dọn dẹp Docker images cũ
+
+Xem tiến trình: **GitHub → Actions tab**
+
+> **Thời gian deploy**: ~2-3 phút (build frontend + backend)
+
+> **Bỏ qua deploy**: Commit chỉ sửa `docs/`, `firmware/`, `hardware/`, hoặc `*.md` sẽ không trigger deploy.
+
+### Thủ công
+
+```bash
+ssh root@168.144.97.168
+cd /opt/datn
+./scripts/deploy.sh
 ```
 
 ---
 
-## 3. Deploy Database
+## 4. Biến môi trường
 
-```bash
-cd datn
-docker compose up -d
-```
-
-Kiểm tra:
-```bash
-docker ps  # Container datn_postgres_db đang running
-```
-
----
-
-## 4. Deploy Backend
-
-### Cài dependencies
-
-```bash
-cd backend
-npm install --production
-npx prisma generate
-```
-
-### Cấu hình `.env` production
+File `.env.production` trên VPS (`/opt/datn/.env.production`):
 
 ```env
-DB_HOST=localhost
+# PostgreSQL Container (dùng bởi Docker image)
+POSTGRES_USER=datn_admin
+POSTGRES_PASSWORD=<mật khẩu mạnh>
+POSTGRES_DB=air_quality_db
+
+# Backend App
+DB_HOST=db
 DB_PORT=5432
 DB_USER=datn_admin
-DB_PASSWORD=<strong_password>
+DB_PASSWORD=<mật khẩu mạnh>
 DB_NAME=air_quality_db
-DATABASE_URL="postgresql://datn_admin:<strong_password>@localhost:5432/air_quality_db?schema=public"
+DATABASE_URL=postgresql://datn_admin:<mật khẩu>@db:5432/air_quality_db?schema=public
 
 PORT=3000
 NODE_ENV=production
+DOMAIN=datn.thamnguyen.dev
+PROVISION_KEY=airquality2026
+WEATHER_API_KEY=<api key>
 ```
 
-### Chạy với PM2
+> ⚠️ Sau khi sửa `.env.production`, cần **recreate** container (không chỉ restart):
+> ```bash
+> docker compose --env-file .env.production -f docker-compose.prod.yml up -d --force-recreate
+> ```
+
+---
+
+## 5. Kết nối Database (pgAdmin4)
+
+Database chỉ expose port `5432` trên `127.0.0.1` (an toàn, không mở ra internet).
+
+### Cấu hình pgAdmin4
+
+**Tab General**: Name = `DATN Production`
+
+**Tab Connection**:
+
+| Mục | Giá trị |
+|-----|---------|
+| Host | `localhost` |
+| Port | `5432` |
+| Database | `air_quality_db` |
+| Username | `datn_admin` |
+| Password | *(xem .env.production)* |
+
+**Tab SSH Tunnel**:
+
+| Mục | Giá trị |
+|-----|---------|
+| Use SSH tunneling | ✅ Bật |
+| Tunnel host | `168.144.97.168` |
+| Tunnel port | `22` |
+| Username | `root` |
+| Authentication | Password |
+| Password | *(mật khẩu SSH VPS)* |
+
+---
+
+## 6. Monitoring
+
+### Kiểm tra nhanh
 
 ```bash
-# Cài PM2
-sudo npm install -g pm2
+# Health check
+curl https://datn.thamnguyen.dev/health
 
-# Start server
-pm2 start src/server.js --name airquality-backend
-
-# Auto-start khi reboot
-pm2 startup
-pm2 save
+# Trạng thái containers
+ssh root@168.144.97.168 "cd /opt/datn && docker compose --env-file .env.production -f docker-compose.prod.yml ps"
 ```
 
-### Cấu hình Nginx (Reverse Proxy)
+### Xem logs
 
 ```bash
-sudo apt install nginx -y
+ssh root@168.144.97.168
+
+cd /opt/datn
+
+# Tất cả logs
+docker compose --env-file .env.production -f docker-compose.prod.yml logs -f --tail=50
+
+# Logs từng service
+docker compose --env-file .env.production -f docker-compose.prod.yml logs backend --tail=50
+docker compose --env-file .env.production -f docker-compose.prod.yml logs nginx --tail=50
+docker compose --env-file .env.production -f docker-compose.prod.yml logs db --tail=50
 ```
 
-Tạo file `/etc/nginx/sites-available/airquality`:
-
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com;
-
-    location / {
-        proxy_pass http://localhost:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-```
+### Restart service
 
 ```bash
-sudo ln -s /etc/nginx/sites-available/airquality /etc/nginx/sites-enabled/
-sudo nginx -t
-sudo systemctl restart nginx
+# Restart 1 service
+docker compose --env-file .env.production -f docker-compose.prod.yml restart backend
+
+# Restart tất cả
+docker compose --env-file .env.production -f docker-compose.prod.yml restart
 ```
 
 ---
 
-## 5. Deploy Frontend
+## 7. SSL Certificate
 
-### Build
+SSL Certificate được cấp bởi **Let's Encrypt** (miễn phí, tự động renew).
+
+### Kiểm tra cert
 
 ```bash
-cd frontend
-npm install
-npm run build
+docker compose --env-file .env.production -f docker-compose.prod.yml run --rm \
+    --entrypoint "certbot" certbot certificates
 ```
 
-Thư mục `dist/` sẽ được tạo. Backend tự động serve static files từ `../frontend/dist/`.
+### Renew thủ công
+
+```bash
+docker compose --env-file .env.production -f docker-compose.prod.yml run --rm \
+    --entrypoint "certbot" certbot renew
+docker compose --env-file .env.production -f docker-compose.prod.yml restart nginx
+```
+
+> SSL auto-renewal đã được thiết lập qua cron job (chạy mỗi tuần, lúc 3:00 sáng thứ Hai).
 
 ---
 
-## 6. Cấu hình Gateway (Firmware)
+## 8. Backup & Restore Database
 
-Trước khi flash firmware gateway, sửa `include/config.h`:
-
-```cpp
-#define WIFI_SSID       "wifi-tai-vi-tri-lap-dat"
-#define WIFI_PASSWORD   "mat-khau-wifi"
-#define API_URL         "http://your-domain.com/api/v1/telemetry"
-#define GATEWAY_ID      "GW_001"
-```
-
----
-
-## 7. Monitoring
-
-### Kiểm tra logs
+### Backup
 
 ```bash
-# Backend logs
-pm2 logs airquality-backend
-
-# Database logs
-docker logs datn_postgres_db
-
-# Nginx logs
-sudo tail -f /var/log/nginx/access.log
+ssh root@168.144.97.168
+docker exec datn_db pg_dump -U datn_admin air_quality_db > backup_$(date +%Y%m%d).sql
 ```
 
-### Health check
+### Restore
 
 ```bash
-curl http://localhost:3000/health
+docker exec -i datn_db psql -U datn_admin air_quality_db < backup_20260411.sql
+```
+
+### Tải backup về máy local
+
+```bash
+scp root@168.144.97.168:/opt/datn/backup_20260411.sql ./
 ```
 
 ---
 
-## 8. Backup Database
+## 9. Troubleshooting
+
+### Container bị crash / restart liên tục
 
 ```bash
-# Backup
-docker exec datn_postgres_db pg_dump -U datn_admin air_quality_db > backup_$(date +%Y%m%d).sql
+# Xem log lỗi
+docker compose --env-file .env.production -f docker-compose.prod.yml logs <service> --tail=50
 
-# Restore
-docker exec -i datn_postgres_db psql -U datn_admin air_quality_db < backup_20260407.sql
+# Rebuild container
+docker compose --env-file .env.production -f docker-compose.prod.yml up --build -d <service>
 ```
+
+### Lỗi `env_file` — biến môi trường không cập nhật
+
+```bash
+# PHẢI dùng --force-recreate (restart không reload env_file)
+docker compose --env-file .env.production -f docker-compose.prod.yml up -d --force-recreate
+```
+
+### Lỗi build — hết RAM
+
+```bash
+# Kiểm tra swap
+free -h
+
+# Thêm swap nếu chưa có
+fallocate -l 2G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+```
+
+### SSL cert hết hạn
+
+```bash
+docker compose --env-file .env.production -f docker-compose.prod.yml run --rm \
+    --entrypoint "certbot" certbot renew
+docker compose --env-file .env.production -f docker-compose.prod.yml restart nginx
+```
+
+### Reset hoàn toàn (xóa tất cả dữ liệu)
+
+```bash
+cd /opt/datn
+docker compose --env-file .env.production -f docker-compose.prod.yml down -v
+./scripts/setup-vps.sh
+```
+
+> ⚠️ **`-v` sẽ xóa toàn bộ database!** Backup trước khi reset.
