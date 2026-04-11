@@ -36,7 +36,7 @@
 #define HTTP_RETRY_COUNT 3   // Số lần retry khi gửi thất bại
 
 // ===== Server & Provisioning (cấu hình cứng) =====
-#define SERVER_BASE_URL   "http://192.168.137.1:3000"
+#define SERVER_BASE_URL   "https://datn.thamnguyen.dev"
 #define PROVISION_KEY     "airquality2026"
 #define GATEWAY_SECRET    "super-secret-key"  // Telemetry API authentication
 

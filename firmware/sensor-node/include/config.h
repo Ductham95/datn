@@ -67,7 +67,7 @@
 #define WDT_TIMEOUT_MS 60000  // 1 phút không heartbeat → reset ESP32 (> SEND_INTERVAL)
 
 // ===== Server & Provisioning (cấu hình cứng) =====
-#define SERVER_BASE_URL "http://192.168.137.1:3000"
+#define SERVER_BASE_URL "https://datn.thamnguyen.dev"
 #define PROVISION_KEY   "airquality2026"
 
 // ===== Factory Reset =====

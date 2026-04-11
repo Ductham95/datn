@@ -1,6 +1,7 @@
 #include "http_client.h"
 #include <Arduino.h>
 #include <HTTPClient.h>
+#include <WiFiClientSecure.h>
 #include <ArduinoJson.h>
 #include "config.h"
 #include "common/debug.h"
@@ -85,10 +86,12 @@ bool http_sendBatch(const BufferedPacket* packets, uint8_t count) {
 
     // Gửi HTTP POST với retry
     HTTPClient http;
+    WiFiClientSecure client;
+    client.setInsecure(); // Skip cert verify (IoT device, không cần pin cert)
     bool success = false;
 
     for (int attempt = 1; attempt <= HTTP_RETRY_COUNT; attempt++) {
-        http.begin(cfg_apiUrl);
+        http.begin(client, cfg_apiUrl);
         http.addHeader("Content-Type", "application/json");
         http.setTimeout(API_TIMEOUT_MS);
 

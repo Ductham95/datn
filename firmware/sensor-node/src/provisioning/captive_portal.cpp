@@ -4,6 +4,7 @@
 #include <WebServer.h>
 #include <DNSServer.h>
 #include <HTTPClient.h>
+#include <WiFiClientSecure.h>
 #include <ArduinoJson.h>
 
 #include "portal_html.h"
@@ -120,7 +121,9 @@ static void handleGateways() {
     LOG_INFO("Portal", "Fetch gateways: %s", apiUrl.c_str());
 
     HTTPClient http;
-    http.begin(apiUrl);
+    WiFiClientSecure secureClient;
+    secureClient.setInsecure(); // Skip cert verify (provisioning chỉ chạy 1 lần)
+    http.begin(secureClient, apiUrl);
     http.setTimeout(10000);
 
     int httpCode = http.GET();
@@ -182,7 +185,9 @@ static void handleSave() {
     LOG_INFO("Portal", "Đăng ký node: %s", apiUrl.c_str());
 
     HTTPClient http;
-    http.begin(apiUrl);
+    WiFiClientSecure secureClient;
+    secureClient.setInsecure();
+    http.begin(secureClient, apiUrl);
     http.addHeader("Content-Type", "application/json");
     http.setTimeout(10000);
 

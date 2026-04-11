@@ -4,6 +4,7 @@
 #include <WebServer.h>
 #include <DNSServer.h>
 #include <HTTPClient.h>
+#include <WiFiClientSecure.h>
 #include <ArduinoJson.h>
 
 #include "portal_html.h"
@@ -119,7 +120,9 @@ static void handleSave() {
     LOG_INFO("Portal", "Đăng ký gateway: %s", apiUrl.c_str());
 
     HTTPClient http;
-    http.begin(apiUrl);
+    WiFiClientSecure secureClient;
+    secureClient.setInsecure();
+    http.begin(secureClient, apiUrl);
     http.addHeader("Content-Type", "application/json");
     http.setTimeout(10000);
 
