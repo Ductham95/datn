@@ -16,21 +16,15 @@ jobs:
     name: Deploy to VPS
 
     steps:
-      - name: Debug - Check secrets exist
-        run: |
-          if [ -z "${{ secrets.VPS_HOST }}" ]; then echo "❌ VPS_HOST is EMPTY"; else echo "✅ VPS_HOST is set"; fi
-          if [ -z "${{ secrets.VPS_USER }}" ]; then echo "❌ VPS_USER is EMPTY"; else echo "✅ VPS_USER is set"; fi
-          if [ -z "${{ secrets.VPS_SSH_KEY }}" ]; then echo "❌ VPS_SSH_KEY is EMPTY"; else echo "✅ VPS_SSH_KEY is set (length: ${#SSH_KEY})"; fi
-        env:
-          SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
-
       - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          script: |
+        run: |
+          # Ghi SSH key vào file
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          # Tắt host key checking (lần đầu kết nối)
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/deploy_key ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'DEPLOY'
             cd /opt/datn
 
             echo "📥 Pulling latest code..."
@@ -43,3 +37,7 @@ jobs:
             docker image prune -f
 
             echo "✅ Deploy completed at $(date)"
+          DEPLOY
+
+          # Dọn dẹp key
+          rm -f ~/.ssh/deploy_key
