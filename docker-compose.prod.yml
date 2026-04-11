@@ -10,17 +10,14 @@ services:
     image: timescale/timescaledb-ha:pg15
     container_name: datn_db
     restart: always
+    env_file: .env.production
     environment:
-      POSTGRES_USER: ${DB_USER:-datn_admin}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME:-air_quality_db}
       TZ: Asia/Ho_Chi_Minh
     volumes:
       - pg_data:/var/lib/postgresql/data
       - ./backend/database/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - app-network
-    # Không expose port ra ngoài, chỉ internal network
 
   # ==================== BACKEND ====================
   backend:
@@ -33,6 +30,7 @@ services:
     environment:
       NODE_ENV: production
       DB_HOST: db
+      DATABASE_URL: postgresql://${DB_USER:-datn_admin}:${DB_PASSWORD}@db:5432/${DB_NAME:-air_quality_db}?schema=public
     depends_on:
       - db
     networks:

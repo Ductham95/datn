@@ -77,7 +77,12 @@ if [ ! -f "$APP_DIR/.env.production" ]; then
     PROV_KEY=$(openssl rand -base64 16 | tr -dc 'a-zA-Z0-9' | head -c 16)
 
     cat > $APP_DIR/.env.production << EOF
-# Database
+# PostgreSQL Container (dùng bởi Docker image timescaledb-ha)
+POSTGRES_USER=datn_admin
+POSTGRES_PASSWORD=${DB_PASS}
+POSTGRES_DB=air_quality_db
+
+# Backend App
 DB_HOST=db
 DB_PORT=5432
 DB_USER=datn_admin
