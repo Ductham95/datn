@@ -4,6 +4,7 @@
 #include "common/debug.h"
 #include "common/packet.h"
 #include "rtos/shared.h"
+#include "core/nvs_config.h"
 #include "drivers/pms7003.h"
 #include "drivers/ccs811.h"
 #include "drivers/dht22.h"
@@ -43,24 +44,22 @@ void sensorTask(void* parameter) {
         // ═══════════════════════════════════════════
         // Giai đoạn 2: Đọc DHT22 + CCS811 (song song với PMS warm-up)
         // ═══════════════════════════════════════════
-        LOG_MSG("SENSOR", "Đọc DHT22 + CCS811 trong khi PMS warm-up...");
+        LOG_MSG("SENSOR", "Chờ PMS warm-up...");
 
-        // Đọc DHT22 trước → dùng kết quả bù trừ CCS811
+        // TODO: DHT22 — chưa kết nối
         int16_t  temp = SENSOR_ERROR_I16;
         uint16_t hum  = SENSOR_ERROR_U16;
-        dht22_read(&temp, &hum);
+        // dht22_read(&temp, &hum);
         payload.temperature = temp;
         payload.humidity    = hum;
 
-        // Cung cấp env data cho CCS811 (compensation)
-        if (temp != SENSOR_ERROR_I16 && hum != SENSOR_ERROR_U16) {
-            ccs811_setEnvData(temp, hum);
-        }
-
-        // Đọc CCS811
+        // TODO: CCS811 — chưa kết nối
+        // if (temp != SENSOR_ERROR_I16 && hum != SENSOR_ERROR_U16) {
+        //     ccs811_setEnvData(temp, hum);
+        // }
         uint16_t co2  = 0;
         uint16_t tvoc = 0;
-        ccs811_read(&co2, &tvoc);
+        // ccs811_read(&co2, &tvoc);
         payload.co2  = co2;
         payload.tvoc = tvoc;
 
@@ -92,7 +91,7 @@ void sensorTask(void* parameter) {
         // ═══════════════════════════════════════════
         // Giai đoạn 4: Đóng gói header + gửi vào Queue
         // ═══════════════════════════════════════════
-        payload.nodeId  = NODE_ID;
+        payload.nodeId  = cfg_nodeId;
         payload.pktType = PKT_TYPE_DATA;
         payload.msgId   = msgCounter++;
         payload.battery = batteryLevel;  // Lấy từ BatteryTask

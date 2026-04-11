@@ -5,15 +5,17 @@
 #include "config.h"
 #include "common/debug.h"
 #include "common/packet.h"
+#include "core/nvs_config.h"
 
 // =============================================================================
 //  HTTP CLIENT IMPLEMENTATION
 //  Serialize BufferedPacket[] → JSON → HTTP POST đến Cloud Server
 //
+//  Dùng biến runtime từ NVS: cfg_gatewayId, cfg_apiUrl
+//
 //  JSON format (khớp với gatewayValidation.js + telemetryService.js):
 //  {
 //    "gateway_id": "GW_001",
-//    "secret": "super-secret-key",
 //    "data": [
 //      {
 //        "node_id": "NODE_001",
@@ -33,9 +35,8 @@ bool http_sendBatch(const BufferedPacket* packets, uint8_t count) {
     // Ước tính kích thước: ~200 bytes/packet + overhead
     JsonDocument doc;
 
-    doc["gateway_id"] = GATEWAY_ID;
+    doc["gateway_id"] = cfg_gatewayId;
     doc["secret"]     = GATEWAY_SECRET;
-
     JsonArray dataArray = doc["data"].to<JsonArray>();
 
     for (uint8_t i = 0; i < count; i++) {
@@ -87,7 +88,7 @@ bool http_sendBatch(const BufferedPacket* packets, uint8_t count) {
     bool success = false;
 
     for (int attempt = 1; attempt <= HTTP_RETRY_COUNT; attempt++) {
-        http.begin(API_URL);
+        http.begin(cfg_apiUrl);
         http.addHeader("Content-Type", "application/json");
         http.setTimeout(API_TIMEOUT_MS);
 

@@ -3,12 +3,16 @@
 #include "common/debug.h"
 #include "common/packet.h"
 
+// Core
+#include "core/nvs_config.h"
+#include "core/packet_buffer.h"
+
+// Provisioning
+#include "provisioning/captive_portal.h"
+
 // Drivers
 #include "drivers/wifi_manager.h"
 #include "drivers/lora_receiver.h"
-
-// Core
-#include "core/packet_buffer.h"
 
 // Network
 #include "net/http_client.h"
@@ -17,14 +21,17 @@
 //  MAIN.CPP - Air Quality Gateway (Superloop)
 //
 //  Kiến trúc:
-//    setup() → Init WiFi + LoRa + Buffer + LED
-//    loop()  → WiFi reconnect + Buffer flush + HTTP POST
+//    setup() → Kiểm tra NVS → Provisioning hoặc Normal Mode
+//    loop()  → WiFi reconnect + LoRa poll + Buffer flush + Factory Reset
 //
-//  LoRa nhận gói tin qua UART polling (AS32-TTL-100)
-//  loop() poll UART + kiểm tra buffer + gửi HTTP khi cần
+//  Chế độ mới:
+//    - Provisioning Mode: Captive Portal khi chưa cấu hình
+//    - Factory Reset: Giữ nút BOOT 5 giây → xóa NVS → reboot
 // =============================================================================
 
 static unsigned long lastFlushTime = 0;
+static unsigned long resetBtnPressStart = 0;
+static bool resetBtnPressed = false;
 
 // ===== LED Helper =====
 void led_init() {
@@ -37,6 +44,38 @@ void led_init() {
 void led_update() {
     // LED WiFi: sáng = connected, tắt = disconnected
     digitalWrite(LED_WIFI_PIN, wifi_isConnected() ? HIGH : LOW);
+}
+
+// ===== Factory Reset Check =====
+void checkFactoryReset() {
+    bool btnState = (digitalRead(RESET_BUTTON_PIN) == LOW);  // BOOT button active LOW
+
+    if (btnState && !resetBtnPressed) {
+        // Bắt đầu nhấn
+        resetBtnPressed = true;
+        resetBtnPressStart = millis();
+    } else if (!btnState && resetBtnPressed) {
+        // Thả nút
+        resetBtnPressed = false;
+    } else if (btnState && resetBtnPressed) {
+        // Đang giữ nút
+        if (millis() - resetBtnPressStart >= RESET_HOLD_TIME_MS) {
+            LOG_MSG("RESET", "");
+            LOG_MSG("RESET", "═══════════════════════════════════════");
+            LOG_MSG("RESET", "  FACTORY RESET — Xóa cấu hình!");
+            LOG_MSG("RESET", "═══════════════════════════════════════");
+
+            // LED nhấp nháy nhanh báo reset
+            for (int i = 0; i < 10; i++) {
+                digitalWrite(LED_STATUS_PIN, i % 2);
+                delay(100);
+            }
+
+            nvs_clearConfig();
+            delay(1000);
+            ESP.restart();
+        }
+    }
 }
 
 // ===== Flush buffer → HTTP POST =====
@@ -93,12 +132,27 @@ void setup() {
     Serial.begin(115200);
     delay(1000);
 
+    // Nút BOOT cho factory reset
+    pinMode(RESET_BUTTON_PIN, INPUT_PULLUP);
+
+    // ── 1. Đọc cấu hình từ NVS ──
+    nvs_loadConfig();
+
+    // ── 2. Kiểm tra đã provisioned chưa ──
+    if (!nvs_isProvisioned()) {
+        // ═══ CHẾ ĐỘ PROVISIONING ═══
+        // Hàm này blocking — không return cho đến khi ESP reboot
+        startCaptivePortal();
+        return;  // Không bao giờ đến đây
+    }
+
+    // ═══ CHẾ ĐỘ BÌNH THƯỜNG ═══
     Serial.println();
     Serial.println("========================================");
     Serial.println("  AIR QUALITY GATEWAY (Superloop)");
-    Serial.printf("  Gateway ID : %s\n", GATEWAY_ID);
+    Serial.printf("  Gateway ID : %s\n", cfg_gatewayId);
     Serial.printf("  LoRa       : AS32-TTL-100 (UART %d baud)\n", LORA_BAUD);
-    Serial.printf("  API Server : %s\n", API_URL);
+    Serial.printf("  API Server : %s\n", cfg_apiUrl);
     Serial.printf("  Flush      : Mỗi %d giây hoặc buffer đầy (%d gói)\n",
                   FLUSH_INTERVAL_MS / 1000, PACKET_BUFFER_SIZE);
     Serial.println("========================================");
@@ -129,6 +183,7 @@ void setup() {
     Serial.println("========================================");
     Serial.println("  [OK] Gateway đang hoạt động!");
     Serial.println("  Chờ nhận gói tin LoRa từ Sensor Node...");
+    Serial.printf("  Giữ nút BOOT %d giây để Factory Reset\n", RESET_HOLD_TIME_MS / 1000);
     Serial.println("========================================");
     Serial.println();
 
@@ -137,6 +192,9 @@ void setup() {
 
 // ===== Main Loop (Superloop) =====
 void loop() {
+    // 0. Factory Reset check
+    checkFactoryReset();
+
     // 1. WiFi: auto-reconnect nếu mất
     wifi_reconnectIfNeeded();
 

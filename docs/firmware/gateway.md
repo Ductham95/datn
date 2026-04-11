@@ -8,6 +8,7 @@ Gateway nhận gói tin LoRa từ các sensor node, buffer lại, rồi gửi ba
 |---|---|
 | **Platform** | ESP32 DevKit V1 (PlatformIO, Arduino) |
 | **Kiến trúc** | Superloop + Interrupt Callback (không dùng FreeRTOS) |
+| **Cấu hình** | NVS (Non-Volatile Storage) via Captive Portal |
 | **Giao thức LoRa** | AS32-TTL-100 (UART, 433 MHz) |
 | **Giao thức lên Server** | HTTP POST (JSON batch) |
 | **Buffer** | Ring buffer ISR-safe (portMUX spinlock) |
@@ -35,17 +36,21 @@ Sensor Node ──LoRa 18B──→ lora_rx_poll() ──→ PacketBuffer ──
 firmware/gateway/
 ├── platformio.ini                      # 4 environments (main + 3 tests)
 ├── include/
-│   └── config.h                        # WiFi, API URL, LoRa, buffer config
+│   └── config.h                        # Pin mapping, server URL, provision key
 ├── src/
-│   ├── main.cpp                        # Superloop: WiFi reconnect + buffer flush
+│   ├── main.cpp                        # Provisioning check + Superloop
 │   ├── common/
 │   │   ├── packet.h                    # SensorPayload 18 bytes (shared)
 │   │   └── debug.h                     # LOG macros
 │   ├── core/
+│   │   ├── nvs_config.h/.cpp           # NVS read/write (gateway_id, WiFi, server)
 │   │   └── packet_buffer.h/.cpp        # ISR-safe ring buffer (portMUX spinlock)
+│   ├── provisioning/
+│   │   ├── captive_portal.h/.cpp       # WiFi AP + DNS redirect + Web Server
+│   │   └── portal_html.h              # Embedded HTML (wizard 2 bước)
 │   ├── drivers/
 │   │   ├── lora_receiver.h/.cpp        # lora_rx_poll(), parse + RSSI
-│   │   └── wifi_manager.h/.cpp         # Init + auto-reconnect
+│   │   └── wifi_manager.h/.cpp         # Init + auto-reconnect (dùng NVS config)
 │   └── net/
 │       └── http_client.h/.cpp          # JSON serialize + HTTP POST with retry
 └── test/
@@ -70,21 +75,29 @@ firmware/gateway/
 
 ## 5. Cấu hình (`config.h`)
 
+`config.h` chỉ chứa **pin mapping** và **hằng số cấu hình cứng**. Các thông tin runtime (Gateway ID, WiFi) được lưu trong **NVS** và cấu hình qua Captive Portal.
+
 ```cpp
-// WiFi
-#define WIFI_SSID       "your_ssid"
-#define WIFI_PASSWORD   "your_password"
-
-// Server API
-#define API_URL         "http://your-server:3000/api/v1/telemetry"
-
-// Gateway Identity
-#define GATEWAY_ID      "GW_001"
+// Hằng số cố định
+#define SERVER_BASE_URL   "http://192.168.137.1:3000"
+#define PROVISION_KEY     "airquality2026"
+#define GATEWAY_SECRET    "super-secret-key"
 
 // Buffer
-#define BUFFER_SIZE     10      // Số gói tối đa trước khi flush
-#define FLUSH_TIMEOUT   30000   // Timeout flush (ms)
+#define PACKET_BUFFER_SIZE 10      // Tối đa 10 gói chờ gửi
+#define FLUSH_INTERVAL_MS  30000   // Gửi HTTP mỗi 30 giây
 ```
+
+Cấu hình runtime (lưu trong NVS, thiết lập qua Captive Portal):
+
+| Biến | Kiểu | Mô tả |
+|---|---|---|
+| `cfg_gatewayId` | `char[16]` | Gateway ID (VD: `GW_001`) |
+| `cfg_wifiSsid` | `char[64]` | SSID WiFi đã chọn |
+| `cfg_wifiPassword` | `char[64]` | Mật khẩu WiFi |
+| `cfg_apiUrl` | `char[128]` | URL API telemetry (tự tạo từ server base) |
+
+Xem thêm: [Hướng dẫn Provisioning](../guides/provisioning.md)
 
 ---
 
@@ -136,8 +149,23 @@ pio run -e test_http -t upload && pio device monitor
 ```
 Environment    Status    Duration
 -------------  --------  -----------
-esp32dev       SUCCESS   ~12s  (72.7% Flash)
+esp32dev       SUCCESS   ~12s  (76.6% Flash, 14.8% RAM)
 test_wifi      SUCCESS   ~10s
 test_lora_rx   SUCCESS   ~7s
 test_http      SUCCESS   ~13s
 ```
+
+---
+
+## 8. Chế độ Provisioning
+
+Khi Gateway chưa được cấu hình (NVS trống), nó tự động vào chế độ **Captive Portal**:
+
+1. Phát WiFi AP: `AirQuality-GW-Setup`
+2. LED nhấp nháy nhanh (2Hz)
+3. User kết nối → điền form (2 bước: WiFi → Tên)
+4. ESP32 đăng ký với server → lưu NVS → reboot vào normal mode
+
+**Factory Reset**: Giữ nút BOOT (GPIO0) 5 giây → xoá NVS → reboot vào provisioning
+
+Xem chi tiết: [Hướng dẫn Provisioning](../guides/provisioning.md)

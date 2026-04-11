@@ -3,13 +3,12 @@
 // =============================================================================
 //  SENSOR NODE CONFIGURATION
 //  Air Quality Monitoring System - FreeRTOS Firmware
+//
+//  CHÚ Ý: Chỉ chứa PIN MAPPING và hằng số phần cứng.
+//  NODE_ID được cấu hình qua Captive Portal và lưu trong NVS.
 // =============================================================================
 
-// ===== NODE IDENTITY =====
-#define NODE_ID 0x01 // Thay đổi cho mỗi node: 0x01, 0x02, 0x03
-
 // ===== LoRa AS32-TTL-100 (UART) =====
-// Module giao tiếp qua UART, không dùng SPI
 // Dùng Serial1 (remap GPIO32/33) vì Serial2 đã dùng cho PMS7003
 #define LORA_UART_NUM 1 // HardwareSerial(1)
 #define LORA_RX_PIN 32  // ESP32 RX ← Module TXD
@@ -41,8 +40,8 @@
 #define BATTERY_V_DIVIDER 2.0f // Hệ số voltage divider (R1=R2=100K)
 
 // ===== Timing =====
-#define SEND_INTERVAL_MS 300000        // 5 phút (300,000 ms)
-#define PMS_WARMUP_MS 30000            // PMS7003 warm-up 30 giây
+#define SEND_INTERVAL_MS 15000          // 15 giây (test mode, production: 300000)
+#define PMS_WARMUP_MS 5000            // PMS7003 warm-up 30 giây
 #define CCS811_WARMUP_MS 1200000       // CCS811 warm-up 20 phút (lần đầu bật)
 #define SENSOR_READ_RETRIES 3          // Số lần retry khi đọc sensor lỗi
 #define BATTERY_READ_INTERVAL_MS 30000 // Đọc pin mỗi 30 giây
@@ -60,9 +59,20 @@
 #define BATTERY_TASK_PRIORITY 1 // Thấp — đọc pin không quan trọng bằng
 #define BATTERY_TASK_CORE 0     // Core 0
 
-#define WDT_TASK_STACK 1024
+#define WDT_TASK_STACK 2048
 #define WDT_TASK_PRIORITY 0 // Thấp nhất
 #define WDT_TASK_CORE 0     // Core 0
 
 #define DATA_QUEUE_SIZE 3     // Buffer 3 gói tin nếu LoRa đang bận
-#define WDT_TIMEOUT_MS 360000 // 6 phút không heartbeat → reset ESP32 (> SEND_INTERVAL)
+#define WDT_TIMEOUT_MS 60000  // 1 phút không heartbeat → reset ESP32 (> SEND_INTERVAL)
+
+// ===== Server & Provisioning (cấu hình cứng) =====
+#define SERVER_BASE_URL "http://192.168.137.1:3000"
+#define PROVISION_KEY   "airquality2026"
+
+// ===== Factory Reset =====
+#define RESET_BUTTON_PIN 0       // Nút BOOT (GPIO0)
+#define RESET_HOLD_TIME_MS 5000  // Giữ 5 giây để factory reset
+
+// ===== Provisioning LED =====
+#define LED_PROVISION_PIN 2      // LED tích hợp trên ESP32 DevKit (GPIO2)

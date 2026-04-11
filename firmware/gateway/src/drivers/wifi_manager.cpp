@@ -3,10 +3,12 @@
 #include <WiFi.h>
 #include "config.h"
 #include "common/debug.h"
+#include "core/nvs_config.h"
 
 // =============================================================================
 //  WIFI MANAGER IMPLEMENTATION
 //  Kết nối WiFi STA mode, auto-reconnect khi mất kết nối
+//  Dùng biến runtime từ NVS (cfg_wifiSsid, cfg_wifiPassword)
 // =============================================================================
 
 static unsigned long lastReconnectAttempt = 0;
@@ -15,9 +17,9 @@ static char ipBuffer[16] = "0.0.0.0";
 bool wifi_init() {
     WiFi.mode(WIFI_STA);
     WiFi.setAutoReconnect(true);
-    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    WiFi.begin(cfg_wifiSsid, cfg_wifiPassword);
 
-    LOG_INFO("WiFi", "Đang kết nối '%s'", WIFI_SSID);
+    LOG_INFO("WiFi", "Đang kết nối '%s'", cfg_wifiSsid);
 
     unsigned long start = millis();
     while (WiFi.status() != WL_CONNECTED) {
@@ -52,7 +54,7 @@ void wifi_reconnectIfNeeded() {
     LOG_MSG("WiFi", "⚠ Mất kết nối! Đang thử kết nối lại...");
 
     WiFi.disconnect();
-    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    WiFi.begin(cfg_wifiSsid, cfg_wifiPassword);
 
     // Non-blocking: chỉ thử 1 lần, kiểm tra lại ở loop sau
     delay(100);

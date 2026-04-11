@@ -671,3 +671,113 @@ Kiểm tra server đang chạy.
 
 **Response:** `200 OK`
 
+---
+
+## 6. Provisioning APIs — Thiết bị tự đăng ký
+
+> [!NOTE]
+> Provisioning APIs dùng `provision_key` để xác thực (không dùng JWT). Thiết bị ESP32 gọi trực tiếp các endpoint này trong quá trình cấu hình ban đầu.
+
+### `POST /api/v1/provision/gateway`
+
+Gateway ESP32 tự đăng ký với server.
+
+**Request Body:**
+```json
+{
+  "provision_key": "airquality2026",
+  "name": "Gateway Tầng 3",
+  "location_desc": "Gần cầu thang B"
+}
+```
+
+| Field | Kiểu | Bắt buộc | Mô tả |
+|---|---|---|---|
+| `provision_key` | string | ✅ | Mã xác thực (phải khớp `PROVISION_KEY` trong `.env`) |
+| `name` | string | ✅ | Tên gateway |
+| `location_desc` | string | ❌ | Mô tả vị trí |
+
+**Response (201):**
+```json
+{
+  "success": true,
+  "data": {
+    "id": "GW_004",
+    "name": "Gateway Tầng 3",
+    "status": "online",
+    "location_desc": "Gần cầu thang B"
+  }
+}
+```
+
+---
+
+### `GET /api/v1/provision/gateways`
+
+Lấy danh sách tất cả gateway (dùng cho Sensor Node chọn gateway).
+
+**Query Parameters:**
+
+| Param | Kiểu | Bắt buộc | Mô tả |
+|---|---|---|---|
+| `provision_key` | string | ✅ | Mã xác thực |
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": "GW_001",
+      "name": "Gateway Tầng 1",
+      "status": "online",
+      "location_desc": "Sảnh chính"
+    }
+  ]
+}
+```
+
+---
+
+### `POST /api/v1/provision/node`
+
+Sensor Node ESP32 tự đăng ký dưới một gateway.
+
+**Request Body:**
+```json
+{
+  "provision_key": "airquality2026",
+  "name": "Phòng họp 302",
+  "gateway_id": "GW_003",
+  "lat": 10.7733,
+  "lng": 106.6575
+}
+```
+
+| Field | Kiểu | Bắt buộc | Mô tả |
+|---|---|---|---|
+| `provision_key` | string | ✅ | Mã xác thực |
+| `name` | string | ✅ | Tên sensor node |
+| `gateway_id` | string | ✅ | ID gateway mà node thuộc về |
+| `lat` | float | ❌ | Vĩ độ |
+| `lng` | float | ❌ | Kinh độ |
+
+**Response (201):**
+```json
+{
+  "success": true,
+  "data": {
+    "id": "NODE_005",
+    "name": "Phòng họp 302",
+    "gateway_id": "GW_003",
+    "status": "active",
+    "battery_level": 100,
+    "node_numeric_id": 5
+  }
+}
+```
+
+> [!NOTE]
+> `node_numeric_id` được trích từ `NODE_XXX` → dùng làm `SensorPayload.nodeId` (1 byte) truyền qua LoRa.
+
+Xem thêm: [Hướng dẫn Provisioning](../guides/provisioning.md)

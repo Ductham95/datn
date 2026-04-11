@@ -3,22 +3,11 @@
 // =============================================================================
 //  GATEWAY CONFIGURATION
 //  Air Quality Monitoring System - Superloop Firmware
+//
+//  CHÚ Ý: Chỉ chứa PIN MAPPING và hằng số phần cứng.
+//  Cấu hình runtime (WiFi, Server, Gateway ID) được lưu trong NVS
+//  và thiết lập qua Captive Portal khi lần đầu bật.
 // =============================================================================
-
-// ===== GATEWAY IDENTITY =====
-#define GATEWAY_ID "GW_001"
-#define GATEWAY_SECRET "super-secret-key"
-
-// ===== WiFi =====
-#define WIFI_SSID "ducthamlaptop"
-#define WIFI_PASSWORD "12345678"
-#define WIFI_CONNECT_TIMEOUT_MS 15000 // Timeout kết nối lần đầu
-#define WIFI_RETRY_DELAY_MS 5000      // Delay giữa các lần thử kết nối lại
-
-// ===== API Server =====
-#define API_URL "http://192.168.137.1:3000/api/v1/telemetry"
-#define API_TIMEOUT_MS 10000 // HTTP request timeout
-#define HTTP_RETRY_COUNT 3   // Số lần retry khi gửi thất bại
 
 // ===== LoRa AS32-TTL-100 (UART) — phải khớp cấu hình với Sensor Node =====
 // Gateway dùng Serial2 (GPIO16/17) vì không có PMS7003
@@ -36,4 +25,21 @@
 
 // ===== Status LED =====
 #define LED_WIFI_PIN 25   // LED WiFi (xanh = connected)
-#define LED_STATUS_PIN 26 // LED trạng thái (nhấp nháy = đang gửi)
+#define LED_STATUS_PIN 26 // LED trạng thái (nhấp nháy = đang gửi / provisioning)
+
+// ===== WiFi Timing =====
+#define WIFI_CONNECT_TIMEOUT_MS 15000 // Timeout kết nối lần đầu
+#define WIFI_RETRY_DELAY_MS 5000      // Delay giữa các lần thử kết nối lại
+
+// ===== HTTP =====
+#define API_TIMEOUT_MS 10000 // HTTP request timeout
+#define HTTP_RETRY_COUNT 3   // Số lần retry khi gửi thất bại
+
+// ===== Server & Provisioning (cấu hình cứng) =====
+#define SERVER_BASE_URL   "http://192.168.137.1:3000"
+#define PROVISION_KEY     "airquality2026"
+#define GATEWAY_SECRET    "super-secret-key"  // Telemetry API authentication
+
+// ===== Factory Reset =====
+#define RESET_BUTTON_PIN 0       // Nút BOOT (GPIO0) — giữ 5 giây để factory reset
+#define RESET_HOLD_TIME_MS 5000  // Thời gian giữ nút để trigger reset

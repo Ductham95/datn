@@ -2,14 +2,15 @@
 
 ## 1. Tổng quan
 
-Firmware cho sensor node chạy trên **ESP32 DevKit V1** với kiến trúc **FreeRTOS multi-task**, thu thập dữ liệu từ 3 cảm biến (PMS7003, CCS811, DHT22) và gửi qua LoRa mỗi 5 phút.
+Firmware cho sensor node chạy trên **ESP32 DevKit V1** với kiến trúc **FreeRTOS multi-task**, thu thập dữ liệu từ 3 cảm biến (PMS7003, CCS811, DHT22) và gửi qua LoRa.
 
 | Thuộc tính | Giá trị |
 |---|---|
 | **Platform** | ESP32 (PlatformIO, Arduino framework) |
-| **Kiến trúc** | FreeRTOS — 4 task pinned to core |
+| **Kiến trúc** | FreeRTOS — 5 task pinned to core |
+| **Cấu hình** | NVS (Non-Volatile Storage) via Captive Portal |
 | **Gói tin LoRa** | 18 bytes `SensorPayload` struct |
-| **Chu kỳ gửi** | 5 phút |
+| **Chu kỳ gửi** | Cấu hình bởi `SEND_INTERVAL_MS` (mặc định 5 phút) |
 | **Nguồn** | Pin 18650 + TP4056 |
 
 ---
@@ -63,10 +64,11 @@ flowchart TD
 
 | Task | Core | Priority | Stack | Chu kỳ | Chức năng |
 |---|---|---|---|---|---|
-| `SensorTask` | 0 | 2 (cao) | 4096 bytes | 5 phút | Đọc tất cả sensor, đóng gói, đẩy vào Queue |
-| `LoRaTask` | 1 | 3 (cao nhất) | 2048 bytes | Event-driven | Chờ Queue, gửi LoRa, rồi sleep module |
+| `SensorTask` | 0 | 2 (cao) | 4096 bytes | `SEND_INTERVAL_MS` | Đọc sensor, đóng gói, đẩy Queue |
+| `LoRaTask` | 1 | 3 (cao nhất) | 2048 bytes | Event-driven | Chờ Queue, gửi LoRa, sleep module |
 | `BatteryTask` | 0 | 1 (thấp) | 2048 bytes | 30 giây | Đọc ADC pin, cập nhật biến global |
-| `WatchdogTask` | 0 | 0 | 1024 bytes | 10 giây | Giám sát heartbeat, reset nếu treo |
+| `WatchdogTask` | 0 | 0 | 2048 bytes | 10 giây | Giám sát heartbeat, reset nếu treo |
+| `ResetTask` | 0 | 1 | 2048 bytes | 100ms | Kiểm tra nút BOOT (factory reset) |
 
 ### Giao tiếp giữa các task
 
@@ -84,14 +86,19 @@ flowchart TD
 firmware/sensor-node/
 ├── platformio.ini                    # PlatformIO config (6 build environments)
 ├── include/
-│   └── config.h                      # NODE_ID, pins, LoRa params, task config
+│   └── config.h                      # Pin mapping, timing, server URL, provision key
 ├── src/
-│   ├── main.cpp                      # Setup: init + xTaskCreatePinnedToCore()
+│   ├── main.cpp                      # Provisioning check + xTaskCreatePinnedToCore()
 │   ├── tasks/
 │   │   ├── sensor_task.h/.cpp        # Task đọc PMS7003 + CCS811 + DHT22
 │   │   ├── lora_task.h/.cpp          # Task gửi LoRa (chờ Queue)
 │   │   ├── battery_task.h/.cpp       # Task giám sát pin
 │   │   └── watchdog_task.h/.cpp      # Task watchdog hệ thống
+│   ├── core/
+│   │   └── nvs_config.h/.cpp         # NVS read/write (node_id, gateway_id)
+│   ├── provisioning/
+│   │   ├── captive_portal.h/.cpp     # WiFi AP + fetch gateways + register node
+│   │   └── portal_html.h             # Embedded HTML (wizard 2 bước)
 │   ├── drivers/
 │   │   ├── pms7003.h/.cpp            # Driver PMS7003 (UART)
 │   │   ├── ccs811.h/.cpp             # Driver CCS811 (I2C)
@@ -158,3 +165,29 @@ pio run -e test_battery -t upload && pio device monitor
 ```
 
 Xem thêm: [Workflow: Flash Firmware](../../.agents/workflows/flash-firmware.md)
+
+---
+
+## 7. Chế độ Provisioning
+
+Khi Sensor Node chưa được cấu hình (NVS trống), nó tự động vào chế độ **Captive Portal**:
+
+1. Phát WiFi AP: `AirQuality-Node-Setup`
+2. LED nhấp nháy nhanh
+3. User kết nối → điền form (2 bước: WiFi + Gateway → Tên)
+4. ESP32 đăng ký với server → lưu NVS → **TẮt WiFi vĩnh viễn** → reboot vào LoRa-only mode
+
+> [!IMPORTANT]
+> Khác với Gateway, Sensor Node **tắt WiFi sau provisioning** và chỉ giao tiếp qua LoRa.
+
+Cấu hình runtime (lưu trong NVS):
+
+| Biến | Kiểu | Mô tả |
+|---|---|---|
+| `cfg_nodeId` | `uint8_t` | Numeric ID cho SensorPayload (1-255) |
+| `cfg_nodeIdStr` | `char[16]` | String ID (VD: `NODE_005`) |
+| `cfg_gatewayId` | `char[16]` | Gateway mà node thuộc về |
+
+**Factory Reset**: Giữ nút BOOT (GPIO0) 5 giây → xoá NVS → reboot vào provisioning
+
+Xem chi tiết: [Hướng dẫn Provisioning](../guides/provisioning.md)

@@ -4,6 +4,7 @@
 #include "common/debug.h"
 #include "common/packet.h"
 #include "rtos/shared.h"
+#include "core/nvs_config.h"
 #include "drivers/lora_radio.h"
 
 // =============================================================================
@@ -73,7 +74,7 @@ void loraTask(void* parameter) {
             // ═══ Timeout → gửi Heartbeat ═══
             SensorPayload heartbeat;
             memset(&heartbeat, 0, sizeof(SensorPayload));
-            heartbeat.nodeId  = NODE_ID;
+            heartbeat.nodeId  = cfg_nodeId;
             heartbeat.pktType = PKT_TYPE_HEARTBEAT;
             heartbeat.msgId   = msgCounter++;
             heartbeat.battery = batteryLevel;
