@@ -19,6 +19,7 @@ const prisma = require('./config/prismaClient');
 const apiRoutes = require('./routes/userApi');
 const adminRoutes = require('./routes/adminapi');
 const gatewayRoutes = require('./routes/gatewayApi');
+const provisionRoutes = require('./routes/provisionApi');
 
 const PORT = process.env.PORT || 3000;
 
@@ -51,6 +52,7 @@ app.use(express.static('../frontend/dist'));
 app.use('/api/v1', apiRoutes);
 app.use('/api/v1/telemetry', gatewayRoutes);
 app.use('/api/v1/admin', adminRoutes); // Endpoint cho Admin Dashboard
+app.use('/api/v1/provision', provisionRoutes); // Device self-registration
 
 io.on('connection', (socket) => {
   console.log(`[Socket.io] Client kết nối: ${socket.id}`);
