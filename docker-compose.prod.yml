@@ -18,6 +18,8 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
       - ./backend/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "127.0.0.1:5432:5432"  # Chỉ localhost (truy cập qua SSH tunnel)
     networks:
       - app-network
 
