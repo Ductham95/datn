@@ -20,6 +20,7 @@ const { getAlerts, acknowledgeAlert, deleteAlert } = require('../controllers/ale
 const { getUsers, createUser, updateUser, deleteUser, changePassword } = require('../controllers/userController');
 const { getLogs } = require('../controllers/auditLogController');
 const { getAdminDashboardStats } = require('../controllers/adminDashboardController');
+const { getTelemetryLogsHandler } = require('../controllers/telemetryLogController');
 
 // ==================== Audit Logger (tự động ghi log mọi thao tác admin) ====================
 router.use(auditLogger);
@@ -29,6 +30,9 @@ router.post('/login', login);
 
 // ==================== Dashboard Stats ====================
 router.get('/dashboard/stats', verifyAdmin, getAdminDashboardStats);
+
+// ==================== Telemetry Logs ====================
+router.get('/telemetry-logs', verifyAdmin, getTelemetryLogsHandler);
 
 // ==================== Gateway CRUD ====================
 router.get('/gateways',        verifyAdmin, getGateways);

@@ -21,6 +21,7 @@ const Config = lazy(() => import('@/pages/admin/Config/Config'));
 const Users = lazy(() => import('@/pages/admin/Users/Users'));
 const AuditLogs = lazy(() => import('@/pages/admin/AuditLogs/AuditLogs'));
 const Export = lazy(() => import('@/pages/admin/Export/Export'));
+const TelemetryLogs = lazy(() => import('@/pages/admin/TelemetryLogs/TelemetryLogs'));
 
 export default function App() {
   return (
@@ -47,6 +48,7 @@ export default function App() {
               <Route path="/admin/users" element={<Users />} />
               <Route path="/admin/logs" element={<AuditLogs />} />
               <Route path="/admin/export" element={<Export />} />
+              <Route path="/admin/telemetry-logs" element={<TelemetryLogs />} />
             </Route>
           </Route>
 

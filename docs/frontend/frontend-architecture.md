@@ -62,7 +62,8 @@ frontend/src/
 │       ├── Config/             # Cấu hình ngưỡng (6 cards threshold forms)
 │       ├── Users/              # Quản lý tài khoản (CRUD + role)
 │       ├── AuditLogs/          # Nhật ký hệ thống (read-only)
-│       └── Export/             # Xuất CSV (node selector + date range)
+│       ├── Export/             # Xuất CSV (node selector + date range)
+│       └── TelemetryLogs/      # Xem raw telemetry data từ sensor nodes
 ├── layouts/
 │   ├── UserLayout/             # Layout người dùng (header + sidebar + content)
 │   └── AdminLayout/            # Layout admin (sidebar + content)
@@ -141,6 +142,7 @@ Backend Socket.IO ──▶ useSocket hook ──▶ useTelemetryStore ──▶
 | `/admin/users` | Users | JWT | Quản lý tài khoản |
 | `/admin/logs` | AuditLogs | JWT | Nhật ký hệ thống |
 | `/admin/export` | Export | JWT | Xuất dữ liệu CSV |
+| `/admin/telemetry-logs` | TelemetryLogs | JWT | Xem telemetry logs |
 
 > [!NOTE]
 > Tất cả routes admin được bảo vệ bởi `ProtectedRoute` — kiểm tra JWT token trong Zustand store.

@@ -137,6 +137,7 @@
     "users": "Tài khoản",
     "logs": "Nhật ký",
     "export": "Xuất CSV",
+    "telemetryLogs": "Telemetry Logs",
     "login": "Đăng nhập",
     "logout": "Đăng xuất",
     "username": "Tên đăng nhập",

@@ -75,4 +75,5 @@
 | Admin: Quản lý tài khoản | ✅ | ✅ | CRUD + role |
 | Admin: Log hệ thống | ✅ | ✅ | Read-only DataTable |
 | Admin: Xuất CSV | ✅ | ✅ | Node selector + date range |
+| Admin: Telemetry Logs | ✅ | ✅ | Raw measurements + filter + realtime |
 | Xếp hạng ô nhiễm | ✅ | ✅ | Sorted by AQI desc |

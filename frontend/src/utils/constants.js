@@ -47,6 +47,9 @@ export const API = {
   // Admin export
   EXPORT: '/api/v1/admin/export/measurements',
 
+  // Admin telemetry logs
+  TELEMETRY_LOGS: '/api/v1/admin/telemetry-logs',
+
   // Health
   HEALTH: '/health',
 };

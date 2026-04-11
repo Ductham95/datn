@@ -639,6 +639,51 @@ Xem lịch sử hành động admin. **Yêu cầu auth.**
 
 ---
 
+### Telemetry Logs (Raw Measurements) API
+
+#### `GET /api/v1/admin/telemetry-logs`
+
+Xem dữ liệu telemetry thô (raw measurements) từ các sensor node. **Yêu cầu auth.**
+
+> [!NOTE]
+> Trả về tối đa 500 bản ghi mỗi lần query, sắp xếp theo thời gian mới nhất.
+> Dữ liệu được enrich thêm tên node và chỉ số AQI tính từ PM2.5/PM10.
+
+**Query Parameters:**
+
+| Param | Kiểu | Mặc định | Mô tả |
+|---|---|---|---|
+| `node_id` | string | — | Lọc theo sensor node ID |
+| `gateway_id` | string | — | Lọc theo gateway ID (lấy tất cả nodes thuộc gateway) |
+| `from` | ISO datetime | — | Thời gian bắt đầu |
+| `to` | ISO datetime | — | Thời gian kết thúc |
+| `limit` | int | 500 | Số lượng tối đa (max: 500) |
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "time": "2026-04-07T14:30:00.000Z",
+      "node_id": "NODE_001",
+      "node_name": "Node 1 - Thư viện",
+      "gateway_id": "GW_001",
+      "pm25": 12.5,
+      "pm10": 18.3,
+      "co2": 485,
+      "tvoc": 120,
+      "temperature": 28.5,
+      "humidity": 65.2,
+      "aqi": 52
+    }
+  ],
+  "total": 1500
+}
+```
+
+---
+
 ## 4. Realtime — Socket.IO
 
 | Event | Hướng | Mô tả |

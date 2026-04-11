@@ -70,3 +70,9 @@ export const exportService = {
     });
   },
 };
+
+export const telemetryLogService = {
+  getLogs(params = {}) {
+    return api.get(API.TELEMETRY_LOGS, { params }).then(res => res.data);
+  },
+};

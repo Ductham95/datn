@@ -137,6 +137,7 @@
     "users": "Accounts",
     "logs": "Audit Logs",
     "export": "Export CSV",
+    "telemetryLogs": "Telemetry Logs",
     "login": "Login",
     "logout": "Logout",
     "username": "Username",
