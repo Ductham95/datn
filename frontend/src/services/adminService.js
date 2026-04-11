@@ -1,6 +1,12 @@
 import api from './api';
 import { API } from '@/utils/constants';
 
+export const dashboardService = {
+  getStats() {
+    return api.get(API.ADMIN_DASHBOARD_STATS).then(res => res.data);
+  },
+};
+
 export const alertService = {
   getAlerts(params = {}) {
     return api.get(API.ALERTS, { params }).then(res => res.data);

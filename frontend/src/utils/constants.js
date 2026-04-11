@@ -16,6 +16,9 @@ export const API = {
   // Gateway telemetry
   TELEMETRY: '/api/v1/telemetry',
 
+  // Admin dashboard
+  ADMIN_DASHBOARD_STATS: '/api/v1/admin/dashboard/stats',
+
   // Admin auth
   LOGIN: '/api/v1/admin/login',
 
