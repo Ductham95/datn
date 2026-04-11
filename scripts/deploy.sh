@@ -12,14 +12,14 @@ echo "📥 Pulling latest code..."
 git pull origin main
 
 echo "🔨 Building and restarting containers..."
-docker compose -f docker-compose.prod.yml up --build -d
+docker compose --env-file .env.production -f docker-compose.prod.yml up --build -d
 
 echo "🧹 Cleaning up old Docker images..."
 docker image prune -f
 
 echo ""
 echo "📋 Container status:"
-docker compose -f docker-compose.prod.yml ps
+docker compose --env-file .env.production -f docker-compose.prod.yml ps
 
 echo ""
 echo "✅ Deploy completed at $(date)"

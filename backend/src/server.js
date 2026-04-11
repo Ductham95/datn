@@ -17,7 +17,7 @@ const helmet = require('helmet');
 const { Server } = require('socket.io');
 const prisma = require('./config/prismaClient');
 const apiRoutes = require('./routes/userApi');
-const adminRoutes = require('./routes/adminapi');
+const adminRoutes = require('./routes/adminApi');
 const gatewayRoutes = require('./routes/gatewayApi');
 const provisionRoutes = require('./routes/provisionApi');
 
