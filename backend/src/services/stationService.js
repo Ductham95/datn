@@ -74,8 +74,12 @@ const getNearestStationData = async (lat, lng) => {
 const getHistoryData = async (id, type, limit) => {
   const recordLimit = parseInt(limit) || 24;
 
+  // Derive the time window: hourly+24→24h, daily+7→7d, daily+30→30d
+  const intervalMap = { hourly: `${recordLimit} hours`, daily: `${recordLimit} days` };
+  const interval = intervalMap[type] || `${recordLimit} hours`;
+
   if (type === 'daily') {
-    // Aggregate by day from raw measurements for week/month views
+    // Aggregate by day, filtered to the last N days
     const rows = await prisma.$queryRaw`
       SELECT time_bucket('1 day', time) AS bucket_time,
              AVG(pm25) AS pm25, AVG(pm10) AS pm10,
@@ -83,9 +87,9 @@ const getHistoryData = async (id, type, limit) => {
              AVG(humidity) AS humidity
       FROM measurements
       WHERE node_id = ${id}
+        AND time >= NOW() - ${interval}::interval
       GROUP BY 1
-      ORDER BY 1 DESC
-      LIMIT ${recordLimit}
+      ORDER BY 1 ASC
     `;
 
     return rows.map(r => ({
@@ -97,9 +101,9 @@ const getHistoryData = async (id, type, limit) => {
       temperature: r.temperature != null ? Number(Number(r.temperature).toFixed(1)) : null,
       humidity: r.humidity != null ? Number(Number(r.humidity).toFixed(1)) : null,
       aqi: calculateAQI(Number(r.pm25) || 0, Number(r.pm10) || 0),
-    })).reverse();
+    }));
   } else if (type === 'hourly') {
-    // Hourly from continuous aggregate + humidity from raw data
+    // Hourly from continuous aggregate, filtered to the last N hours
     const rows = await prisma.$queryRaw`
       SELECT h.bucket_time AS time,
              h.avg_pm25 AS pm25, h.avg_pm10 AS pm10,
@@ -114,8 +118,8 @@ const getHistoryData = async (id, type, limit) => {
           AND m.time < h.bucket_time + INTERVAL '1 hour'
       ) sub ON true
       WHERE h.node_id = ${id}
-      ORDER BY h.bucket_time DESC
-      LIMIT ${recordLimit}
+        AND h.bucket_time >= NOW() - ${interval}::interval
+      ORDER BY h.bucket_time ASC
     `;
 
     return rows.map(r => ({
@@ -126,7 +130,7 @@ const getHistoryData = async (id, type, limit) => {
       temperature: r.temperature != null ? Number(Number(r.temperature).toFixed(1)) : null,
       humidity: r.humidity != null ? Number(Number(r.humidity).toFixed(1)) : null,
       aqi: calculateAQI(Number(r.pm25) || 0, Number(r.pm10) || 0),
-    })).reverse();
+    }));
   } else {
     // Raw data fallback
     const rows = await prisma.measurement.findMany({
