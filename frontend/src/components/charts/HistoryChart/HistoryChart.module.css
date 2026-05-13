@@ -1,3 +1,60 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ─── Toolbar ─── */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.toggleGroup {
+  display: flex;
+  background: var(--bg-secondary, #F1F5F9);
+  border-radius: var(--radius-md, 8px);
+  padding: 2px;
+  gap: 1px;
+  overflow-x: auto;
+}
+
+.toggleBtn {
+  padding: 4px 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary, #64748B);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-sm, 6px);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 150ms ease;
+  line-height: 1.4;
+}
+
+.toggleBtn:hover {
+  color: var(--text-primary, #1E293B);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.toggleBtn.active {
+  background: #fff;
+  color: var(--color-primary-600, #4F46E5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  font-weight: 600;
+}
+
+.iconBtn {
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Loading / No Data ─── */
 .loading {
   display: flex;
   align-items: center;
@@ -8,4 +65,16 @@
 .noData {
   color: var(--text-tertiary);
   font-size: var(--font-size-sm);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 640px) {
+  .toolbar {
+    gap: var(--space-1);
+  }
+
+  .toggleBtn {
+    font-size: 11px;
+    padding: 3px 7px;
+  }
 }

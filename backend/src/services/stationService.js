@@ -74,24 +74,61 @@ const getNearestStationData = async (lat, lng) => {
 const getHistoryData = async (id, type, limit) => {
   const recordLimit = parseInt(limit) || 24;
 
-  if (type === 'hourly') {
-    // Dùng $queryRaw vì truy vấn hourly_measurements (TimescaleDB continuous aggregate)
+  if (type === 'daily') {
+    // Aggregate by day from raw measurements for week/month views
     const rows = await prisma.$queryRaw`
-      SELECT bucket_time as time, 
-             avg_pm25 as pm25, avg_pm10 as pm10, 
-             avg_co2 as co2, max_temp as temperature
-      FROM hourly_measurements
+      SELECT time_bucket('1 day', time) AS bucket_time,
+             AVG(pm25) AS pm25, AVG(pm10) AS pm10,
+             AVG(co2) AS co2, AVG(temperature) AS temperature,
+             AVG(humidity) AS humidity
+      FROM measurements
       WHERE node_id = ${id}
-      ORDER BY bucket_time DESC
+      GROUP BY 1
+      ORDER BY 1 DESC
       LIMIT ${recordLimit}
     `;
 
     return rows.map(r => ({
       ...r,
-      aqi: calculateAQI(Number(r.pm25) || 0, Number(r.pm10) || 0)
+      time: r.bucket_time,
+      pm25: r.pm25 != null ? Number(Number(r.pm25).toFixed(1)) : null,
+      pm10: r.pm10 != null ? Number(Number(r.pm10).toFixed(1)) : null,
+      co2: r.co2 != null ? Math.round(Number(r.co2)) : null,
+      temperature: r.temperature != null ? Number(Number(r.temperature).toFixed(1)) : null,
+      humidity: r.humidity != null ? Number(Number(r.humidity).toFixed(1)) : null,
+      aqi: calculateAQI(Number(r.pm25) || 0, Number(r.pm10) || 0),
+    })).reverse();
+  } else if (type === 'hourly') {
+    // Hourly from continuous aggregate + humidity from raw data
+    const rows = await prisma.$queryRaw`
+      SELECT h.bucket_time AS time,
+             h.avg_pm25 AS pm25, h.avg_pm10 AS pm10,
+             h.avg_co2 AS co2, h.max_temp AS temperature,
+             sub.humidity
+      FROM hourly_measurements h
+      LEFT JOIN LATERAL (
+        SELECT AVG(humidity) AS humidity
+        FROM measurements m
+        WHERE m.node_id = h.node_id
+          AND m.time >= h.bucket_time
+          AND m.time < h.bucket_time + INTERVAL '1 hour'
+      ) sub ON true
+      WHERE h.node_id = ${id}
+      ORDER BY h.bucket_time DESC
+      LIMIT ${recordLimit}
+    `;
+
+    return rows.map(r => ({
+      ...r,
+      pm25: r.pm25 != null ? Number(Number(r.pm25).toFixed(1)) : null,
+      pm10: r.pm10 != null ? Number(Number(r.pm10).toFixed(1)) : null,
+      co2: r.co2 != null ? Math.round(Number(r.co2)) : null,
+      temperature: r.temperature != null ? Number(Number(r.temperature).toFixed(1)) : null,
+      humidity: r.humidity != null ? Number(Number(r.humidity).toFixed(1)) : null,
+      aqi: calculateAQI(Number(r.pm25) || 0, Number(r.pm10) || 0),
     })).reverse();
   } else {
-    // Query thông thường có thể dùng Prisma Client
+    // Raw data fallback
     const rows = await prisma.measurement.findMany({
       where: { node_id: id },
       orderBy: { time: 'desc' },

@@ -5,7 +5,7 @@ import { stationService } from '@/services/stationService';
  * Hook to fetch station history data.
  */
 export function useStationHistory(stationId, options = {}) {
-  const { mode = 'hourly', from, to } = options;
+  const { type = 'hourly', limit, from, to } = options;
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,7 +19,7 @@ export function useStationHistory(stationId, options = {}) {
     const fetchHistory = async () => {
       setLoading(true);
       try {
-        const data = await stationService.getHistory(stationId, { mode, from, to });
+        const data = await stationService.getHistory(stationId, { type, limit, from, to });
         setHistory(data.history || data.data || []);
         setError(null);
       } catch (err) {
@@ -31,7 +31,8 @@ export function useStationHistory(stationId, options = {}) {
     };
 
     fetchHistory();
-  }, [stationId, mode, from, to]);
+  }, [stationId, type, limit, from, to]);
 
   return { history, loading, error };
 }
+

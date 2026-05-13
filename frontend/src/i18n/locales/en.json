@@ -15,7 +15,7 @@
     "nearestStation": "Nearest Station",
     "distanceAway": "{{distance}} away",
     "mapTitle": "Regional AQI Map",
-    "historyTitle": "24-Hour History",
+    "historyTitle": "History Chart",
     "healthTitle": "Health Recommendations",
     "weatherTitle": "Current Weather",
     "lastUpdated": "Last updated",
@@ -81,6 +81,14 @@
     "from": "From",
     "to": "To",
     "noData": "No data found for this time range"
+  },
+  "chart": {
+    "24h": "24 Hours",
+    "7d": "7 Days",
+    "30d": "30 Days",
+    "bar": "Bar",
+    "line": "Line",
+    "area": "Area"
   },
   "ranking": {
     "title": "Pollution Ranking",

@@ -15,7 +15,7 @@
     "nearestStation": "Trạm gần nhất",
     "distanceAway": "Cách bạn {{distance}}",
     "mapTitle": "Bản đồ AQI khu vực",
-    "historyTitle": "Lịch sử 24 giờ",
+    "historyTitle": "Biểu đồ lịch sử",
     "healthTitle": "Khuyến nghị sức khỏe",
     "weatherTitle": "Thời tiết hiện tại",
     "lastUpdated": "Cập nhật lần cuối",
@@ -81,6 +81,14 @@
     "from": "Từ ngày",
     "to": "Đến ngày",
     "noData": "Không có dữ liệu trong khoảng thời gian này"
+  },
+  "chart": {
+    "24h": "24 giờ",
+    "7d": "7 ngày",
+    "30d": "30 ngày",
+    "bar": "Cột",
+    "line": "Đường",
+    "area": "Vùng"
   },
   "ranking": {
     "title": "Xếp hạng ô nhiễm",

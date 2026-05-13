@@ -13,8 +13,8 @@ export const stationService = {
   },
 
   /** Get station history data */
-  getHistory(id, { mode = 'hourly', from, to } = {}) {
-    return api.get(API.HISTORY(id), { params: { mode, from, to } }).then(res => res.data);
+  getHistory(id, { type = 'hourly', limit, from, to } = {}) {
+    return api.get(API.HISTORY(id), { params: { type, limit, from, to } }).then(res => res.data);
   },
 
   /** Get pollution ranking */
