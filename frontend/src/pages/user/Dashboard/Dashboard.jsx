@@ -155,7 +155,7 @@ export default function Dashboard() {
       {/* Map + Chart Row */}
       <div className={styles.gridRow}>
         <Card title={t('dashboard.mapTitle')} icon={null} className={styles.mapCard} padding="none">
-          <AQIMap stations={mergedStations} />
+          <AQIMap stations={mergedStations} userPosition={position} />
         </Card>
         <Card title={t('dashboard.historyTitle')} className={styles.chartCard} padding="sm">
           {primaryStation && (

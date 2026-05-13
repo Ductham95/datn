@@ -1,4 +1,5 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { useEffect, useRef } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { Link } from 'react-router-dom';
 import { getAQIColor, getAQILabel } from '@/utils/aqi';
@@ -6,6 +7,21 @@ import { MAP_CONFIG } from '@/utils/constants';
 import AQIBadge from '@/components/common/AQIBadge/AQIBadge';
 import 'leaflet/dist/leaflet.css';
 import styles from './AQIMap.module.css';
+
+// Fly to user's location once when it becomes available
+function FlyToLocation({ position }) {
+  const map = useMap();
+  const hasFlewRef = useRef(false);
+
+  useEffect(() => {
+    if (position && !hasFlewRef.current) {
+      hasFlewRef.current = true;
+      map.flyTo([position.lat, position.lng], 14, { duration: 1.2 });
+    }
+  }, [position, map]);
+
+  return null;
+}
 
 // Create colored circle marker icon
 function createMarkerIcon(aqi) {
@@ -26,7 +42,7 @@ function createMarkerIcon(aqi) {
   });
 }
 
-export default function AQIMap({ stations = [], center, zoom }) {
+export default function AQIMap({ stations = [], center, zoom, userPosition }) {
   const mapCenter = center || MAP_CONFIG.CENTER;
   const mapZoom = zoom || MAP_CONFIG.ZOOM;
 
@@ -46,6 +62,7 @@ export default function AQIMap({ stations = [], center, zoom }) {
           url={MAP_CONFIG.TILE_URL}
           attribution={MAP_CONFIG.TILE_ATTRIBUTION}
         />
+        <FlyToLocation position={userPosition} />
         {stations.map((station) => {
           const lat = station.lat || station.latest?.lat;
           const lng = station.lng || station.latest?.lng;
