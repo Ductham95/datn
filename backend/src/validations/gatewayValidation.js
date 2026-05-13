@@ -43,25 +43,25 @@ const validateGatewayPayload =  async (req, res, next) => {
       });
     }
 
-    // 4.2. Kiểm tra node_id
+    // 4.2. Kiểm tra node_id (chỉ kiểm tra tồn tại, không kiểm tra thuộc gateway nào)
     const nodeIds = data.map(item => item.node_id).filter(Boolean);
     if (nodeIds.length > 0) {
-      // Lấy danh sách các node hiện có thuộc gateway này
+      // Lấy danh sách các node hiện có trong hệ thống (bất kỳ gateway nào cũng gửi được)
+      const uniqueNodeIds = [...new Set(nodeIds)];
       const existingNodes = await prisma.sensorNode.findMany({
         where: {
-          id: { in: nodeIds },
-          gateway_id: gateway_id
+          id: { in: uniqueNodeIds }
         },
         select: { id: true }
       });
       
       const existingNodeIds = existingNodes.map(node => node.id);
-      const missingNodes = nodeIds.filter(id => !existingNodeIds.includes(id));
+      const missingNodes = uniqueNodeIds.filter(id => !existingNodeIds.includes(id));
       
       if (missingNodes.length > 0) {
         return res.status(404).json({
           success: false,
-          error: `Một số Node không tồn tại hoặc không thuộc Gateway này: ${missingNodes.join(', ')}`
+          error: `Một số Node không tồn tại trong hệ thống: ${missingNodes.join(', ')}`
         });
       }
     } else {

@@ -2,3 +2,4 @@
 .env.production
 certbot/
 nginx/active.conf
+.claude/settings.local.json
