@@ -13,6 +13,7 @@
 // Drivers
 #include "drivers/wifi_manager.h"
 #include "drivers/lora_receiver.h"
+#include "drivers/oled_display.h"
 
 // Network
 #include "net/http_client.h"
@@ -65,6 +66,8 @@ void checkFactoryReset() {
             LOG_MSG("RESET", "  FACTORY RESET — Xóa cấu hình!");
             LOG_MSG("RESET", "═══════════════════════════════════════");
 
+            oled_showStatus("FACTORY RESET!");
+
             // LED nhấp nháy nhanh báo reset
             for (int i = 0; i < 10; i++) {
                 digitalWrite(LED_STATUS_PIN, i % 2);
@@ -108,6 +111,7 @@ void flushBufferToServer() {
 
     // LED nhấp nháy = đang gửi
     digitalWrite(LED_STATUS_PIN, HIGH);
+    oled_showStatus("Sending...");
 
     bool success = http_sendBatch(packets, flushed);
 
@@ -138,7 +142,10 @@ void setup() {
     // ── 1. Đọc cấu hình từ NVS ──
     nvs_loadConfig();
 
-    // ── 2. Kiểm tra đã provisioned chưa ──
+    // ── 2. Khởi tạo OLED (trước provisioning check) ──
+    oled_init();
+
+    // ── 3. Kiểm tra đã provisioned chưa ──
     if (!nvs_isProvisioned()) {
         // ═══ CHẾ ĐỘ PROVISIONING ═══
         // Hàm này blocking — không return cho đến khi ESP reboot
@@ -161,18 +168,24 @@ void setup() {
     // 1. LED
     led_init();
 
-    // 2. Packet Buffer
+    // 2. OLED Boot Screen
+    oled_showBoot();
+
+    // 3. Packet Buffer
     buffer_init();
 
-    // 3. WiFi
+    // 4. WiFi
     Serial.println("[1/3] Kết nối WiFi...");
+    oled_showStatus("WiFi connecting...");
     if (!wifi_init()) {
         Serial.println("[WARN] WiFi chưa kết nối. Sẽ thử lại trong loop.");
     }
 
-    // 4. LoRa Receiver
+    // 5. LoRa Receiver
     Serial.println("[2/3] Khởi tạo LoRa Receiver...");
+    oled_showStatus("LoRa init...");
     if (!lora_rx_init()) {
+        oled_showStatus("LoRa FAILED!");
         Serial.println("[ERROR] LoRa THẤT BẠI! Restart...");
         delay(3000);
         esp_restart();
@@ -226,6 +239,9 @@ void loop() {
     // 4. Cập nhật LED
     led_update();
 
-    // 5. Yield cho WiFi stack
+    // 5. Cập nhật OLED
+    oled_update();
+
+    // 6. Yield cho WiFi stack
     delay(50);  // 50ms — đủ nhanh để không miss gói LoRa UART
 }

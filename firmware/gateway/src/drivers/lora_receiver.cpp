@@ -4,6 +4,7 @@
 #include "common/debug.h"
 #include "common/packet.h"
 #include "core/packet_buffer.h"
+#include "drivers/oled_display.h"
 
 // =============================================================================
 //  LORA RECEIVER IMPLEMENTATION (AS32-TTL-100 UART)
@@ -106,6 +107,7 @@ void lora_rx_poll()
             // AS32 không cung cấp RSSI qua UART → gửi 0 (unknown)
             buffer_push(&payload, 0);
             rxPacketCount++;
+            oled_setLastPacket(payload.nodeId, payload.pktType);
 
             const char *typeStr = (payload.pktType == PKT_TYPE_DATA) ? "DATA" : (payload.pktType == PKT_TYPE_HEARTBEAT) ? "HB"
                                                                                                                         : "ERR";

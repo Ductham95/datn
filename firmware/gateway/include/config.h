@@ -40,6 +40,11 @@
 #define PROVISION_KEY     "airquality2026"
 #define GATEWAY_SECRET    "super-secret-key"  // Telemetry API authentication
 
+// ===== OLED Display (SSD1306 128×64 I2C) =====
+#define OLED_SDA_PIN     21   // I2C SDA (ESP32 default)
+#define OLED_SCL_PIN     22   // I2C SCL (ESP32 default)
+#define OLED_UPDATE_MS   1000 // Cập nhật OLED mỗi 1 giây
+
 // ===== Factory Reset =====
 #define RESET_BUTTON_PIN 0       // Nút BOOT (GPIO0) — giữ 5 giây để factory reset
 #define RESET_HOLD_TIME_MS 5000  // Thời gian giữ nút để trigger reset

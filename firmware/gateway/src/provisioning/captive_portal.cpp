@@ -11,6 +11,7 @@
 #include "config.h"
 #include "common/debug.h"
 #include "core/nvs_config.h"
+#include "drivers/oled_display.h"
 
 // =============================================================================
 //  CAPTIVE PORTAL IMPLEMENTATION — Gateway
@@ -218,6 +219,9 @@ void startCaptivePortal() {
     LOG_MSG("Portal", "Web server đang chạy!");
     LOG_MSG("Portal", "Kết nối WiFi \"AirQuality-GW-Setup\" trên điện thoại để cấu hình.");
     LOG_MSG("Portal", "");
+
+    // Hiển thị thông tin provisioning trên OLED
+    oled_showProvisioning();
 
     // ── Main loop (blocking — chờ user cấu hình) ──
     while (true) {
