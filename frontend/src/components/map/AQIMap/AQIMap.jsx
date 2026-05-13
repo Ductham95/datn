@@ -23,6 +23,23 @@ function FlyToLocation({ position }) {
   return null;
 }
 
+// User location marker — blue pulsing dot
+const userLocationIcon = L.divIcon({
+  html: `
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="11" fill="#3B82F6" opacity="0.25">
+        <animate attributeName="r" values="8;11;8" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.35;0.15;0.35" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="12" cy="12" r="6" fill="#3B82F6" stroke="white" stroke-width="2.5"/>
+    </svg>
+  `,
+  className: styles.markerIcon,
+  iconSize: [24, 24],
+  iconAnchor: [12, 12],
+  popupAnchor: [0, -12],
+});
+
 // Create colored circle marker icon
 function createMarkerIcon(aqi) {
   const color = getAQIColor(aqi);
@@ -63,6 +80,11 @@ export default function AQIMap({ stations = [], center, zoom, userPosition }) {
           attribution={MAP_CONFIG.TILE_ATTRIBUTION}
         />
         <FlyToLocation position={userPosition} />
+        {userPosition && (
+          <Marker position={[userPosition.lat, userPosition.lng]} icon={userLocationIcon}>
+            <Popup>Vị trí của bạn</Popup>
+          </Marker>
+        )}
         {stations.map((station) => {
           const lat = station.lat || station.latest?.lat;
           const lng = station.lng || station.latest?.lng;
