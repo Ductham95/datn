@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Wind, Droplets, Thermometer, CloudSun, Gauge, Leaf } from 'lucide-react';
 import { useDashboard } from '@/hooks/useDashboard';
@@ -53,8 +53,12 @@ export default function Dashboard() {
     });
   }, [stations, latestData]);
 
-  // Pick the first station (or nearest) for main display
-  const primaryStation = mergedStations[0];
+  // Station selection
+  const [selectedStationId, setSelectedStationId] = useState(null);
+  const handleSelectStation = useCallback((id) => setSelectedStationId(id), []);
+
+  // Pick the selected station, or fallback to first
+  const primaryStation = mergedStations.find((s) => s.id === selectedStationId) || mergedStations[0];
   const latest = primaryStation?.latest;
 
   if (loading) {
@@ -179,7 +183,12 @@ export default function Dashboard() {
           sensorTemp={latest?.temperature}
           sensorHumidity={latest?.humidity}
         />
-        <NearestStation position={position} />
+        <NearestStation
+          stations={mergedStations}
+          position={position}
+          selectedId={primaryStation?.id}
+          onSelect={handleSelectStation}
+        />
       </div>
     </div>
   );
