@@ -137,9 +137,9 @@ bool initAllHardware()
     //     allOk = false;
     // }
 
-    // TODO: Battery ADC — chưa kết nối
-    // battery_init();
-    // Serial.println("[Battery] ADC OK!");
+    // Battery ADC
+    battery_init();
+    Serial.println("[Battery] ADC OK!");
 
     return allOk;
 }

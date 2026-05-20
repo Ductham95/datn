@@ -35,7 +35,7 @@
 // ===== Battery ADC =====
 #define BATTERY_ADC_PIN 34     // ADC1_CH6 (voltage divider: 2×100KΩ)
 #define BATTERY_SAMPLES 16     // Số lần đọc ADC lấy trung bình
-#define BATTERY_V_MAX 4.2f     // Điện áp pin 18650 đầy
+#define BATTERY_V_MAX 3.81f    // Điện áp pin 18650 đầy (dưới tải)
 #define BATTERY_V_MIN 3.0f     // Điện áp pin 18650 hết
 #define BATTERY_V_DIVIDER 2.0f // Hệ số voltage divider (R1=R2=100K)
 
