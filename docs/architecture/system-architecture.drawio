@@ -1,0 +1,321 @@
+<mxfile host="app.diagrams.net" agent="5.0">
+  <diagram id="arch1" name="System Architecture">
+    <mxGraphModel dx="1585" dy="935" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="2000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#212121;" value="&lt;font&gt;&lt;b&gt;Kiến trúc hệ thống — Giám sát chất lượng không khí sử dụng mạng cảm biến không dây LoRa&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="610" x="395" y="5" as="geometry" />
+        </mxCell>
+        <mxCell id="10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;arcSize=3;opacity=40;fontSize=13;" value="" vertex="1">
+          <mxGeometry height="280" width="1480" x="60" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="11" parent="1" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#E65100;" value="&lt;b&gt;TẦNG CẢM BIẾN&lt;/b&gt;&lt;br&gt;(Sensor Layer)" vertex="1">
+          <mxGeometry height="40" width="130" x="80" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Sensor Node #1&lt;/b&gt;&lt;hr&gt;MCU: ESP32&lt;br&gt;LoRa: AS32-TTL-100&lt;br&gt;─────────────&lt;br&gt;PMS7003 (PM2.5/PM10)&lt;br&gt;CCS811 (CO₂/TVOC)&lt;br&gt;DHT22 (Temp/Hum)&lt;br&gt;Pin (ADC)&lt;br&gt;─────────────&lt;br&gt;FreeRTOS (4 tác vụ)" vertex="1">
+          <mxGeometry height="200" width="180" x="120" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Sensor Node #2&lt;/b&gt;&lt;hr&gt;MCU: ESP32&lt;br&gt;LoRa: AS32-TTL-100&lt;br&gt;─────────────&lt;br&gt;PMS7003 (PM2.5/PM10)&lt;br&gt;CCS811 (CO₂/TVOC)&lt;br&gt;DHT22 (Temp/Hum)&lt;br&gt;Pin (ADC)&lt;br&gt;─────────────&lt;br&gt;FreeRTOS (4 tác vụ)" vertex="1">
+          <mxGeometry height="200" width="180" x="360" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Sensor Node #3&lt;/b&gt;&lt;hr&gt;MCU: ESP32&lt;br&gt;LoRa: AS32-TTL-100&lt;br&gt;─────────────&lt;br&gt;PMS7003 (PM2.5/PM10)&lt;br&gt;CCS811 (CO₂/TVOC)&lt;br&gt;DHT22 (Temp/Hum)&lt;br&gt;Pin (ADC)&lt;br&gt;─────────────&lt;br&gt;FreeRTOS (4 tác vụ)" vertex="1">
+          <mxGeometry height="200" width="180" x="600" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="15" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#E65100;" value="● ● ●" vertex="1">
+          <mxGeometry height="30" width="50" x="840" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Sensor Node #N&lt;/b&gt;&lt;hr&gt;MCU: ESP32&lt;br&gt;LoRa: AS32-TTL-100&lt;br&gt;─────────────&lt;br&gt;PMS7003 (PM2.5/PM10)&lt;br&gt;CCS811 (CO₂/TVOC)&lt;br&gt;DHT22 (Temp/Hum)&lt;br&gt;Pin (ADC)&lt;br&gt;─────────────&lt;br&gt;FreeRTOS (4 tác vụ)" vertex="1">
+          <mxGeometry height="200" width="180" x="940" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Sensor Node #N+1&lt;/b&gt;&lt;hr&gt;MCU: ESP32&lt;br&gt;LoRa: AS32-TTL-100&lt;br&gt;─────────────&lt;br&gt;Cảm biến tương tự&lt;br&gt;─────────────&lt;br&gt;FreeRTOS (4 tác vụ)" vertex="1">
+          <mxGeometry height="200" width="180" x="1200" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="20" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#283593;strokeWidth=2;arcSize=3;opacity=40;fontSize=13;" value="" vertex="1">
+          <mxGeometry height="200" width="1480" x="60" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="21" parent="1" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#283593;" value="&lt;b&gt;TẦNG TRUNG CHUYỂN&lt;/b&gt;&lt;br&gt;(Gateway Layer)" vertex="1">
+          <mxGeometry height="40" width="170" x="80" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="22" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5CAE9;strokeColor=#283593;strokeWidth=1.5;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Gateway #1&lt;/b&gt;&lt;hr&gt;MCU: ESP32&lt;br&gt;LoRa AS32-TTL-100 + WiFi&lt;br&gt;─────────────────&lt;br&gt;JSON Serializer&lt;br&gt;HTTP Client" vertex="1">
+          <mxGeometry height="130" width="260" x="250" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5CAE9;strokeColor=#283593;strokeWidth=1.5;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Gateway #2&lt;/b&gt;&lt;hr&gt;MCU: ESP32&lt;br&gt;LoRa AS32-TTL-100 + WiFi&lt;br&gt;─────────────────&lt;br&gt;Kiến trúc tương tự" vertex="1">
+          <mxGeometry height="130" width="260" x="1070" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="30" edge="1" parent="1" source="12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#E65100;strokeWidth=2;endArrow=blockThin;endFill=1;fontSize=13;" target="22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="31" edge="1" parent="1" source="13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#E65100;strokeWidth=2;endArrow=blockThin;endFill=1;fontSize=13;" target="22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="32" edge="1" parent="1" source="14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#E65100;strokeWidth=2;endArrow=blockThin;endFill=1;fontSize=13;" target="22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="380" />
+              <mxPoint x="380" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="33" edge="1" parent="1" source="16" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#E65100;strokeWidth=2;endArrow=blockThin;endFill=1;fontSize=13;" target="22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="380" />
+              <mxPoint x="380" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="34" edge="1" parent="1" source="17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#E65100;strokeWidth=2;endArrow=blockThin;endFill=1;fontSize=13;" target="23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="35" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#E65100;" value="&lt;b&gt;LoRa 433MHz&lt;/b&gt;&lt;br&gt;UART, gói tin nhị phân 18 byte&lt;br&gt;(SensorPayload struct)" vertex="1">
+          <mxGeometry height="60" width="200" x="471" y="322" as="geometry" />
+        </mxCell>
+        <mxCell id="40" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;arcSize=3;opacity=40;fontSize=13;" value="" vertex="1">
+          <mxGeometry height="520" width="1480" x="60" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="41" parent="1" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#1565C0;" value="&lt;b&gt;TẦNG MÁY CHỦ&lt;/b&gt;&lt;br&gt;(Server Layer)" vertex="1">
+          <mxGeometry height="40" width="120" x="80" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="42" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90CAF9;strokeColor=#1565C0;strokeWidth=1.5;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Nginx&lt;/b&gt;&lt;hr&gt;Reverse Proxy&lt;br&gt;Xử lý SSL&lt;br&gt;Phục vụ file tĩnh" vertex="1">
+          <mxGeometry height="100" width="160" x="160" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="43" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;strokeWidth=1.5;dashed=1;opacity=60;fontSize=13;" value="" vertex="1">
+          <mxGeometry height="200" width="660" x="420" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="44" parent="1" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#1565C0;" value="&lt;b&gt;Express.js Server&lt;/b&gt; (Node.js)" vertex="1">
+          <mxGeometry height="30" width="190" x="435" y="728" as="geometry" />
+        </mxCell>
+        <mxCell id="45" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64B5F6;strokeColor=#1565C0;strokeWidth=1;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;REST API&lt;/b&gt;&lt;hr&gt;/api/v1/telemetry&lt;br&gt;/api/v1/gateways&lt;br&gt;/api/v1/sensors&lt;br&gt;/api/v1/measurements&lt;br&gt;/api/v1/auth&lt;br&gt;/api/v1/export" vertex="1">
+          <mxGeometry height="140" width="150" x="440" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="46" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64B5F6;strokeColor=#1565C0;strokeWidth=1;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Socket.IO&lt;/b&gt;&lt;hr&gt;Sự kiện Realtime:&lt;br&gt;- new_measurement&lt;br&gt;- connection_status&lt;br&gt;- log_message&lt;br&gt;- command_sent" vertex="1">
+          <mxGeometry height="140" width="150" x="610" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="47" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64B5F6;strokeColor=#1565C0;strokeWidth=1;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Middleware&lt;/b&gt;&lt;hr&gt;JWT Auth&lt;br&gt;bcrypt&lt;br&gt;Kiểm tra dữ liệu&lt;br&gt;Helmet (Bảo mật)" vertex="1">
+          <mxGeometry height="140" width="130" x="780" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="48" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64B5F6;strokeColor=#1565C0;strokeWidth=1;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Services&lt;/b&gt;&lt;hr&gt;Tính toán AQI&lt;br&gt;Dịch vụ Telemetry&lt;br&gt;Xuất dữ liệu (CSV)&lt;br&gt;Ghi log hệ thống" vertex="1">
+          <mxGeometry height="140" width="140" x="925" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="49" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#42A5F5;strokeColor=#1565C0;strokeWidth=1.5;fontSize=13;fontColor=#FFFFFF;fontStyle=1;verticalAlign=middle;align=center;" value="&lt;b&gt;Prisma ORM&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="300" x="560" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="50" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;strokeWidth=1.5;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;node-cron&lt;/b&gt;&lt;hr&gt;Tác vụ nền:&lt;br&gt;- Kiểm tra thiết bị offline&lt;br&gt;- Chính sách lưu trữ dữ liệu" vertex="1">
+          <mxGeometry height="100" width="180" x="1140" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="51" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;strokeWidth=2;dashed=1;dashPattern=8 4;opacity=60;fontSize=13;" value="" vertex="1">
+          <mxGeometry height="170" width="1120" x="200" y="1010" as="geometry" />
+        </mxCell>
+        <mxCell id="52" parent="1" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#0277BD;" value="Docker Container (docker-compose) — Bộ chứa CSDL" vertex="1">
+          <mxGeometry height="30" width="340" x="215" y="1015" as="geometry" />
+        </mxCell>
+        <mxCell id="53" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#42A5F5;strokeColor=#1565C0;strokeWidth=1.5;fontSize=13;fontColor=#FFFFFF;fontStyle=1;verticalAlign=top;spacingTop=12;" value="&lt;b&gt;PostgreSQL 15&lt;/b&gt;" vertex="1">
+          <mxGeometry height="110" width="160" x="240" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="54" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#80DEEA;strokeColor=#00838F;strokeWidth=1;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;TimescaleDB&lt;/b&gt;&lt;hr&gt;measurements&lt;br&gt;(Hypertable)&lt;br&gt;Continuous Aggregates&lt;br&gt;Retention Policy" vertex="1">
+          <mxGeometry height="110" width="180" x="460" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="55" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#2E7D32;strokeWidth=1;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;PostGIS&lt;/b&gt;&lt;hr&gt;GEOMETRY(Point, 4326)&lt;br&gt;Tọa độ trạm quan trắc&lt;br&gt;Truy vấn trạm gần nhất" vertex="1">
+          <mxGeometry height="110" width="170" x="690" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="56" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;strokeWidth=1;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Bảng chính&lt;/b&gt;&lt;hr&gt;users (JWT auth)&lt;br&gt;gateways&lt;br&gt;sensor_nodes&lt;br&gt;system_logs&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="160" x="910" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="60" edge="1" parent="1" source="22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#1565C0;strokeWidth=2;endArrow=blockThin;endFill=1;fontSize=13;" target="42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="61" edge="1" parent="1" source="23" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#1565C0;strokeWidth=2;endArrow=blockThin;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=13;" target="42">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1200" y="660" />
+              <mxPoint x="240" y="660" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="62" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#1565C0;" value="&lt;b&gt;HTTP POST&lt;/b&gt;&lt;br&gt;Gói dữ liệu JSON&lt;br&gt;(gateway_id)" vertex="1">
+          <mxGeometry height="60" width="130" x="405" y="605" as="geometry" />
+        </mxCell>
+        <mxCell id="63" edge="1" parent="1" source="42" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#1565C0;strokeWidth=2;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;fontSize=13;" target="45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="65" edge="1" parent="1" source="45" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#1565C0;strokeWidth=1.5;endArrow=blockThin;endFill=1;fontSize=13;" target="49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="66" edge="1" parent="1" source="48" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#1565C0;strokeWidth=1.5;endArrow=blockThin;endFill=1;fontSize=13;" target="49">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="995" y="970" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="67" edge="1" parent="1" source="49" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#1565C0;strokeWidth=1.5;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;fontSize=13;" target="53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="68" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#1565C0;" value="&lt;b&gt;SQL&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="50" x="415" y="995" as="geometry" />
+        </mxCell>
+        <mxCell id="69" edge="1" parent="1" source="50" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#F9A825;strokeWidth=1.5;endArrow=blockThin;endFill=1;dashed=1;dashPattern=5 3;fontSize=13;" target="56">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1230" y="1105" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="70" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;arcSize=3;opacity=40;fontSize=13;" value="" vertex="1">
+          <mxGeometry height="300" width="1480" x="60" y="1280" as="geometry" />
+        </mxCell>
+        <mxCell id="71" parent="1" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#2E7D32;" value="&lt;b&gt;TẦNG HIỂN THỊ&lt;/b&gt;&lt;br&gt;(Presentation Layer)" vertex="1">
+          <mxGeometry height="40" width="140" x="80" y="1290" as="geometry" />
+        </mxCell>
+        <mxCell id="72" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=1.5;dashed=1;opacity=60;fontSize=13;" value="" vertex="1">
+          <mxGeometry height="210" width="860" x="160" y="1340" as="geometry" />
+        </mxCell>
+        <mxCell id="73" parent="1" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#2E7D32;" value="&lt;b&gt;React 19 + Vite 6&lt;/b&gt; (Ứng dụng Web Dashboard)" vertex="1">
+          <mxGeometry height="30" width="290" x="175" y="1348" as="geometry" />
+        </mxCell>
+        <mxCell id="74" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#2E7D32;strokeWidth=1;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Bản đồ AQI&lt;/b&gt;&lt;hr&gt;Leaflet&lt;br&gt;react-leaflet&lt;br&gt;Đánh dấu trạm&lt;br&gt;Mã màu theo AQI" vertex="1">
+          <mxGeometry height="100" width="140" x="180" y="1385" as="geometry" />
+        </mxCell>
+        <mxCell id="75" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#2E7D32;strokeWidth=1;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Biểu đồ&lt;/b&gt;&lt;hr&gt;ECharts&lt;br&gt;Dữ liệu lịch sử&lt;br&gt;Biểu đồ cột / đường&lt;br&gt;Tổng hợp 24h" vertex="1">
+          <mxGeometry height="100" width="140" x="340" y="1385" as="geometry" />
+        </mxCell>
+        <mxCell id="76" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#2E7D32;strokeWidth=1;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;AQI Dashboard&lt;/b&gt;&lt;hr&gt;Đồng hồ AQI&lt;br&gt;Thẻ thời gian thực&lt;br&gt;PM2.5, CO2, Nhiệt độ&lt;br&gt;Bảng xếp hạng" vertex="1">
+          <mxGeometry height="100" width="140" x="500" y="1385" as="geometry" />
+        </mxCell>
+        <mxCell id="77" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#2E7D32;strokeWidth=1;fontSize=13;verticalAlign=top;align=center;spacingTop=2;" value="&lt;b&gt;Trang quản trị&lt;/b&gt;&lt;hr&gt;CRUD thiết bị&lt;br&gt;Quản lý cấu hình&lt;br&gt;Log hệ thống&lt;br&gt;Xuất CSV" vertex="1">
+          <mxGeometry height="100" width="140" x="660" y="1385" as="geometry" />
+        </mxCell>
+        <mxCell id="78" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66BB6A;strokeColor=#2E7D32;strokeWidth=1;fontSize=13;fontColor=#FFFFFF;fontStyle=1;verticalAlign=middle;align=center;" value="Zustand (State)  |  React Router v7 (13 routes, lazy-loaded)  |  Socket.IO Client  |  react-i18next (VI/EN)  |  CSS Modules" vertex="1">
+          <mxGeometry height="35" width="820" x="180" y="1500" as="geometry" />
+        </mxCell>
+        <mxCell id="79" parent="1" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#2E7D32;strokeWidth=1.5;fontSize=13;fontStyle=1;" value="&lt;b&gt;Người dùng&lt;/b&gt;&lt;br&gt;(Web Browser)" vertex="1">
+          <mxGeometry height="60" width="100" x="1120" y="1375" as="geometry" />
+        </mxCell>
+        <mxCell id="80" parent="1" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFCC80;strokeColor=#E65100;strokeWidth=1.5;fontSize=13;fontStyle=1;" value="&lt;b&gt;Quản trị viên&lt;/b&gt;&lt;br&gt;(Xác thực JWT)" vertex="1">
+          <mxGeometry height="60" width="100" x="1280" y="1375" as="geometry" />
+        </mxCell>
+        <mxCell id="81" edge="1" parent="1" source="79" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2E7D32;strokeWidth=1.5;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;fontSize=13;" target="72">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="82" edge="1" parent="1" source="80" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;fontSize=13;" target="72">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1330" y="1490" />
+              <mxPoint x="1020" y="1490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="83" edge="1" parent="1" source="46" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2E7D32;strokeWidth=2;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;fontSize=13;" target="72">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="685" y="1250" />
+              <mxPoint x="590" y="1250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="84" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#2E7D32;" value="&lt;b&gt;Socket.IO&lt;/b&gt;&lt;br&gt;WebSocket (đẩy dữ liệu thời gian thực)" vertex="1">
+          <mxGeometry height="40" width="250" x="400" y="1230" as="geometry" />
+        </mxCell>
+        <mxCell id="85" edge="1" parent="1" source="42" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#1565C0;strokeWidth=1.5;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;fontSize=13;" target="72">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="240" y="1260" />
+              <mxPoint x="375" y="1260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="86" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#1565C0;" value="&lt;b&gt;REST API + File tĩnh&lt;/b&gt;&lt;br&gt;HTTPS (Axios client)" vertex="1">
+          <mxGeometry height="40" width="150" x="160" y="1230" as="geometry" />
+        </mxCell>
+        <mxCell id="90" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#424242;strokeWidth=1.5;fontSize=13;" value="" vertex="1">
+          <mxGeometry height="280" width="280" x="1260" y="1600" as="geometry" />
+        </mxCell>
+        <mxCell id="91" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;fontStyle=1;fontColor=#212121;" value="&lt;b&gt;CHÚ THÍCH&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="100" x="1345" y="1608" as="geometry" />
+        </mxCell>
+        <mxCell id="92" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=1;fontSize=13;" value="" vertex="1">
+          <mxGeometry height="20" width="30" x="1280" y="1645" as="geometry" />
+        </mxCell>
+        <mxCell id="93" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;" value="Tầng cảm biến (Sensor Layer)" vertex="1">
+          <mxGeometry height="30" width="200" x="1320" y="1640" as="geometry" />
+        </mxCell>
+        <mxCell id="94" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#283593;strokeWidth=1;fontSize=13;" value="" vertex="1">
+          <mxGeometry height="20" width="30" x="1280" y="1675" as="geometry" />
+        </mxCell>
+        <mxCell id="95" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;" value="Tầng trung chuyển (Gateway Layer)" vertex="1">
+          <mxGeometry height="30" width="230" x="1320" y="1670" as="geometry" />
+        </mxCell>
+        <mxCell id="96" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=1;fontSize=13;" value="" vertex="1">
+          <mxGeometry height="20" width="30" x="1280" y="1705" as="geometry" />
+        </mxCell>
+        <mxCell id="97" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;" value="Tầng máy chủ (Server Layer)" vertex="1">
+          <mxGeometry height="30" width="190" x="1320" y="1700" as="geometry" />
+        </mxCell>
+        <mxCell id="98" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=1;fontSize=13;" value="" vertex="1">
+          <mxGeometry height="20" width="30" x="1280" y="1735" as="geometry" />
+        </mxCell>
+        <mxCell id="99" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;" value="Tầng hiển thị (Presentation Layer)" vertex="1">
+          <mxGeometry height="30" width="220" x="1320" y="1730" as="geometry" />
+        </mxCell>
+        <mxCell id="100" parent="1" style="line;html=1;strokeWidth=1;strokeColor=#BDBDBD;fontSize=13;" value="" vertex="1">
+          <mxGeometry height="1" width="240" x="1280" y="1770" as="geometry" />
+        </mxCell>
+        <mxCell id="101" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;fontStyle=1;" value="&lt;b&gt;Giao thức&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="80" x="1280" y="1773" as="geometry" />
+        </mxCell>
+        <mxCell id="102" edge="1" parent="1" style="endArrow=blockThin;html=1;rounded=0;strokeColor=#E65100;strokeWidth=2;endFill=1;fontSize=13;" value="">
+          <mxGeometry relative="1" width="50" as="geometry">
+            <mxPoint x="1280" y="1809" as="sourcePoint" />
+            <mxPoint x="1310" y="1809" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="103" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;" value="LoRa 433MHz (UART)" vertex="1">
+          <mxGeometry height="30" width="150" x="1320" y="1794" as="geometry" />
+        </mxCell>
+        <mxCell id="104" edge="1" parent="1" style="endArrow=blockThin;html=1;rounded=0;strokeColor=#1565C0;strokeWidth=2;endFill=1;fontSize=13;" value="">
+          <mxGeometry relative="1" width="50" as="geometry">
+            <mxPoint x="1280" y="1829" as="sourcePoint" />
+            <mxPoint x="1310" y="1829" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="105" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;" value="HTTP / REST API" vertex="1">
+          <mxGeometry height="30" width="130" x="1320" y="1814" as="geometry" />
+        </mxCell>
+        <mxCell id="106" edge="1" parent="1" style="endArrow=blockThin;html=1;rounded=0;strokeColor=#2E7D32;strokeWidth=2;endFill=1;fontSize=13;" value="">
+          <mxGeometry relative="1" width="50" as="geometry">
+            <mxPoint x="1280" y="1849" as="sourcePoint" />
+            <mxPoint x="1310" y="1849" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="107" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;" value="Socket.IO (WebSocket)" vertex="1">
+          <mxGeometry height="30" width="160" x="1320" y="1834" as="geometry" />
+        </mxCell>
+        <mxCell id="108" edge="1" parent="1" style="endArrow=blockThin;html=1;rounded=0;strokeColor=#F9A825;strokeWidth=1.5;endFill=1;dashed=1;dashPattern=5 3;fontSize=13;" value="">
+          <mxGeometry relative="1" width="50" as="geometry">
+            <mxPoint x="1280" y="1869" as="sourcePoint" />
+            <mxPoint x="1310" y="1869" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="109" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=13;" value="Tác vụ nền (cron)" vertex="1">
+          <mxGeometry height="30" width="130" x="1320" y="1854" as="geometry" />
+        </mxCell>
+        <mxCell id="110" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;strokeWidth=1.5;dashed=1;opacity=70;fontSize=13;" value="" vertex="1">
+          <mxGeometry height="200" width="260" x="1271" y="53" as="geometry" />
+        </mxCell>
+        <mxCell id="111" parent="1" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;fontSize=13;fontColor=#F57F17;" value="&lt;b&gt;Công cụ phát triển&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="140" x="1287" y="63" as="geometry" />
+        </mxCell>
+        <mxCell id="112" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFECB3;strokeColor=#F9A825;strokeWidth=1;fontSize=13;verticalAlign=middle;align=center;" value="&lt;b&gt;PlatformIO&lt;/b&gt;&lt;br&gt;Biên dịch + Nạp firmware ESP32" vertex="1">
+          <mxGeometry height="40" width="220" x="1292" y="93" as="geometry" />
+        </mxCell>
+        <mxCell id="113" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFECB3;strokeColor=#F9A825;strokeWidth=1;fontSize=13;verticalAlign=middle;align=center;" value="&lt;b&gt;Docker Compose&lt;/b&gt;&lt;br&gt;Bộ chứa TimescaleDB + PostgreSQL" vertex="1">
+          <mxGeometry height="40" width="220" x="1292" y="143" as="geometry" />
+        </mxCell>
+        <mxCell id="114" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFECB3;strokeColor=#F9A825;strokeWidth=1;fontSize=13;verticalAlign=middle;align=center;" value="&lt;b&gt;Git + GitHub&lt;/b&gt;&lt;br&gt;Quản lý mã nguồn" vertex="1">
+          <mxGeometry height="40" width="220" x="1292" y="193" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
