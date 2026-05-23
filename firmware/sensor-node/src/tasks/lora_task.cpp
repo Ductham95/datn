@@ -6,6 +6,7 @@
 #include "rtos/shared.h"
 #include "core/nvs_config.h"
 #include "drivers/lora_radio.h"
+#include "drivers/oled_display.h"
 
 // =============================================================================
 //  LORA TASK IMPLEMENTATION
@@ -47,6 +48,7 @@ void loraTask(void* parameter) {
         if (received) {
             // ═══ Nhận được data → gửi LoRa ═══
             bool sent = false;
+            oled_showStatus("Sending...");
 
             for (int attempt = 1; attempt <= LORA_SEND_RETRIES; attempt++) {
                 if (lora_sendPacket(&rxPayload)) {
@@ -65,6 +67,9 @@ void loraTask(void* parameter) {
                 LOG_INFO("LoRa TX", "Gửi lỗi, thử lại %d/%d", attempt, LORA_SEND_RETRIES);
                 vTaskDelay(pdMS_TO_TICKS(500));
             }
+
+            oled_setLoRaStatus(sent);
+            oled_showStatus(sent ? "TX OK" : "TX FAIL");
 
             if (!sent) {
                 LOG_INFO("LoRa TX", "Gửi THẤT BẠI sau %d lần thử! Bỏ gói tin.", LORA_SEND_RETRIES);

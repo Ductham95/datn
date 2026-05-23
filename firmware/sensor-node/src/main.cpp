@@ -20,6 +20,7 @@
 #include "drivers/ccs811.h"
 #include "drivers/dht22.h"
 #include "drivers/battery_adc.h"
+#include "drivers/oled_display.h"
 
 // FreeRTOS Tasks
 #include "tasks/sensor_task.h"
@@ -95,6 +96,14 @@ bool initAllHardware()
 {
     bool allOk = true;
 
+    // OLED Display (Wire1, I2C riêng)
+    Serial.print("[OLED] Đang khởi tạo... ");
+    if (oled_init()) {
+        Serial.println("OK!");
+    } else {
+        Serial.println("THẤT BẠI! (tiếp tục không OLED)");
+    }
+
     // LoRa AS32-TTL-100 (UART)
     Serial.print("[LoRa] Đang khởi tạo... ");
     if (lora_init())
@@ -156,6 +165,10 @@ void setup()
     if (!nvs_isProvisioned())
     {
         // ═══ CHẾ ĐỘ PROVISIONING ═══
+        // Hiển thị màn hình setup trên OLED
+        oled_init();
+        oled_showProvisioning();
+
         // WiFi AP tạm → user cấu hình → đăng ký server → lưu NVS → tắt WiFi → reboot
         startCaptivePortal();
         return; // Không bao giờ đến đây
@@ -173,6 +186,9 @@ void setup()
 
     // ── 3. Init tất cả phần cứng ──
     bool hwOk = initAllHardware();
+
+    // Hiển thị Boot Screen trên OLED
+    oled_showBoot();
 
     if (hwOk)
     {
@@ -255,7 +271,7 @@ void setup()
 
 void loop()
 {
-    // Tất cả logic nằm trong FreeRTOS tasks
-    // Xóa loop task để giải phóng stack (~8KB)
-    vTaskDelete(NULL);
+    // Cập nhật OLED display (tự throttle theo OLED_UPDATE_MS)
+    oled_update();
+    delay(100);
 }

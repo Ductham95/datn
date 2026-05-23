@@ -39,6 +39,11 @@
 #define BATTERY_V_MIN 3.0f     // Điện áp pin 18650 hết
 #define BATTERY_V_DIVIDER 2.0f // Hệ số voltage divider (R1=R2=100K)
 
+// ===== OLED Display (SSD1306 128×64, I2C trên Wire1) =====
+#define OLED_SDA_PIN     5    // I2C SDA (Wire1, tách biệt CCS811)
+#define OLED_SCL_PIN     18   // I2C SCL (Wire1, tách biệt CCS811)
+#define OLED_UPDATE_MS   1000 // Cập nhật OLED mỗi 1 giây
+
 // ===== Timing =====
 #define SEND_INTERVAL_MS 15000          // 15 giây (test mode, production: 300000)
 #define PMS_WARMUP_MS 5000            // PMS7003 warm-up 30 giây

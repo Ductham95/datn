@@ -8,6 +8,7 @@
 #include "drivers/pms7003.h"
 #include "drivers/ccs811.h"
 #include "drivers/dht22.h"
+#include "drivers/oled_display.h"
 
 // =============================================================================
 //  SENSOR TASK IMPLEMENTATION
@@ -95,6 +96,9 @@ void sensorTask(void* parameter) {
         payload.pktType = PKT_TYPE_DATA;
         payload.msgId   = msgCounter++;
         payload.battery = batteryLevel;  // Lấy từ BatteryTask
+
+        // Cập nhật OLED display với dữ liệu mới
+        oled_setSensorData(&payload);
 
         // Gửi vào Queue (timeout 1 giây)
         if (xQueueSend(dataQueue, &payload, pdMS_TO_TICKS(1000)) == pdTRUE) {
