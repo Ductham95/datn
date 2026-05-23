@@ -53,13 +53,13 @@ void sensorTask(void* parameter) {
         payload.temperature = temp;
         payload.humidity    = hum;
 
-        // TODO: CCS811 — chưa kết nối
-        // if (temp != SENSOR_ERROR_I16 && hum != SENSOR_ERROR_U16) {
-        //     ccs811_setEnvData(temp, hum);
-        // }
+        // CCS811: bù trừ nhiệt độ/độ ẩm (nếu DHT22 có dữ liệu)
+        if (temp != SENSOR_ERROR_I16 && hum != SENSOR_ERROR_U16) {
+            ccs811_setEnvData(temp, hum);
+        }
         uint16_t co2  = 0;
         uint16_t tvoc = 0;
-        // ccs811_read(&co2, &tvoc);
+        ccs811_read(&co2, &tvoc);
         payload.co2  = co2;
         payload.tvoc = tvoc;
 

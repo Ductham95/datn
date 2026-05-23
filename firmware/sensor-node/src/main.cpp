@@ -119,14 +119,14 @@ bool initAllHardware()
         allOk = false;
     }
 
-    // TODO: CCS811 (I2C) — chưa kết nối
-    // Serial.print("[CCS811] Đang khởi tạo... ");
-    // if (ccs811_init()) {
-    //     Serial.println("OK!");
-    // } else {
-    //     Serial.println("THẤT BẠI!");
-    //     allOk = false;
-    // }
+    // CCS811 (I2C)
+    Serial.print("[CCS811] Đang khởi tạo... ");
+    if (ccs811_init()) {
+        Serial.println("OK!");
+    } else {
+        Serial.println("THẤT BẠI!");
+        allOk = false;
+    }
 
     // TODO: DHT22 (GPIO) — chưa kết nối
     // Serial.print("[DHT22] Đang khởi tạo... ");
