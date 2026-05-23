@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useDashboard } from '@/hooks/useDashboard';
+import { useGeolocation } from '@/hooks/useGeolocation';
 import { useTelemetryStore } from '@/stores/useTelemetryStore';
 import AQIMap from '@/components/map/AQIMap/AQIMap';
 import { PageLoader } from '@/components/ui/Spinner/Spinner';
@@ -9,6 +10,7 @@ import styles from './MapView.module.css';
 export default function MapView() {
   const { t } = useTranslation();
   const { stations, loading } = useDashboard();
+  const { position } = useGeolocation();
   const latestData = useTelemetryStore((s) => s.latestData);
 
   const mergedStations = stations.map((s) => {
@@ -35,7 +37,7 @@ export default function MapView() {
         <h1 className={styles.title}>{t('map.title')}</h1>
       </div>
       <div className={styles.mapContainer}>
-        <AQIMap stations={mergedStations} />
+        <AQIMap stations={mergedStations} userPosition={position} />
       </div>
       {/* Legend */}
       <div className={styles.legend}>
