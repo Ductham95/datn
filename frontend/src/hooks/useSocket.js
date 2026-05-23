@@ -34,8 +34,8 @@ export function useSocket() {
 
     // Subscribe to new telemetry data
     socket.on(SOCKET_EVENTS.NEW_TELEMETRY, (data) => {
-      if (data?.readings) {
-        updateBatch(data.readings);
+      if (data?.data) {
+        updateBatch(data.data);
       }
     });
 
