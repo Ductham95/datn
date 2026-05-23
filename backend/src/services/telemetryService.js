@@ -16,7 +16,7 @@ const processTelemetry = async (gateway_id, data) => {
 
       // Cập nhật thông tin pin và sóng của Node
       await tx.sensorNode.updateMany({
-        where: { id: item.node_id, gateway_id },
+        where: { id: item.node_id },
         data: {
           battery_level: item.battery || 100,
           lora_rssi: item.rssi ? parseInt(item.rssi) : -50,

@@ -63,13 +63,6 @@ const deleteGateway = async (req, res) => {
     if (error.code === 'NOT_FOUND') {
       return res.status(404).json({ success: false, error: error.message });
     }
-    if (error.code === 'HAS_DEPENDENCIES') {
-      return res.status(409).json({
-        success: false,
-        error: error.message,
-        details: error.details,
-      });
-    }
     console.error('[Admin] Lỗi xóa Gateway:', error);
     res.status(500).json({ success: false, error: 'Lỗi hệ thống khi xóa gateway' });
   }

@@ -72,8 +72,11 @@ const validateProvisionNode = (req, res, next) => {
     errors.push('Tên node (name) tối đa 100 ký tự');
   }
 
-  if (!gateway_id || typeof gateway_id !== 'string' || gateway_id.trim().length === 0) {
-    errors.push('Gateway ID (gateway_id) là bắt buộc');
+  // Validate gateway_id nếu có (optional)
+  if (gateway_id !== undefined && gateway_id !== null) {
+    if (typeof gateway_id !== 'string' || gateway_id.trim().length === 0) {
+      errors.push('Gateway ID (gateway_id) phải là chuỗi không rỗng');
+    }
   }
 
   // Validate tọa độ nếu có

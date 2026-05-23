@@ -65,7 +65,7 @@ const validateGatewayBody = (req, res, next) => {
 
 /**
  * Validate body khi tạo/sửa Sensor Node
- * POST: name, gateway_id bắt buộc
+ * POST: name bắt buộc, gateway_id optional
  * PUT: ít nhất 1 field cần cập nhật
  */
 const validateNodeBody = (req, res, next) => {
@@ -73,13 +73,10 @@ const validateNodeBody = (req, res, next) => {
   const isCreate = req.method === 'POST';
   const errors = [];
 
-  // POST: name, gateway_id bắt buộc
+  // POST: name bắt buộc, gateway_id optional
   if (isCreate) {
     if (!name || typeof name !== 'string' || name.trim().length === 0) {
       errors.push('Tên node (name) là bắt buộc');
-    }
-    if (!gateway_id || typeof gateway_id !== 'string' || gateway_id.trim().length === 0) {
-      errors.push('Gateway ID (gateway_id) là bắt buộc');
     }
   }
 

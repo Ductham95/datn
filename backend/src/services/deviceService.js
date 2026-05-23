@@ -92,17 +92,11 @@ const deleteGateway = async (id) => {
     throw error;
   }
 
-  // Chặn xóa nếu còn sensor nodes liên quan
-  const nodeCount = await prisma.sensorNode.count({ where: { gateway_id: id } });
-  if (nodeCount > 0) {
-    const error = new Error(
-      `Không thể xóa Gateway "${existing.name}" vì còn ${nodeCount} sensor node đang liên kết. ` +
-      `Vui lòng xóa hoặc chuyển tất cả sensor nodes trước khi xóa gateway.`
-    );
-    error.code = 'HAS_DEPENDENCIES';
-    error.details = { nodeCount };
-    throw error;
-  }
+  // Gỡ liên kết sensor nodes trước khi xóa gateway
+  await prisma.sensorNode.updateMany({
+    where: { gateway_id: id },
+    data: { gateway_id: null },
+  });
 
   await prisma.gateway.delete({ where: { id } });
   return { id, name: existing.name };
@@ -111,12 +105,14 @@ const deleteGateway = async (id) => {
 // ==================== SENSOR NODE CRUD ====================
 
 const createNode = async ({ name, gateway_id, lat, lng, status, battery_level }) => {
-  // Kiểm tra gateway tồn tại
-  const gateway = await prisma.gateway.findUnique({ where: { id: gateway_id } });
-  if (!gateway) {
-    const error = new Error(`Gateway "${gateway_id}" không tồn tại`);
-    error.code = 'INVALID_REFERENCE';
-    throw error;
+  // Kiểm tra gateway tồn tại (chỉ khi có gateway_id)
+  if (gateway_id) {
+    const gateway = await prisma.gateway.findUnique({ where: { id: gateway_id } });
+    if (!gateway) {
+      const error = new Error(`Gateway "${gateway_id}" không tồn tại`);
+      error.code = 'INVALID_REFERENCE';
+      throw error;
+    }
   }
 
   const id = await generateId(prisma.sensorNode, 'NODE');
@@ -126,7 +122,7 @@ const createNode = async ({ name, gateway_id, lat, lng, status, battery_level })
     data: {
       id,
       name: name.trim(),
-      gateway_id,
+      gateway_id: gateway_id || null,
       status: status || 'offline',
       battery_level: battery_level ?? 100,
     },
