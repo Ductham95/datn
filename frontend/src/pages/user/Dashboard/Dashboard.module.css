@@ -64,26 +64,31 @@
   margin-bottom: var(--space-6);
 }
 
-/* ─── Map + Chart Row ─── */
+/* ─── Map + Station List Row ─── */
 .gridRow {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
   gap: var(--space-4);
   margin-bottom: var(--space-6);
 }
 
 .mapCard {
-  min-height: 400px;
+  min-height: 420px;
+}
+
+/* ─── History Chart Row ─── */
+.chartRow {
+  margin-bottom: var(--space-6);
 }
 
 .chartCard {
-  min-height: 400px;
+  min-height: 350px;
 }
 
 /* ─── Bottom Grid ─── */
 .bottomGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
 }
 
@@ -108,9 +113,6 @@
 @media (max-width: 1200px) {
   .metricsGrid {
     grid-template-columns: repeat(3, 1fr);
-  }
-  .bottomGrid {
-    grid-template-columns: 1fr 1fr;
   }
 }
 

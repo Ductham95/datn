@@ -61,6 +61,15 @@ export default function Dashboard() {
   const primaryStation = mergedStations.find((s) => s.id === selectedStationId) || mergedStations[0];
   const latest = primaryStation?.latest;
 
+  // Focus position for map fly-to
+  const focusPosition = useMemo(() => {
+    if (!selectedStationId || !primaryStation) return null;
+    const lat = Number(primaryStation.lat);
+    const lng = Number(primaryStation.lng);
+    if (!lat || !lng) return null;
+    return { lat, lng };
+  }, [selectedStationId, primaryStation]);
+
   if (loading) {
     return (
       <div className={styles.page}>
@@ -156,11 +165,21 @@ export default function Dashboard() {
         />
       </div>
 
-      {/* Map + Chart Row */}
+      {/* Map + Station List Row */}
       <div className={styles.gridRow}>
         <Card title={t('dashboard.mapTitle')} icon={null} className={styles.mapCard} padding="none">
-          <AQIMap stations={mergedStations} userPosition={position} />
+          <AQIMap stations={mergedStations} userPosition={position} focusPosition={focusPosition} />
         </Card>
+        <NearestStation
+          stations={mergedStations}
+          position={position}
+          selectedId={primaryStation?.id}
+          onSelect={handleSelectStation}
+        />
+      </div>
+
+      {/* History Chart */}
+      <div className={styles.chartRow}>
         <Card title={t('dashboard.historyTitle')} className={styles.chartCard} padding="sm">
           {primaryStation && (
             <HistoryChart stationId={primaryStation.id} />
@@ -171,7 +190,7 @@ export default function Dashboard() {
         </Card>
       </div>
 
-      {/* Bottom Row: Health + Weather + Nearest */}
+      {/* Bottom Row: Health + Weather */}
       <div className={styles.bottomGrid}>
         <HealthAdvice
           aqi={latest?.aqi}
@@ -182,12 +201,6 @@ export default function Dashboard() {
           weather={weather}
           sensorTemp={latest?.temperature}
           sensorHumidity={latest?.humidity}
-        />
-        <NearestStation
-          stations={mergedStations}
-          position={position}
-          selectedId={primaryStation?.id}
-          onSelect={handleSelectStation}
         />
       </div>
     </div>

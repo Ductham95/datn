@@ -23,6 +23,19 @@ function FlyToLocation({ position }) {
   return null;
 }
 
+// Fly to a station when selected (re-fires on every change)
+function FlyToStation({ position }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (position?.lat && position?.lng) {
+      map.flyTo([position.lat, position.lng], 15, { duration: 1 });
+    }
+  }, [position?.lat, position?.lng, map]);
+
+  return null;
+}
+
 // User location marker — blue pulsing dot
 const userLocationIcon = L.divIcon({
   html: `
@@ -59,7 +72,7 @@ function createMarkerIcon(aqi) {
   });
 }
 
-export default function AQIMap({ stations = [], center, zoom, userPosition }) {
+export default function AQIMap({ stations = [], center, zoom, userPosition, focusPosition }) {
   const mapCenter = center || MAP_CONFIG.CENTER;
   const mapZoom = zoom || MAP_CONFIG.ZOOM;
 
@@ -80,6 +93,7 @@ export default function AQIMap({ stations = [], center, zoom, userPosition }) {
           attribution={MAP_CONFIG.TILE_ATTRIBUTION}
         />
         <FlyToLocation position={userPosition} />
+        <FlyToStation position={focusPosition} />
         {userPosition && (
           <Marker position={[userPosition.lat, userPosition.lng]} icon={userLocationIcon}>
             <Popup>Vị trí của bạn</Popup>
