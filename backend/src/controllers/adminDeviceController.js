@@ -111,18 +111,13 @@ const deleteNode = async (req, res) => {
 
   try {
     const data = await deviceService.deleteNode(id);
-    console.log(`[Admin] Đã xóa Sensor Node: ${id} - ${data.name}`);
-    res.json({ success: true, message: `Đã xóa sensor node "${data.name}" thành công`, data });
+    console.log(`[Admin] Đã xóa Sensor Node: ${id} - ${data.name} (${data.deletedMeasurements} measurements, ${data.deletedAlerts} alerts)`);
+    const msg = `Đã xóa sensor node "${data.name}" thành công` +
+      (data.deletedMeasurements > 0 ? ` (kèm ${data.deletedMeasurements} bản ghi đo lường)` : '');
+    res.json({ success: true, message: msg, data });
   } catch (error) {
     if (error.code === 'NOT_FOUND') {
       return res.status(404).json({ success: false, error: error.message });
-    }
-    if (error.code === 'HAS_DEPENDENCIES') {
-      return res.status(409).json({
-        success: false,
-        error: error.message,
-        details: error.details,
-      });
     }
     console.error('[Admin] Lỗi xóa Sensor Node:', error);
     res.status(500).json({ success: false, error: 'Lỗi hệ thống khi xóa sensor node' });

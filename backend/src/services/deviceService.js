@@ -190,20 +190,20 @@ const deleteNode = async (id) => {
     throw error;
   }
 
-  // Chặn xóa nếu còn measurements liên quan
+  // Đếm bản ghi liên quan để log
   const measurementCount = await prisma.measurement.count({ where: { node_id: id } });
+  const alertCount = await prisma.alert.count({ where: { node_id: id } });
+
+  // Xóa dữ liệu liên quan trước (cascade)
   if (measurementCount > 0) {
-    const error = new Error(
-      `Không thể xóa Sensor Node "${existing.name}" vì còn ${measurementCount} bản ghi đo lường liên quan. ` +
-      `Vui lòng xóa dữ liệu đo lường trước hoặc liên hệ quản trị viên hệ thống.`
-    );
-    error.code = 'HAS_DEPENDENCIES';
-    error.details = { measurementCount };
-    throw error;
+    await prisma.measurement.deleteMany({ where: { node_id: id } });
+  }
+  if (alertCount > 0) {
+    await prisma.alert.deleteMany({ where: { node_id: id } });
   }
 
   await prisma.sensorNode.delete({ where: { id } });
-  return { id, name: existing.name };
+  return { id, name: existing.name, deletedMeasurements: measurementCount, deletedAlerts: alertCount };
 };
 
 module.exports = {

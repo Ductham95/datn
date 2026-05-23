@@ -86,8 +86,8 @@ export default function SensorNodes() {
   const handleDelete = async () => {
     if (!deleteItem) return;
     try {
-      await deviceService.deleteNode(deleteItem.id);
-      toast.success('Xóa sensor node thành công');
+      const res = await deviceService.deleteNode(deleteItem.id);
+      toast.success(res.message || 'Xóa sensor node thành công');
       setDeleteItem(null);
       fetchData();
     } catch (err) {
@@ -217,7 +217,11 @@ export default function SensorNodes() {
       <Modal isOpen={!!deleteItem} onClose={() => setDeleteItem(null)} title="Xác nhận xóa">
         <p className={styles.deleteMsg}>
           Bạn có chắc muốn xóa node <strong>{deleteItem?.name}</strong>?
-          Tất cả dữ liệu đo lường liên quan sẽ bị xóa.
+          <br />
+          <span style={{ color: 'var(--color-danger)', fontWeight: 500 }}>
+            ⚠ Tất cả dữ liệu đo lường và cảnh báo liên quan sẽ bị xóa vĩnh viễn.
+            Hành động này không thể hoàn tác.
+          </span>
         </p>
         <div className={styles.formActions}>
           <Button variant="ghost" onClick={() => setDeleteItem(null)}>Hủy</Button>
