@@ -2,7 +2,7 @@ import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
   LayoutDashboard, Router, Radio, AlertTriangle,
-  Settings, Users, ClipboardList, Download, LogOut, Globe, Activity
+  Settings, Users, ClipboardList, Download, LogOut, Globe, Activity, FlaskConical
 } from 'lucide-react';
 import { useAuthStore } from '@/stores/useAuthStore';
 import styles from './AdminLayout.module.css';
@@ -17,6 +17,7 @@ const navItems = [
   { path: '/admin/logs',     icon: ClipboardList,   labelKey: 'admin.logs' },
   { path: '/admin/export',   icon: Download,        labelKey: 'admin.export' },
   { path: '/admin/telemetry-logs', icon: Activity,  labelKey: 'admin.telemetryLogs' },
+  { path: '/admin/simulator',      icon: FlaskConical, labelKey: 'admin.simulator' },
 ];
 
 export default function AdminLayout() {

@@ -146,6 +146,7 @@
     "logs": "Audit Logs",
     "export": "Export CSV",
     "telemetryLogs": "Telemetry Logs",
+    "simulator": "Simulator",
     "login": "Login",
     "logout": "Logout",
     "username": "Username",

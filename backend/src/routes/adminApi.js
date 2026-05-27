@@ -21,6 +21,7 @@ const { getUsers, createUser, updateUser, deleteUser, changePassword } = require
 const { getLogs } = require('../controllers/auditLogController');
 const { getAdminDashboardStats } = require('../controllers/adminDashboardController');
 const { getTelemetryLogsHandler } = require('../controllers/telemetryLogController');
+const { runBackfill, getNodes: getSimulatorNodes, startRealtime, stopRealtime, getRealtimeStatus } = require('../controllers/simulatorController');
 
 // ==================== Audit Logger (tự động ghi log mọi thao tác admin) ====================
 router.use(auditLogger);
@@ -67,6 +68,13 @@ router.get('/logs',                  verifyAdmin, getLogs);
 
 // ==================== Thống kê & Trích xuất ====================
 router.get('/export/measurements', verifyAdmin, exportMeasurements);
+
+// ==================== Simulator (Dev tool) ====================
+router.get('/simulator/nodes',          verifyAdmin, getSimulatorNodes);
+router.post('/simulator/backfill',      verifyAdmin, runBackfill);
+router.post('/simulator/realtime/start', verifyAdmin, startRealtime);
+router.post('/simulator/realtime/stop',  verifyAdmin, stopRealtime);
+router.get('/simulator/realtime/status', verifyAdmin, getRealtimeStatus);
 
 module.exports = router;
 

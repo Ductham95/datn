@@ -146,6 +146,7 @@
     "logs": "Nhật ký",
     "export": "Xuất CSV",
     "telemetryLogs": "Telemetry Logs",
+    "simulator": "Giả lập",
     "login": "Đăng nhập",
     "logout": "Đăng xuất",
     "username": "Tên đăng nhập",
