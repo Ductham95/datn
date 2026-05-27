@@ -1,9 +1,9 @@
 This is BibTeX, Version 0.99e
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
-The top-level auxiliary file: DoAn.aux
+The top-level auxiliary file: Bia_lot.aux
 Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: biblatex.bst
-Reallocating 'name_of_file' (item size: 1) to 9 items.
+Reallocating 'name_of_file' (item size: 1) to 12 items.
 Reallocating 'name_of_file' (item size: 1) to 29 items.
 Reallocating 'glb_str_end' (item size: 4) to 20 items.
 Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
@@ -20,59 +20,49 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-Database file #1: DoAn-blx.bib
+Database file #1: Bia_lot-blx.bib
 Database file #2: Danh_sach_tai_lieu_tham_khao.bib
-Warning--I didn't find a database entry for "hovy1993automated"
-Warning--I didn't find a database entry for "peterson2007computer"
-Warning--I didn't find a database entry for "NguyenThucHai"
-Warning--I didn't find a database entry for "poesio2001discourse"
-Warning--I didn't find a database entry for "knott1996data"
-Warning--I didn't find a database entry for "BernersTim"
-Warning--I didn't find a database entry for "LectureA"
-Warning--I didn't find a database entry for "scott2013sdn"
-Warning--I didn't find a database entry for "ashton2009internet"
 Biblatex version: 3.21
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-You've used 5 entries,
+You've used 1 entry,
             6402 wiz_defined-function locations,
-            1234 strings with 9571 characters,
-and the built_in function-call counts, 21701 in all, are:
-= -- 976
-> -- 1433
-< -- 129
-+ -- 1221
-- -- 1050
-* -- 1037
-:= -- 2661
+            1203 strings with 9005 characters,
+and the built_in function-call counts, 1534 in all, are:
+= -- 73
+> -- 70
+< -- 1
++ -- 49
+- -- 28
+* -- 32
+:= -- 370
 add.period$ -- 0
-call.type$ -- 5
-change.case$ -- 28
-chr.to.int$ -- 138
-cite$ -- 8
-duplicate$ -- 1853
-empty$ -- 1824
-format.name$ -- 178
-if$ -- 3854
+call.type$ -- 1
+change.case$ -- 0
+chr.to.int$ -- 42
+cite$ -- 0
+duplicate$ -- 11
+empty$ -- 104
+format.name$ -- 0
+if$ -- 325
 int.to.chr$ -- 0
-int.to.str$ -- 10
+int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 104
-num.names$ -- 158
-pop$ -- 1349
+newline$ -- 20
+num.names$ -- 0
+pop$ -- 47
 preamble$ -- 1
-purify$ -- 40
+purify$ -- 0
 quote$ -- 0
-skip$ -- 751
+skip$ -- 78
 stack$ -- 0
-substring$ -- 1727
-swap$ -- 505
-text.length$ -- 132
+substring$ -- 154
+swap$ -- 1
+text.length$ -- 20
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 158
+type$ -- 22
 warning$ -- 0
-while$ -- 270
+while$ -- 64
 width$ -- 0
-write$ -- 100
-(There were 9 warnings)
+write$ -- 20

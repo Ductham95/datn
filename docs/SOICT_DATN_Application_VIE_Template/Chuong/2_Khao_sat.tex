@@ -1,48 +1,445 @@
 \documentclass[../DoAn.tex]{subfiles}
 \begin{document}
-Chương này có độ dài từ 9 đến 11 trang.
 
-Với phương pháp phân tích thiết kế hướng đối tượng, sinh viên sử dụng biểu đồ use case theo hướng dẫn của template này. Với các phương pháp khác, sinh viên trao đổi với giáo viên hướng dẫn để đổi tên và sắp xếp lại đề mục cho phù hợp. Ví dụ, thay vì sử dụng biểu đồ use case, sinh viên đi theo hướng tiếp cận Agile có thể dùng User Story.
-
-
-\textbf{Lưu ý}: Mỗi chương nên có thêm 1 đoạn mở đầu chương và kết thúc chương, mở đầu giới thiệu những nội dung sẽ trình bày trong chương, kết thúc tổng kết lại các nội dung đã trình bày
+Chương 1 đã giới thiệu bối cảnh thực tiễn của bài toán giám sát chất lượng không khí đô thị, xác định mục tiêu và phạm vi đề tài, đồng thời đưa ra định hướng giải pháp dựa trên mạng cảm biến không dây LoRa. Trên cơ sở đó, Chương 2 tiến hành khảo sát các hệ thống giám sát chất lượng không khí hiện có, phân tích ưu nhược điểm và xác định khoảng trống cần giải quyết. Tiếp theo, chương trình bày phân tích yêu cầu chức năng thông qua biểu đồ use case, đặc tả chi tiết các chức năng chính, và các yêu cầu phi chức năng của hệ thống.
 
 \section{Khảo sát hiện trạng}
 \label{section:2.1}
-Thông thường, khảo sát chi tiết về hiện trạng và yêu cầu của phần mềm sẽ được lấy từ ba nguồn chính, đó là (i) người dùng/khách hàng, (ii) các hệ thống đã có, (iii) và các ứng dụng tương tự.
-Sinh viên cần tiến hành phân tích, so sánh, đánh giá chi tiết ưu nhược điểm của các sản phẩm/nghiên cứu hiện có. Sinh viên có thể lập bảng so sánh nếu cần thiết. Kết hợp với khảo sát người dùng/khách hàng (nếu có), sinh viên nêu và mô tả sơ lược các tính năng phần mềm quan trọng cần phát triển.
+
+Để xác định rõ hạn chế của các giải pháp hiện tại và định hướng phát triển hệ thống, em tiến hành khảo sát bốn hệ thống giám sát chất lượng không khí tiêu biểu, bao gồm cả hệ thống trong nước và quốc tế.
+
+\subsection{PAM Air}
+\label{subsection:2.1.1}
+
+PAM Air là hệ thống giám sát chất lượng không khí do công ty Việt Nam PAM Air JSC phát triển, triển khai mạng lưới hơn 3.000 trạm đo trên toàn quốc \cite{pamair2024}. Hệ thống sử dụng các cảm biến chi phí thấp, kết nối WiFi hoặc 4G, đo chủ yếu bụi mịn PM2.5. Dữ liệu được hiển thị trên ứng dụng di động và trang web với bản đồ theo thời gian thực.
+
+Tuy nhiên, PAM Air có một số hạn chế. Thứ nhất, phần cứng và phần mềm đều là mã nguồn đóng, không cho phép tuỳ biến hoặc mở rộng. Thứ hai, mỗi trạm đo yêu cầu kết nối WiFi hoặc 4G riêng, hạn chế khả năng triển khai tại các khu vực không có hạ tầng mạng. Thứ ba, hệ thống chủ yếu đo PM2.5, không tích hợp đo CO\textsubscript{2} hoặc TVOC.
+
+\subsection{IQAir AirVisual}
+\label{subsection:2.1.2}
+
+IQAir AirVisual là nền tảng quốc tế cung cấp dữ liệu chất lượng không khí từ hơn 100 quốc gia, kết hợp dữ liệu từ các trạm quan trắc chính thức và các thiết bị đo cộng đồng \cite{iqair2024}. Hệ thống có ứng dụng di động và trang web với giao diện trực quan, hỗ trợ dự báo chất lượng không khí dựa trên mô hình AI.
+
+Hạn chế chính của IQAir là chi phí thiết bị đo cá nhân cao (khoảng 269 USD cho AirVisual Pro). Dữ liệu phụ thuộc vào hạ tầng đám mây quốc tế, gây rủi ro về độ trễ và quyền kiểm soát dữ liệu. Ngoài ra, người dùng không thể tự triển khai hệ thống riêng vì phần mềm không phải mã nguồn mở.
+
+\subsection{PurpleAir}
+\label{subsection:2.1.3}
+
+PurpleAir là hệ thống giám sát chất lượng không khí dựa trên mô hình cộng đồng, bán các trạm đo cá nhân sử dụng cảm biến laser (Plantower PMS5003) \cite{purpleair2024}. Dữ liệu từ tất cả các trạm được tổng hợp trên bản đồ trực tuyến công khai. PurpleAir cung cấp API mở cho phép truy xuất dữ liệu.
+
+Tuy nhiên, PurpleAir chỉ đo bụi mịn PM2.5 và PM10, không hỗ trợ đo khí CO\textsubscript{2}, TVOC, nhiệt độ hoặc độ ẩm. Mỗi trạm đo yêu cầu kết nối WiFi trực tiếp. Hệ thống không hỗ trợ giao thức truyền tầm xa như LoRa, do đó không phù hợp để triển khai mạng lưới phân tán trên diện rộng mà không có hạ tầng WiFi.
+
+\subsection{Hệ thống quan trắc quốc gia VN-AQI}
+\label{subsection:2.1.4}
+
+Hệ thống quan trắc chất lượng không khí quốc gia do Bộ Tài nguyên và Môi trường vận hành, sử dụng các trạm đo chuyên dụng tiêu chuẩn FEM (Federal Equivalent Method) \cite{btnmt2023}. Dữ liệu được công bố trên trang \texttt{enviinfo.cem.gov.vn} theo chỉ số VN-AQI. Ưu điểm nổi bật là độ chính xác cao, đáp ứng tiêu chuẩn quốc tế.
+
+Hạn chế lớn nhất là chi phí triển khai cực cao, mỗi trạm có giá từ hàng trăm triệu đến hàng tỷ đồng. Số lượng trạm rất ít (khoảng 35 trạm tự động trên cả nước), không đủ phủ sóng mức vi mô cho từng khu vực đô thị.
+
+\subsection{So sánh và đánh giá tổng hợp}
+\label{subsection:2.1.5}
+
+Bảng \ref{table:so_sanh_he_thong} tổng hợp so sánh bốn hệ thống đã khảo sát theo các tiêu chí quan trọng.
+
+\begin{table}[H]
+\centering
+\caption{So sánh các hệ thống giám sát chất lượng không khí hiện có}
+\label{table:so_sanh_he_thong}
+\small
+\begin{tabular}{|p{2.8cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}|p{2.5cm}|}
+\hline
+\textbf{Tiêu chí} & \textbf{PAM Air} & \textbf{IQAir} & \textbf{PurpleAir} & \textbf{VN-AQI} \\
+\hline
+Cảm biến & PM2.5 & PM2.5, CO\textsubscript{2} & PM2.5, PM10 & Đầy đủ (FEM) \\
+\hline
+Truyền thông & WiFi/4G & WiFi & WiFi & Chuyên dụng \\
+\hline
+Chi phí/trạm & Trung bình & Cao & Trung bình & Rất cao \\
+\hline
+Mã nguồn mở & Không & Không & Một phần & Không \\
+\hline
+Tuỳ biến & Không & Không & Hạn chế & Không \\
+\hline
+LoRa & Không & Không & Không & Không \\
+\hline
+Realtime web & Có & Có & Có & Hạn chế \\
+\hline
+Admin panel & Không rõ & Không & Không & Có (nội bộ) \\
+\hline
+\end{tabular}
+\end{table}
+
+Từ kết quả khảo sát, có thể nhận thấy các hệ thống hiện tại đều có những hạn chế nhất định. Các hệ thống thương mại như PAM Air và IQAir không cho phép tuỳ biến và mở rộng. Các hệ thống cộng đồng như PurpleAir chỉ đo được bụi mịn và yêu cầu WiFi cho mỗi trạm. Hệ thống quan trắc quốc gia có chi phí quá cao cho quy mô triển khai vi mô. Đặc biệt, không hệ thống nào hỗ trợ giao thức LoRa để truyền dữ liệu tầm xa mà không cần hạ tầng mạng WiFi tại mỗi điểm đo.
+
+Hệ thống đề xuất trong đồ án này hướng tới giải quyết các hạn chế trên bằng cách kết hợp: (i) cảm biến chi phí thấp đo đa thông số (PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ, độ ẩm), (ii) truyền thông LoRa không cần WiFi cho mỗi node, (iii) mã nguồn mở hoàn toàn, (iv) dashboard web thời gian thực, và (v) bảng quản trị cho quản trị viên.
 
 \section{Tổng quan chức năng}
 \label{section:2.2}
-Phần \ref{section:2.2} này có nhiệm vụ tóm tắt các chức năng của phần mềm. Trong phần này, sinh viên lưu ý chỉ mô tả chức năng mức cao (tổng quan) mà không đặc tả chi tiết cho từng chức năng. Đặc tả chi tiết được trình bày trong phần \ref{section:2.3}.
+
+Phần này trình bày tổng quan các chức năng của hệ thống thông qua biểu đồ use case. Hệ thống có hai tác nhân chính: \textbf{Người dùng} (User) và \textbf{Quản trị viên} (Admin). Người dùng là đối tượng sử dụng dashboard web để tra cứu thông tin chất lượng không khí. Quản trị viên là người quản lý hệ thống, bao gồm quản lý thiết bị, cấu hình, theo dõi cảnh báo và xuất dữ liệu.
 
 \subsection{Biểu đồ use case tổng quát}
 \label{subsection:2.2.1}
-Sinh viên vẽ biểu đồ use case tổng quan và giải thích các tác nhân tham gia là gì, nêu vai trò của từng tác nhân, và mô tả ngắn gọn các use case chính.
 
-\subsection{Biểu đồ use case phân rã XYZ}
+% TODO: Chèn biểu đồ use case tổng quát
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.85\linewidth]{Hinhve/usecase_tongquat.png}
+% \caption{Biểu đồ use case tổng quát của hệ thống}
+% \label{fig:usecase_tongquat}
+% \end{figure}
+
+Hệ thống bao gồm hai nhóm chức năng chính tương ứng với hai tác nhân.
+
+\textbf{Nhóm chức năng Người dùng} gồm bốn use case mức cao:
+\begin{itemize}
+    \item \textit{Xem dashboard chất lượng không khí}: Hiển thị các thông số AQI, PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ, độ ẩm của trạm đo gần nhất theo thời gian thực.
+    \item \textit{Xem lịch sử dữ liệu}: Tra cứu biểu đồ lịch sử theo trạm, theo thông số và theo khoảng thời gian.
+    \item \textit{Xem bản đồ AQI}: Hiển thị bản đồ toàn khu vực với các trạm đo được đánh dấu bằng mã màu AQI.
+    \item \textit{Xem xếp hạng ô nhiễm}: Sắp xếp các trạm theo mức AQI từ cao đến thấp.
+\end{itemize}
+
+\textbf{Nhóm chức năng Quản trị viên} gồm năm use case mức cao:
+\begin{itemize}
+    \item \textit{Quản lý thiết bị}: Thêm, sửa, xóa và giám sát trạng thái Gateway và Sensor Node.
+    \item \textit{Giám sát cảnh báo}: Xem danh sách cảnh báo, lọc theo mức độ nghiêm trọng, xác nhận đã xử lý.
+    \item \textit{Cấu hình hệ thống}: Thiết lập ngưỡng cảnh báo cho từng thông số và chu kỳ gửi dữ liệu.
+    \item \textit{Quản lý tài khoản}: Thêm, sửa, xóa tài khoản người dùng và phân quyền admin/user.
+    \item \textit{Xuất dữ liệu}: Xuất dữ liệu đo lường ra tệp CSV theo trạm và khoảng thời gian.
+\end{itemize}
+
+\subsection{Biểu đồ use case phân rã nhóm chức năng Người dùng}
 \label{subsection:2.2.2}
-Với mỗi use case mức cao trong biểu đồ use case tổng quan, sinh viên tạo một mục riêng như mục \ref{subsection:2.2.2} và tiến hành phân rã use case đó. Lưu ý tên use case cần phân rã trong biểu đồ use case tổng quan phải khớp với tên đề mục.
 
-Trong mỗi mục như vậy, sinh viên vẽ và giải thích ngắn gọn các use case phân rã.
+% TODO: Chèn biểu đồ use case phân rã nhóm User
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.85\linewidth]{Hinhve/usecase_user.png}
+% \caption{Biểu đồ use case phân rã nhóm chức năng Người dùng}
+% \label{fig:usecase_user}
+% \end{figure}
+
+Nhóm chức năng Người dùng được phân rã chi tiết như sau:
+
+\textbf{Xem dashboard chất lượng không khí} bao gồm:
+\begin{itemize}
+    \item Hệ thống tự động gợi ý trạm đo gần nhất dựa trên vị trí GPS của người dùng (sử dụng Geolocation API và PostGIS).
+    \item Hiển thị sáu thông số môi trường (PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ, độ ẩm) cùng chỉ số AQI tổng hợp.
+    \item Hiển thị cảnh báo sức khoẻ theo hướng dẫn của WHO, kèm khuyến nghị cho nhóm nhạy cảm.
+    \item Dữ liệu cập nhật thời gian thực thông qua Socket.IO.
+\end{itemize}
+
+\textbf{Xem lịch sử dữ liệu} bao gồm:
+\begin{itemize}
+    \item Chọn trạm đo cần xem.
+    \item Chọn thông số cần tra cứu (AQI, PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ, độ ẩm).
+    \item Chọn chế độ xem theo giờ hoặc theo ngày.
+    \item Hiển thị kết quả dưới dạng biểu đồ cột (ECharts).
+\end{itemize}
+
+\textbf{Xem bản đồ AQI} bao gồm:
+\begin{itemize}
+    \item Hiển thị bản đồ toàn khu vực giám sát (Leaflet).
+    \item Các trạm đo được đánh dấu bằng chấm tròn với mã màu AQI theo chuẩn US EPA (xanh — vàng — cam — đỏ — tím — nâu đỏ).
+    \item Nhấn vào trạm để xem thông tin chi tiết.
+\end{itemize}
+
+\subsection{Biểu đồ use case phân rã nhóm chức năng Quản trị}
+\label{subsection:2.2.3}
+
+% TODO: Chèn biểu đồ use case phân rã nhóm Admin
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.85\linewidth]{Hinhve/usecase_admin.png}
+% \caption{Biểu đồ use case phân rã nhóm chức năng Quản trị}
+% \label{fig:usecase_admin}
+% \end{figure}
+
+Nhóm chức năng Quản trị được phân rã chi tiết như sau:
+
+\textbf{Quản lý thiết bị} bao gồm:
+\begin{itemize}
+    \item Thêm mới Gateway: nhập tên, mô tả vị trí. Hệ thống tự sinh ID theo định dạng \texttt{GW\_XXX}.
+    \item Thêm mới Sensor Node: nhập tên, chọn Gateway cha, nhập toạ độ GPS. Hệ thống tự sinh ID theo định dạng \texttt{NODE\_XXX}.
+    \item Cập nhật thông tin thiết bị: sửa tên, vị trí, trạng thái.
+    \item Xóa thiết bị: hệ thống kiểm tra ràng buộc trước khi xóa (không cho xóa Gateway nếu còn Sensor Node liên kết, không cho xóa Sensor Node nếu còn dữ liệu đo lường).
+    \item Giám sát trạng thái: hiển thị online/offline, thời gian gửi dữ liệu cuối (last seen), mức pin.
+\end{itemize}
+
+\textbf{Giám sát cảnh báo} bao gồm:
+\begin{itemize}
+    \item Xem danh sách cảnh báo với hỗ trợ phân trang.
+    \item Lọc theo loại (vượt ngưỡng hoặc mất kết nối), mức độ (cảnh báo hoặc nguy hiểm), trạng thái xác nhận.
+    \item Xác nhận đã xử lý cảnh báo (acknowledge).
+    \item Nhận thông báo cảnh báo thời gian thực khi có sự kiện mới.
+\end{itemize}
+
+\textbf{Cấu hình hệ thống} bao gồm:
+\begin{itemize}
+    \item Thiết lập ngưỡng cảnh báo cho sáu thông số: PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ (tối thiểu/tối đa).
+    \item Mỗi thông số có hai mức: cảnh báo (warn) và nguy hiểm (danger).
+    \item Thiết lập chu kỳ gửi dữ liệu (sampling interval).
+\end{itemize}
+
+\textbf{Quản lý tài khoản} bao gồm:
+\begin{itemize}
+    \item Tạo, sửa, xóa tài khoản người dùng.
+    \item Phân quyền: admin hoặc user.
+    \item Đổi mật khẩu cá nhân.
+    \item Hệ thống bảo vệ không cho xóa tài khoản admin cuối cùng.
+\end{itemize}
 
 \subsection{Quy trình nghiệp vụ}
-\label{subsection:2.2.3}
-Nếu sản phẩm/hệ thống cần xây dựng có quy trình nghiệp vụ quan trọng/đáng chú ý, sinh viên cần mô tả và vẽ biểu đồ hoạt động minh họa quy trình nghiệp vụ đó. Sinh viên lưu ý đây không phải là luồng sự kiện của từng use case, mà là luồng hoạt động kết hợp nhiều use case để thực hiện một nghiệp vụ nào đó.
+\label{subsection:2.2.4}
 
-Ví dụ, một hệ thống quản lý thư viện có quy trình nghiệp vụ mượn trả với mô tả sơ bộ như sau: Sinh viên làm thẻ mượn, sau đó sinh viên đăng ký mượn sách, thủ thư cho mượn, và cuối cùng sinh viên trả lại sách cho thư viện. Một hệ thống có thể có một vài quy trình nghiệp vụ quan trọng như vậy.
+Hệ thống có hai quy trình nghiệp vụ chính.
+
+\textbf{Quy trình 1: Thu thập và hiển thị dữ liệu thời gian thực.} Sensor Node đọc dữ liệu từ các cảm biến (PMS7003, CCS811, DHT22), đóng gói thành gói tin 18 byte và gửi qua LoRa đến Gateway. Gateway nhận gói tin, lưu vào bộ đệm vòng (ring buffer), sau đó gửi lên Backend Server dưới dạng HTTP POST (JSON batch). Backend Server xử lý dữ liệu: lưu vào cơ sở dữ liệu TimescaleDB, tính chỉ số AQI, kiểm tra ngưỡng cảnh báo, và phát sóng (broadcast) dữ liệu mới đến tất cả Frontend thông qua Socket.IO. Frontend cập nhật dashboard theo thời gian thực mà không cần người dùng tải lại trang.
+
+% TODO: Chèn biểu đồ hoạt động quy trình 1
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.85\linewidth]{Hinhve/activity_data_flow.png}
+% \caption{Biểu đồ hoạt động quy trình thu thập và hiển thị dữ liệu}
+% \label{fig:activity_data_flow}
+% \end{figure}
+
+\textbf{Quy trình 2: Phát hiện và xử lý cảnh báo.} Khi Backend Server nhận dữ liệu mới từ Gateway, hệ thống tự động so sánh giá trị đo được với ngưỡng cảnh báo đã cấu hình. Nếu giá trị vượt ngưỡng, hệ thống tạo bản ghi cảnh báo trong cơ sở dữ liệu và phát sóng thông báo đến giao diện quản trị qua Socket.IO. Ngoài ra, một tác vụ định kỳ (cron job) chạy mỗi 5 phút kiểm tra các thiết bị không gửi dữ liệu trong thời gian quy định, tự động tạo cảnh báo mất kết nối. Quản trị viên xem danh sách cảnh báo, lọc theo tiêu chí, và xác nhận đã xử lý.
+
+% TODO: Chèn biểu đồ hoạt động quy trình 2
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.85\linewidth]{Hinhve/activity_alert_flow.png}
+% \caption{Biểu đồ hoạt động quy trình phát hiện và xử lý cảnh báo}
+% \label{fig:activity_alert_flow}
+% \end{figure}
+
 \section{Đặc tả chức năng}
 \label{section:2.3}
-Sinh viên lựa chọn từ 4 đến 7 use case quan trọng nhất của đồ án để đặc tả chi tiết. Mỗi đặc tả bao gồm ít nhất các thông tin sau: (i) Tên use case, (ii) Luồng sự kiện (chính và phát sinh), (iii) Tiền điều kiện, và (iv) Hậu điều kiện. Sinh viên chỉ vẽ bổ sung biểu đồ hoạt động khi đặc tả use case phức tạp.
-\subsection{Đặc tả use case A}
-\hfill
-\subsection{Đặc tả use case B}
-\hfill
+
+Phần này đặc tả chi tiết năm use case quan trọng nhất của hệ thống. Mỗi đặc tả bao gồm tên use case, tác nhân, mô tả, luồng sự kiện chính, luồng phát sinh, tiền điều kiện và hậu điều kiện.
+
+\subsection{Đặc tả use case Xem dashboard chất lượng không khí}
+\label{subsection:2.3.1}
+
+\begin{table}[H]
+\centering
+\caption{Đặc tả use case Xem dashboard chất lượng không khí}
+\label{table:uc_dashboard}
+\small
+\begin{tabular}{|p{3.5cm}|p{9cm}|}
+\hline
+\textbf{Tên use case} & Xem dashboard chất lượng không khí \\
+\hline
+\textbf{Tác nhân} & Người dùng \\
+\hline
+\textbf{Mô tả} & Người dùng truy cập dashboard để xem các thông số chất lượng không khí theo thời gian thực tại trạm đo gần nhất. \\
+\hline
+\textbf{Tiền điều kiện} & Có ít nhất một trạm đo đang hoạt động trong hệ thống. \\
+\hline
+\textbf{Luồng sự kiện chính} &
+\begin{enumerate}[leftmargin=*, nosep]
+    \item Người dùng truy cập trang dashboard.
+    \item Hệ thống yêu cầu quyền truy cập vị trí (Geolocation API).
+    \item Người dùng cho phép truy cập vị trí.
+    \item Hệ thống truy vấn trạm đo gần nhất dựa trên toạ độ GPS (PostGIS).
+    \item Hệ thống hiển thị sáu thông số môi trường (PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ, độ ẩm), chỉ số AQI tổng hợp, cảnh báo sức khoẻ WHO và thông tin thời tiết.
+    \item Hệ thống tự động cập nhật dữ liệu khi có dữ liệu mới từ Socket.IO.
+\end{enumerate} \\
+\hline
+\textbf{Luồng phát sinh} &
+\begin{enumerate}[leftmargin=*, nosep]
+    \item[3a.] Người dùng từ chối truy cập vị trí: hệ thống hiển thị dữ liệu của trạm đo mặc định.
+    \item[4a.] Không có trạm nào đang hoạt động: hệ thống hiển thị thông báo ``Không có dữ liệu''.
+\end{enumerate} \\
+\hline
+\textbf{Hậu điều kiện} & Người dùng xem được dữ liệu chất lượng không khí thời gian thực. \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Đặc tả use case Xem lịch sử dữ liệu}
+\label{subsection:2.3.2}
+
+\begin{table}[H]
+\centering
+\caption{Đặc tả use case Xem lịch sử dữ liệu}
+\label{table:uc_history}
+\small
+\begin{tabular}{|p{3.5cm}|p{9cm}|}
+\hline
+\textbf{Tên use case} & Xem lịch sử dữ liệu \\
+\hline
+\textbf{Tác nhân} & Người dùng \\
+\hline
+\textbf{Mô tả} & Người dùng tra cứu dữ liệu lịch sử của một trạm đo theo thông số và khoảng thời gian mong muốn. \\
+\hline
+\textbf{Tiền điều kiện} & Trạm đo đã có dữ liệu đo lường trong cơ sở dữ liệu. \\
+\hline
+\textbf{Luồng sự kiện chính} &
+\begin{enumerate}[leftmargin=*, nosep]
+    \item Người dùng chọn trạm đo từ danh sách.
+    \item Người dùng chọn thông số cần xem (AQI, PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ hoặc độ ẩm).
+    \item Người dùng chọn chế độ xem: theo giờ hoặc theo ngày.
+    \item Hệ thống truy vấn dữ liệu lịch sử từ TimescaleDB (Continuous Aggregate cho chế độ theo giờ).
+    \item Hệ thống hiển thị biểu đồ cột thể hiện xu hướng thay đổi theo thời gian.
+\end{enumerate} \\
+\hline
+\textbf{Luồng phát sinh} &
+\begin{enumerate}[leftmargin=*, nosep]
+    \item[4a.] Không có dữ liệu trong khoảng thời gian được chọn: hệ thống hiển thị thông báo ``Không có dữ liệu'' và biểu đồ trống.
+\end{enumerate} \\
+\hline
+\textbf{Hậu điều kiện} & Người dùng xem được biểu đồ lịch sử dữ liệu. \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Đặc tả use case Quản lý thiết bị}
+\label{subsection:2.3.3}
+
+\begin{table}[H]
+\centering
+\caption{Đặc tả use case Quản lý thiết bị}
+\label{table:uc_device}
+\small
+\begin{tabular}{|p{3.5cm}|p{9cm}|}
+\hline
+\textbf{Tên use case} & Quản lý thiết bị (Gateway và Sensor Node) \\
+\hline
+\textbf{Tác nhân} & Quản trị viên \\
+\hline
+\textbf{Mô tả} & Quản trị viên thực hiện thêm, sửa, xóa và giám sát trạng thái các thiết bị trong hệ thống. \\
+\hline
+\textbf{Tiền điều kiện} & Quản trị viên đã đăng nhập với quyền admin (JWT hợp lệ). \\
+\hline
+\textbf{Luồng sự kiện chính} &
+\begin{enumerate}[leftmargin=*, nosep]
+    \item Quản trị viên truy cập trang quản lý thiết bị.
+    \item Hệ thống hiển thị bảng danh sách Gateway và Sensor Node với trạng thái, thời gian gửi cuối, mức pin.
+    \item Quản trị viên chọn thao tác: thêm mới, sửa hoặc xóa thiết bị.
+    \item Hệ thống hiển thị biểu mẫu tương ứng (modal).
+    \item Quản trị viên nhập thông tin và xác nhận.
+    \item Hệ thống xác thực dữ liệu đầu vào, lưu vào cơ sở dữ liệu, và cập nhật bảng danh sách.
+\end{enumerate} \\
+\hline
+\textbf{Luồng phát sinh} &
+\begin{enumerate}[leftmargin=*, nosep]
+    \item[6a.] Xóa Gateway khi còn Sensor Node liên kết: hệ thống từ chối và hiển thị thông báo lỗi kèm số lượng node đang liên kết.
+    \item[6b.] Xóa Sensor Node khi còn dữ liệu đo lường: hệ thống từ chối và hiển thị thông báo lỗi.
+    \item[6c.] Dữ liệu đầu vào không hợp lệ: hệ thống hiển thị thông báo lỗi cụ thể.
+\end{enumerate} \\
+\hline
+\textbf{Hậu điều kiện} & Danh sách thiết bị được cập nhật trong cơ sở dữ liệu. Hệ thống ghi lại thao tác vào nhật ký kiểm toán (audit log). \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Đặc tả use case Giám sát và xử lý cảnh báo}
+\label{subsection:2.3.4}
+
+\begin{table}[H]
+\centering
+\caption{Đặc tả use case Giám sát và xử lý cảnh báo}
+\label{table:uc_alert}
+\small
+\begin{tabular}{|p{3.5cm}|p{9cm}|}
+\hline
+\textbf{Tên use case} & Giám sát và xử lý cảnh báo \\
+\hline
+\textbf{Tác nhân} & Quản trị viên \\
+\hline
+\textbf{Mô tả} & Quản trị viên xem, lọc và xác nhận các cảnh báo do hệ thống tự động tạo khi phát hiện bất thường. \\
+\hline
+\textbf{Tiền điều kiện} & Quản trị viên đã đăng nhập. Hệ thống đã cấu hình ngưỡng cảnh báo. \\
+\hline
+\textbf{Luồng sự kiện chính} &
+\begin{enumerate}[leftmargin=*, nosep]
+    \item Quản trị viên truy cập trang cảnh báo.
+    \item Hệ thống hiển thị danh sách cảnh báo (phân trang, mới nhất trước).
+    \item Quản trị viên lọc cảnh báo theo loại (vượt ngưỡng/mất kết nối), mức độ (cảnh báo/nguy hiểm), trạng thái xác nhận.
+    \item Quản trị viên chọn một cảnh báo để xác nhận đã xử lý.
+    \item Hệ thống cập nhật trạng thái cảnh báo thành ``đã xác nhận''.
+\end{enumerate} \\
+\hline
+\textbf{Luồng phát sinh} &
+\begin{enumerate}[leftmargin=*, nosep]
+    \item[2a.] Khi có cảnh báo mới (realtime): hệ thống tự động hiển thị thông báo trên giao diện qua Socket.IO mà không cần tải lại trang.
+\end{enumerate} \\
+\hline
+\textbf{Hậu điều kiện} & Cảnh báo được cập nhật trạng thái trong cơ sở dữ liệu. \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Đặc tả use case Xuất dữ liệu CSV}
+\label{subsection:2.3.5}
+
+\begin{table}[H]
+\centering
+\caption{Đặc tả use case Xuất dữ liệu CSV}
+\label{table:uc_export}
+\small
+\begin{tabular}{|p{3.5cm}|p{9cm}|}
+\hline
+\textbf{Tên use case} & Xuất dữ liệu CSV \\
+\hline
+\textbf{Tác nhân} & Quản trị viên \\
+\hline
+\textbf{Mô tả} & Quản trị viên xuất dữ liệu đo lường ra tệp CSV để phân tích ngoại tuyến hoặc lưu trữ. \\
+\hline
+\textbf{Tiền điều kiện} & Quản trị viên đã đăng nhập. Có dữ liệu đo lường trong cơ sở dữ liệu. \\
+\hline
+\textbf{Luồng sự kiện chính} &
+\begin{enumerate}[leftmargin=*, nosep]
+    \item Quản trị viên truy cập trang xuất dữ liệu.
+    \item Quản trị viên chọn Sensor Node cần xuất dữ liệu.
+    \item Quản trị viên chọn khoảng thời gian (ngày bắt đầu, ngày kết thúc).
+    \item Quản trị viên nhấn nút ``Xuất CSV''.
+    \item Hệ thống truy vấn dữ liệu từ cơ sở dữ liệu, chuyển đổi sang định dạng CSV.
+    \item Trình duyệt tải xuống tệp CSV.
+\end{enumerate} \\
+\hline
+\textbf{Luồng phát sinh} &
+\begin{enumerate}[leftmargin=*, nosep]
+    \item[5a.] Không có dữ liệu trong khoảng thời gian được chọn: hệ thống hiển thị thông báo ``Không có dữ liệu để xuất''.
+\end{enumerate} \\
+\hline
+\textbf{Hậu điều kiện} & Tệp CSV được tải xuống máy tính quản trị viên. \\
+\hline
+\end{tabular}
+\end{table}
 
 \section{Yêu cầu phi chức năng}
 \label{section:2.4}
-Trong phần này, sinh viên đưa ra các yêu cầu khác nếu có, bao gồm các yêu cầu phi chức năng như hiệu năng, độ tin cậy, tính dễ dùng, tính dễ bảo trì, hoặc các yêu cầu về mặt kỹ thuật như về CSDL, công nghệ sử dụng, v.v.
 
+Ngoài các yêu cầu chức năng đã đặc tả ở trên, hệ thống cần đáp ứng các yêu cầu phi chức năng được trình bày trong Bảng~\ref{table:nfr}.
+
+\begin{table}[H]
+\centering
+\caption{Các yêu cầu phi chức năng của hệ thống}
+\label{table:nfr}
+\small
+\begin{tabular}{|p{0.5cm}|p{2.5cm}|p{9.5cm}|}
+\hline
+\textbf{STT} & \textbf{Yêu cầu} & \textbf{Mô tả} \\
+\hline
+1 & Hiệu năng & Dữ liệu thời gian thực được cập nhật trên dashboard trong vòng 2 giây kể từ khi Gateway gửi dữ liệu lên server. Truy vấn lịch sử với lượng dữ liệu lớn phải phản hồi trong thời gian hợp lý nhờ TimescaleDB Continuous Aggregate. \\
+\hline
+2 & Độ tin cậy & Hệ thống hoạt động liên tục 24/7. Cơ chế phát hiện thiết bị mất kết nối tự động (cron job định kỳ 5 phút). Gateway có bộ đệm vòng và cơ chế gửi lại (retry) khi mất kết nối server. \\
+\hline
+3 & Khả năng mở rộng & Kiến trúc hub-spoke cho phép mở rộng số lượng Sensor Node mà không thay đổi phần mềm. Mỗi Gateway hỗ trợ nhiều Sensor Node. Hệ thống hỗ trợ thêm Gateway mới thông qua cơ chế tự đăng ký (provisioning). \\
+\hline
+4 & Tính dễ sử dụng & Dashboard web có giao diện trực quan, responsive trên nhiều kích thước màn hình. Hệ thống hỗ trợ đa ngôn ngữ (Tiếng Việt và Tiếng Anh). \\
+\hline
+5 & Bảo mật & Xác thực quản trị viên bằng JWT. Mật khẩu được mã hoá bằng bcrypt. Mọi thao tác quản trị được ghi nhận trong nhật ký kiểm toán (audit log) gồm người thực hiện, thời gian, nội dung thay đổi và địa chỉ IP. \\
+\hline
+6 & Yêu cầu kỹ thuật & Cơ sở dữ liệu PostgreSQL với extension TimescaleDB (time-series) và PostGIS (geospatial). Backend Node.js, Frontend React. Truyền thông LoRa 433 MHz giữa Sensor Node và Gateway. \\
+\hline
+\end{tabular}
+\end{table}
+
+Chương này đã khảo sát bốn hệ thống giám sát chất lượng không khí tiêu biểu, phân tích ưu nhược điểm và xác định rõ khoảng trống mà các hệ thống hiện tại chưa giải quyết được. Trên cơ sở đó, hệ thống đề xuất kết hợp cảm biến chi phí thấp, truyền thông LoRa tầm xa, mã nguồn mở và dashboard web thời gian thực. Phân tích yêu cầu đã xác định đầy đủ các chức năng cho hai tác nhân (Người dùng và Quản trị viên), đặc tả chi tiết năm use case quan trọng nhất, và định nghĩa sáu yêu cầu phi chức năng. Các yêu cầu này là cơ sở để lựa chọn nền tảng công nghệ phù hợp, được trình bày trong Chương 3.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
