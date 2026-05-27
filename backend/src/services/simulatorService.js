@@ -82,6 +82,49 @@ async function getNodeIds() {
   return nodes;
 }
 
+/**
+ * Bulk provision: Tạo nhiều node cùng lúc
+ * Bỏ qua node trùng tên (không lỗi)
+ * @param {{ name: string, gateway_id?: string, lat?: number, lng?: number }[]} nodeDefs
+ * @returns {{ created: number, skipped: number, nodes: object[] }}
+ */
+async function bulkProvision(nodeDefs) {
+  const deviceService = require('./deviceService');
+  const results = { created: 0, skipped: 0, nodes: [] };
+
+  for (const def of nodeDefs) {
+    // Check duplicate by name
+    const existing = await prisma.sensorNode.findFirst({
+      where: { name: def.name },
+      select: { id: true, name: true },
+    });
+
+    if (existing) {
+      results.skipped++;
+      results.nodes.push({ id: existing.id, name: existing.name, status: 'skipped' });
+      continue;
+    }
+
+    try {
+      const node = await deviceService.createNode({
+        name: def.name,
+        gateway_id: def.gateway_id || null,
+        lat: def.lat,
+        lng: def.lng,
+        status: 'active',
+        battery_level: 100,
+      });
+      results.created++;
+      results.nodes.push({ id: node.id, name: node.name, status: 'created' });
+    } catch (err) {
+      console.error(`[Simulator] Lỗi tạo node "${def.name}":`, err.message);
+      results.nodes.push({ name: def.name, status: 'error', error: err.message });
+    }
+  }
+
+  return results;
+}
+
 // ==================== REALTIME SIMULATION ====================
 
 let realtimeState = {
@@ -185,4 +228,4 @@ function getRealtimeStatus() {
   };
 }
 
-module.exports = { backfill, getNodeIds, generateMeasurement, startRealtime, stopRealtime, getRealtimeStatus };
+module.exports = { backfill, getNodeIds, generateMeasurement, bulkProvision, startRealtime, stopRealtime, getRealtimeStatus };

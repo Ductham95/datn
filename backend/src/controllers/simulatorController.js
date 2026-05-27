@@ -42,6 +42,28 @@ const runBackfill = async (req, res) => {
 };
 
 /**
+ * POST /api/v1/admin/simulator/provision
+ * Body: { nodes: [{ name, gateway_id?, lat?, lng? }] }
+ */
+const bulkProvision = async (req, res) => {
+  const { nodes: nodeDefs } = req.body;
+
+  if (!nodeDefs || !Array.isArray(nodeDefs) || nodeDefs.length === 0) {
+    return res.status(400).json({ success: false, error: 'nodes là bắt buộc (mảng không rỗng)' });
+  }
+
+  try {
+    console.log(`[Simulator] Provision: ${nodeDefs.length} nodes`);
+    const result = await simulatorService.bulkProvision(nodeDefs);
+    console.log(`[Simulator] Provision hoàn tất: ${result.created} created, ${result.skipped} skipped`);
+    res.json({ success: true, data: result });
+  } catch (error) {
+    console.error('[Simulator] Lỗi provision:', error);
+    res.status(500).json({ success: false, error: 'Lỗi server khi tạo nodes' });
+  }
+};
+
+/**
  * GET /api/v1/admin/simulator/nodes
  * Lấy danh sách node để hiển thị trong UI
  */
@@ -91,4 +113,4 @@ const getRealtimeStatus = (req, res) => {
   res.json({ success: true, data: simulatorService.getRealtimeStatus() });
 };
 
-module.exports = { runBackfill, getNodes, startRealtime, stopRealtime, getRealtimeStatus };
+module.exports = { runBackfill, getNodes, bulkProvision, startRealtime, stopRealtime, getRealtimeStatus };
