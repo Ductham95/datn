@@ -250,7 +250,8 @@ export default function Simulator() {
       const res = await api.post('/api/v1/admin/simulator/provision', { nodes: nodeDefs });
       if (res.data?.success) {
         const d = res.data.data;
-        setProvisionResult({ type: 'success', message: `✅ Tạo ${d.created} node mới, bỏ qua ${d.skipped} node đã có.` });
+        const msg = `✅ Tạo ${d.created} node mới, bỏ qua ${d.skipped} đã có` + (d.errors ? `, ${d.errors} lỗi` : '');
+        setProvisionResult({ type: d.errors ? 'error' : 'success', message: msg });
         toast.success(`Tạo ${d.created} node mới`);
         fetchNodes(); // Refresh danh sách
       }

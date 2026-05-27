@@ -84,13 +84,27 @@ async function getNodeIds() {
 
 /**
  * Bulk provision: Tạo nhiều node cùng lúc
- * Bỏ qua node trùng tên (không lỗi)
- * @param {{ name: string, gateway_id?: string, lat?: number, lng?: number }[]} nodeDefs
- * @returns {{ created: number, skipped: number, nodes: object[] }}
+ * Tự tạo gateway nếu chưa tồn tại. Bỏ qua node trùng tên.
  */
 async function bulkProvision(nodeDefs) {
   const deviceService = require('./deviceService');
-  const results = { created: 0, skipped: 0, nodes: [] };
+  const results = { created: 0, skipped: 0, errors: 0, nodes: [] };
+
+  // Tự tạo gateway nếu cần (thu thập tất cả gateway_id unique)
+  const gatewayIds = [...new Set(nodeDefs.map(d => d.gateway_id).filter(Boolean))];
+  for (const gwId of gatewayIds) {
+    const existing = await prisma.gateway.findUnique({ where: { id: gwId } });
+    if (!existing) {
+      try {
+        await prisma.gateway.create({
+          data: { id: gwId, name: `Gateway ${gwId}`, status: 'online' },
+        });
+        console.log(`[Simulator] Tự tạo gateway "${gwId}"`);
+      } catch (err) {
+        console.error(`[Simulator] Lỗi tạo gateway "${gwId}":`, err.message);
+      }
+    }
+  }
 
   for (const def of nodeDefs) {
     // Check duplicate by name
@@ -117,6 +131,7 @@ async function bulkProvision(nodeDefs) {
       results.created++;
       results.nodes.push({ id: node.id, name: node.name, status: 'created' });
     } catch (err) {
+      results.errors++;
       console.error(`[Simulator] Lỗi tạo node "${def.name}":`, err.message);
       results.nodes.push({ name: def.name, status: 'error', error: err.message });
     }
