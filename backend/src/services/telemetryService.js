@@ -1,7 +1,19 @@
 const prisma = require('../config/prismaClient');
 const { checkThresholdsAndCreateAlerts } = require('./alertService');
+const { isDuplicate } = require('../utils/dedupCache');
 
 const processTelemetry = async (gateway_id, data) => {
+  // 0. Dedup: Lọc bỏ gói tin trùng lặp khi nhiều Gateway cùng nhận
+  const uniqueData = data.filter(item => {
+    if (!item.node_id) return false;
+    if (item.msg_id !== undefined && isDuplicate(item.node_id, item.msg_id)) {
+      console.log(`[Dedup] Bỏ gói trùng: ${item.node_id}:${item.msg_id} (từ GW ${gateway_id})`);
+      return false;
+    }
+    return true;
+  });
+
+  // Nếu tất cả đều trùng → chỉ cập nhật trạng thái gateway, skip insert
   // 1. Transaction: Lưu dữ liệu đo lường + cập nhật trạng thái thiết bị
   await prisma.$transaction(async (tx) => {
     // Cập nhật trạng thái Gateway
@@ -11,8 +23,7 @@ const processTelemetry = async (gateway_id, data) => {
     });
 
     // Xử lý từng gói metric của các Sensor Node
-    for (const item of data) {
-      if (!item.node_id) continue;
+    for (const item of uniqueData) {
 
       // Cập nhật thông tin pin và sóng của Node
       await tx.sensorNode.updateMany({
@@ -43,8 +54,7 @@ const processTelemetry = async (gateway_id, data) => {
 
   // 2. Kiểm tra ngưỡng cảnh báo (chạy ngoài transaction để không block ingestion)
   const allNewAlerts = [];
-  for (const item of data) {
-    if (!item.node_id) continue;
+  for (const item of uniqueData) {
     try {
       const alerts = await checkThresholdsAndCreateAlerts(item.node_id, item);
       allNewAlerts.push(...alerts);

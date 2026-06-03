@@ -48,7 +48,6 @@ bool http_sendBatch(const BufferedPacket* packets, uint8_t count) {
         char nodeIdStr[16];
         snprintf(nodeIdStr, sizeof(nodeIdStr), "NODE_%03d", p->nodeId);
         item["node_id"] = nodeIdStr;
-        item["msg_id"]  = p->msgId;    // Server dùng để dedup khi nhiều GW nhận cùng 1 gói
 
         // Chuyển đổi scaled values → float (÷10)
         // Nếu sensor lỗi (SENSOR_ERROR) → gửi null
