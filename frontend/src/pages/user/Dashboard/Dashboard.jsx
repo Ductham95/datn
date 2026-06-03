@@ -5,6 +5,7 @@ import { useDashboard } from '@/hooks/useDashboard';
 import { useGeolocation } from '@/hooks/useGeolocation';
 import { useWeather } from '@/hooks/useWeather';
 import { useTelemetryStore } from '@/stores/useTelemetryStore';
+import { haversine } from '@/utils/geo';
 import { getAQIColor, getAQIBgColor, getAQILevel, getWHOComparison } from '@/utils/aqi';
 import { formatNumber } from '@/utils/formatters';
 import MetricCard from '@/components/common/MetricCard/MetricCard';
@@ -53,12 +54,29 @@ export default function Dashboard() {
     });
   }, [stations, latestData]);
 
-  // Station selection
+  // Compute nearest station by GPS distance
+  const nearestStationId = useMemo(() => {
+    if (!position?.lat || !position?.lng || mergedStations.length === 0) return null;
+
+    let nearestId = null;
+    let minDist = Infinity;
+    for (const s of mergedStations) {
+      const d = haversine(position.lat, position.lng, Number(s.lat), Number(s.lng));
+      if (d < minDist) {
+        minDist = d;
+        nearestId = s.id;
+      }
+    }
+    return nearestId;
+  }, [position, mergedStations]);
+
+  // Station selection (manual override)
   const [selectedStationId, setSelectedStationId] = useState(null);
   const handleSelectStation = useCallback((id) => setSelectedStationId(id), []);
 
-  // Pick the selected station, or fallback to first
-  const primaryStation = mergedStations.find((s) => s.id === selectedStationId) || mergedStations[0];
+  // Pick: manual selection → nearest by GPS → first from API
+  const effectiveId = selectedStationId || nearestStationId;
+  const primaryStation = mergedStations.find((s) => s.id === effectiveId) || mergedStations[0];
   const latest = primaryStation?.latest;
 
   // Focus position for map fly-to

@@ -3,21 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { MapPin, Navigation, Check } from 'lucide-react';
 import { formatDistance } from '@/utils/formatters';
 import { getAQIColor } from '@/utils/aqi';
+import { haversine } from '@/utils/geo';
 import AQIBadge from '@/components/common/AQIBadge/AQIBadge';
 import Card from '@/components/ui/Card/Card';
 import styles from './NearestStation.module.css';
-
-/** Haversine distance in meters */
-function haversine(lat1, lng1, lat2, lng2) {
-  const R = 6371000;
-  const toRad = (d) => (d * Math.PI) / 180;
-  const dLat = toRad(lat2 - lat1);
-  const dLng = toRad(lng2 - lng1);
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
-  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-}
 
 export default function NearestStation({ stations = [], position, selectedId, onSelect }) {
   const { t, i18n } = useTranslation();
