@@ -109,72 +109,22 @@
   margin-bottom: var(--space-6);
 }
 
-.chartControls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--space-4);
-  flex-wrap: wrap;
-  gap: var(--space-3);
+/* Bottom grid: Health + Map */
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
 }
 
-.metricButtons {
-  display: flex;
-  gap: var(--space-1);
-  flex-wrap: wrap;
+.mapCard {
+  min-height: 280px;
 }
 
-.metricBtn {
-  padding: 4px 12px;
-  border-radius: var(--radius-full);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
-  background: var(--bg-tertiary);
-  color: var(--text-secondary);
-  border: none;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.metricBtn:hover {
-  background: var(--color-neutral-200);
-}
-
-.metricBtnActive {
-  color: #fff !important;
-}
-
-.modeToggle {
-  display: flex;
-  background: var(--bg-tertiary);
-  border-radius: var(--radius-full);
-  padding: 2px;
-}
-
-.modeBtn {
-  padding: 4px 14px;
-  border-radius: var(--radius-full);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
-  color: var(--text-secondary);
-  border: none;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.modeBtnActive {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  box-shadow: var(--shadow-xs);
-}
-
-.chartLoading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 350px;
-  color: var(--text-tertiary);
-  font-size: var(--font-size-sm);
+.mapContainer {
+  height: 250px;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  overflow: hidden;
 }
 
 @media (max-width: 1024px) {
@@ -184,4 +134,5 @@
 @media (max-width: 768px) {
   .currentGrid { grid-template-columns: repeat(2, 1fr); }
   .headerInfo { flex-direction: column; align-items: flex-start; }
+  .bottomGrid { grid-template-columns: 1fr; }
 }

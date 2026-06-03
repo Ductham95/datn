@@ -47,11 +47,48 @@
   font-weight: 600;
 }
 
-.iconBtn {
-  padding: 5px 8px;
+/* ─── Metric Chips ─── */
+.chipGroup {
   display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text-secondary, #64748B);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 180ms ease;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.chip:hover {
+  border-color: #94A3B8;
+  color: var(--text-primary, #1E293B);
+}
+
+.chipActive {
+  color: var(--text-primary, #1E293B);
+  background: color-mix(in srgb, var(--chip-color, #8B5CF6) 8%, #fff);
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.chipDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background 180ms ease;
 }
 
 /* ─── Loading / No Data ─── */
@@ -76,5 +113,10 @@
   .toggleBtn {
     font-size: 11px;
     padding: 3px 7px;
+  }
+
+  .chip {
+    font-size: 11px;
+    padding: 3px 8px;
   }
 }

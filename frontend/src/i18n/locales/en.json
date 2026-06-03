@@ -71,7 +71,8 @@
     "gateway": "Gateway",
     "lastSeen": "Last Active",
     "viewHistory": "View History",
-    "viewOnMap": "View on Map"
+    "viewOnMap": "View on Map",
+    "lastUpdated": "Updated"
   },
   "history": {
     "title": "Data History",

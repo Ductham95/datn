@@ -71,7 +71,8 @@
     "gateway": "Gateway",
     "lastSeen": "Lần cuối hoạt động",
     "viewHistory": "Xem lịch sử",
-    "viewOnMap": "Xem trên bản đồ"
+    "viewOnMap": "Xem trên bản đồ",
+    "lastUpdated": "Cập nhật"
   },
   "history": {
     "title": "Lịch sử dữ liệu",

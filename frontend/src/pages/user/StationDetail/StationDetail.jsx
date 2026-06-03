@@ -1,17 +1,17 @@
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, Battery, Radio, MapPin } from 'lucide-react';
+import { ArrowLeft, Battery, Radio, MapPin, Clock } from 'lucide-react';
 import { useDashboard } from '@/hooks/useDashboard';
-import { useStationHistory } from '@/hooks/useStationHistory';
 import { useTelemetryStore } from '@/stores/useTelemetryStore';
-import ReactECharts from 'echarts-for-react';
 import AQIBadge from '@/components/common/AQIBadge/AQIBadge';
 import Badge from '@/components/ui/Badge/Badge';
-import Button from '@/components/ui/Button/Button';
 import Card from '@/components/ui/Card/Card';
 import { PageLoader } from '@/components/ui/Spinner/Spinner';
-import { formatNumber, formatDateTime, formatBattery, formatRSSI } from '@/utils/formatters';
+import HistoryChart from '@/components/charts/HistoryChart/HistoryChart';
+import AQIMap from '@/components/map/AQIMap/AQIMap';
+import HealthAdvice from '@/pages/user/Dashboard/components/HealthAdvice';
+import { formatNumber, formatBattery, formatRSSI, formatRelativeTime } from '@/utils/formatters';
 import styles from './StationDetail.module.css';
 
 const METRICS = [
@@ -28,64 +28,36 @@ export default function StationDetail() {
   const { t, i18n } = useTranslation();
   const { stations, loading: stationsLoading } = useDashboard();
   const latestData = useTelemetryStore((s) => s.latestData);
-  const [selectedMetric, setSelectedMetric] = useState('pm25');
-  const [mode, setMode] = useState('hourly');
-
-  const { history, loading: historyLoading } = useStationHistory(id, { mode });
 
   const station = useMemo(() => {
-    const s = stations.find((st) => st.id === id);
+    const s = stations.find((st) => st.id === id || st.node_id === id);
     if (!s) return null;
-    const rt = latestData[id];
-    return rt ? { ...s, latest: { ...s.latest, ...rt } } : s;
+    const sid = s.node_id || s.id;
+    const rt = latestData[sid];
+    const latest = {
+      aqi: s.aqi,
+      pm25: s.pm25,
+      pm10: s.pm10,
+      co2: s.co2,
+      tvoc: s.tvoc,
+      temperature: s.temperature,
+      humidity: s.humidity,
+      time: s.time,
+      ...rt,
+    };
+    return { ...s, id: sid, latest };
   }, [stations, id, latestData]);
 
-  const chartOption = useMemo(() => {
-    if (!history || history.length === 0) return null;
-    const metricInfo = METRICS.find((m) => m.key === selectedMetric);
-    const metricKey = mode === 'hourly' ? `avg_${selectedMetric}` : selectedMetric;
+  // Single-station array for mini-map
+  const mapStations = useMemo(() => {
+    if (!station) return [];
+    return [{ ...station, latest: station.latest }];
+  }, [station]);
 
-    const times = history.map((d) => {
-      const date = new Date(d.bucket_time || d.time);
-      return `${String(date.getHours()).padStart(2, '0')}:00`;
-    });
-    const values = history.map((d) => {
-      const v = d[metricKey] ?? d[selectedMetric];
-      return v != null ? Number(Number(v).toFixed(1)) : null;
-    });
-
-    return {
-      tooltip: {
-        trigger: 'axis',
-        backgroundColor: 'rgba(255,255,255,0.95)',
-        borderColor: '#E2E8F0',
-        textStyle: { color: '#334155', fontSize: 12 },
-      },
-      grid: { left: 50, right: 20, top: 20, bottom: 35 },
-      xAxis: {
-        type: 'category',
-        data: times,
-        axisLine: { lineStyle: { color: '#E2E8F0' } },
-        axisLabel: { color: '#94A3B8', fontSize: 11 },
-        axisTick: { show: false },
-      },
-      yAxis: {
-        type: 'value',
-        name: metricInfo?.unit,
-        nameTextStyle: { color: '#94A3B8', fontSize: 11 },
-        axisLine: { show: false },
-        axisLabel: { color: '#94A3B8', fontSize: 11 },
-        splitLine: { lineStyle: { color: '#F1F5F9' } },
-      },
-      series: [{
-        type: 'bar',
-        data: values,
-        itemStyle: { color: metricInfo?.color, borderRadius: [4, 4, 0, 0] },
-        barWidth: '60%',
-        animationDuration: 600,
-      }],
-    };
-  }, [history, selectedMetric, mode]);
+  const mapCenter = useMemo(() => {
+    if (!station?.lat || !station?.lng) return null;
+    return { lat: Number(station.lat), lng: Number(station.lng) };
+  }, [station]);
 
   if (stationsLoading) return <PageLoader />;
 
@@ -137,6 +109,12 @@ export default function StationDetail() {
           <MapPin size={16} />
           <span>{station.location_desc || 'N/A'}</span>
         </div>
+        {latest?.time && (
+          <div className={styles.statusItem}>
+            <Clock size={16} />
+            <span>{formatRelativeTime(latest.time, i18n.language)}</span>
+          </div>
+        )}
       </div>
 
       {/* Current Values */}
@@ -153,43 +131,28 @@ export default function StationDetail() {
       </div>
 
       {/* History Chart */}
-      <Card title={t('history.title')} padding="md" className={styles.chartCard}>
-        <div className={styles.chartControls}>
-          <div className={styles.metricButtons}>
-            {METRICS.map((m) => (
-              <button
-                key={m.key}
-                className={`${styles.metricBtn} ${selectedMetric === m.key ? styles.metricBtnActive : ''}`}
-                onClick={() => setSelectedMetric(m.key)}
-                style={selectedMetric === m.key ? { background: m.color, color: '#fff' } : {}}
-              >
-                {m.label}
-              </button>
-            ))}
-          </div>
-          <div className={styles.modeToggle}>
-            <button
-              className={`${styles.modeBtn} ${mode === 'hourly' ? styles.modeBtnActive : ''}`}
-              onClick={() => setMode('hourly')}
-            >
-              {t('history.hourly')}
-            </button>
-            <button
-              className={`${styles.modeBtn} ${mode === 'raw' ? styles.modeBtnActive : ''}`}
-              onClick={() => setMode('raw')}
-            >
-              {t('history.raw')}
-            </button>
-          </div>
-        </div>
-        {historyLoading ? (
-          <div className={styles.chartLoading}>Loading...</div>
-        ) : chartOption ? (
-          <ReactECharts option={chartOption} style={{ height: 350 }} />
-        ) : (
-          <div className={styles.chartLoading}>{t('history.noData')}</div>
-        )}
+      <Card title={t('history.title')} padding="sm" className={styles.chartCard}>
+        <HistoryChart stationId={station.id} height={350} />
       </Card>
+
+      {/* Bottom Row: Health Advice + Mini Map */}
+      <div className={styles.bottomGrid}>
+        <HealthAdvice
+          aqi={latest?.aqi}
+          pm25={latest?.pm25}
+          lang={i18n.language}
+        />
+        <Card title={t('station.location')} icon={MapPin} padding="none" className={styles.mapCard}>
+          {mapCenter && (
+            <div className={styles.mapContainer}>
+              <AQIMap
+                stations={mapStations}
+                focusPosition={mapCenter}
+              />
+            </div>
+          )}
+        </Card>
+      </div>
     </div>
   );
 }
