@@ -16,7 +16,8 @@ function FlyToLocation({ position }) {
   useEffect(() => {
     if (position && !hasFlewRef.current) {
       hasFlewRef.current = true;
-      map.flyTo([position.lat, position.lng], 14, { duration: 1.2 });
+      // Tùy chỉnh mức zoom tại đây (hiện tại là 13)
+      map.flyTo([position.lat, position.lng], 9, { duration: 1.2 });
     }
   }, [position, map]);
 

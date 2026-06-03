@@ -63,7 +63,7 @@ export const SOCKET_EVENTS = {
 // Map defaults
 export const MAP_CONFIG = {
   CENTER: [10.7733, 106.6575], // Ho Chi Minh City
-  ZOOM: 13,
+  ZOOM: 3,
   MAX_ZOOM: 18,
   TILE_URL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   TILE_ATTRIBUTION: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
