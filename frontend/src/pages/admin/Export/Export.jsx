@@ -71,7 +71,7 @@ export default function Export() {
             value={form.node_id}
             onChange={(e) => setForm({ ...form, node_id: e.target.value })}
             placeholder="Chọn node..."
-            options={nodes.map((n) => ({ value: n.node_id, label: `${n.node_id} — ${n.name}` }))}
+            options={nodes.map((n) => ({ value: n.id, label: `${n.id} — ${n.name}` }))}
             icon={Database}
           />
 
