@@ -62,6 +62,7 @@ void setup() {
     // Bước 1: Scan I2C bus
     Wire.begin(CCS811_SDA_PIN, CCS811_SCL_PIN);
     Wire.setClock(10000); // Hạ xung nhịp I2C xuống 10KHz
+    Wire.setTimeOut(3000); // Tăng timeout I2C (fix clock stretching khi OLED chung bus)
     i2c_scan();
 
     // Bước 2: Init CCS811

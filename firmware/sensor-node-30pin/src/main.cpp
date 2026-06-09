@@ -45,6 +45,7 @@
 QueueHandle_t dataQueue = NULL;
 volatile uint8_t batteryLevel = 0;
 volatile TickType_t taskHeartbeat[TASK_COUNT] = {0};
+SemaphoreHandle_t i2cMutex = NULL;
 RTC_DATA_ATTR uint8_t msgCounter = 0;
 
 // ===== Factory Reset Task =====
@@ -100,6 +101,7 @@ bool initAllHardware()
     // Khởi tạo I2C bus MỘT LẦN cho tất cả thiết bị (OLED, CCS811, AHT10)
     Wire.begin(CCS811_SDA_PIN, CCS811_SCL_PIN);
     Wire.setClock(10000); // Hạ xung nhịp I2C xuống 10KHz (Fix CCS811 clock stretching)
+    Wire.setTimeOut(3000); // Tăng timeout I2C lên 3s (mặc định 50ms, quá ngắn khi OLED chung bus)
     delay(50);
 
     // OLED Display (chung bus Wire I2C)
@@ -205,7 +207,11 @@ void setup()
         Serial.println("[WARN] Một số module khởi tạo lỗi. Tiếp tục với chức năng có sẵn...");
     }
 
-    // ── 4. Tạo FreeRTOS Queue ──
+    // ── 4. Tạo FreeRTOS Mutex + Queue ──
+    i2cMutex = xSemaphoreCreateMutex();
+    if (i2cMutex == NULL) {
+        Serial.println("[ERROR] Không tạo được I2C Mutex!");
+    }
     dataQueue = xQueueCreate(DATA_QUEUE_SIZE, sizeof(SensorPayload));
     if (dataQueue == NULL)
     {
@@ -277,7 +283,10 @@ void setup()
 
 void loop()
 {
-    // Cập nhật OLED display (tự throttle theo OLED_UPDATE_MS)
-    oled_update();
+    // Cập nhật OLED display — bọc mutex để tránh xung đột I2C với sensorTask
+    if (i2cMutex && xSemaphoreTake(i2cMutex, pdMS_TO_TICKS(50)) == pdTRUE) {
+        oled_update();
+        xSemaphoreGive(i2cMutex);
+    }
     delay(100);
 }

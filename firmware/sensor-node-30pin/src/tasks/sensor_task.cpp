@@ -44,23 +44,41 @@ void sensorTask(void* parameter) {
 
         // ═══════════════════════════════════════════
         // Giai đoạn 2: Đọc AHT10 + CCS811 (song song với PMS warm-up)
+        // Bọc mutex I2C để tránh xung đột với OLED update (Core 1)
         // ═══════════════════════════════════════════
         LOG_MSG("SENSOR", "Chờ PMS warm-up...");
 
         // AHT10
         int16_t  temp = SENSOR_ERROR_I16;
         uint16_t hum  = SENSOR_ERROR_U16;
-        aht10_read(&temp, &hum);
-        payload.temperature = temp;
-        payload.humidity    = hum;
 
-        // CCS811: bù trừ nhiệt độ/độ ẩm (nếu AHT10 có dữ liệu)
-        if (temp != SENSOR_ERROR_I16 && hum != SENSOR_ERROR_U16) {
-            ccs811_setEnvData(temp, hum);
-        }
+        // CCS811
         uint16_t co2  = 0;
         uint16_t tvoc = 0;
-        ccs811_read(&co2, &tvoc);
+
+        if (xSemaphoreTake(i2cMutex, pdMS_TO_TICKS(2000)) == pdTRUE) {
+            // Tắt OLED để giảm nhiễu I2C bus khi đọc CCS811
+            oled_sleep();
+            delay(10);
+
+            aht10_read(&temp, &hum);
+
+            // CCS811: bù trừ nhiệt độ/độ ẩm (nếu AHT10 có dữ liệu)
+            if (temp != SENSOR_ERROR_I16 && hum != SENSOR_ERROR_U16) {
+                ccs811_setEnvData(temp, hum);
+            }
+            ccs811_read(&co2, &tvoc);
+
+            // Bật lại OLED
+            oled_wake();
+
+            xSemaphoreGive(i2cMutex);
+        } else {
+            LOG_MSG("SENSOR", "⚠ I2C mutex timeout! Bỏ qua CCS811/AHT10.");
+        }
+
+        payload.temperature = temp;
+        payload.humidity    = hum;
         payload.co2  = co2;
         payload.tvoc = tvoc;
 

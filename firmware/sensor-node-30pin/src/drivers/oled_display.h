@@ -45,6 +45,17 @@ void oled_setSensorData(const SensorPayload* data);
 void oled_setLoRaStatus(bool success);
 
 /**
+ * Tạm tắt OLED (Display OFF + tắt charge pump)
+ * Giảm nhiễu I2C bus khi đọc CCS811 trên cùng bus
+ */
+void oled_sleep();
+
+/**
+ * Bật lại OLED (Display ON)
+ */
+void oled_wake();
+
+/**
  * Hiển thị 1 dòng trạng thái tạm ở cuối màn hình
  * VD: "Sending...", "FACTORY RESET!"
  * Sẽ bị ghi đè bởi oled_update() tiếp theo

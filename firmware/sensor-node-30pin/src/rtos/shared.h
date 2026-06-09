@@ -3,6 +3,7 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/queue.h>
 #include <freertos/task.h>
+#include <freertos/semphr.h>
 #include "config.h"
 #include "common/packet.h"
 
@@ -23,6 +24,8 @@ enum TaskId {
 extern QueueHandle_t       dataQueue;          // SensorTask → LoRaTask
 extern volatile uint8_t    batteryLevel;       // BatteryTask → SensorTask
 extern volatile TickType_t taskHeartbeat[];    // Tất cả → WatchdogTask
+extern SemaphoreHandle_t   i2cMutex;          // Bảo vệ bus I2C (Wire) giữa các task/core
 
 // --- RTC Memory (survive deep sleep) ---
 extern RTC_DATA_ATTR uint8_t msgCounter;
+

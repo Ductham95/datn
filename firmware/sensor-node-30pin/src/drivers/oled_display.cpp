@@ -181,6 +181,16 @@ void oled_setLoRaStatus(bool success) {
     loraOk = success;
 }
 
+void oled_sleep() {
+    if (!oledReady) return;
+    display.ssd1306_command(SSD1306_DISPLAYOFF);
+}
+
+void oled_wake() {
+    if (!oledReady) return;
+    display.ssd1306_command(SSD1306_DISPLAYON);
+}
+
 void oled_showStatus(const char* msg) {
     if (!oledReady) return;
 
