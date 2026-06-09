@@ -32,6 +32,7 @@ bool oled_init() {
     }
 
     oledReady = true;
+    display.setRotation(2);  // Xoay màn hình 180°
     display.clearDisplay();
     display.setTextColor(SSD1306_WHITE);
     display.display();
@@ -115,10 +116,16 @@ void oled_update() {
     display.print(cfg_gatewayId);
 
     if (wifi_isConnected()) {
-        display.setCursor(88, 0);
-        display.print("WiFi:OK");
+        // Hiển thị "WiFi:" + tên WiFi đang kết nối
+        const char* ssid = wifi_getSSID();
+        char wifiBuf[22];
+        snprintf(wifiBuf, sizeof(wifiBuf), "WiFi:%.15s", ssid);
+        int16_t x = 128 - strlen(wifiBuf) * 6;
+        if (x < 42) x = 42;
+        display.setCursor(x, 0);
+        display.print(wifiBuf);
     } else {
-        display.setCursor(82, 0);
+        display.setCursor(76, 0);
         display.print("WiFi:OFF");
     }
 

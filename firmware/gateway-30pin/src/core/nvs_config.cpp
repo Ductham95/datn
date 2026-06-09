@@ -3,6 +3,7 @@
 #include <Preferences.h>
 #include "config.h"
 #include "common/debug.h"
+#include "core/wifi_store.h"
 
 // =============================================================================
 //  NVS CONFIG IMPLEMENTATION
@@ -51,7 +52,7 @@ void nvs_loadConfig() {
 }
 
 bool nvs_isProvisioned() {
-    return strlen(cfg_gatewayId) > 0 && strlen(cfg_wifiSsid) > 0 && strlen(cfg_serverBase) > 0;
+    return strlen(cfg_gatewayId) > 0 && strlen(cfg_serverBase) > 0;
 }
 
 void nvs_saveGatewayConfig(const char* gatewayId,
@@ -77,6 +78,8 @@ void nvs_clearConfig() {
     prefs.begin(NVS_NAMESPACE, false);
     prefs.clear();
     prefs.end();
+
+    wifi_store_clear();
 
     LOG_MSG("NVS", "⚠ Config đã xóa! Khởi động lại vào chế độ provisioning...");
 }

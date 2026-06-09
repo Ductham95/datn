@@ -3,14 +3,15 @@
 #include <stdint.h>
 
 // =============================================================================
-//  WIFI MANAGER - Kết nối WiFi + Auto-reconnect
+//  WIFI MANAGER - Scan & Auto-connect từ WiFi Store + Reconnect
 // =============================================================================
 
 /**
- * Kết nối WiFi (blocking, timeout theo WIFI_CONNECT_TIMEOUT_MS)
+ * Quét WiFi xung quanh, so sánh với danh sách đã lưu trong wifi_store,
+ * thử kết nối WiFi có RSSI mạnh nhất trước.
  * @return true nếu kết nối thành công
  */
-bool wifi_init();
+bool wifi_autoConnect();
 
 /**
  * Kiểm tra kết nối WiFi hiện tại
@@ -19,6 +20,7 @@ bool wifi_isConnected();
 
 /**
  * Tự động kết nối lại nếu mất WiFi
+ * Thử SSID hiện tại trước, nếu thất bại nhiều lần → wifi_autoConnect()
  * Gọi trong loop(), non-blocking (dùng millis timer)
  */
 void wifi_reconnectIfNeeded();
@@ -32,3 +34,8 @@ int32_t wifi_getRSSI();
  * Lấy IP address dạng String
  */
 const char* wifi_getIP();
+
+/**
+ * Lấy tên WiFi đang kết nối (SSID)
+ */
+const char* wifi_getSSID();

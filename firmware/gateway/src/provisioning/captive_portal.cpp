@@ -11,6 +11,7 @@
 #include "config.h"
 #include "common/debug.h"
 #include "core/nvs_config.h"
+#include "core/wifi_store.h"
 #include "drivers/oled_display.h"
 
 // =============================================================================
@@ -168,7 +169,8 @@ static void handleSave() {
     LOG_INFO("Portal", "✅ Đã đăng ký! Gateway ID: %s", gatewayId);
 
     // ── Bước 4: Lưu cấu hình vào NVS ──
-    nvs_saveGatewayConfig(gatewayId, wifiSsid, wifiPass ? wifiPass : "",
+    wifi_store_add(wifiSsid, wifiPass ? wifiPass : "");
+    nvs_saveGatewayConfig(gatewayId, "", "",
                           SERVER_BASE_URL, PROVISION_KEY);
 
     // ── Bước 5: Trả response thành công ──

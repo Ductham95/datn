@@ -34,6 +34,7 @@ bool oled_init() {
     }
 
     oledReady = true;
+    display.setRotation(2);  // Xoay màn hình 180°
     display.clearDisplay();
     display.setTextColor(SSD1306_WHITE);
     display.display();

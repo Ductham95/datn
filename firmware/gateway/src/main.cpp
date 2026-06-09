@@ -6,6 +6,7 @@
 // Core
 #include "core/nvs_config.h"
 #include "core/packet_buffer.h"
+#include "core/wifi_store.h"
 
 // Provisioning
 #include "provisioning/captive_portal.h"
@@ -22,11 +23,12 @@
 //  MAIN.CPP - Air Quality Gateway (Superloop)
 //
 //  Kiến trúc:
-//    setup() → Kiểm tra NVS → Provisioning hoặc Normal Mode
+//    setup() → NVS → WiFi Store → Migration → Auto-connect hoặc Captive Portal
 //    loop()  → WiFi reconnect + LoRa poll + Buffer flush + Factory Reset
 //
-//  Chế độ mới:
-//    - Provisioning Mode: Captive Portal khi chưa cấu hình
+//  Chế độ:
+//    - Auto-Connect: Quét WiFi xung quanh, kết nối WiFi đã lưu
+//    - Captive Portal: Khi chưa provisioned hoặc không tìm được WiFi
 //    - Factory Reset: Giữ nút BOOT 5 giây → xóa NVS → reboot
 // =============================================================================
 
@@ -145,7 +147,20 @@ void setup() {
     // ── 2. Khởi tạo OLED (trước provisioning check) ──
     oled_init();
 
-    // ── 3. Kiểm tra đã provisioned chưa ──
+    // ── 3. Tải WiFi store ──
+    wifi_store_load();
+
+    // ── 4. Migration: chuyển WiFi cũ từ NVS sang wifi_store ──
+    if (strlen(cfg_wifiSsid) > 0) {
+        LOG_INFO("MAIN", "Migration: chuyển WiFi '%s' từ NVS cũ sang WiFi Store", cfg_wifiSsid);
+        wifi_store_add(cfg_wifiSsid, cfg_wifiPassword);
+        // Xóa WiFi khỏi NVS cũ (lưu lại config không có WiFi)
+        nvs_saveGatewayConfig(cfg_gatewayId, "", "", cfg_serverBase, cfg_provisionKey);
+        cfg_wifiSsid[0] = '\0';
+        cfg_wifiPassword[0] = '\0';
+    }
+
+    // ── 5. Kiểm tra đã provisioned chưa ──
     if (!nvs_isProvisioned()) {
         // ═══ CHẾ ĐỘ PROVISIONING ═══
         // Hàm này blocking — không return cho đến khi ESP reboot
@@ -160,6 +175,7 @@ void setup() {
     Serial.printf("  Gateway ID : %s\n", cfg_gatewayId);
     Serial.printf("  LoRa       : AS32-TTL-100 (UART %d baud)\n", LORA_BAUD);
     Serial.printf("  API Server : %s\n", cfg_apiUrl);
+    Serial.printf("  WiFi Store : %d mạng đã lưu\n", wifi_store_count());
     Serial.printf("  Flush      : Mỗi %d giây hoặc buffer đầy (%d gói)\n",
                   FLUSH_INTERVAL_MS / 1000, PACKET_BUFFER_SIZE);
     Serial.println("========================================");
@@ -174,11 +190,21 @@ void setup() {
     // 3. Packet Buffer
     buffer_init();
 
-    // 4. WiFi
-    Serial.println("[1/3] Kết nối WiFi...");
-    oled_showStatus("WiFi connecting...");
-    if (!wifi_init()) {
-        Serial.println("[WARN] WiFi chưa kết nối. Sẽ thử lại trong loop.");
+    // 4. WiFi — Auto-connect từ WiFi Store
+    Serial.println("[1/3] Auto-connect WiFi...");
+    oled_showStatus("WiFi scanning...");
+    if (!wifi_autoConnect()) {
+        Serial.println("[WARN] Không tìm được WiFi đã lưu.");
+        oled_showStatus("No WiFi found!");
+
+        // Nếu có WiFi trong store nhưng không kết nối được → thử lại trong loop
+        // Nếu không có WiFi nào → vào Captive Portal để cấu hình
+        if (wifi_store_count() == 0) {
+            Serial.println("[INFO] Chưa có WiFi nào → vào Captive Portal...");
+            startCaptivePortal();
+            return;
+        }
+        Serial.println("[INFO] Sẽ thử kết nối lại trong loop.");
     }
 
     // 5. LoRa Receiver
