@@ -52,8 +52,16 @@ void setup() {
     Serial.println("========================================");
     Serial.println();
 
+    // Bước 0: Wake CCS811 (nWAKE must be LOW for I2C to work)
+    pinMode(CCS811_WAK_PIN, OUTPUT);
+    pinMode(CCS811_ADD_PIN, OUTPUT);
+    digitalWrite(CCS811_WAK_PIN, LOW);   // Wake sensor (active LOW)
+    digitalWrite(CCS811_ADD_PIN, LOW);   // Address = 0x5A
+    delay(200);  // Đợi CCS811 boot
+
     // Bước 1: Scan I2C bus
     Wire.begin(CCS811_SDA_PIN, CCS811_SCL_PIN);
+    Wire.setClock(10000); // Hạ xung nhịp I2C xuống 10KHz
     i2c_scan();
 
     // Bước 2: Init CCS811

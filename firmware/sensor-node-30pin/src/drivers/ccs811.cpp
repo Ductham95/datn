@@ -22,9 +22,9 @@ bool ccs811_init() {
     pinMode(CCS811_ADD_PIN, OUTPUT);
     digitalWrite(CCS811_WAK_PIN, LOW);   // Wake sensor (active LOW)
     digitalWrite(CCS811_ADD_PIN, LOW);   // Address = 0x5A
-    delay(100);
+    delay(200);  // Đợi CCS811 boot sau khi wake (datasheet: ~70ms app start)
 
-    Wire.begin(CCS811_SDA_PIN, CCS811_SCL_PIN);
+    // Wire đã được khởi tạo trong initAllHardware()
 
     if (!ccs.begin(CCS811_ADDR)) {
         LOG_MSG("CCS811", "THẤT BẠI! Không tìm thấy sensor.");
@@ -64,6 +64,13 @@ bool ccs811_read(uint16_t* co2, uint16_t* tvoc) {
             if (err == 0) {
                 *co2  = ccs.geteCO2();
                 *tvoc = ccs.getTVOC();
+
+                // Lọc data rác do I2C glitch (ESP32 clock stretching bug)
+                if (*co2 > 8192 || *tvoc > 1187) {
+                    LOG_INFO("CCS811", "⚠ Data rác (CO2:%d, TVOC:%d), đọc lại...", *co2, *tvoc);
+                    delay(500);
+                    continue;
+                }
 
                 LOG_INFO("CCS811", "CO2: %d ppm | TVOC: %d ppb", *co2, *tvoc);
 

@@ -26,7 +26,7 @@ static bool hasSensorData = false;
 static bool loraOk = false;
 
 bool oled_init() {
-    Wire.begin(OLED_SDA_PIN, OLED_SCL_PIN);
+    // Wire đã được khởi tạo trong initAllHardware()
 
     if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
         LOG_MSG("OLED", "❌ Không tìm thấy SSD1306! Kiểm tra kết nối I2C.");

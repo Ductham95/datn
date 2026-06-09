@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <Wire.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 #include <freertos/queue.h>
@@ -95,6 +96,11 @@ void factoryResetTask(void *parameter)
 bool initAllHardware()
 {
     bool allOk = true;
+
+    // Khởi tạo I2C bus MỘT LẦN cho tất cả thiết bị (OLED, CCS811, AHT10)
+    Wire.begin(CCS811_SDA_PIN, CCS811_SCL_PIN);
+    Wire.setClock(10000); // Hạ xung nhịp I2C xuống 10KHz (Fix CCS811 clock stretching)
+    delay(50);
 
     // OLED Display (chung bus Wire I2C)
     Serial.print("[OLED] Đang khởi tạo... ");
