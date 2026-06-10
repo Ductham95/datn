@@ -31,6 +31,7 @@ export default function DataTable({
   emptyDescription,
   emptyIcon,
   toolbar,
+  serverPagination,
 }) {
   const [search, setSearch] = useState('');
   const [sortKey, setSortKey] = useState(null);
@@ -62,9 +63,12 @@ export default function DataTable({
     });
   }, [filtered, sortKey, sortDir]);
 
-  // Pagination
-  const totalPages = Math.ceil(sorted.length / pageSize);
-  const pageData = sorted.slice((page - 1) * pageSize, page * pageSize);
+  // Pagination — server-side or client-side
+  const isServerPaginated = !!serverPagination;
+  const totalPages = isServerPaginated ? serverPagination.totalPages : Math.ceil(sorted.length / pageSize);
+  const activePage = isServerPaginated ? serverPagination.page : page;
+  const pageData = isServerPaginated ? sorted : sorted.slice((page - 1) * pageSize, page * pageSize);
+  const totalItems = isServerPaginated ? serverPagination.total : sorted.length;
 
   const handleSort = (key) => {
     if (sortKey === key) {
@@ -167,12 +171,12 @@ export default function DataTable({
           {/* Footer */}
           <div className={styles.footer}>
             <span className={styles.footerInfo}>
-              Hiển thị {(page - 1) * pageSize + 1}–{Math.min(page * pageSize, sorted.length)} / {sorted.length} kết quả
+              Hiển thị {(activePage - 1) * pageSize + 1}–{Math.min(activePage * pageSize, totalItems)} / {totalItems} kết quả
             </span>
             <Pagination
-              currentPage={page}
+              currentPage={activePage}
               totalPages={totalPages}
-              onPageChange={setPage}
+              onPageChange={isServerPaginated ? serverPagination.onPageChange : setPage}
             />
           </div>
         </>

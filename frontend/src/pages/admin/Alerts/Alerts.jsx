@@ -24,19 +24,24 @@ export default function Alerts() {
   const [loading, setLoading] = useState(true);
   const [deleteItem, setDeleteItem] = useState(null);
   const [filterSeverity, setFilterSeverity] = useState('');
+  const [page, setPage] = useState(1);
+  const [pagination, setPagination] = useState({ total: 0, totalPages: 1 });
+  const PAGE_SIZE = 10;
 
   const fetchData = useCallback(async () => {
     try {
-      const params = {};
+      setLoading(true);
+      const params = { page, limit: PAGE_SIZE };
       if (filterSeverity) params.severity = filterSeverity;
       const data = await alertService.getAlerts(params);
       setAlerts(data.alerts || []);
+      if (data.pagination) setPagination(data.pagination);
     } catch (err) {
       toast.error('Không thể tải danh sách cảnh báo');
     } finally {
       setLoading(false);
     }
-  }, [filterSeverity]);
+  }, [filterSeverity, page]);
 
   useEffect(() => { fetchData(); }, [fetchData]);
 
@@ -107,7 +112,7 @@ export default function Alerts() {
         toolbar={
           <Select
             value={filterSeverity}
-            onChange={(e) => setFilterSeverity(e.target.value)}
+            onChange={(e) => { setFilterSeverity(e.target.value); setPage(1); }}
             placeholder="Tất cả mức độ"
             options={[
               { value: 'warn', label: '⚠️ Cảnh báo' },
@@ -115,6 +120,12 @@ export default function Alerts() {
             ]}
           />
         }
+        serverPagination={{
+          page,
+          totalPages: pagination.totalPages,
+          total: pagination.total,
+          onPageChange: setPage,
+        }}
         actions={(row) => (
           <>
             {!row.acknowledged && (
