@@ -68,19 +68,7 @@ export default function Alerts() {
       render: (val) => formatDateTime(val),
     },
     { key: 'node_id', label: 'Node', sortable: true, width: '120px' },
-    { key: 'metric', label: 'Thông số', sortable: true, width: '100px' },
-    {
-      key: 'value', label: 'Giá trị', width: '90px',
-      render: (val, row) => (
-        <span style={{ color: 'var(--color-danger)', fontWeight: 600 }}>
-          {val != null ? Number(val).toFixed(1) : '--'}
-        </span>
-      ),
-    },
-    {
-      key: 'threshold', label: 'Ngưỡng', width: '90px',
-      render: (val) => val != null ? Number(val).toFixed(1) : '--',
-    },
+    { key: 'message', label: 'Nội dung', width: 'auto' },
     {
       key: 'severity', label: 'Mức độ', sortable: true, width: '120px',
       render: (val) => {
@@ -112,7 +100,7 @@ export default function Alerts() {
         data={alerts}
         loading={loading}
         searchPlaceholder="Tìm cảnh báo..."
-        searchKeys={['node_id', 'metric', 'severity']}
+        searchKeys={['node_id', 'message', 'severity']}
         emptyTitle="Không có cảnh báo nào"
         emptyDescription="Hệ thống đang hoạt động bình thường"
         emptyIcon={AlertTriangle}
