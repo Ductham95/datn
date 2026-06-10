@@ -124,3 +124,38 @@ bool http_sendBatch(const BufferedPacket* packets, uint8_t count) {
 
     return success;
 }
+
+bool http_sendHeartbeat() {
+    // Construct heartbeat URL from base URL
+    char heartbeatUrl[192];
+    snprintf(heartbeatUrl, sizeof(heartbeatUrl), "%s/api/v1/telemetry/heartbeat", cfg_serverBase);
+
+    // Minimal JSON payload
+    JsonDocument doc;
+    doc["gateway_id"] = cfg_gatewayId;
+    doc["secret"]     = GATEWAY_SECRET;
+
+    String jsonPayload;
+    serializeJson(doc, jsonPayload);
+
+    LOG_INFO("HTTP", "Heartbeat → %s", heartbeatUrl);
+
+    HTTPClient http;
+    WiFiClientSecure client;
+    client.setInsecure();
+
+    http.begin(client, heartbeatUrl);
+    http.addHeader("Content-Type", "application/json");
+    http.setTimeout(API_TIMEOUT_MS);
+
+    int httpCode = http.POST(jsonPayload);
+    http.end();
+
+    if (httpCode == 200) {
+        LOG_INFO("HTTP", "✅ Heartbeat OK");
+        return true;
+    } else {
+        LOG_INFO("HTTP", "❌ Heartbeat lỗi %d", httpCode);
+        return false;
+    }
+}

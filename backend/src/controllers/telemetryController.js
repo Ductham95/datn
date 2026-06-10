@@ -35,5 +35,28 @@ const ingestTelemetryData = async (req, res) => {
   }
 };
 
-module.exports = { ingestTelemetryData };
+const handleHeartbeat = async (req, res) => {
+  const { gateway_id, secret } = req.body;
+  const GATEWAY_SECRET = process.env.GATEWAY_SECRET || 'super-secret-key';
+
+  if (!gateway_id || !secret) {
+    return res.status(400).json({ success: false, error: 'Thiếu gateway_id hoặc secret' });
+  }
+  if (secret !== GATEWAY_SECRET) {
+    return res.status(401).json({ success: false, error: 'Sai Secret Key' });
+  }
+
+  try {
+    await telemetryService.processHeartbeat(gateway_id);
+    res.status(200).json({ success: true, message: 'Heartbeat OK' });
+  } catch (error) {
+    console.error('[Heartbeat] Lỗi:', error);
+    if (error.code === 'NOT_FOUND') {
+      return res.status(404).json({ success: false, error: error.message });
+    }
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
+};
+
+module.exports = { ingestTelemetryData, handleHeartbeat };
 

@@ -67,5 +67,21 @@ const processTelemetry = async (gateway_id, data) => {
   return allNewAlerts;
 };
 
-module.exports = { processTelemetry };
+const processHeartbeat = async (gateway_id) => {
+  const gateway = await prisma.gateway.findUnique({ where: { id: gateway_id } });
+  if (!gateway) {
+    const err = new Error(`Gateway ${gateway_id} không tồn tại`);
+    err.code = 'NOT_FOUND';
+    throw err;
+  }
+
+  await prisma.gateway.update({
+    where: { id: gateway_id },
+    data: { status: 'online', last_seen: new Date() },
+  });
+
+  console.log(`[Heartbeat] Gateway ${gateway_id} — online`);
+};
+
+module.exports = { processTelemetry, processHeartbeat };
 
