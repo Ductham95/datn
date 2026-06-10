@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AlertTriangle, Check, Trash2, Filter } from 'lucide-react';
 import { alertService } from '@/services/adminService';
+import { deviceService } from '@/services/deviceService';
 import DataTable from '@/components/ui/DataTable/DataTable';
 import Button from '@/components/ui/Button/Button';
 import Badge from '@/components/ui/Badge/Badge';
@@ -24,15 +25,27 @@ export default function Alerts() {
   const [loading, setLoading] = useState(true);
   const [deleteItem, setDeleteItem] = useState(null);
   const [filterSeverity, setFilterSeverity] = useState('');
+  const [filterNodeId, setFilterNodeId] = useState('');
+  const [gateways, setGateways] = useState([]);
+  const [nodes, setNodes] = useState([]);
   const [page, setPage] = useState(1);
   const [pagination, setPagination] = useState({ total: 0, totalPages: 1 });
   const PAGE_SIZE = 10;
+
+  // Fetch device lists for filter dropdowns
+  useEffect(() => {
+    Promise.all([
+      deviceService.getGateways().then(res => setGateways(res.gateways || res.data || [])),
+      deviceService.getNodes().then(res => setNodes(res.nodes || res.data || [])),
+    ]).catch(() => {});
+  }, []);
 
   const fetchData = useCallback(async () => {
     try {
       setLoading(true);
       const params = { page, limit: PAGE_SIZE };
       if (filterSeverity) params.severity = filterSeverity;
+      if (filterNodeId) params.node_id = filterNodeId;
       const data = await alertService.getAlerts(params);
       setAlerts(data.alerts || []);
       if (data.pagination) setPagination(data.pagination);
@@ -41,7 +54,7 @@ export default function Alerts() {
     } finally {
       setLoading(false);
     }
-  }, [filterSeverity, page]);
+  }, [filterSeverity, filterNodeId, page]);
 
   useEffect(() => { fetchData(); }, [fetchData]);
 
@@ -110,15 +123,26 @@ export default function Alerts() {
         emptyDescription="Hệ thống đang hoạt động bình thường"
         emptyIcon={AlertTriangle}
         toolbar={
-          <Select
-            value={filterSeverity}
-            onChange={(e) => { setFilterSeverity(e.target.value); setPage(1); }}
-            placeholder="Tất cả mức độ"
-            options={[
-              { value: 'warn', label: '⚠️ Cảnh báo' },
-              { value: 'danger', label: '🔴 Nguy hiểm' },
-            ]}
-          />
+          <>
+            <Select
+              value={filterNodeId}
+              onChange={(e) => { setFilterNodeId(e.target.value); setPage(1); }}
+              placeholder="Tất cả thiết bị"
+              options={[
+                ...gateways.map(g => ({ value: g.id, label: `📡 ${g.id}` })),
+                ...nodes.map(n => ({ value: n.id, label: `📟 ${n.id}` })),
+              ]}
+            />
+            <Select
+              value={filterSeverity}
+              onChange={(e) => { setFilterSeverity(e.target.value); setPage(1); }}
+              placeholder="Tất cả mức độ"
+              options={[
+                { value: 'warn', label: '⚠️ Cảnh báo' },
+                { value: 'danger', label: '🔴 Nguy hiểm' },
+              ]}
+            />
+          </>
         }
         serverPagination={{
           page,
