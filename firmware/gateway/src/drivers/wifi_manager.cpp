@@ -136,6 +136,12 @@ bool wifi_isConnected() {
 
 void wifi_reconnectIfNeeded() {
     if (wifi_isConnected()) {
+        // ESP32 có thể auto-reconnect ngầm (WiFi driver tự kết nối lại)
+        // → cần cập nhật cache IP/SSID nếu chưa có
+        if (ipBuffer[0] == '0' && ipBuffer[1] == '.') {
+            cacheConnectionInfo();
+            LOG_INFO("WiFi", "✅ Đã kết nối (auto-reconnect)! IP: %s, RSSI: %d dBm", ipBuffer, WiFi.RSSI());
+        }
         reconnectFailCount = 0;
         return;
     }

@@ -265,7 +265,7 @@ void loop() {
     }
 
     // 4. Heartbeat — gửi định kỳ để server biết gateway còn sống
-    if (wifi_isConnected() && (millis() - lastHeartbeatTime >= HEARTBEAT_INTERVAL_MS)) {
+    if (wifi_isConnected() && (lastHeartbeatTime == 0 || millis() - lastHeartbeatTime >= HEARTBEAT_INTERVAL_MS)) {
         http_sendHeartbeat();
         lastHeartbeatTime = millis();
     }
