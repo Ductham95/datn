@@ -129,8 +129,8 @@ export default function Alerts() {
               onChange={(e) => { setFilterNodeId(e.target.value); setPage(1); }}
               placeholder="Tất cả thiết bị"
               options={[
-                ...gateways.map(g => ({ value: g.id, label: `📡 ${g.id}` })),
-                ...nodes.map(n => ({ value: n.id, label: `📟 ${n.id}` })),
+                ...gateways.map(g => ({ value: g.id, label: `📡 ${g.name}` })),
+                ...nodes.map(n => ({ value: n.id, label: `📟 ${n.name}` })),
               ]}
             />
             <Select
