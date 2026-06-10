@@ -289,8 +289,9 @@ void setup() {
     // LoRa sleep
     lora_sleep();
 
-    // ── 11. Lưu CCS811 baseline ──
+    // ── 11. Lưu CCS811 baseline + tắt heater ──
     ccs811_saveBaseline();
+    ccs811_sleep();
 
     // ── 12. Lưu payload vào RTC memory (để hiện OLED khi nhấn nút) ──
     memcpy(&lastPayload, &payload, sizeof(SensorPayload));

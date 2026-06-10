@@ -105,6 +105,16 @@ void ccs811_saveBaseline() {
     LOG_INFO("CCS811", "Baseline saved: 0x%04X", ccs811Baseline);
 }
 
+void ccs811_sleep() {
+    // Tắt heater: Drive Mode 0 = Idle (không đo, heater tắt)
+    ccs.setDriveMode(CCS811_DRIVE_MODE_IDLE);
+
+    // Đặt WAK HIGH = sensor disable (tiết kiệm thêm)
+    digitalWrite(CCS811_WAK_PIN, HIGH);
+
+    LOG_MSG("CCS811", "Sleep (Drive Mode 0, WAK=HIGH)");
+}
+
 void ccs811_restoreBaseline() {
     if (hasBaseline) {
         ccs.setBaseline(ccs811Baseline);

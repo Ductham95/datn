@@ -6,11 +6,11 @@ const { createConnectivityAlerts, cleanupOldAlerts } = require('./alertService')
  * Khởi chạy các công việc chạy nền (Background Jobs)
  */
 function startBackgroundJobs() {
-  console.log('[Cron] Đã khởi động Hệ thống giám sát tình trạng mạng (chạy mỗi 5 phút)');
+  console.log('[Cron] Đã khởi động Hệ thống giám sát tình trạng mạng (chạy mỗi 15 phút)');
 
   // ==================== Job 1: Check Gateway và Node Offline ====================
-  // Chạy mỗi 5 phút một lần
-  cron.schedule('*/5 * * * *', async () => {
+  // Chạy mỗi 15 phút một lần
+  cron.schedule('*/15 * * * *', async () => {
     try {
       console.log('[Cron] Đang quét Health check mạng LoRa...');
 
@@ -32,7 +32,7 @@ function startBackgroundJobs() {
                 FROM measurements
                 GROUP BY node_id
               ) AS latest
-              WHERE EXTRACT(EPOCH FROM (NOW() - last_time)) > 900
+              WHERE EXTRACT(EPOCH FROM (NOW() - last_time)) > 2400
             )
             OR (
               sn.last_seen IS NULL
@@ -55,7 +55,7 @@ function startBackgroundJobs() {
         }
 
         // 2. Chuyển Sensor Node thành Offline nếu:
-        //    - Không có dữ liệu đo mới nhất trong 15 phút, HOẶC
+        //    - Không có dữ liệu đo mới nhất trong 40 phút (sensor gửi mỗi 30 phút + 10 phút buffer), HOẶC
         //    - Chưa bao giờ gửi dữ liệu (last_seen IS NULL và không có measurements)
         const offlineNodeCount = await tx.$executeRaw`
           UPDATE sensor_nodes
@@ -69,7 +69,7 @@ function startBackgroundJobs() {
                   FROM measurements
                   GROUP BY node_id
                 ) AS latest
-                WHERE EXTRACT(EPOCH FROM (NOW() - last_time)) > 900
+                WHERE EXTRACT(EPOCH FROM (NOW() - last_time)) > 2400
               )
               OR (
                 last_seen IS NULL

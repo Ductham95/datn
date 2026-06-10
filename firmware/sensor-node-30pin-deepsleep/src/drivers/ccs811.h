@@ -36,6 +36,12 @@ bool ccs811_read(uint16_t* co2, uint16_t* tvoc);
 void ccs811_saveBaseline();
 
 /**
+ * Tắt CCS811 heater (Drive Mode 0 + WAK HIGH) trước deep-sleep
+ * Tiết kiệm ~26mA so với để Drive Mode 1 chạy liên tục
+ */
+void ccs811_sleep();
+
+/**
  * Khôi phục CCS811 baseline từ RTC memory (gọi sau wake-up)
  */
 void ccs811_restoreBaseline();
