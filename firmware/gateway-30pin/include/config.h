@@ -23,6 +23,7 @@
 // ===== Packet Buffer =====
 #define PACKET_BUFFER_SIZE 10   // Tối đa 10 gói chờ gửi
 #define FLUSH_INTERVAL_MS 30000 // Gửi HTTP mỗi 30 giây (hoặc khi buffer đầy)
+#define HEARTBEAT_INTERVAL_MS 300000 // Gửi heartbeat mỗi 5 phút
 
 // ===== Status LED (dùng LED_BUILTIN trên board 30 chân) =====
 #define LED_STATUS_PIN 2  // LED tích hợp (GPIO2)

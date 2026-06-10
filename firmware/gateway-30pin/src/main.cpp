@@ -33,6 +33,7 @@
 // =============================================================================
 
 static unsigned long lastFlushTime = 0;
+static unsigned long lastHeartbeatTime = 0;
 static unsigned long resetBtnPressStart = 0;
 static bool resetBtnPressed = false;
 
@@ -226,6 +227,7 @@ void setup() {
     Serial.println();
 
     lastFlushTime = millis();
+    lastHeartbeatTime = 0;  // Gửi heartbeat ngay lần loop đầu tiên
 }
 
 // ===== Main Loop (Superloop) =====
@@ -261,12 +263,18 @@ void loop() {
         lastFlushTime = millis();
     }
 
-    // 4. Cập nhật LED
+    // 4. Heartbeat — gửi định kỳ để server biết gateway còn sống
+    if (wifi_isConnected() && (millis() - lastHeartbeatTime >= HEARTBEAT_INTERVAL_MS)) {
+        http_sendHeartbeat();
+        lastHeartbeatTime = millis();
+    }
+
+    // 5. Cập nhật LED
     led_update();
 
-    // 5. Cập nhật OLED
+    // 6. Cập nhật OLED
     oled_update();
 
-    // 6. Yield cho WiFi stack
+    // 7. Yield cho WiFi stack
     delay(50);  // 50ms — đủ nhanh để không miss gói LoRa UART
 }

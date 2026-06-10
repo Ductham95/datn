@@ -17,3 +17,11 @@
  * @return true nếu server trả về 200 OK
  */
 bool http_sendBatch(const BufferedPacket* packets, uint8_t count);
+
+/**
+ * Gửi heartbeat lên server (không chứa sensor data)
+ * POST /api/v1/telemetry/heartbeat
+ *
+ * @return true nếu server trả về 200 OK
+ */
+bool http_sendHeartbeat();
