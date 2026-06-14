@@ -97,24 +97,6 @@ Truy cập dashboard: `http://<IP_VPS>`
 
 ## Restore Dữ Liệu (Tùy Chọn)
 
-Nếu muốn có dữ liệu sẵn từ hệ thống hiện tại:
-
-### Trên VPS cũ (dump)
-
-```bash
-ssh root@168.144.97.168
-cd /opt/datn
-bash deploy-package/dump-database.sh
-```
-
-### Copy file backup về máy local, rồi lên VPS mới
-
-```bash
-# Từ máy local:
-scp root@168.144.97.168:/opt/datn/backup_2026-06-14.dump ./
-scp backup_2026-06-14.dump root@<IP_VPS_MỚI>:/opt/datn/
-```
-
 ### Trên VPS mới (restore)
 
 ```bash
