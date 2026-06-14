@@ -1,11 +1,11 @@
 #!/bin/bash
 # =====================================================
-# Restore Database trên VPS mới
+# Restore Database từ file SQL trên VPS mới
 # =====================================================
 # Chạy script này trên VPS mới SAU KHI đã docker compose up
-# 
+#
 # Cách dùng:
-#   bash deploy-package/restore-database.sh backup_2026-06-14.dump
+#   bash deploy-package/restore-database.sh backup_2026-06-14.sql
 
 set -e
 
@@ -15,8 +15,8 @@ DB_NAME="air_quality_db"
 
 # Kiểm tra tham số
 if [ -z "$1" ]; then
-    echo "Cách dùng: bash restore-database.sh <file_backup.dump>"
-    echo "Ví dụ:    bash restore-database.sh backup_2026-06-14.dump"
+    echo "Cách dùng: bash restore-database.sh <file_backup.sql>"
+    echo "Ví dụ:    bash restore-database.sh backup_2026-06-14.sql"
     exit 1
 fi
 
@@ -46,30 +46,25 @@ for i in $(seq 1 30); do
     sleep 1
 done
 
-# Copy file backup vào container
-echo "Đang copy file backup vào container..."
-docker cp "$BACKUP_FILE" "$CONTAINER":/tmp/backup.dump
+# Copy file SQL vào container
+echo "Đang copy file SQL vào container..."
+docker cp "$BACKUP_FILE" "$CONTAINER":/tmp/backup.sql
 
-# Drop và tạo lại database để restore sạch
-echo "Đang xóa dữ liệu cũ và restore..."
+# Drop và tạo lại database, rồi import SQL
+echo "Đang xóa dữ liệu cũ và import..."
 docker exec "$CONTAINER" bash -c "
-    # Terminate existing connections
+    # Ngắt kết nối hiện có
     psql -U $DB_USER -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = '$DB_NAME' AND pid <> pg_backend_pid();\" 2>/dev/null || true
-    
-    # Drop and recreate database
+
+    # Drop và tạo lại database
     dropdb -U $DB_USER --if-exists $DB_NAME
     createdb -U $DB_USER $DB_NAME
-    
-    # Restore with TimescaleDB pre-restore
-    psql -U $DB_USER -d $DB_NAME -c 'CREATE EXTENSION IF NOT EXISTS timescaledb;'
-    psql -U $DB_USER -d $DB_NAME -c \"SELECT timescaledb_pre_restore();\"
-    
-    pg_restore -U $DB_USER -d $DB_NAME --no-owner --no-privileges /tmp/backup.dump || true
-    
-    psql -U $DB_USER -d $DB_NAME -c \"SELECT timescaledb_post_restore();\"
-    
-    # Cleanup
-    rm /tmp/backup.dump
+
+    # Import file SQL
+    psql -U $DB_USER -d $DB_NAME < /tmp/backup.sql
+
+    # Dọn dẹp
+    rm /tmp/backup.sql
 "
 
 echo ""
