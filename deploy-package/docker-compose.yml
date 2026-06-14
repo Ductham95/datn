@@ -1,6 +1,4 @@
-# =====================================================
-# Docker Compose - Deploy cho VPS thầy
-# =====================================================
+
 # Cách dùng:
 #   1. Copy file .env.example thành .env.production và điền giá trị
 #   2. Chạy: docker compose --env-file .env.production up --build -d
