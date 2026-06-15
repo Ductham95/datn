@@ -171,8 +171,8 @@
          familyi={P\bibinitperiod},
       }}%
     }
-    \strng{namehash}{P2}
-    \strng{fullhash}{P2}
+    \strng{namehash}{P5}
+    \strng{fullhash}{P5}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{title}{PurpleAir -- Real-time Air Quality Monitoring}
@@ -268,6 +268,333 @@
     }
     \field{type}{techreport}
     \field{year}{2018}
+  \endentry
+
+  \entry{espressif2024}{manual}{}{}
+    \name{author}{1}{}{%
+      {{hash=E}{%
+         family={{Espressif Systems}},
+         familyi={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{E1}
+    \strng{fullhash}{E1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{ESP32} Technical Reference Manual}
+    \verb{url}
+    \verb https://www.espressif.com/sites/default/files/documentation/esp32_tec
+    \verb hnical_reference_manual_en.pdf
+    \endverb
+    \field{year}{2024}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{plantower2023}{manual}{}{}
+    \name{author}{1}{}{%
+      {{hash=P}{%
+         family={{Plantower}},
+         familyi={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{P2}
+    \strng{fullhash}{P2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{PMS7003} Digital Universal Particle Concentration Sensor --
+  Datasheet}
+    \verb{url}
+    \verb https://www.plantower.com/en/products_33/74.html
+    \endverb
+    \field{year}{2023}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{ams2023}{manual}{}{}
+    \name{author}{1}{}{%
+      {{hash=a}{%
+         family={{ams AG}},
+         familyi={a\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{a1}
+    \strng{fullhash}{a1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{CCS811} Ultra-Low Power Digital Gas Sensor for Monitoring
+  Indoor Air Quality -- Datasheet}
+    \verb{url}
+    \verb https://ams.com/ccs811
+    \endverb
+    \field{year}{2023}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{aosong2023}{manual}{}{}
+    \name{author}{1}{}{%
+      {{hash=A}{%
+         family={{Aosong Electronics}},
+         familyi={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{A1}
+    \strng{fullhash}{A1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{AHT10} Integrated Temperature and Humidity Sensor --
+  Datasheet}
+    \verb{url}
+    \verb https://www.aosong.com/en/products-109.html
+    \endverb
+    \field{year}{2023}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{nodejs2024}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=O}{%
+         family={{OpenJS Foundation}},
+         familyi={O\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{O1}
+    \strng{fullhash}{O1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Node.js -- About}
+    \verb{url}
+    \verb https://nodejs.org/en/about
+    \endverb
+    \field{year}{2024}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{postgresql2024}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=T}{%
+         family={{The PostgreSQL Global Development Group}},
+         familyi={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{T1}
+    \strng{fullhash}{T1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{PostgreSQL} 15 Documentation}
+    \verb{url}
+    \verb https://www.postgresql.org/docs/15/
+    \endverb
+    \field{year}{2024}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{timescaledb2024}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=T}{%
+         family={{Timescale Inc.}},
+         familyi={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{T2}
+    \strng{fullhash}{T2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{TimescaleDB} Documentation -- Hypertables and Continuous
+  Aggregates}
+    \verb{url}
+    \verb https://docs.timescale.com
+    \endverb
+    \field{year}{2024}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{postgis2024}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=P}{%
+         family={{PostGIS Project Steering Committee}},
+         familyi={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{P3}
+    \strng{fullhash}{P3}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{PostGIS} -- Spatial and Geographic Objects for {PostgreSQL}}
+    \verb{url}
+    \verb https://postgis.net/documentation/
+    \endverb
+    \field{year}{2024}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{prisma2024}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=P}{%
+         family={{Prisma Data Inc.}},
+         familyi={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{P4}
+    \strng{fullhash}{P4}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Prisma -- Next-generation {ORM} for {Node.js} and
+  {TypeScript}}
+    \verb{url}
+    \verb https://www.prisma.io/docs
+    \endverb
+    \field{year}{2024}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{socketio2024}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=S}{%
+         family={{Socket.IO Contributors}},
+         familyi={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{S1}
+    \strng{fullhash}{S1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Socket.{IO} Documentation}
+    \verb{url}
+    \verb https://socket.io/docs/v4/
+    \endverb
+    \field{year}{2024}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{react2024}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=M}{%
+         family={{Meta Platforms Inc.}},
+         familyi={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{M1}
+    \strng{fullhash}{M1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{React -- A {JavaScript} Library for Building User Interfaces}
+    \verb{url}
+    \verb https://react.dev
+    \endverb
+    \field{year}{2024}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{vite2024}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=YE}{%
+         family={You},
+         familyi={Y\bibinitperiod},
+         given={Evan},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{YE1}
+    \strng{fullhash}{YE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Vite -- Next Generation Frontend Tooling}
+    \verb{url}
+    \verb https://vite.dev
+    \endverb
+    \field{year}{2024}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{leaflet2024}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=AV}{%
+         family={Agafonkin},
+         familyi={A\bibinitperiod},
+         given={Volodymyr},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AV1}
+    \strng{fullhash}{AV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Leaflet -- An Open-Source {JavaScript} Library for
+  Interactive Maps}
+    \verb{url}
+    \verb https://leafletjs.com
+    \endverb
+    \field{year}{2024}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{echarts2024}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=A}{%
+         family={{Apache Software Foundation}},
+         familyi={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{A2}
+    \strng{fullhash}{A2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Apache {ECharts} -- An Open Source {JavaScript} Visualization
+  Library}
+    \verb{url}
+    \verb https://echarts.apache.org
+    \endverb
+    \field{year}{2024}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
+  \endentry
+
+  \entry{docker2024}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=D}{%
+         family={{Docker Inc.}},
+         familyi={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{D1}
+    \strng{fullhash}{D1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Docker Documentation -- Overview}
+    \verb{url}
+    \verb https://docs.docker.com/get-started/overview/
+    \endverb
+    \field{year}{2024}
+    \field{urlday}{01}
+    \field{urlmonth}{06}
+    \field{urlyear}{2026}
   \endentry
 \enddatalist
 \endinput

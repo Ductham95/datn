@@ -113,7 +113,7 @@
         <mxCell id="start2" parent="lane_cron" style="ellipse;html=1;shape=mxgraph.flowchart.start_2;fillColor=#000000;fontSize=18;fontFamily=Arial;" value="" vertex="1">
           <mxGeometry height="30" width="30" x="170" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="act_cron_trigger" parent="lane_cron" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Kích hoạt tác vụ&#xa;định kỳ (mỗi 15 phút)" vertex="1">
+        <mxCell id="act_cron_trigger" parent="lane_cron" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Kích hoạt tác vụ&lt;br&gt;định kỳ (mỗi 5 phút)" vertex="1">
           <mxGeometry height="50" width="210" x="80" y="100" as="geometry" />
         </mxCell>
         <mxCell id="act_scan_gw" parent="lane_cron" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Quét trạng thái&#xa;các Gateway" vertex="1">
