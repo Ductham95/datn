@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  27 MAY 2026 22:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  15 JUN 2026 10:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1275,33 +1275,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--53
  []
 
 [2]
+<../Hinhve/usecase_tongquat.png, id=89, 2184.16pt x 1529.715pt>
+File: ../Hinhve/usecase_tongquat.png Graphic file (type png)
+<use ../Hinhve/usecase_tongquat.png>
+Package pdftex.def Info: ../Hinhve/usecase_tongquat.png  used on input line 87.
+(pdftex.def)             Requested size: 362.77525pt x 254.07268pt.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 96.
  (C:\Program Files\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3{C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4]
+) [3{C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc} <../Hinhve/usecase_tongquat.png>]
+<../Hinhve/usecase_user.png, id=99, 2963.07pt x 2387.92125pt>
+File: ../Hinhve/usecase_user.png Graphic file (type png)
+<use ../Hinhve/usecase_user.png>
+Package pdftex.def Info: ../Hinhve/usecase_user.png  used on input line 117.
+(pdftex.def)             Requested size: 362.77525pt x 292.33162pt.
+ [4 <../Hinhve/usecase_user.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5]
-Underfull \hbox (badness 10000) in paragraph at lines 240--240
-[]|\T5/ptm/b/n/11.86258 Luçng sü ki»n
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 279--279
-[]|\T5/ptm/b/n/11.86258 Luçng sü ki»n
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-Underfull \hbox (badness 10000) in paragraph at lines 316--316
+Underfull \hbox (badness 10000) in paragraph at lines 246--246
+[]|\T5/ptm/b/n/11.86258 Luçng sü ki»n
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 285--285
 []|\T5/ptm/b/n/11.86258 Luçng sü ki»n
  []
 
@@ -1309,50 +1309,58 @@ Underfull \hbox (badness 10000) in paragraph at lines 316--316
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [7]
-Underfull \hbox (badness 10000) in paragraph at lines 356--356
+Underfull \hbox (badness 10000) in paragraph at lines 322--322
 []|\T5/ptm/b/n/11.86258 Luçng sü ki»n
- []
-
-
-Underfull \hbox (badness 2970) in paragraph at lines 360--361
-[]\T5/ptm/m/n/11.86258 Qu£n trà vi¶n låc c£nh b¡o theo lo¤i (v÷ñt
- []
-
-
-Underfull \hbox (badness 1852) in paragraph at lines 360--361
-\T5/ptm/m/n/11.86258 ng÷ïng/m§t k¸t nèi), mùc ^^_ë (c£nh b¡o/nguy
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8]
-Underfull \hbox (badness 10000) in paragraph at lines 393--393
+Underfull \hbox (badness 10000) in paragraph at lines 362--362
 []|\T5/ptm/b/n/11.86258 Luçng sü ki»n
  []
 
 
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 425--425
+Underfull \hbox (badness 2970) in paragraph at lines 366--367
+[]\T5/ptm/m/n/11.86258 Qu£n trà vi¶n låc c£nh b¡o theo lo¤i (v÷ñt
+ []
+
+
+Underfull \hbox (badness 1852) in paragraph at lines 366--367
+\T5/ptm/m/n/11.86258 ng÷ïng/m§t k¸t nèi), mùc ^^_ë (c£nh b¡o/nguy
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9]
+Underfull \hbox (badness 10000) in paragraph at lines 399--399
+[]|\T5/ptm/b/n/11.86258 Luçng sü ki»n
+ []
+
+
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 431--431
 []|\T5/ptm/b/n/11.86258 STT| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 433--433
+Underfull \hbox (badness 10000) in paragraph at lines 439--439
 []|\T5/ptm/m/n/11.86258 T½nh d¹ sû
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 437--437
+Underfull \hbox (badness 10000) in paragraph at lines 443--443
 []|\T5/ptm/m/n/11.86258 Y¶u c¦u kÿ
  []
 
-[9]
+[10]
 
 Package glossaries Warning: No \printnoidxglossary or \printnoidxglossaries
  found. (Remove \makenoidxglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-[10] (2_Khao_sat.aux)
+[11] (2_Khao_sat.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -1377,17 +1385,17 @@ Package logreq Info: Writing requests to '2_Khao_sat.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33609 strings out of 467691
- 625353 string characters out of 5425054
- 1539809 words of memory out of 5000000
- 62136 multiletter control sequences out of 15000+600000
+ 33637 strings out of 467691
+ 626147 string characters out of 5425054
+ 1539995 words of memory out of 5000000
+ 62161 multiletter control sequences out of 15000+600000
  654983 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,124p,2607b,864s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
-Output written on 2_Khao_sat.pdf (10 pages, 135279 bytes).
+Output written on 2_Khao_sat.pdf (11 pages, 771121 bytes).
 PDF statistics:
- 199 PDF objects out of 1000 (max. 8388607)
- 64 named destinations out of 1000 (max. 500000)
- 145 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 211 PDF objects out of 1000 (max. 8388607)
+ 67 named destinations out of 1000 (max. 500000)
+ 155 words of extra memory for PDF output out of 10000 (max. 10000000)
 
