@@ -34,45 +34,45 @@ Warning--I didn't find a database entry for "ashton2009internet"
 Biblatex version: 3.21
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-You've used 5 entries,
+You've used 9 entries,
             6402 wiz_defined-function locations,
-            1234 strings with 9571 characters,
-and the built_in function-call counts, 21701 in all, are:
-= -- 976
-> -- 1433
-< -- 129
-+ -- 1221
-- -- 1050
-* -- 1037
-:= -- 2661
+            1261 strings with 10612 characters,
+and the built_in function-call counts, 63464 in all, are:
+= -- 4660
+> -- 1875
+< -- 237
++ -- 2522
+- -- 1231
+* -- 4024
+:= -- 7737
 add.period$ -- 0
-call.type$ -- 5
-change.case$ -- 28
+call.type$ -- 9
+change.case$ -- 89
 chr.to.int$ -- 138
-cite$ -- 8
-duplicate$ -- 1853
-empty$ -- 1824
-format.name$ -- 178
-if$ -- 3854
+cite$ -- 16
+duplicate$ -- 6197
+empty$ -- 5369
+format.name$ -- 495
+if$ -- 12079
 int.to.chr$ -- 0
-int.to.str$ -- 10
+int.to.str$ -- 20
 missing$ -- 0
-newline$ -- 104
-num.names$ -- 158
-pop$ -- 1349
+newline$ -- 267
+num.names$ -- 347
+pop$ -- 2902
 preamble$ -- 1
-purify$ -- 40
+purify$ -- 137
 quote$ -- 0
-skip$ -- 751
+skip$ -- 1471
 stack$ -- 0
-substring$ -- 1727
-swap$ -- 505
-text.length$ -- 132
+substring$ -- 8836
+swap$ -- 1154
+text.length$ -- 225
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 158
+type$ -- 292
 warning$ -- 0
-while$ -- 270
+while$ -- 874
 width$ -- 0
-write$ -- 100
+write$ -- 259
 (There were 9 warnings)

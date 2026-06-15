@@ -39,6 +39,110 @@
     \field{urlyear}{2026}
   \endentry
 
+  \entry{who2021}{report}{}{}
+    \name{author}{1}{}{%
+      {{hash=W}{%
+         family={{World Health Organization}},
+         familyi={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{W1}
+    \strng{fullhash}{W1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{WHO Global Air Quality Guidelines: Particulate Matter
+  ({PM2.5} and {PM10}), Ozone, Nitrogen Dioxide, Sulfur Dioxide and Carbon
+  Monoxide}
+    \verb{url}
+    \verb https://www.who.int/publications/i/item/9789240034228
+    \endverb
+    \list{institution}{1}{%
+      {World Health Organization}%
+    }
+    \field{type}{techreport}
+    \field{year}{2021}
+  \endentry
+
+  \entry{morawska2018}{article}{}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{10}{}{%
+      {{hash=ML}{%
+         family={Morawska},
+         familyi={M\bibinitperiod},
+         given={Lidia},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=TPK}{%
+         family={Thai},
+         familyi={T\bibinitperiod},
+         given={Phong\bibnamedelima K.},
+         giveni={P\bibinitperiod\bibinitdelim K\bibinitperiod},
+      }}%
+      {{hash=LX}{%
+         family={Liu},
+         familyi={L\bibinitperiod},
+         given={Xiaoting},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=ASA}{%
+         family={Asumadu-Sakyi},
+         familyi={A\bibinithyphendelim S\bibinitperiod},
+         given={Akwasi},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=AG}{%
+         family={Ayoko},
+         familyi={A\bibinitperiod},
+         given={Godwin},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=BA}{%
+         family={Bartonova},
+         familyi={B\bibinitperiod},
+         given={Alena},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=BA}{%
+         family={Bedini},
+         familyi={B\bibinitperiod},
+         given={Andrea},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=CF}{%
+         family={Chai},
+         familyi={C\bibinitperiod},
+         given={Fahe},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=CB}{%
+         family={Christensen},
+         familyi={C\bibinitperiod},
+         given={Bryce},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=DM}{%
+         family={Dunbabin},
+         familyi={D\bibinitperiod},
+         given={Matthew},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ML+1}
+    \strng{fullhash}{MLTPKLXASAAGBABACFCBDM+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1016/j.envint.2018.04.018
+    \endverb
+    \field{pages}{286\bibrangedash 299}
+    \field{title}{Applications of low-cost sensing technologies for air quality
+  monitoring and exposure assessment: How far have they gone?}
+    \field{volume}{116}
+    \field{journaltitle}{Environment International}
+    \field{year}{2018}
+  \endentry
+
   \entry{iqair2024}{misc}{}{}
     \name{author}{1}{}{%
       {{hash=I}{%
@@ -81,6 +185,49 @@
     \field{urlyear}{2026}
   \endentry
 
+  \entry{augustin2016}{article}{}{}
+    \name{author}{4}{}{%
+      {{hash=AA}{%
+         family={Augustin},
+         familyi={A\bibinitperiod},
+         given={Aloÿs},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=YJ}{%
+         family={Yi},
+         familyi={Y\bibinitperiod},
+         given={Jiazi},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CT}{%
+         family={Clausen},
+         familyi={C\bibinitperiod},
+         given={Thomas},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=TWM}{%
+         family={Townsley},
+         familyi={T\bibinitperiod},
+         given={William\bibnamedelima Mark},
+         giveni={W\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AA+1}
+    \strng{fullhash}{AAYJCTTWM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.3390/s16091466
+    \endverb
+    \field{number}{9}
+    \field{pages}{1466}
+    \field{title}{A Study of {LoRa}: Long Range \& Low Power Networks for the
+  {Internet of Things}}
+    \field{volume}{16}
+    \field{journaltitle}{Sensors}
+    \field{year}{2016}
+  \endentry
+
   \entry{btnmt2023}{misc}{}{}
     \name{author}{1}{}{%
       {{hash=B}{%
@@ -100,6 +247,27 @@
     \field{urlday}{01}
     \field{urlmonth}{05}
     \field{urlyear}{2026}
+  \endentry
+
+  \entry{usepa2018}{report}{}{}
+    \name{author}{1}{}{%
+      {{hash=U}{%
+         family={{United States Environmental Protection Agency}},
+         familyi={U\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{U1}
+    \strng{fullhash}{U1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{EPA-454/B-18-007}
+    \field{title}{Technical Assistance Document for the Reporting of Daily Air
+  Quality -- the Air Quality Index ({AQI})}
+    \list{institution}{1}{%
+      {US EPA}%
+    }
+    \field{type}{techreport}
+    \field{year}{2018}
   \endentry
 \enddatalist
 \endinput

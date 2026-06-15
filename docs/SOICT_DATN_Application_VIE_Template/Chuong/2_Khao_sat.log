@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  15 JUN 2026 15:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  15 JUN 2026 16:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1111,7 +1111,7 @@ LaTeX Font Info:    ... okay on input line 2.
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: twoside 
+* modes: 
 * h-part:(L,W,R)=(99.58464pt, 426.79135pt, 71.13188pt)
 * v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
 * \paperwidth=597.50787pt
@@ -1119,13 +1119,13 @@ LaTeX Font Info:    ... okay on input line 2.
 * \textwidth=426.79135pt
 * \textheight=731.23584pt
 * \oddsidemargin=27.31465pt
-* \evensidemargin=-1.1381pt
+* \evensidemargin=27.31465pt
 * \topmargin=-52.36449pt
 * \headheight=10.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=111.0pt
+* \marginparwidth=57.0pt
 * \marginparsep=11.0pt
 * \columnsep=10.0pt
 * \skip\footins=11.69997pt plus 5.19942pt minus 2.60054pt
@@ -1133,8 +1133,8 @@ LaTeX Font Info:    ... okay on input line 2.
 * \voffset=0.0pt
 * \mag=1000
 * \@twocolumnfalse
-* \@twosidetrue
-* \@mparswitchtrue
+* \@twosidefalse
+* \@mparswitchfalse
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
@@ -1204,6 +1204,9 @@ Package hyperref Info: Link coloring OFF on input line 2.
 
 LaTeX Warning: Citation 'pamair2024' on page 1 undefined on input line 14.
 
+
+LaTeX Warning: Citation 'who2021' on page 1 undefined on input line 14.
+
 LaTeX Font Info:    Calculating math sizes for size <13> on input line 16.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.5> not available
@@ -1246,17 +1249,20 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
+LaTeX Warning: Citation 'morawska2018' on page 1 undefined on input line 16.
+
+
 LaTeX Warning: Citation 'iqair2024' on page 1 undefined on input line 21.
 
 
 LaTeX Warning: Citation 'purpleair2024' on page 1 undefined on input line 28.
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [1
+[1
 
 {C:/Users/ADMIN/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/vntex/t5.enc}]
+
+LaTeX Warning: Citation 'augustin2016' on page 2 undefined on input line 30.
+
 
 LaTeX Warning: Citation 'btnmt2023' on page 2 undefined on input line 35.
 
@@ -1274,120 +1280,102 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--53
 []|\T5/ptm/m/n/11.86258 PM2.5,
  []
 
+
+LaTeX Warning: Citation 'augustin2016' on page 2 undefined on input line 72.
+
 [2]
-<../Hinhve/usecase_tongquat.png, id=89, 2184.16pt x 1529.715pt>
+
+LaTeX Warning: Citation 'morawska2018' on page 3 undefined on input line 74.
+
+
+LaTeX Warning: Citation 'augustin2016' on page 3 undefined on input line 74.
+
+
+LaTeX Warning: Citation 'usepa2018' on page 3 undefined on input line 74.
+
+<../Hinhve/usecase_tongquat.png, id=89, 3276.24pt x 2294.5725pt>
 File: ../Hinhve/usecase_tongquat.png Graphic file (type png)
 <use ../Hinhve/usecase_tongquat.png>
-Package pdftex.def Info: ../Hinhve/usecase_tongquat.png  used on input line 87.
-(pdftex.def)             Requested size: 426.79135pt x 298.91177pt.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 96.
- (C:\Program Files\MiKTeX\tex/latex/psnfss\ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [3{C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc} <../Hinhve/usecase_tongquat.png>]
-<../Hinhve/usecase_user.png, id=99, 3556.28625pt x 2526.43875pt>
+Package pdftex.def Info: ../Hinhve/usecase_tongquat.png  used on input line 86.
+(pdftex.def)             Requested size: 426.79135pt x 298.9001pt.
+[3 <../Hinhve/usecase_tongquat.png>]
+<../Hinhve/usecase_user.png, id=98, 3556.28625pt x 2526.43875pt>
 File: ../Hinhve/usecase_user.png Graphic file (type png)
 <use ../Hinhve/usecase_user.png>
-Package pdftex.def Info: ../Hinhve/usecase_user.png  used on input line 117.
+Package pdftex.def Info: ../Hinhve/usecase_user.png  used on input line 102.
 (pdftex.def)             Requested size: 426.79135pt x 303.19812pt.
  [4 <../Hinhve/usecase_user.png>]
-<../Hinhve/usecase_admin.png, id=106, 4233.8175pt x 2728.1925pt>
+
+LaTeX Warning: Citation 'usepa2018' on page 5 undefined on input line 109.
+
+
+LaTeX Warning: Citation 'who2021' on page 5 undefined on input line 109.
+
+
+LaTeX Warning: Citation 'usepa2018' on page 5 undefined on input line 113.
+
+<../Hinhve/usecase_admin.png, id=107, 4233.8175pt x 2728.1925pt>
 File: ../Hinhve/usecase_admin.png Graphic file (type png)
 <use ../Hinhve/usecase_admin.png>
-Package pdftex.def Info: ../Hinhve/usecase_admin.png  used on input line 159.
+Package pdftex.def Info: ../Hinhve/usecase_admin.png  used on input line 122.
 (pdftex.def)             Requested size: 426.79135pt x 274.99992pt.
+[5] [6 <../Hinhve/usecase_admin.png>]
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: Citation 'usepa2018' on page 7 undefined on input line 142.
 
- [5]
-Underfull \vbox (badness 1024) has occurred while \output is active []
-
- [6 <../Hinhve/usecase_admin.png>]
-<../Hinhve/activity_data_flow.png, id=117, 3255.16125pt x 3134.71124pt>
+<../Hinhve/activity_data_flow.png, id=120, 3255.16125pt x 3134.71124pt>
 File: ../Hinhve/activity_data_flow.png Graphic file (type png)
 <use ../Hinhve/activity_data_flow.png>
-Package pdftex.def Info: ../Hinhve/activity_data_flow.png  used on input line 208.
+Package pdftex.def Info: ../Hinhve/activity_data_flow.png  used on input line 146.
 (pdftex.def)             Requested size: 426.79135pt x 410.97066pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [7]
-<../Hinhve/activity_alert_flow.png, id=123, 4342.2225pt x 3375.61125pt>
+[7]
+<../Hinhve/activity_alert_flow.png, id=128, 4342.2225pt x 3375.61125pt>
 File: ../Hinhve/activity_alert_flow.png Graphic file (type png)
 <use ../Hinhve/activity_alert_flow.png>
-Package pdftex.def Info: ../Hinhve/activity_alert_flow.png  used on input line 218.
+Package pdftex.def Info: ../Hinhve/activity_alert_flow.png  used on input line 155.
 (pdftex.def)             Requested size: 426.79135pt x 331.76054pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [8 <../Hinhve/activity_data_flow.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 246--246
+Underfull \hbox (badness 10000) in paragraph at lines 183--183
+[]|\T5/ptm/b/n/11.86258 Luçng sü ki»n
+ []
+
+[9 <../Hinhve/activity_alert_flow.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 222--222
+[]|\T5/ptm/b/n/11.86258 Luçng sü ki»n
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 259--259
 []|\T5/ptm/b/n/11.86258 Luçng sü ki»n
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 297--297
+[]|\T5/ptm/b/n/11.86258 Luçng sü ki»n
+ []
 
- [9 <../Hinhve/activity_alert_flow.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 285--285
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
 []|\T5/ptm/b/n/11.86258 Luçng sü ki»n
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [10]
-Underfull \hbox (badness 10000) in paragraph at lines 322--322
-[]|\T5/ptm/b/n/11.86258 Luçng sü ki»n
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11]
-Underfull \hbox (badness 10000) in paragraph at lines 362--362
-[]|\T5/ptm/b/n/11.86258 Luçng sü ki»n
- []
-
-
-Underfull \hbox (badness 2970) in paragraph at lines 366--367
-[]\T5/ptm/m/n/11.86258 Qu£n trà vi¶n låc c£nh b¡o theo lo¤i (v÷ñt
- []
-
-
-Underfull \hbox (badness 1852) in paragraph at lines 366--367
-\T5/ptm/m/n/11.86258 ng÷ïng/m§t k¸t nèi), mùc ^^_ë (c£nh b¡o/nguy
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [12]
-Underfull \hbox (badness 10000) in paragraph at lines 399--399
-[]|\T5/ptm/b/n/11.86258 Luçng sü ki»n
- []
-
-
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 431--431
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 366--366
 []|\T5/ptm/b/n/11.86258 STT| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--439
+Underfull \hbox (badness 10000) in paragraph at lines 374--374
 []|\T5/ptm/m/n/11.86258 T½nh d¹ sû
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 443--443
-[]|\T5/ptm/m/n/11.86258 Y¶u c¦u kÿ
- []
-
-[13]
+[12]
 
 Package glossaries Warning: No \printnoidxglossary or \printnoidxglossaries
  found. (Remove \makenoidxglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-[14] (2_Khao_sat.aux)
+[13] (2_Khao_sat.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -1412,17 +1400,17 @@ Package logreq Info: Writing requests to '2_Khao_sat.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33673 strings out of 467691
- 627277 string characters out of 5425054
- 1540317 words of memory out of 5000000
- 62191 multiletter control sequences out of 15000+600000
- 654983 words of font info for 85 fonts, out of 8000000 for 9000
+ 33641 strings out of 467691
+ 626800 string characters out of 5425054
+ 1539380 words of memory out of 5000000
+ 62166 multiletter control sequences out of 15000+600000
+ 653591 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,124p,2607b,864s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
-Output written on 2_Khao_sat.pdf (14 pages, 1900729 bytes).
+<C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
+Output written on 2_Khao_sat.pdf (13 pages, 1965638 bytes).
 PDF statistics:
- 235 PDF objects out of 1000 (max. 8388607)
- 73 named destinations out of 1000 (max. 500000)
+ 228 PDF objects out of 1000 (max. 8388607)
+ 72 named destinations out of 1000 (max. 500000)
  170 words of extra memory for PDF output out of 10000 (max. 10000000)
 
