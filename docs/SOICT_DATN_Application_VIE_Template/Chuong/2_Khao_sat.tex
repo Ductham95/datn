@@ -84,7 +84,7 @@ Phần này trình bày tổng quan các chức năng của hệ thống thông 
 % TODO: Chèn biểu đồ use case tổng quát
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\linewidth]{Hinhve/usecase_tongquat.png}
+\includegraphics[width=1.00\linewidth]{Hinhve/usecase_tongquat.png}
 \caption{Biểu đồ use case tổng quát của hệ thống}
 \label{fig:usecase_tongquat}
 \end{figure}
@@ -114,7 +114,7 @@ Hệ thống bao gồm hai nhóm chức năng chính tương ứng với hai tá
 % TODO: Chèn biểu đồ use case phân rã nhóm User
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\linewidth]{Hinhve/usecase_user.png}
+\includegraphics[width=1.00\linewidth]{Hinhve/usecase_user.png}
 \caption{Biểu đồ use case phân rã nhóm chức năng Người dùng}
 \label{fig:usecase_user}
 \end{figure}
@@ -154,12 +154,12 @@ Nhóm chức năng Người dùng được phân rã chi tiết như sau:
 \label{subsection:2.2.3}
 
 % TODO: Chèn biểu đồ use case phân rã nhóm Admin
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=0.85\linewidth]{Hinhve/usecase_admin.png}
-% \caption{Biểu đồ use case phân rã nhóm chức năng Quản trị}
-% \label{fig:usecase_admin}
-% \end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.00\linewidth]{Hinhve/usecase_admin.png}
+\caption{Biểu đồ use case phân rã nhóm chức năng Quản trị}
+\label{fig:usecase_admin}
+\end{figure}
 
 Nhóm chức năng Quản trị được phân rã chi tiết như sau:
 
@@ -203,22 +203,22 @@ Hệ thống có hai quy trình nghiệp vụ chính.
 \textbf{Quy trình 1: Thu thập và hiển thị dữ liệu thời gian thực.} Sensor Node đọc dữ liệu từ các cảm biến (PMS7003, CCS811, DHT22), đóng gói thành gói tin 18 byte và gửi qua LoRa đến Gateway. Gateway nhận gói tin, lưu vào bộ đệm vòng (ring buffer), sau đó gửi lên Backend Server dưới dạng HTTP POST (JSON batch). Backend Server xử lý dữ liệu: lưu vào cơ sở dữ liệu TimescaleDB, tính chỉ số AQI, kiểm tra ngưỡng cảnh báo, và phát sóng (broadcast) dữ liệu mới đến tất cả Frontend thông qua Socket.IO. Frontend cập nhật dashboard theo thời gian thực mà không cần người dùng tải lại trang.
 
 % TODO: Chèn biểu đồ hoạt động quy trình 1
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=0.85\linewidth]{Hinhve/activity_data_flow.png}
-% \caption{Biểu đồ hoạt động quy trình thu thập và hiển thị dữ liệu}
-% \label{fig:activity_data_flow}
-% \end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.00\linewidth]{Hinhve/activity_data_flow.png}
+\caption{Biểu đồ hoạt động quy trình thu thập và hiển thị dữ liệu}
+\label{fig:activity_data_flow}
+\end{figure}
 
 \textbf{Quy trình 2: Phát hiện và xử lý cảnh báo.} Khi Backend Server nhận dữ liệu mới từ Gateway, hệ thống tự động so sánh giá trị đo được với ngưỡng cảnh báo đã cấu hình. Nếu giá trị vượt ngưỡng, hệ thống tạo bản ghi cảnh báo trong cơ sở dữ liệu và phát sóng thông báo đến giao diện quản trị qua Socket.IO. Ngoài ra, một tác vụ định kỳ (cron job) chạy mỗi 5 phút kiểm tra các thiết bị không gửi dữ liệu trong thời gian quy định, tự động tạo cảnh báo mất kết nối. Quản trị viên xem danh sách cảnh báo, lọc theo tiêu chí, và xác nhận đã xử lý.
 
 % TODO: Chèn biểu đồ hoạt động quy trình 2
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=0.85\linewidth]{Hinhve/activity_alert_flow.png}
-% \caption{Biểu đồ hoạt động quy trình phát hiện và xử lý cảnh báo}
-% \label{fig:activity_alert_flow}
-% \end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.00\linewidth]{Hinhve/activity_alert_flow.png}
+\caption{Biểu đồ hoạt động quy trình phát hiện và xử lý cảnh báo}
+\label{fig:activity_alert_flow}
+\end{figure}
 
 \section{Đặc tả chức năng}
 \label{section:2.3}

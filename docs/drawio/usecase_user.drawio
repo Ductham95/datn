@@ -1,112 +1,130 @@
-<mxfile host="65bd71144e">
-    <diagram name="Use Case Người dùng" id="usecase_user_page1">
-        <mxGraphModel dx="1023" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
-            <root>
-                <mxCell id="0"/>
-                <mxCell id="1" parent="0"/>
-                <mxCell id="sys1" value="Hệ thống giám sát chất lượng không khí" style="shape=umlFrame;whiteSpace=wrap;html=1;width=370;height=30;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=10;fontSize=18;fontStyle=1;fontFamily=Arial;fillColor=none;strokeColor=#333333;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="199" y="3" width="920" height="790" as="geometry"/>
-                </mxCell>
-                <mxCell id="actor_user" value="Người dùng" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=18;fontFamily=Arial;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="60" y="370" width="40" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc1" value="Xem dashboard&#10;chất lượng không khí" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;strokeWidth=1.5;" parent="1" vertex="1">
-                    <mxGeometry x="260" y="80" width="200" height="80" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc1_1" value="Gợi ý trạm đo&#10;gần nhất (GPS)" style="ellipse;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
-                    <mxGeometry x="570" y="20" width="170" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc1_2" value="Hiển thị thông số&#10;môi trường" style="ellipse;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
-                    <mxGeometry x="725" y="80" width="170" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc1_3" value="Hiển thị cảnh báo&#10;sức khoẻ WHO" style="ellipse;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
-                    <mxGeometry x="945" y="150" width="160" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc2" value="Xem lịch sử dữ liệu" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;strokeWidth=1.5;" parent="1" vertex="1">
-                    <mxGeometry x="260" y="270" width="200" height="80" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc2_2" value="Chọn thông số&#10;cần tra cứu" style="ellipse;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
-                    <mxGeometry x="720" y="240" width="160" height="55" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc2_3" value="Chọn chế độ xem&#10;(theo giờ / ngày)" style="ellipse;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
-                    <mxGeometry x="945" y="282.5" width="170" height="55" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc2_4" value="Hiển thị biểu đồ" style="ellipse;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
-                    <mxGeometry x="720" y="320" width="170" height="55" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc3" value="Xem bản đồ AQI" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;strokeWidth=1.5;" parent="1" vertex="1">
-                    <mxGeometry x="260" y="460" width="200" height="80" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc3_1" value="Hiển thị bản đồ&#10;khu vực giám sát" style="ellipse;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
-                    <mxGeometry x="530" y="390" width="180" height="55" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc3_2" value="Đánh dấu trạm&#10;bằng mã màu AQI" style="ellipse;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
-                    <mxGeometry x="750" y="420" width="180" height="55" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc3_3" value="Xem thông tin&#10;chi tiết trạm" style="ellipse;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
-                    <mxGeometry x="640" y="500" width="170" height="55" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc4" value="Xem xếp hạng ô nhiễm" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;strokeWidth=1.5;" parent="1" vertex="1">
-                    <mxGeometry x="260" y="650" width="200" height="80" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc4_1" value="Sắp xếp trạm&#10;theo mức AQI" style="ellipse;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
-                    <mxGeometry x="530" y="590" width="170" height="55" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc4_2" value="Hiển thị thông số&#10;chi tiết từng trạm" style="ellipse;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
-                    <mxGeometry x="740" y="620" width="180" height="55" as="geometry"/>
-                </mxCell>
-                <mxCell id="uc4_3" value="Hiển thị mã màu&#10;mức độ ô nhiễm" style="ellipse;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
-                    <mxGeometry x="640" y="700" width="170" height="55" as="geometry"/>
-                </mxCell>
-                <mxCell id="assoc1" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" parent="1" source="actor_user" target="uc1" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="assoc2" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" parent="1" source="actor_user" target="uc2" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="assoc3" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" parent="1" source="actor_user" target="uc3" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="assoc4" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;" parent="1" source="actor_user" target="uc4" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="inc1_1" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" parent="1" source="uc1" target="uc1_1" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="inc1_2" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" parent="1" source="uc1" target="uc1_2" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="inc1_3" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" parent="1" source="uc1" target="uc1_3" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="inc2_2" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" parent="1" source="uc2" target="uc2_2" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="inc2_3" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" parent="1" source="uc2" target="uc2_3" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="inc2_4" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" parent="1" source="uc2" target="uc2_4" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="inc3_1" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" parent="1" source="uc3" target="uc3_1" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="inc3_2" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" parent="1" source="uc3" target="uc3_2" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="inc3_3" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" parent="1" source="uc3" target="uc3_3" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="inc4_1" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" parent="1" source="uc4" target="uc4_1" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="inc4_2" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" parent="1" source="uc4" target="uc4_2" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="inc4_3" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" parent="1" source="uc4" target="uc4_3" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-            </root>
-        </mxGraphModel>
-    </diagram>
+<mxfile host="Electron">
+  <diagram name="Use Case Người dùng" id="usecase_user_page1">
+    <mxGraphModel dx="1137" dy="993" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- System boundary -->
+        <mxCell id="sys1" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=370;height=30;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=10;fontSize=18;fontStyle=1;fontFamily=Arial;fillColor=none;strokeColor=#333333;strokeWidth=2;" value="Hệ thống giám sát chất lượng không khí" vertex="1">
+          <mxGeometry height="750" width="811" x="199" y="3" as="geometry" />
+        </mxCell>
+
+        <!-- Actor -->
+        <mxCell id="actor_user" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=18;fontFamily=Arial;fontStyle=1;" value="Người dùng" vertex="1">
+          <mxGeometry height="60" width="40" x="60" y="340" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== UC1: Xem dashboard (y=60) ==================== -->
+        <mxCell id="uc1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;strokeWidth=1.5;" value="Xem dashboard&#xa;chất lượng không khí" vertex="1">
+          <mxGeometry height="80" width="200" x="260" y="60" as="geometry" />
+        </mxCell>
+
+        <!-- <<include>>: luôn hiển thị -->
+        <mxCell id="uc1_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" value="Gợi ý trạm đo&#xa;gần nhất (GPS)" vertex="1">
+          <mxGeometry height="60" width="170" x="570" y="15" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc1_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" value="Hiển thị thông số&#xa;môi trường" vertex="1">
+          <mxGeometry height="60" width="170" x="770" y="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc1_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" value="Hiển thị cảnh báo&#xa;sức khoẻ WHO" vertex="1">
+          <mxGeometry height="60" width="160" x="579" y="140" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== UC2: Xem lịch sử (standalone, y=250) ==================== -->
+        <mxCell id="uc2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;strokeWidth=1.5;" value="Xem lịch sử dữ liệu" vertex="1">
+          <mxGeometry height="80" width="200" x="260" y="260" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== UC3: Xem bản đồ AQI (y=430) ==================== -->
+        <mxCell id="uc3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;strokeWidth=1.5;" value="Xem bản đồ AQI" vertex="1">
+          <mxGeometry height="80" width="200" x="260" y="410" as="geometry" />
+        </mxCell>
+
+        <!-- <<include>>: luôn hiển thị -->
+        <mxCell id="uc3_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" value="Hiển thị bản đồ&#xa;khu vực giám sát" vertex="1">
+          <mxGeometry height="55" width="180" x="565" y="370" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc3_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" value="Đánh dấu trạm&#xa;bằng mã màu AQI" vertex="1">
+          <mxGeometry height="55" width="180" x="760" y="420" as="geometry" />
+        </mxCell>
+
+        <!-- <<extend>>: tuỳ chọn khi nhấn vào trạm -->
+        <mxCell id="uc3_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" value="Xem thông tin&#xa;chi tiết trạm" vertex="1">
+          <mxGeometry height="55" width="170" x="570" y="475" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== UC4: Xem xếp hạng (y=600) ==================== -->
+        <mxCell id="uc4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;strokeWidth=1.5;" value="Xem xếp hạng ô nhiễm" vertex="1">
+          <mxGeometry height="80" width="200" x="260" y="600" as="geometry" />
+        </mxCell>
+
+        <!-- <<include>>: luôn hiển thị -->
+        <mxCell id="uc4_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" value="Hiển thị thông số&#xa;chi tiết từng trạm" vertex="1">
+          <mxGeometry height="55" width="180" x="565" y="575" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc4_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1;" value="Hiển thị mã màu&#xa;mức độ ô nhiễm" vertex="1">
+          <mxGeometry height="55" width="170" x="765" y="630" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== Associations: Actor → Main UCs ==================== -->
+        <mxCell id="assoc1" edge="1" parent="1" source="actor_user" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=18;" target="uc1" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="assoc2" edge="1" parent="1" source="actor_user" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=18;" target="uc2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="assoc3" edge="1" parent="1" source="actor_user" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=18;" target="uc3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="assoc4" edge="1" parent="1" source="actor_user" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1.5;fontSize=18;" target="uc4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== UC1: <<include>> (base→sub) ==================== -->
+        <mxCell id="inc1_1" edge="1" parent="1" source="uc1" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" target="uc1_1" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inc1_2" edge="1" parent="1" source="uc1" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" target="uc1_2" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inc1_3" edge="1" parent="1" source="uc1" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" target="uc1_3" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== UC3: <<include>> + <<extend>> ==================== -->
+        <mxCell id="inc3_1" edge="1" parent="1" source="uc3" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" target="uc3_1" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inc3_2" edge="1" parent="1" source="uc3" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" target="uc3_2" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- <<extend>>: sub→base (chỉ khi nhấn vào trạm) -->
+        <mxCell id="ext3_3" edge="1" parent="1" source="uc3_3" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" target="uc3" value="&lt;i&gt;&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== UC4: <<include>> (base→sub) ==================== -->
+        <mxCell id="inc4_2" edge="1" parent="1" source="uc4" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" target="uc4_2" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inc4_3" edge="1" parent="1" source="uc4" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" target="uc4_3" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
 </mxfile>

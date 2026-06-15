@@ -1,0 +1,239 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="alert_flow_diagram">
+    <mxGraphModel dx="1520" dy="1331" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lane_container" parent="1" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;fontSize=18;fontFamily=Arial;fillColor=none;strokeColor=#333333;" value="" vertex="1">
+          <mxGeometry height="1120" width="1440" x="30" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="row1" parent="lane_container" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;fontFamily=Arial;strokeColor=#333333;" value="" vertex="1">
+          <mxGeometry height="1120" width="1440" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_backend" parent="row1" style="swimlane;startSize=30;horizontal=0;fontSize=16;fontStyle=1;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;swimlaneLine=1;collapsible=0;" value="Backend Server" vertex="1">
+          <mxGeometry height="1120" width="580" as="geometry">
+            <mxRectangle height="1120" width="580" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="start1" parent="lane_backend" style="ellipse;html=1;shape=mxgraph.flowchart.start_2;fillColor=#000000;fontSize=18;fontFamily=Arial;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="255" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act_receive" parent="lane_backend" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Nhận dữ liệu&#xa;từ Gateway (HTTP POST)" vertex="1">
+          <mxGeometry height="50" width="200" x="170" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="act_save" parent="lane_backend" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Lưu dữ liệu đo lường&#xa;vào TimescaleDB" vertex="1">
+          <mxGeometry height="50" width="200" x="170" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="act_getconfig" parent="lane_backend" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Lấy cấu hình ngưỡng&#xa;cảnh báo (AlertConfig)" vertex="1">
+          <mxGeometry height="50" width="200" x="170" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_hasconfig" parent="lane_backend" style="rhombus;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#FFF2CC;strokeColor=#333333;" value="Có cấu hình&#xa;ngưỡng?" vertex="1">
+          <mxGeometry height="80" width="100" x="220" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="act_compare" parent="lane_backend" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="So sánh giá trị đo&#xa;với ngưỡng warn/danger&#xa;cho từng thông số" vertex="1">
+          <mxGeometry height="60" width="200" x="170" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_exceed" parent="lane_backend" style="rhombus;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#FFF2CC;strokeColor=#333333;" value="Vượt ngưỡng?" vertex="1">
+          <mxGeometry height="70" width="90" x="225" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_cooldown" parent="lane_backend" style="rhombus;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#FFF2CC;strokeColor=#333333;" value="Trong thời gian&#xa;cooldown&#xa;(15 phút)?" vertex="1">
+          <mxGeometry height="90" width="130" x="205" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="act_create_alert" parent="lane_backend" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Tạo bản ghi cảnh báo&#xa;trong CSDL" vertex="1">
+          <mxGeometry height="50" width="200" x="170" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="act_broadcast" parent="lane_backend" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Phát sóng thông báo&#xa;qua Socket.IO" vertex="1">
+          <mxGeometry height="50" width="200" x="170" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="end1" parent="lane_backend" style="ellipse;html=1;shape=mxgraph.flowchart.terminate;fillColor=#000000;strokeColor=#000000;fontSize=18;fontFamily=Arial;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="255" y="1020" as="geometry" />
+        </mxCell>
+        <mxCell id="arr1" edge="1" parent="lane_backend" source="start1" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_receive" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr2" edge="1" parent="lane_backend" source="act_receive" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_save" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr3" edge="1" parent="lane_backend" source="act_save" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_getconfig" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr4" edge="1" parent="lane_backend" source="act_getconfig" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="dec_hasconfig" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr5" edge="1" parent="lane_backend" source="dec_hasconfig" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_compare" value="Có">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr5b" edge="1" parent="lane_backend" source="dec_hasconfig" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="end1" value="Không">
+          <mxGeometry relative="1" x="-0.8883" as="geometry">
+            <mxPoint x="1" as="offset" />
+            <Array as="points">
+              <mxPoint x="430" y="395" />
+              <mxPoint x="430" y="1035" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr6" edge="1" parent="lane_backend" source="act_compare" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="dec_exceed" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr7" edge="1" parent="lane_backend" source="dec_exceed" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="dec_cooldown" value="Có">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr7b" edge="1" parent="lane_backend" source="dec_exceed" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="end1" value="Không">
+          <mxGeometry relative="1" x="-0.8382" as="geometry">
+            <mxPoint x="-1" as="offset" />
+            <Array as="points">
+              <mxPoint x="430" y="615" />
+              <mxPoint x="430" y="1035" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr8" edge="1" parent="lane_backend" source="dec_cooldown" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_create_alert" value="Không">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr8b" edge="1" parent="lane_backend" source="dec_cooldown" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="end1" value="Có (bỏ qua)">
+          <mxGeometry relative="1" x="-0.8333" as="geometry">
+            <mxPoint x="1" as="offset" />
+            <Array as="points">
+              <mxPoint x="430" y="735" />
+              <mxPoint x="430" y="1035" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr9" edge="1" parent="lane_backend" source="act_create_alert" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_broadcast" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr10" edge="1" parent="lane_backend" source="act_broadcast" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="end1" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_cron" parent="row1" style="swimlane;startSize=30;horizontal=0;fontSize=16;fontStyle=1;fontFamily=Arial;fillColor=#FFF2CC;strokeColor=#333333;swimlaneLine=1;collapsible=0;" value="Cron Job" vertex="1">
+          <mxGeometry height="1120" width="400" x="580" as="geometry">
+            <mxRectangle height="1120" width="400" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="start2" parent="lane_cron" style="ellipse;html=1;shape=mxgraph.flowchart.start_2;fillColor=#000000;fontSize=18;fontFamily=Arial;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="170" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act_cron_trigger" parent="lane_cron" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Kích hoạt tác vụ&#xa;định kỳ (mỗi 15 phút)" vertex="1">
+          <mxGeometry height="50" width="210" x="80" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="act_scan_gw" parent="lane_cron" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Quét trạng thái&#xa;các Gateway" vertex="1">
+          <mxGeometry height="50" width="210" x="80" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="act_scan_node" parent="lane_cron" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Quét trạng thái&#xa;các Sensor Node" vertex="1">
+          <mxGeometry height="50" width="210" x="80" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_offline" parent="lane_cron" style="rhombus;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#FFF2CC;strokeColor=#333333;" value="Có thiết bị&#xa;mất kết nối?" vertex="1">
+          <mxGeometry height="80" width="100" x="135" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="act_update_offline" parent="lane_cron" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Cập nhật trạng thái&#xa;thiết bị thành offline" vertex="1">
+          <mxGeometry height="50" width="210" x="80" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="act_create_conn_alert" parent="lane_cron" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Tạo cảnh báo&#xa;mất kết nối" vertex="1">
+          <mxGeometry height="50" width="210" x="80" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="end2" parent="lane_cron" style="ellipse;html=1;shape=mxgraph.flowchart.terminate;fillColor=#000000;strokeColor=#000000;fontSize=18;fontFamily=Arial;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="170" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_c1" edge="1" parent="lane_cron" source="start2" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_cron_trigger" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_c2" edge="1" parent="lane_cron" source="act_cron_trigger" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_scan_gw" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_c3" edge="1" parent="lane_cron" source="act_scan_gw" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_scan_node" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_c4" edge="1" parent="lane_cron" source="act_scan_node" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="dec_offline" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_c5" edge="1" parent="lane_cron" source="dec_offline" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_update_offline" value="Có">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_c5b" edge="1" parent="lane_cron" source="dec_offline" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="end2" value="Không">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="400" />
+              <mxPoint x="320" y="695" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr_c6" edge="1" parent="lane_cron" source="act_update_offline" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_create_conn_alert" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_c7" edge="1" parent="lane_cron" source="act_create_conn_alert" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="end2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_admin" parent="row1" style="swimlane;startSize=30;horizontal=0;fontSize=16;fontStyle=1;fontFamily=Arial;fillColor=#FFE6CC;strokeColor=#333333;swimlaneLine=1;collapsible=0;" value="Quản trị viên" vertex="1">
+          <mxGeometry height="1120" width="460" x="980" as="geometry">
+            <mxRectangle height="1120" width="460" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="start3" parent="lane_admin" style="ellipse;html=1;shape=mxgraph.flowchart.start_2;fillColor=#000000;fontSize=18;fontFamily=Arial;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="200" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act_access_alert" parent="lane_admin" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Truy cập&#xa;trang cảnh báo" vertex="1">
+          <mxGeometry height="50" width="210" x="110" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="act_show_list" parent="lane_admin" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Hiển thị danh sách&#xa;cảnh báo (phân trang)" vertex="1">
+          <mxGeometry height="50" width="210" x="110" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="act_realtime_notif" parent="lane_admin" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Nhận thông báo&#xa;cảnh báo mới&#xa;(Socket.IO realtime)" vertex="1">
+          <mxGeometry height="55" width="210" x="110" y="275" as="geometry" />
+        </mxCell>
+        <mxCell id="act_filter" parent="lane_admin" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Lọc cảnh báo theo&#xa;loại / mức độ / trạng thái" vertex="1">
+          <mxGeometry height="50" width="210" x="110" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="act_view_detail" parent="lane_admin" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Xem chi tiết cảnh báo&#xa;(thông số, giá trị, ngưỡng)" vertex="1">
+          <mxGeometry height="50" width="210" x="110" y="465" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_ack" parent="lane_admin" style="rhombus;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#FFF2CC;strokeColor=#333333;" value="Xác nhận&#xa;xử lý?" vertex="1">
+          <mxGeometry height="80" width="100" x="165" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="act_acknowledge" parent="lane_admin" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Xác nhận đã xử lý&#xa;(acknowledge)" vertex="1">
+          <mxGeometry height="50" width="210" x="110" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="act_update_status" parent="lane_admin" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" value="Cập nhật trạng thái&#xa;cảnh báo trong CSDL" vertex="1">
+          <mxGeometry height="50" width="210" x="110" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="end3" parent="lane_admin" style="ellipse;html=1;shape=mxgraph.flowchart.terminate;fillColor=#000000;strokeColor=#000000;fontSize=18;fontFamily=Arial;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="200" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_a1" edge="1" parent="lane_admin" source="start3" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_access_alert" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_a2" edge="1" parent="lane_admin" source="act_access_alert" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_show_list" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_a3" edge="1" parent="lane_admin" source="act_show_list" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_realtime_notif" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_a4" edge="1" parent="lane_admin" source="act_realtime_notif" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_filter" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_a5" edge="1" parent="lane_admin" source="act_filter" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_view_detail" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_a6" edge="1" parent="lane_admin" source="act_view_detail" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="dec_ack" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_a7" edge="1" parent="lane_admin" source="dec_ack" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_acknowledge" value="Có">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_a7b" edge="1" parent="lane_admin" source="dec_ack" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="end3" value="Không">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="595" />
+              <mxPoint x="370" y="885" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr_a8" edge="1" parent="lane_admin" source="act_acknowledge" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="act_update_status" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_a9" edge="1" parent="lane_admin" source="act_update_status" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;" target="end3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

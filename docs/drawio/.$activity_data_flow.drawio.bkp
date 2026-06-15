@@ -1,0 +1,207 @@
+<mxfile host="app.diagrams.net" modified="2026-06-15T08:00:00.000Z" agent="Antigravity" version="24.0.0">
+  <diagram name="Page-1" id="activity_data_flow_page">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- ============ SWIM LANES ============ -->
+        <!-- Lane 1: Sensor Node -->
+        <mxCell id="lane1" value="Sensor Node" style="shape=swimlane;startSize=30;horizontal=0;fontSize=16;fontStyle=1;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;swimlaneLine=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="1080" height="240" as="geometry"/>
+        </mxCell>
+
+        <!-- Lane 2: Gateway -->
+        <mxCell id="lane2" value="Gateway" style="shape=swimlane;startSize=30;horizontal=0;fontSize=16;fontStyle=1;fontFamily=Arial;fillColor=#D5E8D4;strokeColor=#333333;swimlaneLine=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="310" width="1080" height="260" as="geometry"/>
+        </mxCell>
+
+        <!-- Lane 3: Backend Server -->
+        <mxCell id="lane3" value="Backend Server" style="shape=swimlane;startSize=30;horizontal=0;fontSize=16;fontStyle=1;fontFamily=Arial;fillColor=#FFF2CC;strokeColor=#333333;swimlaneLine=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="570" width="1080" height="340" as="geometry"/>
+        </mxCell>
+
+        <!-- Lane 4: Frontend -->
+        <mxCell id="lane4" value="Frontend" style="shape=swimlane;startSize=30;horizontal=0;fontSize=16;fontStyle=1;fontFamily=Arial;fillColor=#FFE6CC;strokeColor=#333333;swimlaneLine=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="910" width="1080" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- ============ SENSOR NODE LANE ELEMENTS ============ -->
+        <!-- Start Node -->
+        <mxCell id="start" value="" style="ellipse;html=1;shape=mxgraph.flowchart.start_2;fillColor=#000000;fontSize=14;fontFamily=Arial;" vertex="1" parent="lane1">
+          <mxGeometry x="60" y="100" width="30" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- A1: Đọc dữ liệu cảm biến -->
+        <mxCell id="a1" value="Đọc dữ liệu từ cảm biến&lt;br&gt;(PMS7003, CCS811, DHT22)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" vertex="1" parent="lane1">
+          <mxGeometry x="140" y="85" width="230" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- A2: Đóng gói gói tin -->
+        <mxCell id="a2" value="Đóng gói thành&lt;br&gt;gói tin 18 byte" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" vertex="1" parent="lane1">
+          <mxGeometry x="440" y="90" width="190" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- A3: Gửi qua LoRa -->
+        <mxCell id="a3" value="Gửi gói tin qua&lt;br&gt;LoRa 433 MHz" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" vertex="1" parent="lane1">
+          <mxGeometry x="720" y="90" width="190" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows in Sensor Node -->
+        <mxCell id="e1" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane1" source="start" target="a1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane1" source="a1" target="a2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane1" source="a2" target="a3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ============ GATEWAY LANE ELEMENTS ============ -->
+        <!-- A4: Nhận gói tin LoRa -->
+        <mxCell id="a4" value="Nhận gói tin LoRa&lt;br&gt;từ Sensor Node" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" vertex="1" parent="lane2">
+          <mxGeometry x="140" y="40" width="200" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- A5: Lưu vào ring buffer -->
+        <mxCell id="a5" value="Lưu vào bộ đệm vòng&lt;br&gt;(ring buffer)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" vertex="1" parent="lane2">
+          <mxGeometry x="140" y="150" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- A6: Gửi HTTP POST -->
+        <mxCell id="a6" value="Gửi dữ liệu lên Backend&lt;br&gt;HTTP POST (JSON batch)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" vertex="1" parent="lane2">
+          <mxGeometry x="440" y="150" width="230" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Decision: Gửi thành công? -->
+        <mxCell id="d1" value="Gửi thành&lt;br&gt;công?" style="rhombus;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFF2CC;strokeColor=#333333;" vertex="1" parent="lane2">
+          <mxGeometry x="770" y="140" width="110" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows in Gateway -->
+        <mxCell id="e4" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane2" source="a4" target="a5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane2" source="a5" target="a6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane2" source="a6" target="d1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Retry loop: Không -> quay lại a6 -->
+        <mxCell id="e_retry" value="Không" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="lane2" source="d1" target="a6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="825" y="110"/>
+              <mxPoint x="555" y="110"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ============ BACKEND SERVER LANE ELEMENTS ============ -->
+        <!-- A7: Nhận dữ liệu từ Gateway -->
+        <mxCell id="a7" value="Nhận và xác thực&lt;br&gt;dữ liệu từ Gateway" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" vertex="1" parent="lane3">
+          <mxGeometry x="410" y="30" width="220" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Fork bar -->
+        <mxCell id="fork1" value="" style="line;strokeWidth=4;fillColor=#000000;strokeColor=#000000;fontSize=14;fontFamily=Arial;html=1;" vertex="1" parent="lane3">
+          <mxGeometry x="200" y="115" width="640" height="10" as="geometry"/>
+        </mxCell>
+
+        <!-- A8: Lưu vào TimescaleDB -->
+        <mxCell id="a8" value="Lưu dữ liệu vào&lt;br&gt;TimescaleDB" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" vertex="1" parent="lane3">
+          <mxGeometry x="110" y="165" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- A9: Tính chỉ số AQI -->
+        <mxCell id="a9" value="Tính chỉ số AQI&lt;br&gt;theo chuẩn US EPA" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" vertex="1" parent="lane3">
+          <mxGeometry x="380" y="165" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- A10: Kiểm tra ngưỡng cảnh báo -->
+        <mxCell id="a10" value="Kiểm tra ngưỡng&lt;br&gt;cảnh báo" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" vertex="1" parent="lane3">
+          <mxGeometry x="660" y="165" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Join bar -->
+        <mxCell id="join1" value="" style="line;strokeWidth=4;fillColor=#000000;strokeColor=#000000;fontSize=14;fontFamily=Arial;html=1;" vertex="1" parent="lane3">
+          <mxGeometry x="200" y="250" width="640" height="10" as="geometry"/>
+        </mxCell>
+
+        <!-- A11: Broadcast qua Socket.IO -->
+        <mxCell id="a11" value="Phát sóng (broadcast) dữ liệu mới&lt;br&gt;đến Frontend qua Socket.IO" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" vertex="1" parent="lane3">
+          <mxGeometry x="370" y="280" width="280" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows in Backend -->
+        <mxCell id="e7" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane3" source="a7" target="fork1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane3" source="fork1" target="a8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane3" source="fork1" target="a9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane3" source="fork1" target="a10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane3" source="a8" target="join1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e12" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane3" source="a9" target="join1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e13" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane3" source="a10" target="join1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e14" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane3" source="join1" target="a11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ============ FRONTEND LANE ELEMENTS ============ -->
+        <!-- A12: Nhận sự kiện dữ liệu mới -->
+        <mxCell id="a12" value="Nhận sự kiện dữ liệu mới&lt;br&gt;qua Socket.IO" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" vertex="1" parent="lane4">
+          <mxGeometry x="200" y="70" width="230" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- A13: Cập nhật dashboard -->
+        <mxCell id="a13" value="Cập nhật dashboard&lt;br&gt;theo thời gian thực" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=30;" vertex="1" parent="lane4">
+          <mxGeometry x="530" y="70" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- End Node -->
+        <mxCell id="end" value="" style="ellipse;html=1;shape=mxgraph.flowchart.terminate;fillColor=#000000;strokeColor=#000000;fontSize=14;fontFamily=Arial;" vertex="1" parent="lane4">
+          <mxGeometry x="860" y="85" width="30" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows in Frontend -->
+        <mxCell id="e15" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane4" source="a12" target="a13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e16" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="lane4" source="a13" target="end">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ============ CROSS-LANE ARROWS ============ -->
+        <!-- Sensor Node A3 -> Gateway A4 -->
+        <mxCell id="cross1" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="1" source="a3" target="a4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Gateway D1 -> Backend A7 (Có) -->
+        <mxCell id="cross2" value="Có" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="1" source="d1" target="a7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Backend A11 -> Frontend A12 -->
+        <mxCell id="cross3" style="endArrow=classic;html=1;fontSize=14;fontFamily=Arial;strokeColor=#333333;" edge="1" parent="1" source="a11" target="a12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
