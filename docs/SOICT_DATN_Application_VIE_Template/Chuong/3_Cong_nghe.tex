@@ -11,12 +11,12 @@ Hệ thống được thiết kế theo kiến trúc ba tầng, bao gồm tầng
 Luồng dữ liệu của hệ thống diễn ra như sau. Sensor Node đọc dữ liệu từ các cảm biến, đóng gói thành gói tin nhị phân 18 byte và phát qua \gls{LoRa}. Gateway nhận gói tin, lưu vào bộ đệm vòng và gửi lên Backend Server dưới dạng \gls{HTTP} POST (\gls{JSON} batch). Backend Server lưu dữ liệu vào cơ sở dữ liệu TimescaleDB, tính chỉ số \gls{AQI}, kiểm tra ngưỡng cảnh báo và phát sóng đến giao diện web thông qua Socket.IO. Kiến trúc này đảm bảo tính module hóa: mỗi tầng có thể phát triển và mở rộng độc lập mà không ảnh hưởng đến các tầng còn lại.
 
 %% TODO: Thêm hình kiến trúc tổng thể khi user cung cấp
-%\begin{figure}[H]
-%\centering
-%\includegraphics[width=1.00\linewidth]{Hinhve/kien_truc_tong_the.png}
-%\caption{Kiến trúc tổng thể hệ thống giám sát chất lượng không khí}
-%\label{fig:kien_truc_tong_the}
-%\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.00\linewidth]{Hinhve/system_architecture.png}
+\caption{Kiến trúc tổng thể hệ thống giám sát chất lượng không khí}
+\label{fig:kien_truc_tong_the}
+\end{figure}
 
 \section{Nền tảng phần cứng IoT}
 \label{section:3.2}
@@ -37,7 +37,7 @@ Hệ thống sử dụng ba loại cảm biến để đo sáu thông số môi 
 
 \textbf{PMS7003} (Plantower) là cảm biến laser đo nồng độ bụi mịn PM2.5 và PM10 trong không khí \cite{plantower2023}. Cảm biến hoạt động theo nguyên lý tán xạ laser: luồng không khí được hút qua buồng đo, các hạt bụi đi qua chùm laser sẽ tạo ra tín hiệu tán xạ, từ đó vi xử lý tích hợp tính toán nồng độ theo đơn vị $\mu g/m^3$. PMS7003 giao tiếp qua \gls{UART} với tốc độ 9600 baud, kích thước nhỏ gọn ($48 \times 37 \times 12$ mm) và chi phí khoảng 350.000 VNĐ. Lựa chọn thay thế bao gồm PMS5003 cùng hãng Plantower với thông số tương tự nhưng tỉ lệ hỏng cao hơn, và SDS011 (Nova Fitness) có kích thước lớn hơn đáng kể ($71 \times 70 \times 23$ mm).
 
-\textbf{CCS811} (ams AG) là cảm biến chất lượng không khí sử dụng công nghệ oxit kim loại (MOX), đo đồng thời nồng độ CO\textsubscript{2} tương đương (eCO\textsubscript{2}, phạm vi 400--8192 ppm) và tổng hợp chất hữu cơ bay hơi (\gls{TVOC}, phạm vi 0--1187 ppb) \cite{ams2023}. Cảm biến giao tiếp qua I2C, chi phí khoảng 150.000 VNĐ. Lựa chọn thay thế bao gồm SGP30 (Sensirion) có thông số tương đương và SCD30 (Sensirion) sử dụng công nghệ NDIR cho độ chính xác cao hơn nhưng chi phí đắt gấp năm lần, vượt mục tiêu chi phí thấp của đề tài.
+\textbf{CCS811} là cảm biến chất lượng không khí sử dụng công nghệ oxit kim loại (MOX), đo đồng thời nồng độ CO\textsubscript{2} tương đương (eCO\textsubscript{2}, phạm vi 400--8192 ppm) và tổng hợp chất hữu cơ bay hơi (\gls{TVOC}, phạm vi 0--1187 ppb) \cite{ams2023}. Cảm biến giao tiếp qua I2C, chi phí khoảng 150.000 VNĐ. Lựa chọn thay thế bao gồm SGP30 (Sensirion) có thông số tương đương và SCD30 (Sensirion) sử dụng công nghệ NDIR cho độ chính xác cao hơn nhưng chi phí đắt gấp năm lần, vượt mục tiêu chi phí thấp của đề tài.
 
 \textbf{AHT10} (Aosong Electronics) là cảm biến đo nhiệt độ (phạm vi $-40$ đến $85^{\circ}$C, sai số $\pm 0.3^{\circ}$C) và độ ẩm tương đối (phạm vi 0--100\% RH, sai số $\pm 2$\% RH) \cite{aosong2023}. Cảm biến sử dụng giao tiếp I2C (địa chỉ 0x38), chia sẻ chung bus I2C với CCS811, giúp giảm số chân GPIO cần sử dụng trên ESP32. Chi phí rất thấp (khoảng 35.000 VNĐ). Lựa chọn thay thế gồm DHT22 (cùng hãng Aosong, giao tiếp 1-wire, sai số $\pm 0.5^{\circ}$C) và SHT31 (Sensirion) có độ chính xác cao hơn ($\pm 0.2^{\circ}$C) nhưng chi phí gấp năm lần.
 
@@ -52,11 +52,11 @@ Bảng \ref{table:so_sanh_cam_bien} tổng hợp thông số kỹ thuật của 
 \hline
 \textbf{Cảm biến} & \textbf{Thông số đo} & \textbf{Phạm vi} & \textbf{Giao tiếp} & \textbf{Chi phí} \\
 \hline
-PMS7003 & PM2.5, PM10 & 0--500 $\mu g/m^3$ & UART & $\sim$10 USD \\
+PMS7003 & PM2.5, PM10 & 0--500 $\mu g/m^3$ & UART & $\sim$350.000 VNĐ \\
 \hline
-CCS811 & eCO\textsubscript{2}, eTVOC & 400--8192 ppm, 0--1187 ppb & I2C & $\sim$8 USD \\
+CCS811 & eCO\textsubscript{2}, eTVOC & 400--8192 ppm, 0--1187 ppb & I2C & $\sim$150.000 VNĐ \\
 \hline
-AHT10 & Nhiệt độ, độ ẩm & $-40$--$85^{\circ}$C, 0--100\% RH & I2C & $\sim$2 USD \\
+AHT10 & Nhiệt độ, độ ẩm & $-40$--$85^{\circ}$C, 0--100\% RH & I2C & $\sim$35.000 VNĐ \\
 \hline
 \end{tabular}
 \end{table}
@@ -134,26 +134,122 @@ So với các lựa chọn thay thế: Vue.js nhẹ hơn nhưng hệ sinh thái 
 
 Đồ án sử dụng hai thư viện trực quan hóa chính. \textbf{Leaflet} là thư viện bản đồ tương tác mã nguồn mở, nhẹ (khoảng 42 KB gzip) và hỗ trợ đầy đủ các tính năng bản đồ: marker, popup, zoom và lớp phủ \cite{leaflet2024}. Đồ án sử dụng Leaflet kết hợp React-Leaflet để hiển thị bản đồ \gls{AQI} với marker mã màu theo chuẩn \gls{USEPA} tại mỗi trạm đo. So với Google Maps API (phải trả phí sau số lượng request nhất định) và Mapbox (freemium, yêu cầu API key), Leaflet hoàn toàn miễn phí và sử dụng tile từ OpenStreetMap.
 
-\textbf{Apache ECharts} là thư viện biểu đồ hiệu năng cao, hỗ trợ hơn 20 loại biểu đồ và khả năng xử lý tập dữ liệu lớn \cite{echarts2024}. Đồ án sử dụng ECharts thông qua wrapper \texttt{echarts-for-react} để hiển thị biểu đồ lịch sử dữ liệu theo giờ và theo ngày. So với Chart.js (nhẹ hơn nhưng ít tính năng nâng cao), ECharts hỗ trợ tốt hơn cho responsive chart, large dataset rendering và tooltip tương tác phức tạp.
-
-\subsection{Quản lý trạng thái và đa ngôn ngữ}
-\label{subsection:3.5.3}
-
-Đồ án sử dụng Zustand làm thư viện quản lý trạng thái toàn cục cho ứng dụng React. Zustand có thiết kế tối giản, không yêu cầu boilerplate code và sử dụng hook-based API tương thích tự nhiên với React functional component. So với Redux (tiêu chuẩn công nghiệp nhưng yêu cầu nhiều boilerplate: action, reducer, middleware) và React Context (tích hợp sẵn nhưng gây re-render không cần thiết khi state lớn), Zustand cân bằng giữa sự đơn giản và khả năng mở rộng.
-
-Đồ án hỗ trợ đa ngôn ngữ (Tiếng Việt và Tiếng Anh) thông qua i18next — framework quốc tế hóa phổ biến cho JavaScript, kết hợp với react-i18next để tích hợp vào React component. Tính năng này đáp ứng yêu cầu phi chức năng về tính dễ sử dụng nêu trong Bảng \ref{table:nfr}.
+\textbf{Apache ECharts} là thư viện biểu đồ hiệu năng cao, hỗ trợ hơn 20 loại biểu đồ và khả năng xử lý tập dữ liệu lớn \cite{echarts2024}. Đồ án sử dụng ECharts thông qua wrapper \texttt{echarts-for-react} để hiển thị biểu đồ lịch sử dữ liệu theo giờ và theo ngày. So với Chart.js (nhẹ hơn nhưng ít tính năng nâng cao), ECharts hỗ trợ tốt hơn cho responsive tương tác phức tạp.
 
 \section{Lý thuyết tính toán chỉ số chất lượng không khí}
 \label{section:3.6}
 
-Chỉ số chất lượng không khí (\gls{AQI}) là thước đo tổng hợp mức độ ô nhiễm không khí, được \gls{USEPA} định nghĩa trên thang 0--500 với sáu mức: Tốt (0--50), Trung bình (51--100), Không tốt cho nhóm nhạy cảm (101--150), Có hại (151--200), Rất có hại (201--300) và Nguy hiểm (301--500) \cite{usepa2018}. Đồ án tính \gls{AQI} cho từng thông số (PM2.5, PM10) theo công thức nội suy tuyến tính của \gls{USEPA}:
+\subsection{Khái niệm và phân loại mức AQI}
+\label{subsection:3.6.1}
+
+Chỉ số chất lượng không khí (\gls{AQI}) là thước đo tổng hợp mức độ ô nhiễm không khí, được \gls{USEPA} định nghĩa trên thang điểm từ 0 đến 500 \cite{usepa2018}. Giá trị \gls{AQI} càng cao thì mức ô nhiễm càng nghiêm trọng và ảnh hưởng sức khỏe càng lớn. \gls{USEPA} phân chia thang \gls{AQI} thành sáu mức như trình bày trong Bảng \ref{table:aqi_levels}.
+
+\begin{table}[H]
+\centering
+\caption{Phân loại các mức chỉ số AQI theo tiêu chuẩn US EPA \cite{usepa2018}}
+\label{table:aqi_levels}
+\small
+\begin{tabular}{|c|p{4.5cm}|p{2cm}|p{4.5cm}|}
+\hline
+\textbf{AQI} & \textbf{Mức độ} & \textbf{Mã màu} & \textbf{Ảnh hưởng sức khỏe} \\
+\hline
+0--50 & Tốt (Good) & Xanh lá & Không ảnh hưởng \\
+\hline
+51--100 & Trung bình (Moderate) & Vàng & Nhóm nhạy cảm nên hạn chế \\
+\hline
+101--150 & Không tốt cho nhóm nhạy cảm & Cam & Nhóm nhạy cảm bị ảnh hưởng \\
+\hline
+151--200 & Có hại (Unhealthy) & Đỏ & Mọi người bắt đầu bị ảnh hưởng \\
+\hline
+201--300 & Rất có hại (Very Unhealthy) & Tím & Cảnh báo sức khỏe nghiêm trọng \\
+\hline
+301--500 & Nguy hiểm (Hazardous) & Nâu đỏ & Toàn bộ dân số bị ảnh hưởng \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Công thức và bảng điểm ngắt}
+\label{subsection:3.6.2}
+
+Đồ án tính \gls{AQI} cho từng chất ô nhiễm dạng hạt (PM2.5, PM10) theo công thức nội suy tuyến tính của \gls{USEPA}:
 
 \begin{equation}
 \label{eq:aqi}
 I_p = \frac{I_{Hi} - I_{Lo}}{BP_{Hi} - BP_{Lo}} \times (C_p - BP_{Lo}) + I_{Lo}
 \end{equation}
 
-Trong đó $I_p$ là giá trị \gls{AQI} của chất ô nhiễm $p$, $C_p$ là nồng độ đo được, $BP_{Hi}$ và $BP_{Lo}$ là các điểm ngắt nồng độ (breakpoint) trên và dưới chứa $C_p$, $I_{Hi}$ và $I_{Lo}$ là giá trị \gls{AQI} tương ứng với các điểm ngắt đó. Chỉ số \gls{AQI} tổng hợp là giá trị lớn nhất trong các \gls{AQI} thành phần. Các điểm ngắt được tra cứu từ bảng tiêu chuẩn của \gls{USEPA} \cite{usepa2018}. Hệ thống áp dụng công thức này trên Backend Server mỗi khi nhận dữ liệu mới từ Gateway, đồng thời ánh xạ kết quả sang mã màu tương ứng để hiển thị trên bản đồ và dashboard.
+Trong đó $I_p$ là giá trị \gls{AQI} của chất ô nhiễm $p$, $C_p$ là nồng độ đo được (đơn vị $\mu g/m^3$), $BP_{Hi}$ và $BP_{Lo}$ là các điểm ngắt nồng độ (breakpoint) trên và dưới chứa $C_p$, $I_{Hi}$ và $I_{Lo}$ là giá trị \gls{AQI} tương ứng với các điểm ngắt đó. Chỉ số \gls{AQI} tổng hợp được xác định bằng giá trị lớn nhất trong các \gls{AQI} thành phần: $AQI = \max(I_{PM2.5},\; I_{PM10})$.
+
+Bảng \ref{table:bp_pm25} và Bảng \ref{table:bp_pm10} trình bày các điểm ngắt nồng độ cho PM2.5 và PM10 theo tiêu chuẩn \gls{USEPA}, được hệ thống sử dụng trực tiếp trong module tính toán trên Backend Server.
+
+\begin{table}[H]
+\centering
+\caption{Bảng điểm ngắt AQI cho PM2.5 \cite{usepa2018}}
+\label{table:bp_pm25}
+\small
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{$BP_{Lo}$ ($\mu g/m^3$)} & \textbf{$BP_{Hi}$ ($\mu g/m^3$)} & \textbf{$I_{Lo}$} & \textbf{$I_{Hi}$} \\
+\hline
+0,0 & 12,0 & 0 & 50 \\
+\hline
+12,1 & 35,4 & 51 & 100 \\
+\hline
+35,5 & 55,4 & 101 & 150 \\
+\hline
+55,5 & 150,4 & 151 & 200 \\
+\hline
+150,5 & 250,4 & 201 & 300 \\
+\hline
+250,5 & 500,4 & 301 & 500 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Bảng điểm ngắt AQI cho PM10 \cite{usepa2018}}
+\label{table:bp_pm10}
+\small
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{$BP_{Lo}$ ($\mu g/m^3$)} & \textbf{$BP_{Hi}$ ($\mu g/m^3$)} & \textbf{$I_{Lo}$} & \textbf{$I_{Hi}$} \\
+\hline
+0 & 54 & 0 & 50 \\
+\hline
+55 & 154 & 51 & 100 \\
+\hline
+155 & 254 & 101 & 150 \\
+\hline
+255 & 354 & 151 & 200 \\
+\hline
+355 & 424 & 201 & 300 \\
+\hline
+425 & 604 & 301 & 500 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Ví dụ tính toán}
+\label{subsection:3.6.3}
+
+Giả sử cảm biến đo được $C_{PM2.5} = 45{,}3\;\mu g/m^3$ và $C_{PM10} = 82\;\mu g/m^3$. Quy trình tính \gls{AQI} diễn ra như sau.
+
+Đối với PM2.5, tra Bảng \ref{table:bp_pm25}: giá trị $45{,}3$ nằm trong khoảng $[35{,}5;\;55{,}4]$, tương ứng $I_{Lo} = 101$, $I_{Hi} = 150$, $BP_{Lo} = 35{,}5$, $BP_{Hi} = 55{,}4$. Thay vào công thức (\ref{eq:aqi}):
+
+\begin{equation*}
+I_{PM2.5} = \frac{150 - 101}{55{,}4 - 35{,}5} \times (45{,}3 - 35{,}5) + 101 = \frac{49}{19{,}9} \times 9{,}8 + 101 \approx 125
+\end{equation*}
+
+Đối với PM10, tra Bảng \ref{table:bp_pm10}: giá trị $82$ nằm trong khoảng $[55;\;154]$, tương ứng $I_{Lo} = 51$, $I_{Hi} = 100$, $BP_{Lo} = 55$, $BP_{Hi} = 154$. Thay vào công thức (\ref{eq:aqi}):
+
+\begin{equation*}
+I_{PM10} = \frac{100 - 51}{154 - 55} \times (82 - 55) + 51 = \frac{49}{99} \times 27 + 51 \approx 64
+\end{equation*}
+
+Chỉ số \gls{AQI} tổng hợp là $AQI = \max(125,\;64) = 125$, thuộc mức ``Không tốt cho nhóm nhạy cảm'' (Bảng \ref{table:aqi_levels}). Kết quả này cho thấy PM2.5 là chất ô nhiễm chính quyết định mức \gls{AQI}, phù hợp với thực tế tại các đô thị Việt Nam, nơi bụi mịn PM2.5 thường là tác nhân ô nhiễm chủ đạo.
+
+Hệ thống áp dụng quy trình tính toán này trên Backend Server mỗi khi nhận dữ liệu mới từ Gateway, đồng thời ánh xạ kết quả sang mã màu tương ứng (Bảng \ref{table:aqi_levels}) để hiển thị trên bản đồ và dashboard.
 
 \section{Hạ tầng triển khai}
 \label{section:3.7}
@@ -165,12 +261,10 @@ Docker là nền tảng container hóa cho phép đóng gói ứng dụng cùng 
 
 Đồ án container hóa bốn thành phần: (i) cơ sở dữ liệu PostgreSQL/TimescaleDB, (ii) Backend Server (Node.js), (iii) Nginx phục vụ static files và reverse proxy, và (iv) Certbot quản lý chứng chỉ SSL. Việc container hóa đảm bảo môi trường nhất quán giữa phát triển và sản xuất, đơn giản hóa quy trình triển khai trên VPS chỉ với một lệnh duy nhất. So với triển khai trực tiếp trên VPS (cài đặt phụ thuộc thủ công, khó tái tạo), Docker loại bỏ hoàn toàn vấn đề ``hoạt động trên máy em nhưng không hoạt động trên server''. So với Kubernetes, Docker Compose đơn giản và phù hợp hơn cho hệ thống quy mô nhỏ chạy trên một máy chủ duy nhất.
 
-\subsection{Nginx và Certbot}
+\subsection{Nginx}
 \label{subsection:3.7.2}
 
 Nginx đóng vai trò reverse proxy, chuyển tiếp các yêu cầu \gls{HTTP}/WebSocket từ client đến Backend Server, đồng thời phục vụ các tệp tĩnh (static files) của Frontend đã được build bởi Vite. Kiến trúc này giúp Backend Server không bị lộ trực tiếp ra Internet, tăng cường bảo mật và cho phép cấu hình HTTPS tập trung tại Nginx.
-
-Certbot là công cụ tự động hóa việc cấp phát và gia hạn chứng chỉ SSL/TLS miễn phí từ Let's Encrypt. Đồ án cấu hình Certbot chạy như một container riêng, tự động gia hạn chứng chỉ mỗi 12 giờ, đảm bảo giao diện web luôn được truy cập qua HTTPS — đáp ứng yêu cầu phi chức năng về bảo mật (Bảng \ref{table:nfr}).
 
 Chương này đã trình bày nền tảng lý thuyết và các công nghệ được lựa chọn cho từng tầng trong kiến trúc hệ thống. Ở tầng cảm biến, vi điều khiển ESP32 kết hợp ba module cảm biến (PMS7003, CCS811, AHT10) cho phép đo sáu thông số môi trường với chi phí thấp. Giao thức \gls{LoRa} qua module AS32-TTL-100 giải quyết bài toán truyền dữ liệu tầm xa mà không cần hạ tầng WiFi tại mỗi điểm đo. Ở tầng máy chủ, Node.js kết hợp TimescaleDB và Socket.IO đáp ứng yêu cầu xử lý dữ liệu chuỗi thời gian và cập nhật thời gian thực. Ở tầng giao diện, React kết hợp Leaflet và ECharts cung cấp dashboard trực quan. Toàn bộ hệ thống được container hóa bằng Docker để đơn giản hóa triển khai. Với các công nghệ đã lựa chọn, Chương 4 sẽ trình bày chi tiết thiết kế kiến trúc, triển khai các chức năng và đánh giá kết quả thực nghiệm.
 

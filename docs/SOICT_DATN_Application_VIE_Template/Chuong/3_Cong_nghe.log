@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  15 JUN 2026 21:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  16 JUN 2026 10:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1202,15 +1202,20 @@ Package hyperref Info: Link coloring OFF on input line 2.
 \@outlinefile=\write5
 \openout5 = `3_Cong_nghe.out'.
 
-
-
-LaTeX Warning: Citation 'espressif2024' on page 1 undefined on input line 27.
-
-[1
+<../Hinhve/system_architecture.png, id=98, 4062.17625pt x 2538.48375pt>
+File: ../Hinhve/system_architecture.png Graphic file (type png)
+<use ../Hinhve/system_architecture.png>
+Package pdftex.def Info: ../Hinhve/system_architecture.png  used on input line 16.
+(pdftex.def)             Requested size: 426.79135pt x 266.68423pt.
+ [1
 
 {C:/Users/ADMIN/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/vntex/t5.enc}]
 
-LaTeX Warning: Citation 'plantower2023' on page 2 undefined on input line 38.
+LaTeX Warning: Citation 'espressif2024' on page 2 undefined on input line 27.
+
+[2 <../Hinhve/system_architecture.png>]
+
+LaTeX Warning: Citation 'plantower2023' on page 3 undefined on input line 38.
 
 LaTeX Font Info:    Calculating math sizes for size <13> on input line 38.
 
@@ -1254,21 +1259,30 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
-LaTeX Warning: Citation 'ams2023' on page 2 undefined on input line 40.
+LaTeX Warning: Citation 'ams2023' on page 3 undefined on input line 40.
 
 
-LaTeX Warning: Citation 'aosong2023' on page 2 undefined on input line 42.
+LaTeX Warning: Citation 'aosong2023' on page 3 undefined on input line 42.
 
 
 Overfull \hbox (18.36536pt too wide) in paragraph at lines 42--43
 \T5/ptm/m/n/13 sai sè $\OMS/cmsy/m/n/12 ^^F\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 3[]$\T5/ptm/m/n/13 C) v  ^^_ë ©m t÷ìng ^^_èi (ph¤m vi 0--100% RH, sai sè $\OMS/cmsy/m/n/12 ^^F\OT1/cmr/m/n/12 2$\T5/ptm/m/n/13 % RH) [].
  []
 
-[2]
 LaTeX Font Info:    Calculating math sizes for size <11.86258> on input line 51.
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--56
+[]|$\OMS/cmsy/m/n/12 ^^X$\T5/ptm/m/n/11.86258 350.000
+ []
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 57--57
 []|\T5/ptm/m/n/11.86258 400--8192 ppm,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--58
+[]|$\OMS/cmsy/m/n/12 ^^X$\T5/ptm/m/n/11.86258 150.000
  []
 
 
@@ -1282,20 +1296,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--59
  []
 
 
-LaTeX Warning: Citation 'augustin2016' on page 3 undefined on input line 70.
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+[]|$\OMS/cmsy/m/n/12 ^^X$\T5/ptm/m/n/11.86258 35.000
+ []
 
 [3]
 
-LaTeX Warning: Citation 'nodejs2024' on page 4 undefined on input line 89.
+LaTeX Warning: Citation 'augustin2016' on page 4 undefined on input line 70.
+
+[4]
+
+LaTeX Warning: Citation 'nodejs2024' on page 5 undefined on input line 89.
 
 
-LaTeX Warning: Citation 'postgresql2024' on page 4 undefined on input line 98.
+LaTeX Warning: Citation 'postgresql2024' on page 5 undefined on input line 98.
 
 
-LaTeX Warning: Citation 'timescaledb2024' on page 4 undefined on input line 100.
+LaTeX Warning: Citation 'timescaledb2024' on page 5 undefined on input line 100.
 
 
-LaTeX Warning: Reference `table:nfr' on page 4 undefined on input line 100.
+LaTeX Warning: Reference `table:nfr' on page 5 undefined on input line 100.
 
 
 Overfull \hbox (44.41959pt too wide) in paragraph at lines 100--101
@@ -1307,63 +1327,88 @@ Overfull \hbox (30.47058pt too wide) in paragraph at lines 100--101
 \T5/ptm/m/n/13 ^^^ç ¡n sû döng ba t½nh n«ng ch½nh cõa TimescaleDB. Thù nh§t, \T5/ptm/m/it/13 Hy-per-table\T5/ptm/m/n/13 : TimescaleDB
  []
 
-[4]
-
-LaTeX Warning: Citation 'postgis2024' on page 5 undefined on input line 102.
-
-
-LaTeX Warning: Reference `table:uc_dashboard' on page 5 undefined on input line 102.
-
-
-LaTeX Warning: Citation 'prisma2024' on page 5 undefined on input line 109.
-
-
-LaTeX Warning: Citation 'socketio2024' on page 5 undefined on input line 116.
-
 [5]
+
+LaTeX Warning: Citation 'postgis2024' on page 6 undefined on input line 102.
+
+
+LaTeX Warning: Reference `table:uc_dashboard' on page 6 undefined on input line 102.
+
+
+LaTeX Warning: Citation 'prisma2024' on page 6 undefined on input line 109.
+
+
+LaTeX Warning: Citation 'socketio2024' on page 6 undefined on input line 116.
+
 
 LaTeX Warning: Citation 'react2024' on page 6 undefined on input line 126.
 
+[6]
 
-LaTeX Warning: Citation 'vite2024' on page 6 undefined on input line 128.
-
-
-LaTeX Warning: Citation 'leaflet2024' on page 6 undefined on input line 135.
+LaTeX Warning: Citation 'vite2024' on page 7 undefined on input line 128.
 
 
-LaTeX Warning: Citation 'echarts2024' on page 6 undefined on input line 137.
+LaTeX Warning: Citation 'leaflet2024' on page 7 undefined on input line 135.
+
+
+LaTeX Warning: Citation 'echarts2024' on page 7 undefined on input line 137.
 
 LaTeX Font Info:    Trying to load font information for T5+pcr on input line 137.
 (C:\Program Files\MiKTeX\tex/latex/vntex\t5pcr.fd
 File: t5ucr.fd 2005/08/24 Fontinst v1.929 font definitions for T5/pcr.
-) [6]
+)
 
-LaTeX Warning: Reference `table:nfr' on page 7 undefined on input line 144.
-
-
-LaTeX Warning: Citation 'usepa2018' on page 7 undefined on input line 149.
-
-
-LaTeX Warning: Citation 'usepa2018' on page 7 undefined on input line 156.
-
-
-LaTeX Warning: Citation 'docker2024' on page 7 undefined on input line 164.
-
-
-Overfull \hbox (0.49059pt too wide) in paragraph at lines 166--167
-[]\T5/ptm/m/n/13 ^^^ç ¡n con-tainer hâa bèn th nh ph¦n: (i) cì sð dú li»u Post-greSQL/TimescaleDB,
- []
+LaTeX Warning: Citation 'usepa2018' on page 7 undefined on input line 145.
 
 [7]
 
-LaTeX Warning: Reference `table:nfr' on page 8 undefined on input line 173.
+LaTeX Warning: Citation 'usepa2018' on page 8 undefined on input line 149.
+
+
+LaTeX Warning: Citation 'usepa2018' on page 8 undefined on input line 149.
+
+
+Underfull \hbox (badness 1540) in paragraph at lines 160--161
+[]|\T5/ptm/m/n/11.86258 Nhâm nh¤y c£m bà £nh
+ []
+
+
+Underfull \hbox (badness 6758) in paragraph at lines 164--164
+[]|\T5/ptm/m/n/11.86258 R§t câ h¤i (Very Un-
+ []
+
+
+Underfull \hbox (badness 1960) in paragraph at lines 166--167
+[]|\T5/ptm/m/n/11.86258 To n bë d¥n sè bà £nh
+ []
+
+
+LaTeX Warning: Citation 'usepa2018' on page 8 undefined on input line 187.
+
+
+LaTeX Warning: Citation 'usepa2018' on page 8 undefined on input line 187.
+
+
+LaTeX Warning: Citation 'usepa2018' on page 8 undefined on input line 211.
+
+
+LaTeX Warning: Citation 'usepa2018' on page 8 undefined on input line 211.
+
+[8]
+
+LaTeX Warning: Citation 'docker2024' on page 9 undefined on input line 260.
+
+[9]
+Overfull \hbox (0.49059pt too wide) in paragraph at lines 262--263
+[]\T5/ptm/m/n/13 ^^^ç ¡n con-tainer hâa bèn th nh ph¦n: (i) cì sð dú li»u Post-greSQL/TimescaleDB,
+ []
 
 
 Package glossaries Warning: No \printnoidxglossary or \printnoidxglossaries
  found. (Remove \makenoidxglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-[8] (3_Cong_nghe.aux)
+[10] (3_Cong_nghe.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -1376,8 +1421,17 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `3_Cong_nghe.out' has not changed.
-(rerunfilecheck)             Checksum: 1102D4D43C66891252A46C8F5B23CFD6;3843.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `3_Cong_nghe.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `3_Cong_nghe.out':
+(rerunfilecheck)             Before: 3232700470C23B197193A2F3EDA432A0;4210
+(rerunfilecheck)             After:  283A265026B70BCD55E5B2AE45CDE3F7;4146.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                3_Cong_nghe
@@ -1388,17 +1442,17 @@ Package logreq Info: Writing requests to '3_Cong_nghe.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33588 strings out of 467691
- 625253 string characters out of 5425054
- 1531917 words of memory out of 5000000
- 62154 multiletter control sequences out of 15000+600000
+ 33620 strings out of 467691
+ 626019 string characters out of 5425054
+ 1538446 words of memory out of 5000000
+ 62178 multiletter control sequences out of 15000+600000
  653591 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,14n,124p,2608b,864s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
-Output written on 3_Cong_nghe.pdf (8 pages, 197374 bytes).
+ 128i,14n,124p,2608b,1287s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
+Output written on 3_Cong_nghe.pdf (10 pages, 670696 bytes).
 PDF statistics:
- 199 PDF objects out of 1000 (max. 8388607)
- 31 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 239 PDF objects out of 1000 (max. 8388607)
+ 39 named destinations out of 1000 (max. 500000)
+ 182 words of extra memory for PDF output out of 10000 (max. 10000000)
 
