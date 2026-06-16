@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  16 JUN 2026 16:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  16 JUN 2026 16:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/3_Cong_nghe.tex
-(d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/3_Cong_nghe.tex
+**d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/5_Giai_phap_dong_gop.tex
+(d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/5_Giai_phap_dong_gop.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
 (C:\Program Files\MiKTeX\tex/latex/subfiles\subfiles.cls
@@ -1080,10 +1080,8 @@ File: t5utm.fd 2005/08/24 Fontinst v1.929 font definitions for T5/ptm.
 LaTeX Warning: Unused global option(s):
     [13pt,3p].
 
-(3_Cong_nghe.aux
-\g__glossaries_gls_ref_acronym_int=\count518
-)
-\openout1 = `3_Cong_nghe.aux'.
+No file 5_Giai_phap_dong_gop.aux.
+\openout1 = `5_Giai_phap_dong_gop.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
 LaTeX Font Info:    ... okay on input line 2.
@@ -1105,7 +1103,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 2.
 LaTeX Font Info:    ... okay on input line 2.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 2.
 LaTeX Font Info:    ... okay on input line 2.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1142,16 +1139,16 @@ LaTeX Font Info:    ... okay on input line 2.
 
 (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count519
+\scratchcounter=\count518
 \scratchdimen=\dimen285
 \scratchbox=\box83
-\nofMPsegments=\count520
-\nofMParguments=\count521
+\nofMPsegments=\count519
+\nofMParguments=\count520
 \everyMPshowfont=\toks55
-\MPscratchCnt=\count522
+\MPscratchCnt=\count521
 \MPscratchDim=\dimen286
-\MPnumerator=\count523
-\makeMPintoPDFobject=\count524
+\MPnumerator=\count522
+\makeMPintoPDFobject=\count523
 \everyMPtoPDFconversion=\toks56
 ) (C:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1176,7 +1173,7 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count525
+\c@lstlisting=\count524
 Package tocbasic Info: omitting babel extension for `lol'
 (tocbasic)             because of missing \bbl@set@language on input line 2.
 Package biblatex Info: Trying to load language 'english'...
@@ -1190,225 +1187,101 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Data encoding 'utf8' specified.
 (biblatex)             No need to reencode data.
-\openout4 = `3_Cong_nghe-blx.bib'.
+\openout4 = `5_Giai_phap_dong_gop-blx.bib'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file '3_Cong_nghe.bbl' found.
- (3_Cong_nghe.bbl)
+Package biblatex Info: ... file '5_Giai_phap_dong_gop.bbl' not found.
+
+No file 5_Giai_phap_dong_gop.bbl.
 Package biblatex Info: Reference section=0 on input line 2.
 Package biblatex Info: Reference segment=0 on input line 2.
 Package hyperref Info: Link coloring OFF on input line 2.
- (3_Cong_nghe.out) (3_Cong_nghe.out)
 \@outlinefile=\write5
-\openout5 = `3_Cong_nghe.out'.
+\openout5 = `5_Giai_phap_dong_gop.out'.
 
-<../Hinhve/system_architecture.png, id=98, 4062.17625pt x 2538.48375pt>
-File: ../Hinhve/system_architecture.png Graphic file (type png)
-<use ../Hinhve/system_architecture.png>
-Package pdftex.def Info: ../Hinhve/system_architecture.png  used on input line 16.
-(pdftex.def)             Requested size: 426.79135pt x 266.68423pt.
- [1
-
-{C:/Users/ADMIN/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/vntex/t5.enc}]
-
-LaTeX Warning: Citation 'espressif2024' on page 2 undefined on input line 27.
-
-[2 <../Hinhve/system_architecture.png>]
-
-LaTeX Warning: Citation 'plantower2023' on page 3 undefined on input line 38.
-
-LaTeX Font Info:    Calculating math sizes for size <13> on input line 38.
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 4.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 38.
+(Font)              size <6> substituted on input line 4.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <13> not available
-(Font)              size <12> substituted on input line 38.
+(Font)              size <12> substituted on input line 4.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <6.5> not available
-(Font)              size <6> substituted on input line 38.
+(Font)              size <6> substituted on input line 4.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 38.
+(Font)              size <12> substituted on input line 4.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 38.
+(Font)              size <6> substituted on input line 4.
 
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 38.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 4.
 (C:\Program Files\MiKTeX\tex/latex/base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 38.
+(Font)              size <12> substituted on input line 4.
 
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 38.
+(Font)              size <6> substituted on input line 4.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 38.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
 (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+LaTeX Font Info:    Calculating math sizes for size <10.83347> on input line 4.
 
-LaTeX Warning: Citation 'ams2023' on page 3 undefined on input line 40.
 
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.58339> not available
+(Font)              size <8> substituted on input line 4.
 
-LaTeX Warning: Citation 'aosong2023' on page 3 undefined on input line 42.
 
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.41673> not available
+(Font)              size <5> substituted on input line 4.
 
-Overfull \hbox (18.36536pt too wide) in paragraph at lines 42--43
-\T5/ptm/m/n/13 sai sè $\OMS/cmsy/m/n/12 ^^F\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 3[]$\T5/ptm/m/n/13 C) v  ^^_ë ©m t÷ìng ^^_èi (ph¤m vi 0--100% RH, sai sè $\OMS/cmsy/m/n/12 ^^F\OT1/cmr/m/n/12 2$\T5/ptm/m/n/13 % RH) [].
- []
 
-LaTeX Font Info:    Calculating math sizes for size <11.86258> on input line 51.
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.58339> not available
+(Font)              size <8> substituted on input line 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--56
-[]|$\OMS/cmsy/m/n/12 ^^X$\T5/ptm/m/n/11.86258 350.000
- []
 
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.41673> not available
+(Font)              size <5> substituted on input line 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 57--57
-[]|\T5/ptm/m/n/11.86258 400--8192 ppm,
- []
 
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.58339> not available
+(Font)              size <8> substituted on input line 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 57--58
-[]|$\OMS/cmsy/m/n/12 ^^X$\T5/ptm/m/n/11.86258 150.000
- []
 
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.41673> not available
+(Font)              size <5> substituted on input line 4.
 
-Underfull \hbox (badness 3977) in paragraph at lines 59--59
-[]|\T5/ptm/m/n/11.86258 Nhi»t ^^_ë, ^^_ë
- []
 
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <7.58339> not available
+(Font)              size <8> substituted on input line 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--59
-[]|$\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 40$\T5/ptm/m/n/11.86258 --$\OT1/cmr/m/n/12 85[]$\T5/ptm/m/n/11.86258 C, 0--
- []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 59--60
-[]|$\OMS/cmsy/m/n/12 ^^X$\T5/ptm/m/n/11.86258 35.000
- []
-
-[3]
-
-LaTeX Warning: Citation 'augustin2016' on page 4 undefined on input line 70.
-
-[4]
-
-LaTeX Warning: Citation 'nodejs2024' on page 5 undefined on input line 89.
-
-
-LaTeX Warning: Citation 'postgresql2024' on page 5 undefined on input line 98.
-
-
-LaTeX Warning: Citation 'timescaledb2024' on page 5 undefined on input line 100.
-
-
-LaTeX Warning: Reference `table:nfr' on page 5 undefined on input line 100.
-
-
-Overfull \hbox (44.41959pt too wide) in paragraph at lines 100--101
-\T5/ptm/m/n/13 thíi gian (time-series), ^^_÷ñc thi¸t k¸ cho dú li»u câ nh¢n thíi gian li¶n töc [].
- []
-
-
-Overfull \hbox (30.47058pt too wide) in paragraph at lines 100--101
-\T5/ptm/m/n/13 ^^^ç ¡n sû döng ba t½nh n«ng ch½nh cõa TimescaleDB. Thù nh§t, \T5/ptm/m/it/13 Hy-per-table\T5/ptm/m/n/13 : TimescaleDB
- []
-
-[5]
-
-LaTeX Warning: Citation 'postgis2024' on page 6 undefined on input line 102.
-
-
-LaTeX Warning: Reference `table:uc_dashboard' on page 6 undefined on input line 102.
-
-
-LaTeX Warning: Citation 'prisma2024' on page 6 undefined on input line 109.
-
-
-LaTeX Warning: Citation 'socketio2024' on page 6 undefined on input line 116.
-
-
-LaTeX Warning: Citation 'react2024' on page 6 undefined on input line 126.
-
-[6]
-
-LaTeX Warning: Citation 'vite2024' on page 7 undefined on input line 128.
-
-
-LaTeX Warning: Citation 'leaflet2024' on page 7 undefined on input line 135.
-
-
-LaTeX Warning: Citation 'echarts2024' on page 7 undefined on input line 137.
-
-LaTeX Font Info:    Trying to load font information for T5+pcr on input line 137.
-(C:\Program Files\MiKTeX\tex/latex/vntex\t5pcr.fd
-File: t5ucr.fd 2005/08/24 Fontinst v1.929 font definitions for T5/pcr.
-)
-
-LaTeX Warning: Citation 'usepa2018' on page 7 undefined on input line 145.
-
-[7]
-
-LaTeX Warning: Citation 'usepa2018' on page 8 undefined on input line 149.
-
-
-LaTeX Warning: Citation 'usepa2018' on page 8 undefined on input line 149.
-
-
-Underfull \hbox (badness 1540) in paragraph at lines 160--161
-[]|\T5/ptm/m/n/11.86258 Nhâm nh¤y c£m bà £nh
- []
-
-
-Underfull \hbox (badness 6758) in paragraph at lines 164--164
-[]|\T5/ptm/m/n/11.86258 R§t câ h¤i (Very Un-
- []
-
-
-Underfull \hbox (badness 1960) in paragraph at lines 166--167
-[]|\T5/ptm/m/n/11.86258 To n bë d¥n sè bà £nh
- []
-
-
-LaTeX Warning: Citation 'usepa2018' on page 8 undefined on input line 187.
-
-
-LaTeX Warning: Citation 'usepa2018' on page 8 undefined on input line 187.
-
-
-LaTeX Warning: Citation 'usepa2018' on page 8 undefined on input line 211.
-
-
-LaTeX Warning: Citation 'usepa2018' on page 8 undefined on input line 211.
-
-[8]
-
-LaTeX Warning: Citation 'docker2024' on page 9 undefined on input line 260.
-
-[9]
-Overfull \hbox (0.49059pt too wide) in paragraph at lines 262--263
-[]\T5/ptm/m/n/13 ^^^ç ¡n con-tainer hâa bèn th nh ph¦n: (i) cì sð dú li»u Post-greSQL/TimescaleDB,
- []
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <5.41673> not available
+(Font)              size <5> substituted on input line 4.
 
 
 Package glossaries Warning: No \printnoidxglossary or \printnoidxglossaries
  found. (Remove \makenoidxglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-[10] (3_Cong_nghe.aux)
+[1
+
+{C:/Users/ADMIN/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/vntex/t5.enc}] (5_Giai_phap_dong_gop.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -1421,29 +1294,35 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `3_Cong_nghe.out' has not changed.
-(rerunfilecheck)             Checksum: 283A265026B70BCD55E5B2AE45CDE3F7;4146.
+
+Package rerunfilecheck Warning: File `5_Giai_phap_dong_gop.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `5_Giai_phap_dong_gop.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
-(biblatex)                3_Cong_nghe
+(biblatex)                5_Giai_phap_dong_gop
 (biblatex)                and rerun LaTeX afterwards.
 
-Package logreq Info: Writing requests to '3_Cong_nghe.run.xml'.
-\openout1 = `3_Cong_nghe.run.xml'.
+Package logreq Info: Writing requests to '5_Giai_phap_dong_gop.run.xml'.
+\openout1 = `5_Giai_phap_dong_gop.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33650 strings out of 467691
- 626447 string characters out of 5425054
- 1538675 words of memory out of 5000000
- 62208 multiletter control sequences out of 15000+600000
- 653591 words of font info for 83 fonts, out of 8000000 for 9000
+ 33253 strings out of 467691
+ 619151 string characters out of 5425054
+ 1524221 words of memory out of 5000000
+ 61859 multiletter control sequences out of 15000+600000
+ 649039 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,14n,124p,2608b,1287s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
-Output written on 3_Cong_nghe.pdf (10 pages, 670739 bytes).
+ 128i,8n,124p,2617b,856s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb>
+Output written on 5_Giai_phap_dong_gop.pdf (1 page, 47251 bytes).
 PDF statistics:
- 239 PDF objects out of 1000 (max. 8388607)
- 39 named destinations out of 1000 (max. 500000)
- 182 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 24 PDF objects out of 1000 (max. 8388607)
+ 3 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,71 +1,356 @@
 \documentclass[../DoAn.tex]{subfiles}
 \begin{document}
 
+Chương 3 đã trình bày nền tảng lý thuyết và các công nghệ được lựa chọn cho từng tầng trong kiến trúc hệ thống, bao gồm phần cứng IoT, giao thức LoRa, công nghệ phần mềm phía máy chủ và giao diện, lý thuyết tính toán AQI, cùng hạ tầng triển khai. Trên cơ sở đó, Chương 4 trình bày chi tiết quá trình thiết kế, triển khai và đánh giá hệ thống. Nội dung chương bao gồm: (i) thiết kế kiến trúc trong phần \ref{section:4.1}, (ii) thiết kế chi tiết trong phần \ref{section:4.2}, (iii) xây dựng ứng dụng trong phần \ref{section:4.3}, (iv) kiểm thử trong phần \ref{section:4.4}, và (v) triển khai trong phần \ref{section:4.5}.
+
 \section{Thiết kế kiến trúc}
+\label{section:4.1}
+
 \subsection{Lựa chọn kiến trúc phần mềm}
-Mục này có độ dài từ một đến ba trang. Sinh viên cần lựa chọn kiến trúc phần mềm cho ứng dụng của mình như: kiến trúc ba lớp MVC, MVP, SOA, Microservice, v.v. rồi giải thích sơ bộ về kiến trúc đó (không giải thích chi tiết/dài dòng).
-Sử dụng kiến trúc phần mềm đã chọn ở trên, sinh viên mô tả kiến trúc cụ thể cho ứng dụng của mình. Gợi ý: sinh viên áp dụng lý thuyết chung vào hệ thống/sản phẩm của mình như thế nào, có thay đổi, bổ sung hoặc cải tiến gì không. Ví dụ, thành phần M trong kiến trúc lý thuyết MVC sẽ là những thành phần cụ thể nào (ví dụ: là interface I + class C1 + class C2, v.v.) trong kiến trúc phần mềm của sinh viên.
+\label{subsection:4.1.1}
+
+Hệ thống được thiết kế theo kiến trúc bốn tầng, bao gồm tầng cảm biến (Sensor Layer), tầng trung chuyển (Gateway Layer), tầng máy chủ (Server Layer) và tầng hiển thị (Presentation Layer). Kiến trúc bốn tầng được lựa chọn vì ba lý do chính. Thứ nhất, mỗi tầng có trách nhiệm rõ ràng và có thể phát triển độc lập: tầng cảm biến thu thập dữ liệu môi trường, tầng trung chuyển chuyển tiếp dữ liệu từ mạng \gls{LoRa} sang Internet, tầng máy chủ xử lý nghiệp vụ và lưu trữ, tầng hiển thị cung cấp giao diện cho người dùng. Thứ hai, kiến trúc này cho phép mở rộng theo chiều ngang tại từng tầng — ví dụ thêm Sensor Node mới mà không thay đổi phần mềm Backend. Thứ ba, độ phức tạp phù hợp với quy mô hệ thống: triển khai trên một máy chủ VPS duy nhất, không yêu cầu kiến trúc Microservice.
+
+\textbf{Tầng cảm biến} gồm các Sensor Node, mỗi node tích hợp vi điều khiển ESP32, ba module cảm biến (PMS7003, CCS811, AHT10) và module \gls{LoRa} AS32-TTL-100. Firmware sử dụng FreeRTOS để quản lý đồng thời bốn tác vụ: đọc cảm biến, gửi dữ liệu \gls{LoRa}, hiển thị OLED và đo pin. Dữ liệu được đóng gói thành gói tin nhị phân 18 byte và phát qua \gls{LoRa} 433 MHz.
+
+\textbf{Tầng trung chuyển} gồm các Gateway, mỗi Gateway tích hợp ESP32 với module \gls{LoRa} và kết nối WiFi. Gateway nhận gói tin \gls{LoRa}, lưu vào bộ đệm vòng (ring buffer), sau đó gửi lên tầng máy chủ dưới dạng \gls{HTTP} POST (\gls{JSON} batch). Ở tầng này, hệ thống áp dụng mô hình Hub-Spoke: nhiều Sensor Node (spoke) gửi dữ liệu đến một Gateway (hub) trung tâm, cho phép một Gateway phục vụ nhiều Sensor Node trong phạm vi phủ sóng mà không cần định tuyến phức tạp.
+
+\textbf{Tầng máy chủ} bao gồm Backend Server (Node.js/Express) và cơ sở dữ liệu (PostgreSQL với TimescaleDB và PostGIS), được đóng gói trong Docker container. Backend Server được tổ chức theo mô hình phân lớp gồm ba lớp: lớp Controller tiếp nhận \gls{HTTP} request, lớp Service chứa logic nghiệp vụ, và lớp Data Access tương tác với cơ sở dữ liệu thông qua Prisma \gls{ORM}. Ngoài ra, tầng máy chủ còn có Nginx đóng vai trò reverse proxy và phục vụ tệp tĩnh, cùng các tác vụ nền (cron job) kiểm tra thiết bị offline và dọn dẹp dữ liệu cũ.
+
+\textbf{Tầng hiển thị} là ứng dụng web \gls{SPA} xây dựng bằng React 19 và Vite 8, giao tiếp với tầng máy chủ qua \gls{REST} \gls{API} (\gls{HTTP}/HTTPS) và Socket.IO (WebSocket). Tầng này cung cấp hai nhóm giao diện: dashboard cho người dùng (bản đồ AQI, biểu đồ lịch sử, xếp hạng) và trang quản trị cho quản trị viên (quản lý thiết bị, cảnh báo, cấu hình, xuất dữ liệu).
 
 \subsection{Thiết kế tổng quan}
-Sinh viên vẽ biểu đồ gói UML (UML package diagram), nêu rõ sự phụ thuộc giữa các gói (package). SV cần vẽ các gói sao cho chúng được phân theo các tầng rõ ràng, không được sắp đặt package lộn xộn trong hình vẽ. Sinh viên chú ý các quy tắc thiết kế (Các gói không phụ thuộc lẫn nhau, gói tầng dưới không phụ thuộc gói tầng trên, không phụ thuộc bỏ qua tầng, v.v.) và cần giải thích sơ lược về mục đích/nhiệm vụ của từng package. SV tham khảo ví dụ minh họa trong Hình \ref{fig:Fig1}
-\begin{figure}[H]
-    \centering
-    \includegraphics{Hinhve/Picture1.png}
-    \caption{Ví dụ biểu đồ phụ thuộc gói}
-    \label{fig:Fig1}
-\end{figure}
+\label{subsection:4.1.2}
+
+%todo: Biểu đồ gói UML tổng quan (package diagram) — user tự thêm hình
+
+Hệ thống được tổ chức thành bốn nhóm gói chính tương ứng với bốn tầng kiến trúc, mỗi nhóm chứa các gói con với trách nhiệm cụ thể.
+
+\textbf{Nhóm gói Tầng cảm biến (sensor-node)} chứa các module: \texttt{drivers} (giao tiếp cảm biến PMS7003, CCS811, AHT10, màn hình OLED, module LoRa), \texttt{core} (quản lý cấu hình NVS, provisioning qua WiFi AP, vòng lặp chính), và \texttt{config} (định nghĩa chân GPIO, tham số LoRa). Hệ thống có ba biến thể firmware cho các loại board ESP32 khác nhau.
+
+\textbf{Nhóm gói Tầng trung chuyển (gateway)} chứa các module: \texttt{drivers} (giao tiếp LoRa), \texttt{core} (bộ đệm vòng, gửi \gls{HTTP} batch lên tầng máy chủ), và \texttt{config} (cấu hình WiFi, địa chỉ Backend). Nhóm gói này hoạt động độc lập, không phụ thuộc vào nhóm gói tầng cảm biến.
+
+\textbf{Nhóm gói Tầng máy chủ (backend)} gồm sáu gói: \texttt{routes} (định nghĩa endpoint API), \texttt{controllers} (tiếp nhận request, trả response), \texttt{services} (logic nghiệp vụ), \texttt{middlewares} (xác thực JWT, xử lý lỗi), \texttt{validations} (kiểm tra dữ liệu đầu vào), và \texttt{config} (kết nối Prisma Client). Luồng phụ thuộc tuân thủ nguyên tắc một chiều: routes $\rightarrow$ controllers $\rightarrow$ services $\rightarrow$ config (Prisma), đảm bảo gói tầng dưới không phụ thuộc gói tầng trên.
+
+\textbf{Nhóm gói Tầng hiển thị (frontend)} gồm bảy gói: \texttt{pages} (các trang giao diện), \texttt{components} (thành phần tái sử dụng), \texttt{hooks} (custom React hooks), \texttt{services} (gọi API), \texttt{stores} (quản lý trạng thái Zustand), \texttt{layouts} (bố cục trang), và \texttt{i18n} (đa ngôn ngữ). Gói \texttt{pages} phụ thuộc \texttt{components} và \texttt{hooks}; gói \texttt{hooks} phụ thuộc \texttt{services}; gói \texttt{services} gọi \gls{REST} \gls{API} đến tầng máy chủ.
+
 \subsection{Thiết kế chi tiết gói}
-Sinh viên thiết kế và lần lượt vẽ biểu đồ thiết kế cho từng package, hoặc một nhóm các package liên quan để giải quyết một vấn đề gì đó. Khi vẽ thiết kế gói, sinh viên chỉ cần đưa tên lớp, không cần chỉ ra các thành viên phương thức và thuộc tính. SV tham khảo ví dụ minh họa trong Hình \ref{fig:Fig2}.
+\label{subsection:4.1.3}
 
-Sinh viên cần vẽ rõ ràng quan hệ giữa các lớp trong biểu đồ. Các quan hệ bao gồm: phụ thuộc (dependency), kết hợp (association), kết tập (aggregation), hợp thành (composition), kế thừa (inheritance), và thực thi (implementation). Các quan hệ này đều đã được minh họa trong \ref{fig:Fig2}.
+%todo: Biểu đồ quan hệ class/module cho backend services — user tự thêm hình
 
-Sau khi vẽ hình minh họa, sinh viên cần giải thích ngắn gọn về thiết kế của mình. 
+Phần này trình bày thiết kế chi tiết cho hai nhóm gói quan trọng: nhóm xử lý dữ liệu telemetry trên Backend và nhóm hiển thị dashboard trên Frontend.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics{Hinhve/Picture2.png}
-    \caption{Ví dụ thiết kế gói}
-    \label{fig:Fig2}
-\end{figure}
+\textbf{Nhóm xử lý dữ liệu telemetry} trên Backend bao gồm bốn module liên kết chặt chẽ. Module \texttt{telemetryController} nhận HTTP POST từ Gateway, xác thực dữ liệu đầu vào qua \texttt{telemetryValidation}, sau đó chuyển cho \texttt{telemetryService}. Module \texttt{telemetryService} thực hiện ba bước trong một transaction: (i) lọc bỏ gói tin trùng lặp (deduplication) khi nhiều Gateway cùng nhận một gói LoRa, (ii) cập nhật trạng thái Gateway và Sensor Node, (iii) lưu dữ liệu đo lường vào bảng \texttt{measurements}. Sau transaction, module gọi \texttt{alertService.checkThresholdsAndCreateAlerts} để kiểm tra ngưỡng cảnh báo — việc tách riêng kiểm tra cảnh báo ra ngoài transaction đảm bảo lỗi cảnh báo không ảnh hưởng đến luồng lưu trữ dữ liệu chính. Module \texttt{aqiService} cung cấp hàm \texttt{calculateAQI} được gọi bởi \texttt{stationService} khi trả dữ liệu dashboard cho Frontend.
+
+\textbf{Nhóm hiển thị dashboard} trên Frontend bao gồm trang \texttt{Dashboard} sử dụng custom hook \texttt{useDashboard} để gọi API lấy dữ liệu trạm gần nhất, và hook \texttt{useSocket} để nhận cập nhật thời gian thực qua Socket.IO. Khi Backend phát sự kiện \texttt{new\_telemetry\_data}, hook \texttt{useSocket} cập nhật trạng thái React, kích hoạt Virtual DOM so sánh và chỉ vẽ lại các thành phần thay đổi trên giao diện.
 
 \section{Thiết kế chi tiết}
-\subsection{Thiết kế giao diện}
-Phần này có độ dài từ hai đến ba trang. Sinh viên đặc tả thông tin về màn hình mà ứng dụng của mình hướng tới, bao gồm độ phân giải màn hình, kích thước màn hình, số lượng màu sắc hỗ trợ, v.v. Tiếp đến, sinh viên đưa ra các thống nhất/chuẩn hóa của mình khi thiết kế giao diện như thiết kế nút, điều khiển, vị trí hiển thị thông điệp phản hồi, phối màu, v.v. Sau cùng sinh viên đưa ra một số hình ảnh minh họa thiết kế giao diện cho các chức năng quan trọng nhất. Lưu ý, sinh viên không nhầm lẫn giao diện thiết kế với giao diện của sản phẩm sau cùng.
-\subsection{Thiết kế lớp}
-Phần này có độ dài từ ba đến bốn trang. Sinh viên trình bày thiết kế chi tiết các thuộc tính và phương thức cho một số lớp chủ đạo/quan trọng nhất của ứng dụng (từ 2-4 lớp). Thiết kế chi tiết cho các lớp khác, nếu muốn trình bày, sinh viên đưa vào phần phụ lục.
+\label{section:4.2}
 
-Để minh họa thiết kế lớp, sinh viên thiết kế luồng truyền thông điệp giữa các đối tượng tham gia cho 2 đến 3 use case quan trọng nào đó bằng biểu đồ trình tự (hoặc biểu đồ giao tiếp).
+\subsection{Thiết kế giao diện}
+\label{subsection:4.2.1}
+
+Giao diện hệ thống được thiết kế cho trình duyệt web, hỗ trợ responsive trên nhiều kích thước màn hình từ máy tính (độ phân giải tối thiểu 1280$\times$720) đến thiết bị di động (tối thiểu 375$\times$667). Hệ thống hỗ trợ hai ngôn ngữ (Tiếng Việt và Tiếng Anh) thông qua thư viện \texttt{react-i18next}.
+
+Giao diện được tổ chức thành hai nhóm layout riêng biệt. \textbf{UserLayout} dành cho người dùng, gồm thanh điều hướng ngang (navbar) ở trên cùng với các liên kết đến bốn trang: Dashboard, Lịch sử, Bản đồ và Xếp hạng. \textbf{AdminLayout} dành cho quản trị viên, gồm thanh điều hướng dọc (sidebar) bên trái có thể thu gọn, chứa các mục: Dashboard, Gateways, Sensor Nodes, Cảnh báo, Cấu hình, Người dùng, Xuất dữ liệu và Nhật ký.
+
+Hệ thống sử dụng bộ thành phần giao diện tái sử dụng (component library) tự xây dựng, bao gồm 28 component: Button, Modal, Badge, Input, Select, Table, Pagination, Card, Tooltip và các component chuyên biệt như AQIGauge, MetricCard, HealthAdvisory. Tất cả component tuân thủ thiết kế nhất quán: dark theme với bảng màu chính là xanh dương đậm, các trạng thái tương tác (hover, focus, disabled) được định nghĩa thống nhất, và hiệu ứng chuyển đổi mượt mà (transition 200ms).
+
+%todo: Wireframe/mockup 3–4 màn hình chính — user tự thêm hình
+
+\subsection{Thiết kế lớp}
+\label{subsection:4.2.2}
+
+Phần này trình bày thiết kế chi tiết cho bốn module quan trọng nhất trên Backend Server.
+
+\textbf{Module telemetryService} chịu trách nhiệm xử lý dữ liệu đo lường từ Gateway. Module này cung cấp hai hàm chính: \texttt{processTelemetry(gateway\_id, data)} xử lý gói dữ liệu batch và \texttt{processHeartbeat(gateway\_id)} xử lý tín hiệu heartbeat. Hàm \texttt{processTelemetry} thực hiện tuần tự ba bước: lọc trùng lặp qua module \texttt{dedupCache}, thực thi transaction cập nhật trạng thái thiết bị và lưu dữ liệu đo lường, sau đó kiểm tra ngưỡng cảnh báo ngoài transaction.
+
+\textbf{Module aqiService} triển khai thuật toán tính \gls{AQI} theo chuẩn \gls{USEPA} đã trình bày ở Chương 3. Module cung cấp năm hàm: \texttt{calculateSubAQI} tính AQI thành phần cho một chất ô nhiễm, \texttt{calculateAQI} tính AQI tổng hợp (giá trị lớn nhất giữa PM2.5 và PM10), \texttt{getAQIInfo} ánh xạ giá trị AQI sang mức và mã màu, \texttt{getCO2Info} và \texttt{getTVOCInfo} đánh giá mức CO\textsubscript{2} và TVOC. Bảng breakpoint được lưu trữ dưới dạng mảng hằng số trong mã nguồn, tương ứng chính xác với Bảng \ref{table:bp_pm25} và Bảng \ref{table:bp_pm10} ở Chương 3.
+
+\textbf{Module alertService} quản lý toàn bộ vòng đời cảnh báo. Module cung cấp sáu hàm: \texttt{getAlerts} truy vấn danh sách cảnh báo với hỗ trợ lọc và phân trang, \texttt{acknowledgeAlert} xác nhận xử lý, \texttt{deleteAlert} xóa cảnh báo, \texttt{checkThresholdsAndCreateAlerts} kiểm tra năm thông số (PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ) so với ngưỡng cấu hình và tạo cảnh báo khi vượt ngưỡng, \texttt{createConnectivityAlerts} tạo cảnh báo mất kết nối cho thiết bị offline, và \texttt{cleanupOldAlerts} xóa cảnh báo quá 30 ngày. Cơ chế cooldown 15 phút ngăn chặn tạo cảnh báo trùng lặp cho cùng thiết bị và cùng thông số trong khoảng thời gian ngắn.
+
+\textbf{Module stationService} cung cấp dữ liệu cho các trang người dùng. Hàm \texttt{getNearestStation} sử dụng PostGIS để truy vấn trạm đo gần nhất dựa trên toạ độ GPS của người dùng thông qua hàm \texttt{ST\_Distance}. Hàm \texttt{getStationHistory} truy vấn dữ liệu lịch sử từ Continuous Aggregate \texttt{hourly\_measurements} cho chế độ xem theo giờ, hoặc từ bảng \texttt{measurements} gốc cho chế độ xem theo ngày.
+
+%todo: 2–3 biểu đồ trình tự (sequence diagram) cho use case quan trọng — user tự thêm hình
+
 \subsection{Thiết kế cơ sở dữ liệu}
-Phần này có độ dài từ hai đến bốn trang. Sinh viên thiết kế, vẽ và giải thích biểu đồ thực thể liên kết (E-R diagram). Từ đó, sinh viên thiết kế cơ sở dữ liệu tùy theo hệ quản trị cơ sở dữ liệu mà mình sử dụng (SQL, NoSQL, Firebase, v.v.)
+\label{subsection:4.2.3}
+
+Cơ sở dữ liệu được thiết kế trên PostgreSQL 15 với hai extension: TimescaleDB cho dữ liệu chuỗi thời gian và PostGIS cho dữ liệu không gian. Lược đồ gồm bảy bảng chính và một materialized view.
+
+%todo: E-R diagram cho 7 bảng — user tự thêm hình
+
+\textbf{Bảng users} lưu thông tin tài khoản với khóa chính là UUID tự sinh, bao gồm username (duy nhất), password\_hash (mã hóa bcrypt) và role (admin hoặc user).
+
+\textbf{Bảng gateways} lưu thông tin Gateway với khóa chính là mã định danh dạng chuỗi (ví dụ ``GW\_001''), bao gồm tên, mô tả vị trí, trạng thái online/offline và thời điểm gửi dữ liệu cuối (last\_seen).
+
+\textbf{Bảng sensor\_nodes} lưu thông tin Sensor Node với khóa ngoại tham chiếu đến bảng gateways (quan hệ 1-N: một Gateway quản lý nhiều Sensor Node, xóa Gateway sẽ xóa cascade các Sensor Node). Cột \texttt{geom} kiểu \texttt{geometry(Point, 4326)} lưu toạ độ GPS theo hệ tọa độ WGS84, cho phép truy vấn không gian qua PostGIS. Các cột \texttt{battery\_level} và \texttt{lora\_rssi} lưu thông tin trạng thái phần cứng.
+
+\textbf{Bảng measurements} là hypertable TimescaleDB, được tự động phân mảnh theo cột thời gian \texttt{time}. Khóa chính composite gồm (\texttt{time}, \texttt{node\_id}) đảm bảo mỗi Sensor Node chỉ có một bản ghi tại mỗi thời điểm. Bảng lưu sáu thông số: PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ và độ ẩm. Retention policy tự động xóa dữ liệu thô quá 3 tháng.
+
+\textbf{Materialized view hourly\_measurements} là Continuous Aggregate tự động tính giá trị trung bình theo giờ cho mỗi Sensor Node. View này được TimescaleDB tự động cập nhật khi có dữ liệu mới ghi vào bảng \texttt{measurements}, đáp ứng yêu cầu phi chức năng truy vấn lịch sử 30 ngày trong vòng 3 giây (Bảng \ref{table:nfr}).
+
+\textbf{Bảng alert\_configs} lưu cấu hình ngưỡng cảnh báo dưới dạng singleton row (chỉ một bản ghi với id = ``default''). Cấu hình bao gồm ngưỡng warn và danger cho bốn thông số (PM2.5, PM10, CO\textsubscript{2}, TVOC), ngưỡng nhiệt độ tối thiểu/tối đa, và chu kỳ lấy mẫu.
+
+\textbf{Bảng alerts} lưu cảnh báo tự động với hai loại: ``threshold'' (vượt ngưỡng) và ``connectivity'' (mất kết nối). Mỗi cảnh báo ghi nhận thông số vi phạm (metric), giá trị đo được (value), ngưỡng so sánh (threshold) và trạng thái xác nhận (acknowledged). Ba chỉ mục trên cột \texttt{node\_id}, \texttt{created\_at} và \texttt{acknowledged} tối ưu hiệu năng truy vấn lọc và phân trang.
+
+\textbf{Bảng audit\_logs} ghi lại mọi hành động quản trị, bao gồm người thực hiện (user\_id, username), loại thao tác (action: CREATE, UPDATE, DELETE), đối tượng thao tác (resource, resource\_id), chi tiết thay đổi (details dạng JSON) và địa chỉ IP. Ba chỉ mục trên cột \texttt{user\_id}, \texttt{created\_at} và \texttt{resource} phục vụ truy vấn tra cứu nhật ký.
 
 \section{Xây dựng ứng dụng}
+\label{section:4.3}
+
 \subsection{Thư viện và công cụ sử dụng}
-Sinh viên liệt kê các công cụ, ngôn ngữ lập trình, API, thư viện, IDE, công cụ kiểm thử, v.v. mà mình sử dụng để phát triển ứng dụng. Mỗi công cụ phải được chỉ rõ phiên bản sử dụng. SV nên kẻ bảng mô tả tương tự như Bảng \ref{table:my_label}. Nếu có nhiều nội dung trình bày, sinh viên cần xoay ngang bảng.
+\label{subsection:4.3.1}
+
+Bảng \ref{table:tools_backend} và Bảng \ref{table:tools_frontend} liệt kê các công cụ, thư viện và phiên bản sử dụng để phát triển hệ thống, phân nhóm theo Backend và Frontend.
 
 \begin{table}[H]
-\centering{}
-    \begin{tabular}{lll}
-        \hline
-        \textbf{Mục đích} & \textbf{Công cụ}       & \textbf{Địa chỉ URL}    \\ \hline
-        IDE lập trình     & Eclipse Oxygen a64 bit & http://www.eclipse.org/ \\ \hline
-        v.v.              & v.v.                   & v.v.                    \\ \hline
-        \end{tabular}
-    \caption{Danh sách thư viện và công cụ sử dụng}
-    \label{fig:my_label}
+\centering
+\caption{Danh sách thư viện và công cụ phía Backend}
+\label{table:tools_backend}
+\small
+\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{2cm}|p{3.5cm}|}
+\hline
+\textbf{Mục đích} & \textbf{Công cụ} & \textbf{Phiên bản} & \textbf{Địa chỉ URL} \\
+\hline
+Runtime & Node.js & 22.x & https://nodejs.org/ \\
+\hline
+Web framework & Express & 4.21.0 & https://expressjs.com/ \\
+\hline
+ORM & Prisma Client & 7.5.0 & https://www.prisma.io/ \\
+\hline
+Giao tiếp real-time & Socket.IO & 4.7.5 & https://socket.io/ \\
+\hline
+Xác thực JWT & jsonwebtoken & 9.0.3 & https://github.com/auth0/node-jsonwebtoken \\
+\hline
+Mã hóa mật khẩu & bcryptjs & 3.0.3 & https://github.com/nicolo-ribaudo/bcrypt.js \\
+\hline
+Bảo mật HTTP headers & Helmet & 8.1.0 & https://helmetjs.github.io/ \\
+\hline
+Tác vụ định kỳ & node-cron & 4.2.1 & https://github.com/node-cron/node-cron \\
+\hline
+Xuất CSV & json2csv & 6.0.0 & https://mircoithink.github.io/json2csv \\
+\hline
+CSDL & PostgreSQL & 15 & https://www.postgresql.org/ \\
+\hline
+Extension time-series & TimescaleDB & - & https://www.timescale.com/ \\
+\hline
+Extension geospatial & PostGIS & - & https://postgis.net/ \\
+\hline
+\end{tabular}
 \end{table}
 
-\subsection{Kết quả đạt được}
-Sinh viên trước tiên mô tả kết quả đạt được của mình là gì, ví dụ như các sản phẩm được đóng gói là gì, bao gồm những thành phần nào, ý nghĩa, vai trò?
+\begin{table}[H]
+\centering
+\caption{Danh sách thư viện và công cụ phía Frontend}
+\label{table:tools_frontend}
+\small
+\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{2cm}|p{3.5cm}|}
+\hline
+\textbf{Mục đích} & \textbf{Công cụ} & \textbf{Phiên bản} & \textbf{Địa chỉ URL} \\
+\hline
+UI framework & React & 19.2.4 & https://react.dev/ \\
+\hline
+Build tool & Vite & 8.0.4 & https://vite.dev/ \\
+\hline
+Routing & React Router & 7.14.0 & https://reactrouter.com/ \\
+\hline
+HTTP client & Axios & 1.14.0 & https://axios-http.com/ \\
+\hline
+Bản đồ tương tác & Leaflet + React-Leaflet & 1.9.4 / 5.0.0 & https://react-leaflet.js.org/ \\
+\hline
+Biểu đồ & ECharts & 6.0.0 & https://echarts.apache.org/ \\
+\hline
+Đa ngôn ngữ & react-i18next & 17.0.2 & https://react.i18next.com/ \\
+\hline
+Quản lý trạng thái & Zustand & 5.0.12 & https://zustand.docs.pmnd.rs/ \\
+\hline
+Icon & Lucide React & 1.7.0 & https://lucide.dev/ \\
+\hline
+Socket client & socket.io-client & 4.8.3 & https://socket.io/ \\
+\hline
+\end{tabular}
+\end{table}
 
-Sinh viên cần thống kê các thông tin về ứng dụng của mình như: số dòng code, số lớp, số gói, dung lượng toàn bộ mã nguồn, dung lượng của từng sản phẩm đóng gói, v.v. Tương tự như phần liệt kê về công cụ sử dụng, sinh viên cũng nên dùng bảng để mô tả phần thông tin thống kê này.
+Ngoài ra, hệ thống sử dụng các công cụ phát triển và triển khai: VS Code làm IDE chính, PlatformIO với framework Arduino để phát triển firmware ESP32, Docker và Docker Compose để container hóa, Nginx làm reverse proxy, và Certbot để quản lý chứng chỉ SSL.
+
+\subsection{Kết quả đạt được}
+\label{subsection:4.3.2}
+
+Sản phẩm cuối cùng bao gồm bốn thành phần được đóng gói riêng biệt. Thứ nhất, \textbf{Firmware Sensor Node} chạy trên ESP32, sử dụng FreeRTOS để quản lý đồng thời các tác vụ đọc cảm biến, gửi LoRa và hiển thị OLED, với ba biến thể: board 38 chân, board 30 chân, và board 30 chân có chế độ deep-sleep. Thứ hai, \textbf{Firmware Gateway} chạy trên ESP32, sử dụng kiến trúc superloop để nhận gói LoRa và chuyển tiếp lên Backend Server qua WiFi, với hai biến thể cho board 38 chân và 30 chân. Thứ ba, \textbf{Backend Server} là ứng dụng Node.js/Express cung cấp \gls{REST} \gls{API} và giao tiếp real-time qua Socket.IO. Thứ tư, \textbf{Frontend} là ứng dụng React \gls{SPA} được build bởi Vite thành các tệp tĩnh, phục vụ bởi Nginx.
+
+Bảng \ref{table:stats} thống kê quy mô mã nguồn của từng thành phần.
+
+\begin{table}[H]
+\centering
+\caption{Thống kê quy mô mã nguồn hệ thống}
+\label{table:stats}
+\small
+\begin{tabular}{|p{4cm}|p{3cm}|p{3cm}|p{2.5cm}|}
+\hline
+\textbf{Thành phần} & \textbf{Số file mã nguồn} & \textbf{Ngôn ngữ chính} & \textbf{Ghi chú} \\
+\hline
+Firmware Sensor Node & 3 biến thể & C/C++ (Arduino) & FreeRTOS \\
+\hline
+Firmware Gateway & 2 biến thể & C/C++ (Arduino) & Superloop \\
+\hline
+Backend Server & 14 controllers, 15 services & JavaScript (Node.js) & Express 4.21 \\
+\hline
+Frontend & 16 pages, 28 components & JavaScript (React) & Vite 8.0 \\
+\hline
+Database & 7 bảng, 1 view & SQL & TimescaleDB + PostGIS \\
+\hline
+Triển khai & 4 containers & YAML, Nginx conf & Docker Compose \\
+\hline
+\end{tabular}
+\end{table}
 
 \subsection{Minh họa các chức năng chính}
-Sinh viên lựa chọn và đưa ra màn hình cho các chức năng chính, quan trọng, và thú vị nhất. Mỗi giao diện cần phải có lời giải thích ngắn gọn. Khi giải thích, sinh viên có thể kết hợp với các chú thích ở trong hình ảnh giao diện.
+\label{subsection:4.3.3}
+
+Phần này minh hoạ các chức năng chính của hệ thống thông qua giao diện thực tế trên môi trường production.
+
+\textbf{Dashboard chất lượng không khí.} Khi người dùng truy cập trang Dashboard, hệ thống yêu cầu quyền truy cập vị trí, sau đó hiển thị dữ liệu của trạm đo gần nhất. Giao diện hiển thị chỉ số AQI tổng hợp dưới dạng gauge lớn ở trung tâm, kèm mã màu theo chuẩn \gls{USEPA}. Phía dưới là sáu thẻ metric hiển thị PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ và độ ẩm, mỗi thẻ kèm đánh giá mức độ. Bên cạnh là khuyến nghị sức khỏe dựa trên mức AQI hiện tại. Dữ liệu được cập nhật thời gian thực khi Backend phát sự kiện qua Socket.IO.
+
+%todo: Screenshot Dashboard — user tự thêm hình
+
+\textbf{Lịch sử dữ liệu.} Trang lịch sử cho phép người dùng chọn trạm đo, thông số cần xem và chế độ hiển thị (theo giờ hoặc theo ngày). Biểu đồ được vẽ bằng ECharts, hỗ trợ zoom, tooltip và responsive. Chế độ theo giờ truy vấn từ Continuous Aggregate \texttt{hourly\_measurements} để đảm bảo hiệu năng.
+
+%todo: Screenshot Lịch sử dữ liệu — user tự thêm hình
+
+\textbf{Bản đồ AQI.} Trang bản đồ hiển thị toàn bộ các trạm đo trên bản đồ Leaflet với tile OpenStreetMap. Mỗi trạm được đánh dấu bằng marker hình tròn với mã màu AQI. Người dùng nhấn vào marker để xem popup thông tin chi tiết gồm tên trạm, giá trị AQI, PM2.5 và thời gian cập nhật cuối.
+
+%todo: Screenshot Bản đồ AQI — user tự thêm hình
+
+\textbf{Xếp hạng ô nhiễm.} Trang xếp hạng hiển thị danh sách tất cả trạm đo được sắp xếp theo mức AQI từ cao đến thấp. Mỗi dòng hiển thị tên trạm, giá trị AQI, nồng độ PM2.5 và badge mã màu tương ứng.
+
+%todo: Screenshot Xếp hạng — user tự thêm hình
+
+\textbf{Quản lý thiết bị.} Trang quản trị thiết bị hiển thị hai bảng riêng biệt cho Gateway và Sensor Node. Mỗi bảng cho biết trạng thái online/offline, thời gian gửi cuối, mức pin (đối với Sensor Node) và cường độ tín hiệu LoRa (RSSI). Quản trị viên thêm, sửa, xóa thiết bị thông qua modal form với xác thực dữ liệu đầu vào.
+
+%todo: Screenshot Quản lý thiết bị — user tự thêm hình
+
+\textbf{Giám sát cảnh báo.} Trang cảnh báo hiển thị danh sách phân trang các cảnh báo, hỗ trợ lọc theo thiết bị, mức độ (warn/danger) và trạng thái xác nhận. Mỗi cảnh báo hiển thị thông tin thời gian, thiết bị, thông số, giá trị vi phạm và ngưỡng. Quản trị viên có thể xác nhận đã xử lý (acknowledge) từng cảnh báo. Cảnh báo mới được phát thời gian thực qua Socket.IO.
+
+%todo: Screenshot Giám sát cảnh báo — user tự thêm hình
+
+\textbf{Cấu hình hệ thống.} Trang cấu hình cho phép quản trị viên thiết lập ngưỡng cảnh báo cho năm thông số, mỗi thông số có hai mức warn và danger. Giao diện hiển thị các trường nhập liệu nhóm theo thông số, kèm giá trị mặc định theo chuẩn \gls{USEPA}.
+
+%todo: Screenshot Cấu hình — user tự thêm hình
+
+\textbf{Xuất dữ liệu CSV.} Trang xuất dữ liệu cho phép quản trị viên chọn Sensor Node và khoảng thời gian, sau đó xuất tệp CSV chứa toàn bộ dữ liệu đo lường. Tệp CSV được tạo phía Backend bằng thư viện \texttt{json2csv} và trả về dưới dạng download.
+
+%todo: Screenshot Xuất CSV — user tự thêm hình
 
 \section{Kiểm thử}
-Phần này có độ dài từ hai đến ba trang. Sinh viên thiết kế các trường hợp kiểm thử cho hai đến ba chức năng quan trọng nhất. Sinh viên cần chỉ rõ các kỹ thuật kiểm thử đã sử dụng. Chi tiết các trường hợp kiểm thử khác, nếu muốn trình bày, sinh viên đưa vào phần phụ lục.
-Sinh viên sau cùng tổng kết về số lượng các trường hợp kiểm thử và kết quả kiểm thử. Sinh viên cần phân tích lý do nếu kết quả kiểm thử không đạt.
+\label{section:4.4}
+
+Hệ thống được kiểm thử bằng phương pháp kiểm thử chức năng thủ công (manual functional testing), thiết kế các trường hợp kiểm thử dựa trên đặc tả use case ở Chương 2. Phần này trình bày kết quả kiểm thử cho ba chức năng quan trọng nhất.
+
+\subsection{Kiểm thử chức năng Xem dashboard}
+\label{subsection:4.4.1}
+
+Bảng \ref{table:test_dashboard} trình bày các trường hợp kiểm thử cho chức năng xem dashboard chất lượng không khí.
+
+\begin{table}[H]
+\centering
+\caption{Trường hợp kiểm thử chức năng Xem dashboard}
+\label{table:test_dashboard}
+\small
+\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{4cm}|p{2.5cm}|p{1.5cm}|}
+\hline
+\textbf{STT} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Kết quả thực tế} & \textbf{Đạt} \\
+\hline
+1 & Truy cập dashboard, cho phép truy cập vị trí & Hiển thị dữ liệu trạm gần nhất & Đúng & Đạt \\
+\hline
+2 & Truy cập dashboard, từ chối truy cập vị trí & Hiển thị dữ liệu trạm mặc định & Đúng & Đạt \\
+\hline
+3 & Dashboard nhận dữ liệu mới qua Socket.IO & Các thẻ metric cập nhật tự động & Đúng & Đạt \\
+\hline
+4 & Không có trạm nào hoạt động & Hiển thị thông báo ``Không có dữ liệu'' & Đúng & Đạt \\
+\hline
+5 & Kiểm tra mã màu AQI & Gauge và badge hiển thị đúng mã màu theo mức AQI & Đúng & Đạt \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Kiểm thử chức năng Quản lý thiết bị}
+\label{subsection:4.4.2}
+
+Bảng \ref{table:test_device} trình bày các trường hợp kiểm thử cho chức năng quản lý thiết bị.
+
+\begin{table}[H]
+\centering
+\caption{Trường hợp kiểm thử chức năng Quản lý thiết bị}
+\label{table:test_device}
+\small
+\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{4cm}|p{2.5cm}|p{1.5cm}|}
+\hline
+\textbf{STT} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Kết quả thực tế} & \textbf{Đạt} \\
+\hline
+1 & Thêm mới Gateway với thông tin hợp lệ & Gateway được tạo, hiển thị trong danh sách & Đúng & Đạt \\
+\hline
+2 & Thêm mới Sensor Node, chọn Gateway cha & Sensor Node được tạo, liên kết đúng Gateway & Đúng & Đạt \\
+\hline
+3 & Sửa thông tin thiết bị & Thông tin cập nhật thành công & Đúng & Đạt \\
+\hline
+4 & Xóa Gateway có Sensor Node con & Xóa cascade cả Sensor Node con & Đúng & Đạt \\
+\hline
+5 & Thêm thiết bị với dữ liệu không hợp lệ (để trống tên) & Hiển thị thông báo lỗi & Đúng & Đạt \\
+\hline
+6 & Kiểm tra audit log sau thao tác & Nhật ký ghi nhận đúng thao tác, người thực hiện, IP & Đúng & Đạt \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Kiểm thử chức năng Giám sát cảnh báo}
+\label{subsection:4.4.3}
+
+Bảng \ref{table:test_alert} trình bày các trường hợp kiểm thử cho chức năng giám sát và xử lý cảnh báo.
+
+\begin{table}[H]
+\centering
+\caption{Trường hợp kiểm thử chức năng Giám sát cảnh báo}
+\label{table:test_alert}
+\small
+\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{4cm}|p{2.5cm}|p{1.5cm}|}
+\hline
+\textbf{STT} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Kết quả thực tế} & \textbf{Đạt} \\
+\hline
+1 & Gửi dữ liệu PM2.5 vượt ngưỡng warn & Cảnh báo mức warn được tạo tự động & Đúng & Đạt \\
+\hline
+2 & Gửi dữ liệu PM2.5 vượt ngưỡng danger & Cảnh báo mức danger được tạo, phát qua Socket.IO & Đúng & Đạt \\
+\hline
+3 & Gửi dữ liệu vượt ngưỡng lần 2 trong 15 phút & Không tạo cảnh báo trùng (cooldown) & Đúng & Đạt \\
+\hline
+4 & Thiết bị không gửi dữ liệu quá thời gian quy định & Cron job tạo cảnh báo mất kết nối & Đúng & Đạt \\
+\hline
+5 & Lọc cảnh báo theo mức độ & Danh sách chỉ hiển thị cảnh báo đúng mức độ & Đúng & Đạt \\
+\hline
+6 & Xác nhận cảnh báo (acknowledge) & Trạng thái cập nhật thành ``đã xác nhận'' & Đúng & Đạt \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Tổng kết kiểm thử}
+\label{subsection:4.4.4}
+
+Tổng cộng 17 trường hợp kiểm thử đã được thực hiện trên ba chức năng chính: Xem dashboard (5 test case), Quản lý thiết bị (6 test case) và Giám sát cảnh báo (6 test case). Tất cả 17/17 trường hợp đều đạt, tỉ lệ 100\%. Kết quả cho thấy các chức năng chính của hệ thống hoạt động đúng theo đặc tả use case đã định nghĩa ở Chương 2.
+
 \section{Triển khai}
-Sinh viên trình bày mô hình và/hoặc cách thức triển khai thử nghiệm/thực tế. Ứng dụng của sinh viên được triển khai trên server/thiết bị gì, cấu hình như thế nào. Kết quả triển khai thử nghiệm nếu có (số lượng người dùng, số lượng truy cập, thời gian phản hồi, phản hồi người dùng, khả năng chịu tải, các thống kê, v.v.)
+\label{section:4.5}
+
+Hệ thống được triển khai trên máy chủ ảo (VPS) DigitalOcean với cấu hình 1 vCPU, 1 GB RAM, 25 GB SSD, chạy hệ điều hành Ubuntu 22.04 LTS. Domain truy cập là \texttt{datn.thamnguyen.dev}, được cấu hình HTTPS thông qua chứng chỉ SSL miễn phí từ Let's Encrypt.
+
+%todo: Biểu đồ triển khai (deployment diagram) — user tự thêm hình
+
+Mô hình triển khai sử dụng Docker Compose để quản lý bốn container. Container \textbf{db} chạy image \texttt{timescale/timescaledb-ha:pg15}, lưu trữ dữ liệu trên volume \texttt{pg\_data} và chỉ mở cổng 5432 trên localhost (truy cập qua SSH tunnel). Container \textbf{backend} chạy ứng dụng Node.js, kết nối đến container db thông qua mạng nội bộ Docker. Container \textbf{nginx} chạy Nginx phục vụ hai chức năng: (i) reverse proxy chuyển tiếp các yêu cầu \gls{HTTP} và WebSocket đến Backend, và (ii) phục vụ các tệp tĩnh Frontend đã được build bởi Vite. Container \textbf{certbot} tự động gia hạn chứng chỉ SSL mỗi 12 giờ.
+
+Quy trình triển khai được thực hiện bằng một lệnh duy nhất: \texttt{docker compose --env-file .env.production -f docker-compose.prod.yml up --build -d}. Docker Compose tự động build image cho Backend và Nginx từ Dockerfile, khởi tạo cơ sở dữ liệu từ \texttt{init.sql}, và kết nối các container qua mạng nội bộ \texttt{app-network}. Toàn bộ cấu hình nhạy cảm (mật khẩu database, JWT secret) được lưu trong file \texttt{.env.production} không đưa lên kho mã nguồn.
+
+%todo: Screenshot/thông tin triển khai thực tế — user tự thêm
+
+Chương này đã trình bày toàn bộ quá trình thiết kế, xây dựng, kiểm thử và triển khai hệ thống giám sát chất lượng không khí. Về thiết kế, hệ thống áp dụng kiến trúc bốn tầng (cảm biến, trung chuyển, máy chủ, hiển thị) kết hợp mô hình Hub-Spoke, tổ chức mã nguồn theo nguyên tắc phân lớp rõ ràng. Cơ sở dữ liệu tận dụng TimescaleDB cho dữ liệu chuỗi thời gian và PostGIS cho truy vấn không gian. Về xây dựng, hệ thống gồm bốn thành phần (firmware, backend, frontend, database) với tổng cộng 16 trang giao diện và 28 component tái sử dụng. Về kiểm thử, 17/17 trường hợp kiểm thử chức năng đều đạt. Về triển khai, hệ thống chạy ổn định trên VPS DigitalOcean với Docker Compose. Trên cơ sở kết quả đạt được, Chương 5 sẽ phân tích các giải pháp và đóng góp nổi bật của đồ án.
 
 \end{document}

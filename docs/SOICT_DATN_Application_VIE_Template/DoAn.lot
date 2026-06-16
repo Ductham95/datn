@@ -8,13 +8,21 @@
 \contentsline {table}{\numberline {2.6}{\ignorespaces Đặc tả use case Xuất dữ liệu CSV}}{15}{table.caption.18}%
 \contentsline {table}{\numberline {2.7}{\ignorespaces Các yêu cầu phi chức năng của hệ thống}}{16}{table.caption.19}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Thông số kỹ thuật các cảm biến sử dụng trong hệ thống}}{19}{table.caption.20}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Thông số kỹ thuật các cảm biến sử dụng trong hệ thống}}{20}{table.caption.21}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Phân loại các mức chỉ số AQI theo tiêu chuẩn US EPA \blx@tocontentsinit {0}\cite {usepa2018}}}{24}{table.caption.22}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Bảng điểm ngắt AQI cho PM2.5 \blx@tocontentsinit {0}\cite {usepa2018}}}{24}{table.caption.23}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Bảng điểm ngắt AQI cho PM10 \blx@tocontentsinit {0}\cite {usepa2018}}}{25}{table.caption.24}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Danh sách thư viện và công cụ sử dụng}}{27}{table.caption.23}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Danh sách thư viện và công cụ phía Backend}}{32}{table.caption.25}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Danh sách thư viện và công cụ phía Frontend}}{32}{table.caption.26}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Thống kê quy mô mã nguồn hệ thống}}{33}{table.caption.27}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Trường hợp kiểm thử chức năng Xem dashboard}}{35}{table.caption.28}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Trường hợp kiểm thử chức năng Quản lý thiết bị}}{35}{table.caption.29}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Trường hợp kiểm thử chức năng Giám sát cảnh báo}}{36}{table.caption.30}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Table to test captions and labels.}}{38}{table.caption.28}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces Table to test captions and labels.}}{47}{table.caption.35}%
 \addvspace {10\p@ }
 \contentsfinish 
 \contentsfinish 
