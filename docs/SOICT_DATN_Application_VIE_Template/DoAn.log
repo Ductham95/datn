@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  16 JUN 2026 16:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  16 JUN 2026 21:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1869,11 +1869,6 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
 [29]
-Overfull \hbox (2.39058pt too wide) in paragraph at lines 73--74
-\T5/pcr/m/n/13 tory \T5/ptm/m/n/13 truy v§n dú li»u làch sû tø Con-tin-u-ous Ag
--gre-gate \T5/pcr/m/n/13 hourly_measurements
- []
-
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
 (fancyhdr)                Make it at least 34.6375pt, for example:
@@ -1890,93 +1885,9 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
 [31]
-Overfull \hbox (3.14519pt too wide) in paragraph at lines 119--120
-[]|\T5/ptm/m/n/11.86258 https://expressjs.com/| 
- []
-
-
-Overfull \hbox (9.2188pt too wide) in paragraph at lines 121--122
-[]|\T5/ptm/m/n/11.86258 https://www.prisma.io/| 
- []
-
-
-Overfull \hbox (47.06047pt too wide) in paragraph at lines 125--126
-[]|\T5/ptm/m/n/11.86258 https://github.com/auth0/node-
- []
-
-
-Overfull \hbox (23.99962pt too wide) in paragraph at lines 127--128
-[]|\T5/ptm/m/n/11.86258 https://github.com/nicolo-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 129--129
-[]|\T5/ptm/m/n/11.86258 B£o mªt HTTP
- []
-
-
-Overfull \hbox (22.36255pt too wide) in paragraph at lines 129--130
-[]|\T5/ptm/m/n/11.86258 https://helmetjs.github.io/| 
- []
-
-
-Overfull \hbox (17.40404pt too wide) in paragraph at lines 131--132
-[]|\T5/ptm/m/n/11.86258 https://github.com/node-
- []
-
-
-Overfull \hbox (79.04193pt too wide) in paragraph at lines 133--134
-[]|\T5/ptm/m/n/11.86258 https://mircoithink.github.io/json2csv| 
- []
-
-
-Overfull \hbox (31.81699pt too wide) in paragraph at lines 135--136
-[]|\T5/ptm/m/n/11.86258 https://www.postgresql.org/| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 137--137
-[]|\T5/ptm/m/n/11.86258 Extension time-
- []
-
-
-Overfull \hbox (32.69482pt too wide) in paragraph at lines 137--138
-[]|\T5/ptm/m/n/11.86258 https://www.timescale.com/| 
- []
-
-
-Overfull \hbox (10.87961pt too wide) in paragraph at lines 157--158
-[]|\T5/ptm/m/n/11.86258 https://reactrouter.com/| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 159--160
-[]|\T5/ptm/m/n/11.86258 https://axios-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 161--161
-[]|\T5/ptm/m/n/11.86258 Leaflet + React-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 161--162
-[]|\T5/ptm/m/n/11.86258 https://react-
- []
-
-
-Overfull \hbox (24.6876pt too wide) in paragraph at lines 163--164
-[]|\T5/ptm/m/n/11.86258 https://echarts.apache.org/| 
- []
-
-
-Overfull \hbox (21.25935pt too wide) in paragraph at lines 165--166
-[]|\T5/ptm/m/n/11.86258 https://react.i18next.com/| 
- []
-
-
-Overfull \hbox (38.97015pt too wide) in paragraph at lines 167--168
-[]|\T5/ptm/m/n/11.86258 https://zustand.docs.pmnd.rs/| 
+Overfull \hbox (2.39058pt too wide) in paragraph at lines 99--100
+\T5/pcr/m/n/13 tory \T5/ptm/m/n/13 truy v§n dú li»u làch sû tø Con-tin-u-ous Ag
+-gre-gate \T5/pcr/m/n/13 hourly_measurements
  []
 
 
@@ -1987,28 +1898,58 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 198--198
-[]|\T5/ptm/m/n/11.86258 JavaScript
+Overfull \hbox (3.14519pt too wide) in paragraph at lines 145--146
+[]|\T5/ptm/m/n/11.86258 https://expressjs.com/| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 200--200
-[]|\T5/ptm/m/n/11.86258 JavaScript (Re-
+Overfull \hbox (9.2188pt too wide) in paragraph at lines 147--148
+[]|\T5/ptm/m/n/11.86258 https://www.prisma.io/| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--203
-[]|\T5/ptm/m/n/11.86258 TimescaleDB
+Overfull \hbox (47.06047pt too wide) in paragraph at lines 151--152
+[]|\T5/ptm/m/n/11.86258 https://github.com/auth0/node-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--204
-[]|\T5/ptm/m/n/11.86258 YAML, Ng-inx
+Overfull \hbox (23.99962pt too wide) in paragraph at lines 153--154
+[]|\T5/ptm/m/n/11.86258 https://github.com/nicolo-
  []
 
 
-Underfull \hbox (badness 5288) in paragraph at lines 204--205
-[]|\T5/ptm/m/n/11.86258 Docker Com-
+Underfull \hbox (badness 10000) in paragraph at lines 155--155
+[]|\T5/ptm/m/n/11.86258 B£o mªt HTTP
+ []
+
+
+Overfull \hbox (22.36255pt too wide) in paragraph at lines 155--156
+[]|\T5/ptm/m/n/11.86258 https://helmetjs.github.io/| 
+ []
+
+
+Overfull \hbox (17.40404pt too wide) in paragraph at lines 157--158
+[]|\T5/ptm/m/n/11.86258 https://github.com/node-
+ []
+
+
+Overfull \hbox (79.04193pt too wide) in paragraph at lines 159--160
+[]|\T5/ptm/m/n/11.86258 https://mircoithink.github.io/json2csv| 
+ []
+
+
+Overfull \hbox (31.81699pt too wide) in paragraph at lines 161--162
+[]|\T5/ptm/m/n/11.86258 https://www.postgresql.org/| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--163
+[]|\T5/ptm/m/n/11.86258 Extension time-
+ []
+
+
+Overfull \hbox (32.69482pt too wide) in paragraph at lines 163--164
+[]|\T5/ptm/m/n/11.86258 https://www.timescale.com/| 
  []
 
 
@@ -2019,28 +1960,38 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
 [33]
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 263--263
-[]|\T5/ptm/b/n/11.86258 STT| 
+Overfull \hbox (10.87961pt too wide) in paragraph at lines 183--184
+[]|\T5/ptm/m/n/11.86258 https://reactrouter.com/| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--269
-[]|\T5/ptm/m/n/11.86258 Dashboard nhªn
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
+[]|\T5/ptm/m/n/11.86258 https://axios-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--269
-\T5/ptm/m/n/11.86258 dú li»u mîi qua
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]|\T5/ptm/m/n/11.86258 Leaflet + React-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 271--271
-[]|\T5/ptm/m/n/11.86258 Hiºn thà thæng b¡o
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
+[]|\T5/ptm/m/n/11.86258 https://react-
  []
 
 
-Underfull \hbox (badness 3158) in paragraph at lines 273--273
-[]|\T5/ptm/m/n/11.86258 Kiºm tra m¢ m u
+Overfull \hbox (24.6876pt too wide) in paragraph at lines 189--190
+[]|\T5/ptm/m/n/11.86258 https://echarts.apache.org/| 
+ []
+
+
+Overfull \hbox (21.25935pt too wide) in paragraph at lines 191--192
+[]|\T5/ptm/m/n/11.86258 https://react.i18next.com/| 
+ []
+
+
+Overfull \hbox (38.97015pt too wide) in paragraph at lines 193--194
+[]|\T5/ptm/m/n/11.86258 https://zustand.docs.pmnd.rs/| 
  []
 
 
@@ -2051,68 +2002,28 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
 [34]
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 290--290
-[]|\T5/ptm/b/n/11.86258 STT| 
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
+[]|\T5/ptm/m/n/11.86258 JavaScript
  []
 
 
-Underfull \hbox (badness 7832) in paragraph at lines 294--294
-[]|\T5/ptm/m/n/11.86258 Th¶m mîi Sen-sor
+Underfull \hbox (badness 10000) in paragraph at lines 226--226
+[]|\T5/ptm/m/n/11.86258 JavaScript (Re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 296--296
-[]|\T5/ptm/m/n/11.86258 Thæng tin cªp nhªt
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
+[]|\T5/ptm/m/n/11.86258 TimescaleDB
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 298--298
-[]|\T5/ptm/m/n/11.86258 Xâa Gate-way câ
+Underfull \hbox (badness 10000) in paragraph at lines 230--230
+[]|\T5/ptm/m/n/11.86258 YAML, Ng-inx
  []
 
 
-Underfull \hbox (badness 1418) in paragraph at lines 302--302
-[]|\T5/ptm/m/n/11.86258 Kiºm tra au-dit log
- []
-
-
-Underfull \hbox (badness 5189) in paragraph at lines 302--302
-\T5/ptm/m/n/11.86258 thao t¡c, ng÷íi thüc
- []
-
-
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 319--319
-[]|\T5/ptm/b/n/11.86258 STT| 
- []
-
-
-Underfull \hbox (badness 4156) in paragraph at lines 321--321
-[]|\T5/ptm/m/n/11.86258 C£nh b¡o mùc warn
- []
-
-
-Underfull \hbox (badness 6141) in paragraph at lines 323--323
-[]|\T5/ptm/m/n/11.86258 C£nh b¡o mùc dan-
- []
-
-
-Underfull \hbox (badness 6691) in paragraph at lines 325--325
-[]|\T5/ptm/m/n/11.86258 Gûi dú li»u v÷ñt
- []
-
-
-Underfull \hbox (badness 4217) in paragraph at lines 325--325
-[]|\T5/ptm/m/n/11.86258 Khæng t¤o c£nh b¡o
- []
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 329--329
-[]|\T5/ptm/m/n/11.86258 Låc c£nh b¡o theo
- []
-
-
-Underfull \hbox (badness 7468) in paragraph at lines 331--331
-[]|\T5/ptm/m/n/11.86258 Tr¤ng th¡i cªp nhªt
+Underfull \hbox (badness 5288) in paragraph at lines 230--231
+[]|\T5/ptm/m/n/11.86258 Docker Com-
  []
 
 
@@ -2123,7 +2034,111 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
 [35]
-Overfull \hbox (12.41371pt too wide) in paragraph at lines 350--351
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 289--289
+[]|\T5/ptm/b/n/11.86258 STT| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--295
+[]|\T5/ptm/m/n/11.86258 Dashboard nhªn
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--295
+\T5/ptm/m/n/11.86258 dú li»u mîi qua
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--297
+[]|\T5/ptm/m/n/11.86258 Hiºn thà thæng b¡o
+ []
+
+
+Underfull \hbox (badness 3158) in paragraph at lines 299--299
+[]|\T5/ptm/m/n/11.86258 Kiºm tra m¢ m u
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[36]
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 316--316
+[]|\T5/ptm/b/n/11.86258 STT| 
+ []
+
+
+Underfull \hbox (badness 7832) in paragraph at lines 320--320
+[]|\T5/ptm/m/n/11.86258 Th¶m mîi Sen-sor
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 322--322
+[]|\T5/ptm/m/n/11.86258 Thæng tin cªp nhªt
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 324--324
+[]|\T5/ptm/m/n/11.86258 Xâa Gate-way câ
+ []
+
+
+Underfull \hbox (badness 1418) in paragraph at lines 328--328
+[]|\T5/ptm/m/n/11.86258 Kiºm tra au-dit log
+ []
+
+
+Underfull \hbox (badness 5189) in paragraph at lines 328--328
+\T5/ptm/m/n/11.86258 thao t¡c, ng÷íi thüc
+ []
+
+
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 345--345
+[]|\T5/ptm/b/n/11.86258 STT| 
+ []
+
+
+Underfull \hbox (badness 4156) in paragraph at lines 347--347
+[]|\T5/ptm/m/n/11.86258 C£nh b¡o mùc warn
+ []
+
+
+Underfull \hbox (badness 6141) in paragraph at lines 349--349
+[]|\T5/ptm/m/n/11.86258 C£nh b¡o mùc dan-
+ []
+
+
+Underfull \hbox (badness 6691) in paragraph at lines 351--351
+[]|\T5/ptm/m/n/11.86258 Gûi dú li»u v÷ñt
+ []
+
+
+Underfull \hbox (badness 4217) in paragraph at lines 351--351
+[]|\T5/ptm/m/n/11.86258 Khæng t¤o c£nh b¡o
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 355--355
+[]|\T5/ptm/m/n/11.86258 Låc c£nh b¡o theo
+ []
+
+
+Underfull \hbox (badness 7468) in paragraph at lines 357--357
+[]|\T5/ptm/m/n/11.86258 Tr¤ng th¡i cªp nhªt
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[37]
+Overfull \hbox (12.41371pt too wide) in paragraph at lines 376--377
 \T5/pcr/m/n/13 pose --env-file .env.production -f docker-compose.prod.yml
  []
 
@@ -2134,7 +2149,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
-[36])
+[38])
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
 (fancyhdr)                Make it at least 34.6375pt, for example:
@@ -2142,7 +2157,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
-[37]
+[39]
 Ch\uhorn \ohorn ng 5.
 (Chuong/5_Giai_phap_dong_gop.tex
 LaTeX Font Info:    Calculating math sizes for size <10.83347> on input line 4.
@@ -2187,7 +2202,7 @@ less.
 (fancyhdr)                Please consider using the `twoside' option on input l
 ine 297.
 
-[38
+[40
 
 ]
 Ch\uhorn \ohorn ng 6.
@@ -2198,26 +2213,26 @@ less.
 (fancyhdr)                Please consider using the `twoside' option on input l
 ine 303.
 
-[39
+[41
 
 ] (Chuong/7_Luu_y_tai_lieu_tham_khao.tex
 
-LaTeX Warning: Citation 'hovy1993automated' on page 40 undefined on input line 
+LaTeX Warning: Citation 'hovy1993automated' on page 42 undefined on input line 
 13.
 
 
-LaTeX Warning: Citation 'peterson2007computer' on page 40 undefined on input li
+LaTeX Warning: Citation 'peterson2007computer' on page 42 undefined on input li
 ne 18.
 
 
-LaTeX Warning: Citation 'NguyenThucHai' on page 40 undefined on input line 20.
+LaTeX Warning: Citation 'NguyenThucHai' on page 42 undefined on input line 20.
 
 
-LaTeX Warning: Citation 'poesio2001discourse' on page 40 undefined on input lin
+LaTeX Warning: Citation 'poesio2001discourse' on page 42 undefined on input lin
 e 24.
 
 
-LaTeX Warning: Citation 'knott1996data' on page 40 undefined on input line 30.
+LaTeX Warning: Citation 'knott1996data' on page 42 undefined on input line 30.
 
 
 Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
@@ -2225,11 +2240,11 @@ less.
 (fancyhdr)                Please consider using the `twoside' option on input l
 ine 34.
 
-[40
+[42
 
 ]
 
-LaTeX Warning: Citation 'BernersTim' on page 41 undefined on input line 34.
+LaTeX Warning: Citation 'BernersTim' on page 43 undefined on input line 34.
 
 
 Overfull \hbox (10.64345pt too wide) in paragraph at lines 34--36
@@ -2238,7 +2253,7 @@ o-col (HTTP)\T5/ptm/m/n/13 . [On-line]. Avail-
  []
 
 
-LaTeX Warning: Citation 'LectureA' on page 41 undefined on input line 37.
+LaTeX Warning: Citation 'LectureA' on page 43 undefined on input line 37.
 
 )
 
@@ -2248,7 +2263,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
-[41]
+[43]
 Overfull \hbox (7.29324pt too wide) in paragraph at lines 314--314
 \T5/ptm/m/n/13 bon monox-ide,'' World Health Or-ga-ni-za-tion, Tech. Rep., 2021
 . [On-line]. Avail-
@@ -2290,7 +2305,7 @@ less.
 (fancyhdr)                Please consider using the `twoside' option on input l
 ine 313.
 
-[42
+[44
 
 ]
 Overfull \hbox (5.28378pt too wide) in paragraph at lines 314--314
@@ -2323,14 +2338,14 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-5.977pt}.
 
-[43]
+[45]
 
 Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
 less.
 (fancyhdr)                Please consider using the `twoside' option on input l
 ine 316.
 
-[44
+[46
 
 ]
 Ph\d {u} l\d {u}c A.
@@ -2346,7 +2361,7 @@ less.
 (fancyhdr)                Please consider using the `twoside' option on input l
 ine 20.
 
-[45
+[47
 
 {C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}]
 
@@ -2356,8 +2371,8 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
-[46]
-<Hinhve/IoT.png, id=1015, 931.48pt x 523.9575pt>
+[48]
+<Hinhve/IoT.png, id=1026, 931.48pt x 523.9575pt>
 File: Hinhve/IoT.png Graphic file (type png)
 <use Hinhve/IoT.png>
 Package pdftex.def Info: Hinhve/IoT.png  used on input line 80.
@@ -2370,12 +2385,12 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
-[47 <./Hinhve/IoT.png>]
+[49 <./Hinhve/IoT.png>]
 
-LaTeX Warning: Citation 'scott2013sdn' on page 48 undefined on input line 92.
+LaTeX Warning: Citation 'scott2013sdn' on page 50 undefined on input line 92.
 
 
-LaTeX Warning: Citation 'ashton2009internet' on page 48 undefined on input line
+LaTeX Warning: Citation 'ashton2009internet' on page 50 undefined on input line
  92.
 
 
@@ -2384,12 +2399,12 @@ Overfull \hbox (14.86223pt too wide) in paragraph at lines 92--93
 \T5/ptm/m/n/13 nh÷ sau [].
  []
 
-<Hinhve/Bia.PNG, id=1027, 313.77225pt x 331.83975pt>
+<Hinhve/Bia.PNG, id=1038, 313.77225pt x 331.83975pt>
 File: Hinhve/Bia.PNG Graphic file (type png)
 <use Hinhve/Bia.PNG>
 Package pdftex.def Info: Hinhve/Bia.PNG  used on input line 111.
 (pdftex.def)             Requested size: 213.39568pt x 225.68349pt.
-<Hinhve/GayBia.PNG, id=1028, 420.97275pt x 479.99326pt>
+<Hinhve/GayBia.PNG, id=1039, 420.97275pt x 479.99326pt>
 File: Hinhve/GayBia.PNG Graphic file (type png)
 <use Hinhve/GayBia.PNG>
 Package pdftex.def Info: Hinhve/GayBia.PNG  used on input line 123.
@@ -2402,7 +2417,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
-[48]
+[50]
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
 (fancyhdr)                Make it at least 17.97902pt, for example:
@@ -2410,7 +2425,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
-[49 <./Hinhve/Bia.PNG> <./Hinhve/GayBia.PNG>]
+[51 <./Hinhve/Bia.PNG> <./Hinhve/GayBia.PNG>]
 Ph\d {u} l\d {u}c B.
 (Chuong/Phu_luc_B.tex)
 
@@ -2419,7 +2434,7 @@ less.
 (fancyhdr)                Please consider using the `twoside' option on input l
 ine 337.
 
-[50
+[52
 
 ] (DoAn.aux)
  ***********
@@ -2437,8 +2452,14 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `DoAn.out' has not changed.
-(rerunfilecheck)             Checksum: 0C24128B62DB6ABDDDD23D2E59508A99;16918.
+
+Package rerunfilecheck Warning: File `DoAn.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `DoAn.out':
+(rerunfilecheck)             Before: 0C24128B62DB6ABDDDD23D2E59508A99;16918
+(rerunfilecheck)             After:  CF428A4A6E77E5E045B2834131F68A58;17250.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                DoAn
@@ -2449,10 +2470,10 @@ Package logreq Info: Writing requests to 'DoAn.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34440 strings out of 467691
- 643757 string characters out of 5425054
- 1553940 words of memory out of 5000000
- 62735 multiletter control sequences out of 15000+600000
+ 34446 strings out of 467691
+ 643839 string characters out of 5425054
+ 1554971 words of memory out of 5000000
+ 62737 multiletter control sequences out of 15000+600000
  687224 words of font info for 111 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,14n,107p,2507b,1622s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2469,9 +2490,9 @@ eX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type
 gram Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fon
 ts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwv
 n/utmri8v.pfb>
-Output written on DoAn.pdf (63 pages, 3344420 bytes).
+Output written on DoAn.pdf (65 pages, 3350462 bytes).
 PDF statistics:
- 1165 PDF objects out of 1200 (max. 8388607)
- 235 named destinations out of 1000 (max. 500000)
+ 1175 PDF objects out of 1200 (max. 8388607)
+ 239 named destinations out of 1000 (max. 500000)
  710 words of extra memory for PDF output out of 10000 (max. 10000000)
 

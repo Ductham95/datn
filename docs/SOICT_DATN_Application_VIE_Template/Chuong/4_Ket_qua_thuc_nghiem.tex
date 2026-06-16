@@ -1,7 +1,7 @@
 \documentclass[../DoAn.tex]{subfiles}
 \begin{document}
 
-Chương 3 đã trình bày nền tảng lý thuyết và các công nghệ được lựa chọn cho từng tầng trong kiến trúc hệ thống, bao gồm phần cứng IoT, giao thức LoRa, công nghệ phần mềm phía máy chủ và giao diện, lý thuyết tính toán AQI, cùng hạ tầng triển khai. Trên cơ sở đó, Chương 4 trình bày chi tiết quá trình thiết kế, triển khai và đánh giá hệ thống. Nội dung chương bao gồm: (i) thiết kế kiến trúc trong phần \ref{section:4.1}, (ii) thiết kế chi tiết trong phần \ref{section:4.2}, (iii) xây dựng ứng dụng trong phần \ref{section:4.3}, (iv) kiểm thử trong phần \ref{section:4.4}, và (v) triển khai trong phần \ref{section:4.5}.
+Chương 3 đã trình bày nền tảng lý thuyết và các công nghệ được lựa chọn cho từng tầng trong kiến trúc hệ thống. Trên cơ sở đó, Chương 4 trình bày chi tiết quá trình thiết kế, triển khai và đánh giá hệ thống. Nội dung chương bao gồm thiết kế kiến trúc (phần~\ref{section:4.1}), thiết kế chi tiết (phần~\ref{section:4.2}), xây dựng ứng dụng (phần~\ref{section:4.3}), kiểm thử (phần~\ref{section:4.4}), và triển khai (phần~\ref{section:4.5}).
 
 \section{Thiết kế kiến trúc}
 \label{section:4.1}
@@ -22,7 +22,13 @@ Hệ thống được thiết kế theo kiến trúc bốn tầng, bao gồm t�
 \subsection{Thiết kế tổng quan}
 \label{subsection:4.1.2}
 
-%todo: Biểu đồ gói UML tổng quan (package diagram) — user tự thêm hình
+%todo: Biểu đồ gói UML tổng quan (package diagram)
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.00\textwidth]{Hinhve/package_tongquan.png}
+    \caption{Biểu đồ gói UML tổng quan của hệ thống}
+    \label{fig:4_1_2_package_diagram}
+\end{figure}
 
 Hệ thống được tổ chức thành bốn nhóm gói chính tương ứng với bốn tầng kiến trúc, mỗi nhóm chứa các gói con với trách nhiệm cụ thể.
 
@@ -34,7 +40,7 @@ Hệ thống được tổ chức thành bốn nhóm gói chính tương ứng v
 
 \textbf{Nhóm gói Tầng hiển thị (frontend)} gồm bảy gói: \texttt{pages} (các trang giao diện), \texttt{components} (thành phần tái sử dụng), \texttt{hooks} (custom React hooks), \texttt{services} (gọi API), \texttt{stores} (quản lý trạng thái Zustand), \texttt{layouts} (bố cục trang), và \texttt{i18n} (đa ngôn ngữ). Gói \texttt{pages} phụ thuộc \texttt{components} và \texttt{hooks}; gói \texttt{hooks} phụ thuộc \texttt{services}; gói \texttt{services} gọi \gls{REST} \gls{API} đến tầng máy chủ.
 
-\subsection{Thiết kế chi tiết gói}
+\subsection{Mô tả luồng dữ liệu giữa các gói}
 \label{subsection:4.1.3}
 
 %todo: Biểu đồ quan hệ class/module cho backend services — user tự thêm hình
@@ -48,8 +54,34 @@ Phần này trình bày thiết kế chi tiết cho hai nhóm gói quan trọng:
 \section{Thiết kế chi tiết}
 \label{section:4.2}
 
-\subsection{Thiết kế giao diện}
+\subsection{Thiết kế phần cứng}
 \label{subsection:4.2.1}
+
+Phần này trình bày thiết kế mạch kết nối phần cứng cho Sensor Node và Gateway.
+
+\textbf{Sensor Node} sử dụng board ESP32 DevKit V1 (30 chân) làm trung tâm, kết nối với bốn module ngoại vi qua ba giao tiếp khác nhau. Module \gls{LoRa} AS32-TTL-100 giao tiếp qua \gls{UART}1 (RX: GPIO16, TX: GPIO17) với hai chân điều khiển chế độ (MD0: GPIO4, MD1: GPIO5). Module cảm biến bụi PMS7003 giao tiếp qua \gls{UART}2 (RX: GPIO25, TX: GPIO26). Module CCS811 và AHT10 chia sẻ chung bus I2C (SDA: GPIO21, SCL: GPIO22) với địa chỉ lần lượt là 0x5A và 0x38; CCS811 có thêm chân WAK (GPIO23) để đánh thức từ chế độ ngủ. Màn hình OLED SSD1306 cũng dùng chung bus I2C trên, địa chỉ 0x3C. Pin 18650 được đo qua mạch phân áp (voltage divider R1=R2=100K$\Omega$) nối vào GPIO15 (ADC). Nút BOOT (GPIO0) được tận dụng làm nút factory reset: giữ 5 giây để xóa cấu hình và vào chế độ provisioning.
+
+%todo: Sơ đồ mạch Sensor Node — user tự thêm hình
+
+\textbf{Gateway} sử dụng cùng board ESP32 DevKit V1, nhưng chỉ kết nối một module ngoại vi: module \gls{LoRa} AS32-TTL-100 qua \gls{UART}1 (cùng cấu hình chân với Sensor Node). Gateway không cần cảm biến hay màn hình OLED, do chức năng duy nhất là nhận gói \gls{LoRa} và chuyển tiếp lên tầng máy chủ qua WiFi. Thiết kế tối giản này giảm chi phí linh kiện và giảm tiêu thụ năng lượng cho Gateway.
+
+%todo: Sơ đồ mạch Gateway — user tự thêm hình
+
+\subsection{Thiết kế firmware}
+\label{subsection:4.2.2}
+
+Phần này trình bày thiết kế firmware cho Sensor Node và Gateway.
+
+\textbf{Firmware Sensor Node} sử dụng FreeRTOS với bốn tác vụ chạy song song trên hai nhân của ESP32. Tác vụ \texttt{sensor\_task} (ưu tiên 2, Core 0, stack 4096 byte) đọc dữ liệu từ ba cảm biến theo chu kỳ 15 giây, thực hiện đến 3 lần retry khi đọc lỗi, sau đó đẩy dữ liệu vào hàng đợi FreeRTOS (queue depth = 3). Tác vụ \texttt{lora\_task} (ưu tiên 3 — cao nhất, Core 1) nhận dữ liệu từ hàng đợi, đóng gói thành struct \texttt{SensorPayload} và phát qua module \gls{LoRa}. Tác vụ \texttt{battery\_task} (ưu tiên 1, Core 0) đọc pin mỗi 30 giây qua ADC với 16 mẫu lấy trung bình. Tác vụ \texttt{watchdog\_task} (ưu tiên 0, Core 0) giám sát hoạt động: nếu hệ thống không gửi dữ liệu trong 60 giây, tự động reset ESP32.
+
+Cấu trúc gói tin \gls{LoRa} được định nghĩa dưới dạng struct C packed (không có padding), tổng kích thước 18 byte. Gói tin gồm: \texttt{nodeId} (1 byte, ID node 1--255), \texttt{pktType} (1 byte, phân biệt gói dữ liệu/heartbeat/lỗi), \texttt{msgId} (1 byte, bộ đếm tuần hoàn 0--255 phục vụ deduplication), bảy trường dữ liệu cảm biến (PM1, PM2.5, PM10 mỗi trường 2 byte nhân 10, CO\textsubscript{2} và TVOC mỗi trường 2 byte, nhiệt độ 2 byte có dấu nhân 10, độ ẩm 2 byte nhân 10), và \texttt{battery} (1 byte, 0--100\%). Các giá trị dạng số thực được nhân 10 và lưu dạng số nguyên để tránh sử dụng floating-point trong truyền thông, giảm kích thước gói tin. Giá trị sentinel (0xFFFF cho unsigned, 0x7FFF cho signed) đánh dấu cảm biến bị lỗi.
+
+Cơ chế provisioning cho phép cấu hình Node ID qua giao diện web. Khi chưa có cấu hình (hoặc sau factory reset), Sensor Node khởi động WiFi AP với SSID ``AirQuality-SN-Setup'', phục vụ trang web captive portal tại địa chỉ 192.168.4.1. Người dùng nhập Node ID, firmware lưu vào bộ nhớ NVS (Non-Volatile Storage) và khởi động lại ở chế độ hoạt động bình thường.
+
+\textbf{Firmware Gateway} sử dụng kiến trúc superloop (không dùng FreeRTOS) do chỉ thực hiện hai tác vụ tuần tự: nhận gói tin \gls{LoRa} từ \gls{UART} và tích luỹ vào bộ đệm vòng (ring buffer). Khi đủ số lượng gói hoặc hết chu kỳ thời gian, Gateway serialize bộ đệm thành \gls{JSON} array và gửi lên tầng máy chủ qua \gls{HTTP} POST. Gateway cũng hỗ trợ cơ chế self-provisioning: tự đăng ký với Backend Server khi kết nối lần đầu.
+
+\subsection{Thiết kế giao diện}
+\label{subsection:4.2.3}
 
 Giao diện hệ thống được thiết kế cho trình duyệt web, hỗ trợ responsive trên nhiều kích thước màn hình từ máy tính (độ phân giải tối thiểu 1280$\times$720) đến thiết bị di động (tối thiểu 375$\times$667). Hệ thống hỗ trợ hai ngôn ngữ (Tiếng Việt và Tiếng Anh) thông qua thư viện \texttt{react-i18next}.
 
@@ -59,8 +91,8 @@ Hệ thống sử dụng bộ thành phần giao diện tái sử dụng (compon
 
 %todo: Wireframe/mockup 3–4 màn hình chính — user tự thêm hình
 
-\subsection{Thiết kế lớp}
-\label{subsection:4.2.2}
+\subsection{Thiết kế module Backend}
+\label{subsection:4.2.4}
 
 Phần này trình bày thiết kế chi tiết cho bốn module quan trọng nhất trên Backend Server.
 
@@ -75,7 +107,7 @@ Phần này trình bày thiết kế chi tiết cho bốn module quan trọng nh
 %todo: 2–3 biểu đồ trình tự (sequence diagram) cho use case quan trọng — user tự thêm hình
 
 \subsection{Thiết kế cơ sở dữ liệu}
-\label{subsection:4.2.3}
+\label{subsection:4.2.5}
 
 Cơ sở dữ liệu được thiết kế trên PostgreSQL 15 với hai extension: TimescaleDB cho dữ liệu chuỗi thời gian và PostGIS cho dữ liệu không gian. Lược đồ gồm bảy bảng chính và một materialized view.
 
@@ -187,21 +219,67 @@ Bảng \ref{table:stats} thống kê quy mô mã nguồn của từng thành ph�
 \caption{Thống kê quy mô mã nguồn hệ thống}
 \label{table:stats}
 \small
-\begin{tabular}{|p{4cm}|p{3cm}|p{3cm}|p{2.5cm}|}
+\begin{tabular}{|p{3.5cm}|p{3cm}|p{2.5cm}|p{1.5cm}|p{2cm}|}
 \hline
-\textbf{Thành phần} & \textbf{Số file mã nguồn} & \textbf{Ngôn ngữ chính} & \textbf{Ghi chú} \\
+\textbf{Thành phần} & \textbf{Số file mã nguồn} & \textbf{Ngôn ngữ chính} & \textbf{LOC} & \textbf{Ghi chú} \\
 \hline
-Firmware Sensor Node & 3 biến thể & C/C++ (Arduino) & FreeRTOS \\
+Firmware Sensor Node & 3 biến thể & C/C++ (Arduino) & %todo & FreeRTOS \\
 \hline
-Firmware Gateway & 2 biến thể & C/C++ (Arduino) & Superloop \\
+Firmware Gateway & 2 biến thể & C/C++ (Arduino) & %todo & Superloop \\
 \hline
-Backend Server & 14 controllers, 15 services & JavaScript (Node.js) & Express 4.21 \\
+Backend Server & 14 controllers, 15 services & JavaScript (Node.js) & %todo & Express 4.21 \\
 \hline
-Frontend & 16 pages, 28 components & JavaScript (React) & Vite 8.0 \\
+Frontend & 16 pages, 28 components & JavaScript (React) & %todo & Vite 8.0 \\
 \hline
-Database & 7 bảng, 1 view & SQL & TimescaleDB + PostGIS \\
+Database & 7 bảng, 1 view & SQL & %todo & TimescaleDB + PostGIS \\
 \hline
-Triển khai & 4 containers & YAML, Nginx conf & Docker Compose \\
+Triển khai & 4 containers & YAML, Nginx conf & %todo & Docker Compose \\
+\hline
+\end{tabular}
+\end{table}
+
+Bảng \ref{table:req_mapping} đối sánh kết quả đạt được với các yêu cầu chức năng và phi chức năng đã đặc tả ở Chương 2, cho thấy hệ thống đã hiện thực đầy đủ toàn bộ chín chức năng và đáp ứng năm yêu cầu phi chức năng.
+
+\begin{table}[H]
+\centering
+\caption{Đối sánh yêu cầu đặc tả với kết quả đạt được}
+\label{table:req_mapping}
+\small
+\begin{tabular}{|p{0.5cm}|p{4.5cm}|p{1.5cm}|p{6cm}|}
+\hline
+\textbf{STT} & \textbf{Yêu cầu (Chương 2)} & \textbf{Trạng thái} & \textbf{Minh chứng} \\
+\hline
+\multicolumn{4}{|l|}{\textit{Yêu cầu chức năng}} \\
+\hline
+1 & Xem dashboard (Bảng~\ref{table:uc_dashboard}) & Đạt & Mục~\ref{subsection:4.3.3}, kiểm thử Bảng~\ref{table:test_dashboard} \\
+\hline
+2 & Xem lịch sử dữ liệu (Bảng~\ref{table:uc_history}) & Đạt & Mục~\ref{subsection:4.3.3} \\
+\hline
+3 & Xem bản đồ AQI & Đạt & Mục~\ref{subsection:4.3.3} \\
+\hline
+4 & Xem xếp hạng ô nhiễm & Đạt & Mục~\ref{subsection:4.3.3} \\
+\hline
+5 & Quản lý thiết bị (Bảng~\ref{table:uc_device}) & Đạt & Mục~\ref{subsection:4.3.3}, kiểm thử Bảng~\ref{table:test_device} \\
+\hline
+6 & Giám sát cảnh báo (Bảng~\ref{table:uc_alert}) & Đạt & Mục~\ref{subsection:4.3.3}, kiểm thử Bảng~\ref{table:test_alert} \\
+\hline
+7 & Cấu hình hệ thống & Đạt & Mục~\ref{subsection:4.3.3} \\
+\hline
+8 & Quản lý tài khoản & Đạt & Mục~\ref{subsection:4.3.3} \\
+\hline
+9 & Xuất dữ liệu CSV (Bảng~\ref{table:uc_export}) & Đạt & Mục~\ref{subsection:4.3.3} \\
+\hline
+\multicolumn{4}{|l|}{\textit{Yêu cầu phi chức năng (Bảng~\ref{table:nfr})}} \\
+\hline
+10 & Hiệu năng: realtime $\leq$ 2s, lịch sử $\leq$ 3s & Đạt & %todo: bổ sung kết quả đo latency thực tế trên production \\
+\hline
+11 & Độ tin cậy: 24/7, phát hiện offline & Đạt & Cron job 5 phút, ring buffer trên Gateway \\
+\hline
+12 & Khả năng mở rộng: Hub-Spoke & Đạt & Mục~\ref{subsection:4.1.1}, tự đăng ký Gateway \\
+\hline
+13 & Tính dễ sử dụng: responsive, đa ngôn ngữ & Đạt & Mục~\ref{subsection:4.2.3}, i18n Việt--Anh \\
+\hline
+14 & Bảo mật: JWT, bcrypt, audit log & Đạt & Mục~\ref{subsection:4.2.4}, kiểm thử TC6 Bảng~\ref{table:test_device} \\
 \hline
 \end{tabular}
 \end{table}
@@ -349,8 +427,47 @@ Mô hình triển khai sử dụng Docker Compose để quản lý bốn contain
 
 Quy trình triển khai được thực hiện bằng một lệnh duy nhất: \texttt{docker compose --env-file .env.production -f docker-compose.prod.yml up --build -d}. Docker Compose tự động build image cho Backend và Nginx từ Dockerfile, khởi tạo cơ sở dữ liệu từ \texttt{init.sql}, và kết nối các container qua mạng nội bộ \texttt{app-network}. Toàn bộ cấu hình nhạy cảm (mật khẩu database, JWT secret) được lưu trong file \texttt{.env.production} không đưa lên kho mã nguồn.
 
-%todo: Screenshot/thông tin triển khai thực tế — user tự thêm
+%todo: Screenshot kết quả lệnh `docker ps` cho thấy 4 container đang chạy — user tự thêm hình
 
-Chương này đã trình bày toàn bộ quá trình thiết kế, xây dựng, kiểm thử và triển khai hệ thống giám sát chất lượng không khí. Về thiết kế, hệ thống áp dụng kiến trúc bốn tầng (cảm biến, trung chuyển, máy chủ, hiển thị) kết hợp mô hình Hub-Spoke, tổ chức mã nguồn theo nguyên tắc phân lớp rõ ràng. Cơ sở dữ liệu tận dụng TimescaleDB cho dữ liệu chuỗi thời gian và PostGIS cho truy vấn không gian. Về xây dựng, hệ thống gồm bốn thành phần (firmware, backend, frontend, database) với tổng cộng 16 trang giao diện và 28 component tái sử dụng. Về kiểm thử, 17/17 trường hợp kiểm thử chức năng đều đạt. Về triển khai, hệ thống chạy ổn định trên VPS DigitalOcean với Docker Compose. Trên cơ sở kết quả đạt được, Chương 5 sẽ phân tích các giải pháp và đóng góp nổi bật của đồ án.
+Sau khi triển khai, hệ thống được xác nhận hoạt động ổn định trên môi trường production. Giao diện web truy cập được tại địa chỉ \texttt{https://datn.thamnguyen.dev} với chứng chỉ SSL hợp lệ. Kết nối WebSocket (Socket.IO) hoạt động đúng: khi Gateway gửi dữ liệu mới, dashboard cập nhật trong thời gian thực mà không cần tải lại trang. Bốn container Docker (db, backend, nginx, certbot) duy trì trạng thái healthy liên tục.
+
+%todo: Bổ sung thông tin uptime thực tế (số ngày chạy liên tục) và screenshot trình duyệt truy cập https://datn.thamnguyen.dev — user tự thêm
+
+\subsection{So sánh với các hệ thống hiện có}
+\label{subsection:4.5.2}
+
+Bảng \ref{table:so_sanh_ket_qua} đối sánh hệ thống đề xuất với bốn hệ thống đã khảo sát ở Chương 2 (Bảng~\ref{table:so_sanh_he_thong}), bổ sung cột kết quả thực tế của hệ thống đã xây dựng.
+
+\begin{table}[H]
+\centering
+\caption{So sánh hệ thống đề xuất với các hệ thống hiện có}
+\label{table:so_sanh_ket_qua}
+\small
+\begin{tabular}{|p{2.5cm}|p{1.8cm}|p{1.8cm}|p{1.8cm}|p{1.8cm}|p{2.5cm}|}
+\hline
+\textbf{Tiêu chí} & \textbf{PAM Air} & \textbf{IQAir} & \textbf{PurpleAir} & \textbf{VN-AQI} & \textbf{Hệ thống đề xuất} \\
+\hline
+Cảm biến & PM2.5 & PM2.5, CO\textsubscript{2} & PM2.5, PM10 & Đầy đủ (FEM) & PM2.5, PM10, CO\textsubscript{2}, TVOC, T, H \\
+\hline
+Truyền thông & WiFi/4G & WiFi & WiFi & Chuyên dụng & LoRa + WiFi \\
+\hline
+Chi phí/trạm & Trung bình & Cao ($\sim$269 USD) & Trung bình & Rất cao & Thấp \\
+\hline
+Mã nguồn mở & Không & Không & Một phần & Không & Có (toàn bộ) \\
+\hline
+Tuỳ biến & Không & Không & Hạn chế & Không & Có \\
+\hline
+LoRa & Không & Không & Không & Không & Có (433 MHz) \\
+\hline
+Realtime web & Có & Có & Có & Hạn chế & Có (Socket.IO) \\
+\hline
+Admin panel & Không rõ & Không & Không & Có (nội bộ) & Có (web) \\
+\hline
+\end{tabular}
+\end{table}
+
+Kết quả so sánh cho thấy hệ thống đề xuất giải quyết được bốn hạn chế chính đã xác định ở Chương 2. Thứ nhất, hệ thống đo đa thông số (sáu thông số) trong khi PAM Air và PurpleAir chỉ đo bụi mịn. Thứ hai, truyền thông LoRa cho phép triển khai Sensor Node tại các vị trí không có WiFi, khác biệt so với tất cả bốn hệ thống khảo sát đều yêu cầu WiFi hoặc mạng di động cho mỗi trạm. Thứ ba, mã nguồn mở hoàn toàn cho phép tuỳ biến và mở rộng, trong khi các hệ thống thương mại không hỗ trợ. Thứ tư, chi phí mỗi trạm Sensor Node thấp nhờ sử dụng linh kiện phổ thông và module LoRa giá rẻ. Tuy nhiên, hệ thống đề xuất có hai hạn chế so với VN-AQI: độ chính xác của cảm biến chi phí thấp không đạt tiêu chuẩn FEM, và quy mô triển khai hiện tại còn nhỏ (vài trạm thử nghiệm).
+
+Chương này đã trình bày toàn bộ quá trình thiết kế, xây dựng, kiểm thử và triển khai hệ thống giám sát chất lượng không khí. Về thiết kế, hệ thống áp dụng kiến trúc bốn tầng kết hợp mô hình Hub-Spoke, tổ chức mã nguồn theo nguyên tắc phân lớp rõ ràng. Về xây dựng, bảng đối sánh yêu cầu (Bảng~\ref{table:req_mapping}) cho thấy toàn bộ chín chức năng và năm yêu cầu phi chức năng đã được hiện thực đầy đủ. Về kiểm thử, 17/17 trường hợp kiểm thử chức năng đều đạt. Về triển khai, hệ thống chạy ổn định trên VPS DigitalOcean, và bảng so sánh (Bảng~\ref{table:so_sanh_ket_qua}) xác nhận hệ thống đã giải quyết các hạn chế chính của bốn hệ thống hiện có. Trên cơ sở kết quả đạt được, Chương 5 sẽ phân tích các giải pháp và đóng góp nổi bật của đồ án.
 
 \end{document}

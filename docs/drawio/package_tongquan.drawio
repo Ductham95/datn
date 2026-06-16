@@ -1,0 +1,102 @@
+<mxfile host="Electron">
+  <diagram name="Package Diagram" id="pkg_overview_1">
+    <mxGraphModel dx="1585" dy="1037" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pkg_sensor" parent="1" style="shape=folder;fontStyle=1;tabWidth=220;tabHeight=30;tabPosition=left;html=1;whiteSpace=wrap;fontSize=22;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;verticalAlign=middle;align=center;" value="Tầng cảm biến&lt;br&gt;(sensor-node)" vertex="1">
+          <mxGeometry height="120" width="300" x="40" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_gateway" parent="1" style="shape=folder;fontStyle=1;tabWidth=220;tabHeight=30;tabPosition=left;html=1;whiteSpace=wrap;fontSize=22;fontFamily=Arial;fillColor=#FFF2CC;strokeColor=#333333;verticalAlign=middle;align=center;" value="Tầng trung chuyển&lt;br&gt;(gateway)" vertex="1">
+          <mxGeometry height="120" width="300" x="480" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_backend" parent="1" style="shape=folder;fontStyle=1;tabWidth=190;tabHeight=20;tabPosition=left;html=1;whiteSpace=wrap;fontSize=22;fontFamily=Arial;fillColor=#D5E8D4;strokeColor=#333333;verticalAlign=top;spacingTop=10;align=center;" value="Tầng máy chủ (backend)" vertex="1">
+          <mxGeometry height="200" width="380" x="40" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="be_routes" parent="1" style="shape=folder;fontStyle=0;tabWidth=60;tabHeight=18;tabPosition=left;html=1;whiteSpace=wrap;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;verticalAlign=middle;align=center;" value="routes" vertex="1">
+          <mxGeometry height="50" width="100" x="60" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="be_controllers" parent="1" style="shape=folder;fontStyle=0;tabWidth=70;tabHeight=18;tabPosition=left;html=1;whiteSpace=wrap;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;verticalAlign=middle;align=center;" value="controllers" vertex="1">
+          <mxGeometry height="50" width="120" x="60" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="be_services" parent="1" style="shape=folder;fontStyle=0;tabWidth=60;tabHeight=18;tabPosition=left;html=1;whiteSpace=wrap;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;verticalAlign=middle;align=center;" value="services" vertex="1">
+          <mxGeometry height="50" width="100" x="230" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="be_config" parent="1" style="shape=folder;fontStyle=0;tabWidth=60;tabHeight=18;tabPosition=left;html=1;whiteSpace=wrap;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;verticalAlign=middle;align=center;" value="config" vertex="1">
+          <mxGeometry height="50" width="100" x="300" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="be_d1" edge="1" parent="1" source="be_routes" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#333333;" target="be_controllers" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="be_d2" edge="1" parent="1" source="be_controllers" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#333333;" target="be_services" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="be_d3" edge="1" parent="1" source="be_services" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#333333;" target="be_config" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_frontend" parent="1" style="shape=folder;fontStyle=1;tabWidth=187;tabHeight=20;tabPosition=left;html=1;whiteSpace=wrap;fontSize=22;fontFamily=Arial;fillColor=#FFE6CC;strokeColor=#333333;verticalAlign=top;spacingTop=10;align=center;" value="Tầng hiển thị (frontend)" vertex="1">
+          <mxGeometry height="210" width="380" x="653" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_pages" parent="1" style="shape=folder;fontStyle=0;tabWidth=60;tabHeight=18;tabPosition=left;html=1;whiteSpace=wrap;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;verticalAlign=middle;align=center;" value="pages" vertex="1">
+          <mxGeometry height="50" width="100" x="673" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_components" parent="1" style="shape=folder;fontStyle=0;tabWidth=70;tabHeight=18;tabPosition=left;html=1;whiteSpace=wrap;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;verticalAlign=middle;align=center;" value="components" vertex="1">
+          <mxGeometry height="50" width="120" x="673" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_hooks" parent="1" style="shape=folder;fontStyle=0;tabWidth=60;tabHeight=18;tabPosition=left;html=1;whiteSpace=wrap;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;verticalAlign=middle;align=center;" value="hooks" vertex="1">
+          <mxGeometry height="50" width="100" x="843" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_services" parent="1" style="shape=folder;fontStyle=0;tabWidth=60;tabHeight=18;tabPosition=left;html=1;whiteSpace=wrap;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;verticalAlign=middle;align=center;" value="services" vertex="1">
+          <mxGeometry height="50" width="100" x="913" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_d1" edge="1" parent="1" source="fe_pages" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#333333;" target="fe_components" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_d2" edge="1" parent="1" source="fe_pages" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#333333;" target="fe_hooks" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_d3" edge="1" parent="1" source="fe_hooks" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#333333;" target="fe_services" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inter_sn_gw" edge="1" parent="1" source="pkg_sensor" style="endArrow=open;endSize=14;dashed=1;dashPattern=8 4;html=1;strokeColor=#0050AA;strokeWidth=2;fontSize=18;fontFamily=Arial;fontStyle=2;" target="pkg_gateway" value="LoRa 433 MHz">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inter_gw_be" edge="1" parent="1" source="pkg_gateway" style="endArrow=open;endSize=14;dashed=1;dashPattern=8 4;html=1;strokeColor=#0050AA;strokeWidth=2;fontSize=18;fontFamily=Arial;fontStyle=2;" target="pkg_backend" value="HTTP POST">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inter_fe_be" edge="1" parent="1" source="pkg_frontend" style="endArrow=open;endSize=14;dashed=1;dashPattern=8 4;html=1;strokeColor=#0050AA;strokeWidth=2;fontSize=18;fontFamily=Arial;fontStyle=2;exitX=0;exitY=0;exitDx=0;exitDy=115;exitPerimeter=0;" target="pkg_backend" value="REST API / Socket.IO">
+          <mxGeometry relative="1" x="0.0054" y="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg_title" parent="1" style="text;html=1;fontSize=20;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=top;fillColor=none;strokeColor=none;" value="Chú thích" vertex="1">
+          <mxGeometry height="30" width="100" x="840" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_s1" parent="1" style="ellipse;html=1;fillColor=#333333;strokeColor=#333333;" value="" vertex="1">
+          <mxGeometry height="6" width="6" x="840" y="107" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_t1" parent="1" style="ellipse;html=1;fillColor=#333333;strokeColor=#333333;" value="" vertex="1">
+          <mxGeometry height="6" width="6" x="940" y="107" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_e1" edge="1" parent="1" source="leg_s1" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#333333;" target="leg_t1" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_l1" parent="1" style="text;html=1;fontSize=16;fontFamily=Arial;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;" value="Phụ thuộc" vertex="1">
+          <mxGeometry height="28" width="120" x="960" y="96" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_s2" parent="1" style="ellipse;html=1;fillColor=#0050AA;strokeColor=#0050AA;" value="" vertex="1">
+          <mxGeometry height="6" width="6" x="840" y="142" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_t2" parent="1" style="ellipse;html=1;fillColor=#0050AA;strokeColor=#0050AA;" value="" vertex="1">
+          <mxGeometry height="6" width="6" x="940" y="142" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_e2" edge="1" parent="1" source="leg_s2" style="endArrow=open;endSize=14;dashed=1;dashPattern=8 4;html=1;strokeColor=#0050AA;strokeWidth=2;" target="leg_t2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_l2" parent="1" style="text;html=1;fontSize=16;fontFamily=Arial;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;" value="Giao tiếp giữa các tầng" vertex="1">
+          <mxGeometry height="28" width="210" x="960" y="131" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
