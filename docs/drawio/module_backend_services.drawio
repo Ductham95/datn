@@ -1,0 +1,202 @@
+<mxfile host="Electron" agent="Antigravity">
+  <diagram name="Module Backend Services" id="module_backend_services">
+    <mxGraphModel dx="1873" dy="1225" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sys" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=420;height=40;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;fontSize=24;fontStyle=1;fontFamily=Arial;fillColor=none;strokeColor=#333333;strokeWidth=2;" value="Backend Server (Node.js / Express)" vertex="1">
+          <mxGeometry height="940" width="1340" x="30" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_routes" parent="1" style="shape=folder;tabWidth=120;tabHeight=20;tabPosition=left;html=1;whiteSpace=wrap;fontSize=22;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;verticalAlign=top;spacingTop=5;rounded=1;arcSize=5;" value="&lt;b&gt;routes&lt;/b&gt;" vertex="1">
+          <mxGeometry height="170" width="220" x="60" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="r1" parent="1" style="text;html=1;fontSize=20;fontFamily=Arial;align=left;spacingLeft=10;" value="gatewayApi" vertex="1">
+          <mxGeometry height="28" width="190" x="75" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="r2" parent="1" style="text;html=1;fontSize=20;fontFamily=Arial;align=left;spacingLeft=10;" value="adminApi" vertex="1">
+          <mxGeometry height="28" width="190" x="75" y="143" as="geometry" />
+        </mxCell>
+        <mxCell id="r3" parent="1" style="text;html=1;fontSize=20;fontFamily=Arial;align=left;spacingLeft=10;" value="userApi" vertex="1">
+          <mxGeometry height="28" width="190" x="75" y="176" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_mw" parent="1" style="shape=folder;tabWidth=130;tabHeight=20;tabPosition=left;html=1;whiteSpace=wrap;fontSize=22;fontFamily=Arial;fillColor=#FFE6CC;strokeColor=#333333;verticalAlign=top;spacingTop=5;rounded=1;arcSize=5;" value="&lt;b&gt;middlewares&lt;/b&gt;" vertex="1">
+          <mxGeometry height="120" width="220" x="60" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="mw1" parent="1" style="text;html=1;fontSize=20;fontFamily=Arial;align=left;spacingLeft=10;" value="authMiddleware" vertex="1">
+          <mxGeometry height="28" width="190" x="75" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="mw2" parent="1" style="text;html=1;fontSize=20;fontFamily=Arial;align=left;spacingLeft=10;" value="auditLogMiddleware" vertex="1">
+          <mxGeometry height="28" width="190" x="75" y="363" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_val" parent="1" style="shape=folder;tabWidth=120;tabHeight=20;tabPosition=left;html=1;whiteSpace=wrap;fontSize=22;fontFamily=Arial;fillColor=#FFE6CC;strokeColor=#333333;verticalAlign=top;spacingTop=5;rounded=1;arcSize=5;" value="&lt;b&gt;validations&lt;/b&gt;" vertex="1">
+          <mxGeometry height="120" width="220" x="60" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="v1" parent="1" style="text;html=1;fontSize=20;fontFamily=Arial;align=left;spacingLeft=10;" value="gatewayValidation" vertex="1">
+          <mxGeometry height="28" width="190" x="75" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="v2" parent="1" style="text;html=1;fontSize=20;fontFamily=Arial;align=left;spacingLeft=10;" value="adminValidation" vertex="1">
+          <mxGeometry height="28" width="190" x="75" y="533" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_ctrl" parent="1" style="shape=folder;tabWidth=270;tabHeight=40;tabPosition=left;html=1;whiteSpace=wrap;fontSize=22;fontFamily=Arial;fillColor=#D5E8D4;strokeColor=#333333;verticalAlign=top;spacingTop=5;rounded=1;arcSize=5;" value="&lt;b&gt;controllers&lt;/b&gt;" vertex="1">
+          <mxGeometry height="310" width="320" x="400" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;arcSize=20;" value="telemetryController" vertex="1">
+          <mxGeometry height="40" width="240" x="443" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;arcSize=20;" value="stationController" vertex="1">
+          <mxGeometry height="40" width="240" x="443" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;arcSize=20;" value="alertController" vertex="1">
+          <mxGeometry height="40" width="240" x="443" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;arcSize=20;" value="alertConfigController" vertex="1">
+          <mxGeometry height="40" width="240" x="443" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_svc" parent="1" style="shape=folder;tabWidth=310;tabHeight=60;tabPosition=left;html=1;whiteSpace=wrap;fontSize=22;fontFamily=Arial;fillColor=#E1D5E7;strokeColor=#333333;verticalAlign=top;spacingTop=5;rounded=1;arcSize=5;" value="&lt;b&gt;services&lt;/b&gt;" vertex="1">
+          <mxGeometry height="480" width="500" x="800" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;arcSize=20;" value="telemetryService" vertex="1">
+          <mxGeometry height="40" width="240" x="925" y="178" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;arcSize=20;" value="stationService" vertex="1">
+          <mxGeometry height="40" width="240" x="925" y="238" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;arcSize=20;" value="alertService" vertex="1">
+          <mxGeometry height="40" width="240" x="925" y="298" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;arcSize=20;" value="aqiService" vertex="1">
+          <mxGeometry height="40" width="240" x="925" y="358" as="geometry" />
+        </mxCell>
+        <mxCell id="s5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;arcSize=20;" value="alertConfigService" vertex="1">
+          <mxGeometry height="40" width="240" x="925" y="418" as="geometry" />
+        </mxCell>
+        <mxCell id="s6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;arcSize=20;" value="cronJobs" vertex="1">
+          <mxGeometry height="40" width="240" x="925" y="478" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_config" parent="1" style="shape=folder;tabWidth=80;tabHeight=20;tabPosition=left;html=1;whiteSpace=wrap;fontSize=22;fontFamily=Arial;fillColor=#FFF2CC;strokeColor=#333333;verticalAlign=top;spacingTop=5;rounded=1;arcSize=5;" value="&lt;b&gt;config&lt;/b&gt;" vertex="1">
+          <mxGeometry height="100" width="190" x="700" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="cfg1" parent="1" style="text;html=1;fontSize=20;fontFamily=Arial;align=center;" value="prismaClient.js" vertex="1">
+          <mxGeometry height="30" width="170" x="710" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="db" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fontSize=20;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;" value="&lt;b&gt;PostgreSQL&lt;/b&gt;&lt;br&gt;(TimescaleDB + PostGIS)" vertex="1">
+          <mxGeometry height="100" width="200" x="700" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="server" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#333333;arcSize=15;strokeWidth=2;" value="&lt;b&gt;server.js&lt;/b&gt;  (Express + Socket.IO)" vertex="1">
+          <mxGeometry height="48" width="280" x="60" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="dep_r_c" edge="1" parent="1" source="pkg_routes" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=18;fontFamily=Arial;strokeColor=#333333;exitX=1;exitY=0.35;exitDx=0;exitDy=0;entryX=0;entryY=0.35;entryDx=0;entryDy=0;" target="pkg_ctrl" value="&lt;i&gt;&amp;lt;&amp;lt;use&amp;gt;&amp;gt;&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dep_c_s" edge="1" parent="1" source="pkg_ctrl" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=18;fontFamily=Arial;strokeColor=#333333;exitX=1;exitY=0.35;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" target="pkg_svc" value="&lt;i&gt;&amp;lt;&amp;lt;use&amp;gt;&amp;gt;&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dep_s_cfg" edge="1" parent="1" source="pkg_svc" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=18;fontFamily=Arial;strokeColor=#333333;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pkg_config" value="&lt;i&gt;&amp;lt;&amp;lt;use&amp;gt;&amp;gt;&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dep_cfg_db" edge="1" parent="1" source="pkg_config" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=18;fontFamily=Arial;strokeColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="db" value="&lt;i&gt;Prisma ORM&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dep_r_mw" edge="1" parent="1" source="pkg_routes" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=18;fontFamily=Arial;strokeColor=#666666;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pkg_mw" value="&lt;i&gt;&amp;lt;&amp;lt;use&amp;gt;&amp;gt;&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dep_r_val" edge="1" parent="1" source="pkg_mw" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=18;fontFamily=Arial;strokeColor=#666666;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pkg_val" value="&lt;i&gt;&amp;lt;&amp;lt;use&amp;gt;&amp;gt;&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dep_srv_cron" edge="1" parent="1" source="server" style="endArrow=open;endSize=12;dashed=1;html=1;fontSize=18;fontFamily=Arial;strokeColor=#333333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" target="s6" value="&lt;i&gt;start&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="664" />
+              <mxPoint x="700" y="500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dep_ts_as" edge="1" parent="1" source="s1" style="endArrow=open;endSize=10;html=1;fontSize=16;fontFamily=Arial;strokeColor=#D6336C;strokeWidth=2;curved=1;" target="s3" value="&lt;i&gt;checkThresholds&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1163" y="160" />
+              <mxPoint x="1230" y="210" />
+              <mxPoint x="1163" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dep_ss_aqi" edge="1" parent="1" source="s2" style="endArrow=open;endSize=10;html=1;fontSize=16;fontFamily=Arial;strokeColor=#D6336C;strokeWidth=2;curved=1;" target="s4" value="&lt;i&gt;calculateAQI&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1162" y="220" />
+              <mxPoint x="1260" y="270" />
+              <mxPoint x="1162" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dep_tc_aqi" edge="1" parent="1" source="c1" style="endArrow=open;endSize=10;html=1;fontSize=16;fontFamily=Arial;strokeColor=#2F5496;strokeWidth=2;curved=1;" target="s4" value="&lt;i&gt;calculateAQI&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="140" />
+              <mxPoint x="760" y="240" />
+              <mxPoint x="790" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dep_cron_as" edge="1" parent="1" source="s6" style="endArrow=open;endSize=10;html=1;fontSize=16;fontFamily=Arial;strokeColor=#D6336C;strokeWidth=2;curved=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="s3" value="&lt;i&gt;createConnectivity&lt;br&gt;Alerts, cleanup&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1213" y="440" />
+              <mxPoint x="1280" y="400" />
+              <mxPoint x="1290" y="340" />
+              <mxPoint x="1220" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#333333;arcSize=10;" value="" vertex="1">
+          <mxGeometry height="200" width="420" x="60" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_title" parent="1" style="text;html=1;fontSize=22;fontFamily=Arial;align=left;spacingLeft=10;fontStyle=1;" value="&lt;b&gt;Chú thích&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="200" x="70" y="745" as="geometry" />
+        </mxCell>
+        <mxCell id="leg1a" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#333333;" value="" vertex="1">
+          <mxGeometry height="16" width="22" x="80" y="783" as="geometry" />
+        </mxCell>
+        <mxCell id="leg1b" parent="1" style="text;html=1;fontSize=18;fontFamily=Arial;align=left;spacingLeft=5;" value="Lớp định tuyến (Routes)" vertex="1">
+          <mxGeometry height="26" width="300" x="110" y="778" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2a" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#333333;" value="" vertex="1">
+          <mxGeometry height="16" width="22" x="80" y="811" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2b" parent="1" style="text;html=1;fontSize=18;fontFamily=Arial;align=left;spacingLeft=5;" value="Lớp điều khiển (Controllers)" vertex="1">
+          <mxGeometry height="26" width="300" x="110" y="806" as="geometry" />
+        </mxCell>
+        <mxCell id="leg3a" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#333333;" value="" vertex="1">
+          <mxGeometry height="16" width="22" x="80" y="839" as="geometry" />
+        </mxCell>
+        <mxCell id="leg3b" parent="1" style="text;html=1;fontSize=18;fontFamily=Arial;align=left;spacingLeft=5;" value="Lớp nghiệp vụ (Services)" vertex="1">
+          <mxGeometry height="26" width="300" x="110" y="834" as="geometry" />
+        </mxCell>
+        <mxCell id="leg4a" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#333333;" value="" vertex="1">
+          <mxGeometry height="16" width="22" x="80" y="867" as="geometry" />
+        </mxCell>
+        <mxCell id="leg4b" parent="1" style="text;html=1;fontSize=18;fontFamily=Arial;align=left;spacingLeft=5;" value="Cắt ngang (Middlewares, Validations)" vertex="1">
+          <mxGeometry height="26" width="300" x="110" y="862" as="geometry" />
+        </mxCell>
+        <mxCell id="leg5a" edge="1" parent="1" style="endArrow=open;endSize=10;html=1;strokeColor=#D6336C;strokeWidth=2;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="898" as="sourcePoint" />
+            <mxPoint x="104" y="898" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg5b" parent="1" style="text;html=1;fontSize=18;fontFamily=Arial;align=left;spacingLeft=5;" value="Phụ thuộc giữa các service" vertex="1">
+          <mxGeometry height="26" width="300" x="110" y="888" as="geometry" />
+        </mxCell>
+        <mxCell id="leg6a" edge="1" parent="1" style="endArrow=open;endSize=10;html=1;strokeColor=#2F5496;strokeWidth=2;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="924" as="sourcePoint" />
+            <mxPoint x="104" y="924" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg6b" parent="1" style="text;html=1;fontSize=18;fontFamily=Arial;align=left;spacingLeft=5;" value="Phụ thuộc xuyên lớp" vertex="1">
+          <mxGeometry height="26" width="300" x="110" y="914" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

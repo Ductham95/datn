@@ -22,7 +22,6 @@ Hệ thống được thiết kế theo kiến trúc bốn tầng, bao gồm t�
 \subsection{Thiết kế tổng quan}
 \label{subsection:4.1.2}
 
-%todo: Biểu đồ gói UML tổng quan (package diagram)
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.00\textwidth]{Hinhve/package_tongquan.png}
@@ -43,7 +42,13 @@ Hệ thống được tổ chức thành bốn nhóm gói chính tương ứng v
 \subsection{Mô tả luồng dữ liệu giữa các gói}
 \label{subsection:4.1.3}
 
-%todo: Biểu đồ quan hệ class/module cho backend services — user tự thêm hình
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.00\textwidth]{Hinhve/module_backend_services.png}
+    \caption{Biểu đồ quan hệ module cho backend services}
+    \label{fig:4_1_3_module_backend_services}
+\end{figure}
+
 
 Phần này trình bày thiết kế chi tiết cho hai nhóm gói quan trọng: nhóm xử lý dữ liệu telemetry trên Backend và nhóm hiển thị dashboard trên Frontend.
 
@@ -61,11 +66,23 @@ Phần này trình bày thiết kế mạch kết nối phần cứng cho Sensor
 
 \textbf{Sensor Node} sử dụng board ESP32 DevKit V1 (30 chân) làm trung tâm, kết nối với bốn module ngoại vi qua ba giao tiếp khác nhau. Module \gls{LoRa} AS32-TTL-100 giao tiếp qua \gls{UART}1 (RX: GPIO16, TX: GPIO17) với hai chân điều khiển chế độ (MD0: GPIO4, MD1: GPIO5). Module cảm biến bụi PMS7003 giao tiếp qua \gls{UART}2 (RX: GPIO25, TX: GPIO26). Module CCS811 và AHT10 chia sẻ chung bus I2C (SDA: GPIO21, SCL: GPIO22) với địa chỉ lần lượt là 0x5A và 0x38; CCS811 có thêm chân WAK (GPIO23) để đánh thức từ chế độ ngủ. Màn hình OLED SSD1306 cũng dùng chung bus I2C trên, địa chỉ 0x3C. Pin 18650 được đo qua mạch phân áp (voltage divider R1=R2=100K$\Omega$) nối vào GPIO15 (ADC). Nút BOOT (GPIO0) được tận dụng làm nút factory reset: giữ 5 giây để xóa cấu hình và vào chế độ provisioning.
 
-%todo: Sơ đồ mạch Sensor Node — user tự thêm hình
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.00\textwidth]{Hinhve/schematic_sensor_node.png}
+    \caption{Sơ đồ mạch Sensor Node}
+    \label{fig:4_2_1_schematic_sensor_node}
+\end{figure}
+
+    
 
 \textbf{Gateway} sử dụng cùng board ESP32 DevKit V1, nhưng chỉ kết nối một module ngoại vi: module \gls{LoRa} AS32-TTL-100 qua \gls{UART}1 (cùng cấu hình chân với Sensor Node). Gateway không cần cảm biến hay màn hình OLED, do chức năng duy nhất là nhận gói \gls{LoRa} và chuyển tiếp lên tầng máy chủ qua WiFi. Thiết kế tối giản này giảm chi phí linh kiện và giảm tiêu thụ năng lượng cho Gateway.
 
-%todo: Sơ đồ mạch Gateway — user tự thêm hình
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.00\textwidth]{Hinhve/schematic_gateway.png}
+    \caption{Sơ đồ mạch Gateway}
+    \label{fig:4_2_2_schematic_gateway}
+\end{figure}
 
 \subsection{Thiết kế firmware}
 \label{subsection:4.2.2}
@@ -111,7 +128,12 @@ Phần này trình bày thiết kế chi tiết cho bốn module quan trọng nh
 
 Cơ sở dữ liệu được thiết kế trên PostgreSQL 15 với hai extension: TimescaleDB cho dữ liệu chuỗi thời gian và PostGIS cho dữ liệu không gian. Lược đồ gồm bảy bảng chính và một materialized view.
 
-%todo: E-R diagram cho 7 bảng — user tự thêm hình
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/er_database.png}
+    \caption{Entity-Relationship Diagram}
+    \label{fig:er_diagram}
+\end{figure}
 
 \textbf{Bảng users} lưu thông tin tài khoản với khóa chính là UUID tự sinh, bao gồm username (duy nhất), password\_hash (mã hóa bcrypt) và role (admin hoặc user).
 
@@ -221,20 +243,20 @@ Bảng \ref{table:stats} thống kê quy mô mã nguồn của từng thành ph�
 \small
 \begin{tabular}{|p{3.5cm}|p{3cm}|p{2.5cm}|p{1.5cm}|p{2cm}|}
 \hline
-\textbf{Thành phần} & \textbf{Số file mã nguồn} & \textbf{Ngôn ngữ chính} & \textbf{LOC} & \textbf{Ghi chú} \\
+\textbf{Thành phần} & \textbf{Ngôn ngữ chính} & \textbf{LOC} & \textbf{Ghi chú} \\
 \hline
-Firmware Sensor Node & 3 biến thể & C/C++ (Arduino) & %todo & FreeRTOS \\
+Firmware Sensor Node & C/C++ & 1262 & FreeRTOS \\
 \hline
-Firmware Gateway & 2 biến thể & C/C++ (Arduino) & %todo & Superloop \\
+Firmware Gateway & C/C++ & 1608 & Superloop \\
 \hline
-Backend Server & 14 controllers, 15 services & JavaScript (Node.js) & %todo & Express 4.21 \\
+Backend Server & JavaScript (Node.js) & 2732 & Express 4.21 \\
 \hline
-Frontend & 16 pages, 28 components & JavaScript (React) & %todo & Vite 8.0 \\
+Frontend & JavaScript (React) & 8050 & Vite 8.0 \\
 \hline
-Database & 7 bảng, 1 view & SQL & %todo & TimescaleDB + PostGIS \\
+Database & SQL & 107 & PostgreSQL \\
 \hline
-Triển khai & 4 containers & YAML, Nginx conf & %todo & Docker Compose \\
-\hline
+Triển khai & YAML, Nginx conf & 277 & Docker Compose \\
+\hline  
 \end{tabular}
 \end{table}
 

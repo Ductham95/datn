@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  16 JUN 2026 22:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  17 JUN 2026 16:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1208,547 +1208,525 @@ Package hyperref Info: Link coloring OFF on input line 2.
 <../Hinhve/package_tongquan.png, id=99, 3405.72375pt x 1327.96124pt>
 File: ../Hinhve/package_tongquan.png Graphic file (type png)
 <use ../Hinhve/package_tongquan.png>
-Package pdftex.def Info: ../Hinhve/package_tongquan.png  used on input line 28.
+Package pdftex.def Info: ../Hinhve/package_tongquan.png  used on input line 27.
 (pdftex.def)             Requested size: 426.79135pt x 166.40001pt.
-LaTeX Font Info:    Trying to load font information for T5+pcr on input line 35.
+LaTeX Font Info:    Trying to load font information for T5+pcr on input line 34.
  (C:\Program Files\MiKTeX\tex/latex/vntex\t5pcr.fd
 File: t5ucr.fd 2005/08/24 Fontinst v1.929 font definitions for T5/pcr.
 )
-LaTeX Font Info:    Calculating math sizes for size <13> on input line 39.
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 38.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 39.
+(Font)              size <6> substituted on input line 38.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <13> not available
-(Font)              size <12> substituted on input line 39.
+(Font)              size <12> substituted on input line 38.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <6.5> not available
-(Font)              size <6> substituted on input line 39.
+(Font)              size <6> substituted on input line 38.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 39.
+(Font)              size <12> substituted on input line 38.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 39.
+(Font)              size <6> substituted on input line 38.
 
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 39.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 38.
 (C:\Program Files\MiKTeX\tex/latex/base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 39.
+(Font)              size <12> substituted on input line 38.
 
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 39.
+(Font)              size <6> substituted on input line 38.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 39.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 38.
 (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 39.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [2 <../Hinhve/package_tongquan.png>] [3] [4]
+) [2 <../Hinhve/package_tongquan.png>]
+<../Hinhve/module_backend_services.png, id=109, 4044.10875pt x 2839.60875pt>
+File: ../Hinhve/module_backend_services.png Graphic file (type png)
+<use ../Hinhve/module_backend_services.png>
+Package pdftex.def Info: ../Hinhve/module_backend_services.png  used on input line 47.
+(pdftex.def)             Requested size: 426.79135pt x 299.66257pt.
+ [3 <../Hinhve/module_backend_services.png>]
+<../Hinhve/schematic_sensor_node.png, id=116, 879.285pt x 719.68875pt>
+File: ../Hinhve/schematic_sensor_node.png Graphic file (type png)
+<use ../Hinhve/schematic_sensor_node.png>
+Package pdftex.def Info: ../Hinhve/schematic_sensor_node.png  used on input line 71.
+(pdftex.def)             Requested size: 426.79135pt x 349.32317pt.
 
-LaTeX Warning: Reference `table:bp_pm25' on page 5 undefined on input line 101.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../Hinhve/schematic_gateway.png, id=117, 1057.9525pt x 811.03pt>
+File: ../Hinhve/schematic_gateway.png Graphic file (type png)
+<use ../Hinhve/schematic_gateway.png>
+Package pdftex.def Info: ../Hinhve/schematic_gateway.png  used on input line 82.
+(pdftex.def)             Requested size: 426.79135pt x 327.17831pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4] [5 <../Hinhve/schematic_sensor_node.png (PNG copy)>] [6 <../Hinhve/schematic_gateway.png (PNG copy)>]
+
+LaTeX Warning: Reference `table:bp_pm25' on page 7 undefined on input line 118.
 
 
-LaTeX Warning: Reference `table:bp_pm10' on page 5 undefined on input line 101.
+LaTeX Warning: Reference `table:bp_pm10' on page 7 undefined on input line 118.
 
-[5]
-Overfull \hbox (2.39058pt too wide) in paragraph at lines 105--106
+
+Overfull \hbox (2.39058pt too wide) in paragraph at lines 122--123
 \T5/pcr/m/n/13 tory \T5/ptm/m/n/13 truy vßn d˙ liªu l‡ch s˚ t¯ Con-tin-u-ous Ag-gre-gate \T5/pcr/m/n/13 hourly_measurements
  []
 
-[6]
+[7]
+<../Hinhve/er_database.png, id=138, 3499.0725pt x 3408.735pt>
+File: ../Hinhve/er_database.png Graphic file (type png)
+<use ../Hinhve/er_database.png>
+Package pdftex.def Info: ../Hinhve/er_database.png  used on input line 133.
+(pdftex.def)             Requested size: 426.79135pt x 415.74023pt.
+ [8 <../Hinhve/er_database.png>]
 
-LaTeX Warning: Reference `table:nfr' on page 7 undefined on input line 124.
+LaTeX Warning: Reference `table:nfr' on page 9 undefined on input line 146.
 
-LaTeX Font Info:    Calculating math sizes for size <11.86258> on input line 145.
+LaTeX Font Info:    Calculating math sizes for size <11.86258> on input line 167.
 
-Overfull \hbox (3.14519pt too wide) in paragraph at lines 151--152
+Overfull \hbox (3.14519pt too wide) in paragraph at lines 173--174
 []|\T5/ptm/m/n/11.86258 https://expressjs.com/| 
  []
 
 
-Overfull \hbox (9.2188pt too wide) in paragraph at lines 153--154
+Overfull \hbox (9.2188pt too wide) in paragraph at lines 175--176
 []|\T5/ptm/m/n/11.86258 https://www.prisma.io/| 
  []
 
 
-Overfull \hbox (47.06047pt too wide) in paragraph at lines 157--158
+Overfull \hbox (47.06047pt too wide) in paragraph at lines 179--180
 []|\T5/ptm/m/n/11.86258 https://github.com/auth0/node-
  []
 
 
-Overfull \hbox (23.99962pt too wide) in paragraph at lines 159--160
+Overfull \hbox (23.99962pt too wide) in paragraph at lines 181--182
 []|\T5/ptm/m/n/11.86258 https://github.com/nicolo-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 161--161
+Underfull \hbox (badness 10000) in paragraph at lines 183--183
 []|\T5/ptm/m/n/11.86258 B£o m™t HTTP
  []
 
 
-Overfull \hbox (22.36255pt too wide) in paragraph at lines 161--162
+Overfull \hbox (22.36255pt too wide) in paragraph at lines 183--184
 []|\T5/ptm/m/n/11.86258 https://helmetjs.github.io/| 
  []
 
 
-Overfull \hbox (17.40404pt too wide) in paragraph at lines 163--164
+Overfull \hbox (17.40404pt too wide) in paragraph at lines 185--186
 []|\T5/ptm/m/n/11.86258 https://github.com/node-
  []
 
 
-Overfull \hbox (79.04193pt too wide) in paragraph at lines 165--166
+Overfull \hbox (79.04193pt too wide) in paragraph at lines 187--188
 []|\T5/ptm/m/n/11.86258 https://mircoithink.github.io/json2csv| 
  []
 
 
-Overfull \hbox (31.81699pt too wide) in paragraph at lines 167--168
+Overfull \hbox (31.81699pt too wide) in paragraph at lines 189--190
 []|\T5/ptm/m/n/11.86258 https://www.postgresql.org/| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--169
+Underfull \hbox (badness 10000) in paragraph at lines 191--191
 []|\T5/ptm/m/n/11.86258 Extension time-
  []
 
 
-Overfull \hbox (32.69482pt too wide) in paragraph at lines 169--170
+Overfull \hbox (32.69482pt too wide) in paragraph at lines 191--192
 []|\T5/ptm/m/n/11.86258 https://www.timescale.com/| 
  []
 
-[7]
-Overfull \hbox (10.87961pt too wide) in paragraph at lines 189--190
+[9]
+Overfull \hbox (10.87961pt too wide) in paragraph at lines 211--212
 []|\T5/ptm/m/n/11.86258 https://reactrouter.com/| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--192
+Underfull \hbox (badness 10000) in paragraph at lines 213--214
 []|\T5/ptm/m/n/11.86258 https://axios-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--193
+Underfull \hbox (badness 10000) in paragraph at lines 215--215
 []|\T5/ptm/m/n/11.86258 Leaflet + React-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--194
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
 []|\T5/ptm/m/n/11.86258 https://react-
  []
 
 
-Overfull \hbox (24.6876pt too wide) in paragraph at lines 195--196
+Overfull \hbox (24.6876pt too wide) in paragraph at lines 217--218
 []|\T5/ptm/m/n/11.86258 https://echarts.apache.org/| 
  []
 
 
-Overfull \hbox (21.25935pt too wide) in paragraph at lines 197--198
+Overfull \hbox (21.25935pt too wide) in paragraph at lines 219--220
 []|\T5/ptm/m/n/11.86258 https://react.i18next.com/| 
  []
 
 
-Overfull \hbox (38.97015pt too wide) in paragraph at lines 199--200
+Overfull \hbox (38.97015pt too wide) in paragraph at lines 221--222
 []|\T5/ptm/m/n/11.86258 https://zustand.docs.pmnd.rs/| 
  []
 
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 224--224
-[]|\T5/ptm/b/n/11.86258 NgÊn ng˙
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 226--226
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 248--248
 []|\T5/ptm/m/n/11.86258 Firmware Sen-sor
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--226
-[]|\T5/ptm/m/n/11.86258 C/C++ (Ar-
+Overfull \hbox (8.31804pt too wide) in paragraph at lines 248--249
+[]|\T5/ptm/m/n/11.86258 FreeRTOS| 
  []
 
-d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/4_Ket_qua_thuc_nghiem.tex:227: Misplaced \noalign.
-<recently read> \noalign 
-                         
-l.227 \hline
-            
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
 
-
-Overfull \hbox (2.83752pt too wide) in paragraph at lines 228--228
-[]|\T5/ptm/m/n/11.86258 Firmware
+Overfull \hbox (5.87439pt too wide) in paragraph at lines 250--251
+[]|\T5/ptm/m/n/11.86258 Superloop| 
  []
 
-d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/4_Ket_qua_thuc_nghiem.tex:228: Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.228 Firmware Gateway & 2 bi·∫øn th·ªÉ &
-                                          C/C++ (Arduino) & %todo & Superloo...
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
 
-d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/4_Ket_qua_thuc_nghiem.tex:229: Misplaced \noalign.
-<recently read> \noalign 
-                         
-l.229 \hline
-            
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-
-Overfull \hbox (6.33699pt too wide) in paragraph at lines 230--230
+Underfull \hbox (badness 10000) in paragraph at lines 252--252
 []|\T5/ptm/m/n/11.86258 JavaScript
  []
 
 
-Overfull \hbox (1.54454pt too wide) in paragraph at lines 230--230
-\T5/ptm/m/n/11.86258 (Node.js)| 
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
+[]|\T5/ptm/m/n/11.86258 Express
  []
 
-d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/4_Ket_qua_thuc_nghiem.tex:231: Misplaced \noalign.
-<recently read> \noalign 
-                         
-l.231 \hline
-            
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
 
-d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/4_Ket_qua_thuc_nghiem.tex:232: Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.232 Frontend &
-                 16 pages, 28 components & JavaScript (React) & %todo & Vite...
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 232--232
+Underfull \hbox (badness 10000) in paragraph at lines 254--254
 []|\T5/ptm/m/n/11.86258 JavaScript (Re-
  []
 
-d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/4_Ket_qua_thuc_nghiem.tex:233: Misplaced \noalign.
-<recently read> \noalign 
-                         
-l.233 \hline
-            
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
 
-d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/4_Ket_qua_thuc_nghiem.tex:234: Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.234 Database & 7 b·∫£ng, 1 view & SQL &
-                                          %todo & TimescaleDB + PostGIS \\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/4_Ket_qua_thuc_nghiem.tex:237: Misplaced \noalign.
-<recently read> \noalign 
-                         
-l.237 \hline
-            
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
+Overfull \hbox (14.97293pt too wide) in paragraph at lines 256--257
+[]|\T5/ptm/m/n/11.86258 PostgreSQL| 
+ []
 
 
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 250--250
+Underfull \hbox (badness 10000) in paragraph at lines 258--258
+[]|\T5/ptm/m/n/11.86258 YAML, Ng-inx
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 258--259
+[]|\T5/ptm/m/n/11.86258 Docker
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 258--259
+\T5/ptm/m/n/11.86258 Com-
+ []
+
+
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 272--272
 []|\T5/ptm/b/n/11.86258 STT| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 250--250
+Underfull \hbox (badness 10000) in paragraph at lines 272--272
 []|\T5/ptm/b/n/11.86258 Tr§ng
  []
 
 
-LaTeX Warning: Reference `table:uc_dashboard' on page 9 undefined on input line 254.
+LaTeX Warning: Reference `table:uc_dashboard' on page 11 undefined on input line 276.
 
 
-LaTeX Warning: Reference `table:uc_history' on page 9 undefined on input line 256.
+LaTeX Warning: Reference `table:uc_history' on page 11 undefined on input line 278.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 256--256
+Underfull \hbox (badness 10000) in paragraph at lines 278--278
 []|\T5/ptm/m/n/11.86258 Xem l‡ch s˚ d˙ liªu
  []
 
 
-LaTeX Warning: Reference `table:uc_device' on page 9 undefined on input line 262.
+LaTeX Warning: Reference `table:uc_device' on page 11 undefined on input line 284.
 
 
-LaTeX Warning: Reference `table:uc_alert' on page 9 undefined on input line 264.
+LaTeX Warning: Reference `table:uc_alert' on page 11 undefined on input line 286.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 264--264
+Underfull \hbox (badness 10000) in paragraph at lines 286--286
 []|\T5/ptm/m/n/11.86258 Gi°m s°t c£nh b°o
  []
 
 
-LaTeX Warning: Reference `table:uc_export' on page 9 undefined on input line 270.
+LaTeX Warning: Reference `table:uc_export' on page 11 undefined on input line 292.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 270--270
+Underfull \hbox (badness 10000) in paragraph at lines 292--292
 []|\T5/ptm/m/n/11.86258 Xußt d˙ liªu CSV
  []
 
 
-LaTeX Warning: Reference `table:nfr' on page 9 undefined on input line 272.
+LaTeX Warning: Reference `table:nfr' on page 11 undefined on input line 294.
 
-d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/4_Ket_qua_thuc_nghiem.tex:275: Misplaced \noalign.
+d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/4_Ket_qua_thuc_nghiem.tex:297: Misplaced \noalign.
 <recently read> \noalign 
                          
-l.275 \hline
+l.297 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
-d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/4_Ket_qua_thuc_nghiem.tex:276: Extra alignment tab has been changed to \cr.
+d:/datn/docs/SOICT_DATN_Application_VIE_Template/Chuong/4_Ket_qua_thuc_nghiem.tex:298: Extra alignment tab has been changed to \cr.
 <recently read> \endtemplate 
                              
-l.276 11 &
+l.298 11 &
            ƒê·ªô tin c·∫≠y: 24/7, ph√°t hi·ªán offline & ƒê·∫°t & Cron job 5...
 You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
 So I'll assume that you meant to type \cr instead.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--276
+Underfull \hbox (badness 10000) in paragraph at lines 298--298
 \T5/ptm/m/n/11.86258 tin
  []
 
 
-Overfull \hbox (4.88423pt too wide) in paragraph at lines 276--276
+Overfull \hbox (4.88423pt too wide) in paragraph at lines 298--298
 \T5/ptm/m/n/11.86258 c™y:
  []
 
 
-Overfull \hbox (9.83093pt too wide) in paragraph at lines 276--276
+Overfull \hbox (9.83093pt too wide) in paragraph at lines 298--298
 \T5/ptm/m/n/11.86258 24/7,
  []
 
 
-Overfull \hbox (6.20099pt too wide) in paragraph at lines 276--276
+Overfull \hbox (6.20099pt too wide) in paragraph at lines 298--298
 \T5/ptm/m/n/11.86258 ph°t
  []
 
 
-Overfull \hbox (6.20099pt too wide) in paragraph at lines 276--276
+Overfull \hbox (6.20099pt too wide) in paragraph at lines 298--298
 \T5/ptm/m/n/11.86258 hiªn
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--276
+Underfull \hbox (badness 10000) in paragraph at lines 298--298
 \T5/ptm/m/n/11.86258 of-
  []
 
 
-Overfull \hbox (8.03967pt too wide) in paragraph at lines 276--276
+Overfull \hbox (8.03967pt too wide) in paragraph at lines 298--298
 \T5/ptm/m/n/11.86258 fline| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
 \T5/ptm/m/n/11.86258 5 phÛt,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
 \T5/ptm/m/n/11.86258 ring
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
 \T5/ptm/m/n/11.86258 buffer
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
 \T5/ptm/m/n/11.86258 tr∂n
  []
 
-[9] [10]
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 341--341
+[11] [12]
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 363--363
 []|\T5/ptm/b/n/11.86258 STT| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 347--347
+Underfull \hbox (badness 10000) in paragraph at lines 369--369
 []|\T5/ptm/m/n/11.86258 Dashboard nh™n
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 347--347
+Underfull \hbox (badness 10000) in paragraph at lines 369--369
 \T5/ptm/m/n/11.86258 d˙ liªu mÓi qua
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 349--349
+Underfull \hbox (badness 10000) in paragraph at lines 371--371
 []|\T5/ptm/m/n/11.86258 Hi∫n th‡ thÊng b°o
  []
 
 
-Underfull \hbox (badness 3158) in paragraph at lines 351--351
+Underfull \hbox (badness 3158) in paragraph at lines 373--373
 []|\T5/ptm/m/n/11.86258 Ki∫m tra m¢ m†u
  []
 
-[11]
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 368--368
+[13]
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 390--390
 []|\T5/ptm/b/n/11.86258 STT| 
  []
 
 
-Underfull \hbox (badness 7832) in paragraph at lines 372--372
+Underfull \hbox (badness 7832) in paragraph at lines 394--394
 []|\T5/ptm/m/n/11.86258 Th∂m mÓi Sen-sor
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--374
+Underfull \hbox (badness 10000) in paragraph at lines 396--396
 []|\T5/ptm/m/n/11.86258 ThÊng tin c™p nh™t
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 376--376
+Underfull \hbox (badness 10000) in paragraph at lines 398--398
 []|\T5/ptm/m/n/11.86258 X‚a Gate-way c‚
  []
 
 
-Underfull \hbox (badness 1418) in paragraph at lines 380--380
+Underfull \hbox (badness 1418) in paragraph at lines 402--402
 []|\T5/ptm/m/n/11.86258 Ki∫m tra au-dit log
  []
 
 
-Underfull \hbox (badness 5189) in paragraph at lines 380--380
+Underfull \hbox (badness 5189) in paragraph at lines 402--402
 \T5/ptm/m/n/11.86258 thao t°c, ng˜Ìi th¸c
  []
 
 
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 397--397
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 419--419
 []|\T5/ptm/b/n/11.86258 STT| 
  []
 
 
-Underfull \hbox (badness 4156) in paragraph at lines 399--399
+Underfull \hbox (badness 4156) in paragraph at lines 421--421
 []|\T5/ptm/m/n/11.86258 C£nh b°o m˘c warn
  []
 
 
-Underfull \hbox (badness 6141) in paragraph at lines 401--401
+Underfull \hbox (badness 6141) in paragraph at lines 423--423
 []|\T5/ptm/m/n/11.86258 C£nh b°o m˘c dan-
  []
 
 
-Underfull \hbox (badness 6691) in paragraph at lines 403--403
+Underfull \hbox (badness 6691) in paragraph at lines 425--425
 []|\T5/ptm/m/n/11.86258 G˚i d˙ liªu v˜Òt
  []
 
 
-Underfull \hbox (badness 4217) in paragraph at lines 403--403
+Underfull \hbox (badness 4217) in paragraph at lines 425--425
 []|\T5/ptm/m/n/11.86258 KhÊng t§o c£nh b°o
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 407--407
+Underfull \hbox (badness 1215) in paragraph at lines 429--429
 []|\T5/ptm/m/n/11.86258 LÂc c£nh b°o theo
  []
 
 
-Underfull \hbox (badness 7468) in paragraph at lines 409--409
+Underfull \hbox (badness 7468) in paragraph at lines 431--431
 []|\T5/ptm/m/n/11.86258 Tr§ng th°i c™p nh™t
  []
 
-[12]
-Overfull \hbox (12.41371pt too wide) in paragraph at lines 428--429
+[14]
+Overfull \hbox (12.41371pt too wide) in paragraph at lines 450--451
 \T5/pcr/m/n/13 pose --env-file .env.production -f docker-compose.prod.yml
  []
 
-[13]
-Overfull \hbox (45.56369pt too wide) in paragraph at lines 432--433
+[15]
+Overfull \hbox (45.56369pt too wide) in paragraph at lines 454--455
 \T5/ptm/m/n/13 pro-duc-tion. Giao diªn web truy c™p ^^_˜Òc t§i ^^_‡a chø \T5/pcr/m/n/13 https://datn.thamnguyen.dev
  []
 
 
-LaTeX Warning: Reference `table:so_sanh_he_thong' on page 14 undefined on input line 439.
+LaTeX Warning: Reference `table:so_sanh_he_thong' on page 16 undefined on input line 461.
 
 
-Underfull \hbox (badness 2111) in paragraph at lines 448--449
+Underfull \hbox (badness 2111) in paragraph at lines 470--471
 []|\T5/ptm/b/n/11.86258 Hª thËng ^^_∑
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 450--450
+Underfull \hbox (badness 10000) in paragraph at lines 472--472
 []|\T5/ptm/m/n/11.86258 PM2.5,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 450--450
+Underfull \hbox (badness 10000) in paragraph at lines 472--472
 []|\T5/ptm/m/n/11.86258 PM2.5,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 450--450
+Underfull \hbox (badness 10000) in paragraph at lines 472--472
 []|\T5/ptm/m/n/11.86258 ^^^¶y ^^_ı
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 450--451
+Underfull \hbox (badness 10000) in paragraph at lines 472--473
 \T5/ptm/m/n/11.86258 CO$[]$, TVOC,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 452--452
+Underfull \hbox (badness 10000) in paragraph at lines 474--474
 []|\T5/ptm/m/n/11.86258 Chuy∂n
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 454--454
+Underfull \hbox (badness 10000) in paragraph at lines 476--476
 []|\T5/ptm/m/n/11.86258 Trung
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 454--454
+Underfull \hbox (badness 10000) in paragraph at lines 476--476
 []|\T5/ptm/m/n/11.86258 Cao
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 454--454
+Underfull \hbox (badness 10000) in paragraph at lines 476--476
 \T5/ptm/m/n/11.86258 ($\OMS/cmsy/m/n/12 ^^X$\T5/ptm/m/n/11.86258 269
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 454--454
+Underfull \hbox (badness 10000) in paragraph at lines 476--476
 []|\T5/ptm/m/n/11.86258 Trung
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 462--463
+Underfull \hbox (badness 10000) in paragraph at lines 484--485
 []|\T5/ptm/m/n/11.86258 C‚
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 464--464
+Underfull \hbox (badness 10000) in paragraph at lines 486--486
 []|\T5/ptm/m/n/11.86258 C‚ (nÎi
  []
 
-[14]
+[16]
 
 Package glossaries Warning: No \printnoidxglossary or \printnoidxglossaries
  found. (Remove \makenoidxglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-[15] (4_Ket_qua_thuc_nghiem.aux)
+[17] (4_Ket_qua_thuc_nghiem.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -1768,17 +1746,17 @@ Package logreq Info: Writing requests to '4_Ket_qua_thuc_nghiem.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33470 strings out of 467691
- 623063 string characters out of 5425054
- 1545437 words of memory out of 5000000
- 62021 multiletter control sequences out of 15000+600000
+ 33516 strings out of 467691
+ 624626 string characters out of 5425054
+ 1545705 words of memory out of 5000000
+ 62061 multiletter control sequences out of 15000+600000
  653591 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,124p,2618b,856s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
-Output written on 4_Ket_qua_thuc_nghiem.pdf (15 pages, 324037 bytes).
+Output written on 4_Ket_qua_thuc_nghiem.pdf (17 pages, 2021751 bytes).
 PDF statistics:
- 239 PDF objects out of 1000 (max. 8388607)
- 46 named destinations out of 1000 (max. 500000)
- 174 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 258 PDF objects out of 1000 (max. 8388607)
+ 52 named destinations out of 1000 (max. 500000)
+ 194 words of extra memory for PDF output out of 10000 (max. 10000000)
 
