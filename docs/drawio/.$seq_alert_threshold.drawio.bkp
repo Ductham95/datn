@@ -1,0 +1,262 @@
+<mxfile host="app.diagrams.net" modified="2026-06-17T15:01:00.000Z" agent="Antigravity" version="24.0.0">
+  <diagram name="Xử lý cảnh báo vượt ngưỡng" id="seq_alert_threshold">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title" value="Biểu đồ trình tự: Xử lý cảnh báo vượt ngưỡng" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontStyle=1;fontFamily=Arial;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="480" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Participant boxes -->
+        <mxCell id="tsvc_box" value="telemetryService" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="80" y="90" width="140" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="asvc_box" value="alertService" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="310" y="90" width="120" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="db_box" value="PostgreSQL&#xa;(alert_configs)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFF2CC;strokeColor=#333333;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="530" y="90" width="130" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="db2_box" value="PostgreSQL&#xa;(alerts)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#FFF2CC;strokeColor=#333333;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="750" y="90" width="120" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctrl_box" value="telemetry&#xa;Controller" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#DAE8FC;strokeColor=#333333;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="960" y="90" width="110" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="sio_box" value="Socket.IO" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#E1D5E7;strokeColor=#333333;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="90" width="100" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin_box" value="Admin&#xa;Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Arial;fillColor=#D5E8D4;strokeColor=#333333;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="90" width="110" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- Lifelines -->
+        <mxCell id="tsvc_life" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;dashPattern=5 3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="125" as="sourcePoint"/>
+            <mxPoint x="150" y="930" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="asvc_life" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;dashPattern=5 3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="125" as="sourcePoint"/>
+            <mxPoint x="370" y="930" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="db_life" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;dashPattern=5 3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="595" y="125" as="sourcePoint"/>
+            <mxPoint x="595" y="930" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="db2_life" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;dashPattern=5 3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="810" y="125" as="sourcePoint"/>
+            <mxPoint x="810" y="930" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ctrl_life" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;dashPattern=5 3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1015" y="125" as="sourcePoint"/>
+            <mxPoint x="1015" y="930" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sio_life" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;dashPattern=5 3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1200" y="125" as="sourcePoint"/>
+            <mxPoint x="1200" y="930" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="admin_life" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;dashPattern=5 3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1385" y="125" as="sourcePoint"/>
+            <mxPoint x="1385" y="930" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Activation bars -->
+        <mxCell id="tsvc_act" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="144" y="170" width="12" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="asvc_act" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="364" y="190" width="12" height="530" as="geometry"/>
+        </mxCell>
+        <mxCell id="db_act1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="589" y="240" width="12" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="db2_act1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="804" y="460" width="12" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="db2_act2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="804" y="590" width="12" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctrl_act" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1009" y="770" width="12" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="sio_act" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1194" y="820" width="12" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin_act" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1379" y="850" width="12" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Message 1: telemetryService -> alertService -->
+        <mxCell id="m1" value="1: checkThresholdsAndCreateAlerts(nodeId, reading)" style="endArrow=classic;html=1;fontSize=12;fontFamily=Arial;strokeColor=#333333;align=left;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="156" y="200" as="sourcePoint"/>
+            <mxPoint x="364" y="200" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 2: alertService -> DB alert_configs -->
+        <mxCell id="m2" value="2: SELECT * FROM alert_configs&#xa;WHERE id = 'default'" style="endArrow=classic;html=1;fontSize=12;fontFamily=Arial;strokeColor=#333333;align=left;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="376" y="250" as="sourcePoint"/>
+            <mxPoint x="589" y="250" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 2r: Return config -->
+        <mxCell id="m2r" value="config (ngưỡng warn/danger)" style="endArrow=open;endSize=8;dashed=1;html=1;fontSize=11;fontFamily=Arial;strokeColor=#999999;align=left;verticalAlign=top;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="589" y="275" as="sourcePoint"/>
+            <mxPoint x="376" y="275" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Self-message: Compare thresholds -->
+        <mxCell id="m3_self" value="3: So sánh 5 thông số&#xa;(PM2.5, PM10, CO₂, TVOC, Temp)&#xa;với ngưỡng warn/danger" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontFamily=Arial;fillColor=#F5F5F5;strokeColor=#999999;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="390" y="310" width="210" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="m3_arrow" value="" style="endArrow=classic;html=1;fontSize=12;fontFamily=Arial;strokeColor=#333333;curved=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="376" y="320" as="sourcePoint"/>
+            <mxPoint x="390" y="340" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="385" y="320"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Alt fragment: threshold check result -->
+        <mxCell id="alt_frame" value="alt" style="shape=umlFrame;whiteSpace=wrap;html=1;width=30;height=20;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;fontSize=13;fontStyle=3;fontFamily=Arial;fillColor=none;strokeColor=#333333;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="390" width="520" height="310" as="geometry"/>
+        </mxCell>
+
+        <!-- Alt label: no threshold exceeded -->
+        <mxCell id="alt_label1" value="[không có thông số vượt ngưỡng]" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=2;fontFamily=Arial;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="375" y="405" width="220" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- Return empty -->
+        <mxCell id="m4_empty" value="return []" style="endArrow=open;endSize=8;dashed=1;html=1;fontSize=11;fontFamily=Arial;strokeColor=#999999;align=left;verticalAlign=top;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="364" y="440" as="sourcePoint"/>
+            <mxPoint x="156" y="440" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Alt divider -->
+        <mxCell id="alt_divider" value="" style="endArrow=none;html=1;strokeColor=#333333;strokeWidth=1;dashed=1;dashPattern=8 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="460" as="sourcePoint"/>
+            <mxPoint x="860" y="460" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Alt label: threshold exceeded -->
+        <mxCell id="alt_label2" value="[có thông số vượt ngưỡng]" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=2;fontFamily=Arial;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="375" y="462" width="180" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- Message 4: alertService -> DB alerts (cooldown check) -->
+        <mxCell id="m4" value="4: SELECT metric FROM alerts&#xa;WHERE node_id = ? AND created_at > NOW() - 15 min" style="endArrow=classic;html=1;fontSize=12;fontFamily=Arial;strokeColor=#333333;align=left;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="376" y="500" as="sourcePoint"/>
+            <mxPoint x="804" y="500" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 4r: Return recent metrics -->
+        <mxCell id="m4r" value="recentMetrics (Set)" style="endArrow=open;endSize=8;dashed=1;html=1;fontSize=11;fontFamily=Arial;strokeColor=#999999;align=left;verticalAlign=top;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="804" y="520" as="sourcePoint"/>
+            <mxPoint x="376" y="520" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Note: Cooldown -->
+        <mxCell id="note_cd" value="Cooldown 15 phút:&#xa;nếu metric đã có alert&#xa;gần đây → bỏ qua" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;size=15;fontSize=11;fontFamily=Arial;fillColor=#FFF2CC;strokeColor=#999999;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="390" y="530" width="155" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Loop fragment -->
+        <mxCell id="loop_frame" value="loop [cho mỗi metric vượt ngưỡng chưa cooldown]" style="shape=umlFrame;whiteSpace=wrap;html=1;width=320;height=20;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;fontSize=12;fontStyle=2;fontFamily=Arial;fillColor=none;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="590" width="520" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Message 5: alertService -> DB (create alert) -->
+        <mxCell id="m5" value="5: INSERT INTO alerts&#xa;(node_id, type, severity, metric, value, threshold)" style="endArrow=classic;html=1;fontSize=12;fontFamily=Arial;strokeColor=#333333;align=left;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="376" y="620" as="sourcePoint"/>
+            <mxPoint x="804" y="620" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 5r: Return alert -->
+        <mxCell id="m5r" value="alert object" style="endArrow=open;endSize=8;dashed=1;html=1;fontSize=11;fontFamily=Arial;strokeColor=#999999;align=left;verticalAlign=top;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="804" y="650" as="sourcePoint"/>
+            <mxPoint x="376" y="650" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 6: alertService -> telemetryService (return) -->
+        <mxCell id="m6" value="6: return newAlerts[]" style="endArrow=open;endSize=8;dashed=1;html=1;fontSize=12;fontFamily=Arial;strokeColor=#333333;align=left;verticalAlign=top;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="364" y="730" as="sourcePoint"/>
+            <mxPoint x="156" y="730" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Opt fragment: broadcast alerts -->
+        <mxCell id="opt_frame" value="opt [newAlerts.length > 0]" style="shape=umlFrame;whiteSpace=wrap;html=1;width=180;height=20;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;fontSize=12;fontStyle=2;fontFamily=Arial;fillColor=none;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="760" width="1280" height="150" as="geometry"/>
+        </mxCell>
+
+        <!-- Message 7: telemetryService -> Controller (implicit return) -->
+        <mxCell id="m7" value="7: trả newAlerts cho Controller" style="endArrow=open;endSize=8;dashed=1;html=1;fontSize=12;fontFamily=Arial;strokeColor=#333333;align=left;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="156" y="790" as="sourcePoint"/>
+            <mxPoint x="1009" y="790" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 8: Controller -> Socket.IO -->
+        <mxCell id="m8" value="8: emit('new-alert', {alerts})" style="endArrow=classic;html=1;fontSize=12;fontFamily=Arial;strokeColor=#333333;align=left;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1021" y="830" as="sourcePoint"/>
+            <mxPoint x="1194" y="830" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 9: Socket.IO -> Admin -->
+        <mxCell id="m9" value="9: push event 'new-alert'" style="endArrow=classic;html=1;fontSize=12;fontFamily=Arial;strokeColor=#333333;align=left;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1206" y="860" as="sourcePoint"/>
+            <mxPoint x="1379" y="860" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 10: Admin display -->
+        <mxCell id="m10_self" value="10: Hiển thị cảnh báo mới&#xa;trên Admin Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontFamily=Arial;fillColor=#FFCCCC;strokeColor=#CC0000;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="1395" y="855" width="170" height="40" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

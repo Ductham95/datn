@@ -106,7 +106,6 @@ Giao diện được tổ chức thành hai nhóm layout riêng biệt. \textbf{
 
 Hệ thống sử dụng bộ thành phần giao diện tái sử dụng (component library) tự xây dựng, bao gồm 28 component: Button, Modal, Badge, Input, Select, Table, Pagination, Card, Tooltip và các component chuyên biệt như AQIGauge, MetricCard, HealthAdvisory. Tất cả component tuân thủ thiết kế nhất quán: dark theme với bảng màu chính là xanh dương đậm, các trạng thái tương tác (hover, focus, disabled) được định nghĩa thống nhất, và hiệu ứng chuyển đổi mượt mà (transition 200ms).
 
-%todo: Wireframe/mockup 3–4 màn hình chính — user tự thêm hình
 
 \subsection{Thiết kế module Backend}
 \label{subsection:4.2.4}
@@ -121,7 +120,34 @@ Phần này trình bày thiết kế chi tiết cho bốn module quan trọng nh
 
 \textbf{Module stationService} cung cấp dữ liệu cho các trang người dùng. Hàm \texttt{getNearestStation} sử dụng PostGIS để truy vấn trạm đo gần nhất dựa trên toạ độ GPS của người dùng thông qua hàm \texttt{ST\_Distance}. Hàm \texttt{getStationHistory} truy vấn dữ liệu lịch sử từ Continuous Aggregate \texttt{hourly\_measurements} cho chế độ xem theo giờ, hoặc từ bảng \texttt{measurements} gốc cho chế độ xem theo ngày.
 
-%todo: 2–3 biểu đồ trình tự (sequence diagram) cho use case quan trọng — user tự thêm hình
+Để minh hoạ luồng tương tác giữa các thành phần, phần tiếp theo trình bày ba biểu đồ trình tự (sequence diagram) cho ba use case quan trọng nhất của hệ thống.
+
+\textbf{Biểu đồ trình tự 1: Xử lý dữ liệu Telemetry.} Hình~\ref{fig:seq_telemetry} mô tả luồng xử lý khi Gateway gửi dữ liệu đo lường lên Backend — đây là luồng cốt lõi của hệ thống IoT. Gateway gửi HTTP POST chứa batch dữ liệu đến \texttt{telemetryController}. Controller chuyển tiếp cho \texttt{telemetryService}, module này thực hiện ba bước tuần tự: (i) lọc gói tin trùng lặp qua \texttt{dedupCache} (xử lý trường hợp nhiều Gateway cùng nhận một gói LoRa), (ii) thực thi database transaction để cập nhật trạng thái Gateway, cập nhật trạng thái Sensor Node và lưu dữ liệu đo lường vào bảng \texttt{measurements}, (iii) kiểm tra ngưỡng cảnh báo qua \texttt{alertService} — bước này chạy ngoài transaction để lỗi cảnh báo không ảnh hưởng đến luồng lưu dữ liệu chính. Sau đó, Controller tính chỉ số AQI qua \texttt{aqiService} và phát sự kiện \texttt{new\_telemetry\_data} qua Socket.IO đến Frontend. Nếu có cảnh báo mới, sự kiện \texttt{new-alert} cũng được phát để thông báo cho quản trị viên.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/seq_telemetry_ingestion.png}
+    \caption{Biểu đồ trình tự xử lý dữ liệu Telemetry}
+    \label{fig:seq_telemetry}
+\end{figure}
+
+\textbf{Biểu đồ trình tự 2: Xem Dashboard thời gian thực.} Hình~\ref{fig:seq_dashboard} mô tả luồng end-to-end từ khi người dùng truy cập trang Dashboard đến khi nhận cập nhật thời gian thực. Luồng gồm hai pha. Pha 1 (tải dữ liệu ban đầu): khi React mount component Dashboard, hook \texttt{useDashboard} gọi API \texttt{/api/stations/nearest} kèm toạ độ GPS của người dùng. Backend sử dụng PostGIS (\texttt{ST\_DistanceSphere}) để tìm trạm đo gần nhất, tính AQI và trả kết quả về Frontend để hiển thị. Pha 2 (cập nhật thời gian thực): hook \texttt{useSocket} kết nối WebSocket đến Backend. Mỗi khi có dữ liệu telemetry mới từ Gateway, Backend phát sự kiện \texttt{new\_telemetry\_data}; hook \texttt{useSocket} nhận sự kiện, cập nhật Zustand store, kích hoạt React Virtual DOM so sánh và chỉ vẽ lại các thành phần thay đổi trên giao diện.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/seq_dashboard_realtime.png}
+    \caption{Biểu đồ trình tự xem Dashboard thời gian thực}
+    \label{fig:seq_dashboard}
+\end{figure}
+
+\textbf{Biểu đồ trình tự 3: Xử lý cảnh báo vượt ngưỡng.} Hình~\ref{fig:seq_alert} mô tả chi tiết luồng kiểm tra và tạo cảnh báo khi dữ liệu đo lường vượt ngưỡng cấu hình. Sau khi \texttt{telemetryService} lưu dữ liệu thành công, module gọi \texttt{alertService.checkThresholdsAndCreateAlerts}. Module \texttt{alertService} thực hiện bốn bước: (i) truy vấn bảng \texttt{alert\_configs} để lấy ngưỡng warn/danger cho năm thông số (PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ), (ii) so sánh từng giá trị đo với ngưỡng tương ứng, (iii) kiểm tra cơ chế cooldown 15 phút — nếu cùng Sensor Node và cùng thông số đã có cảnh báo trong 15 phút gần đây thì bỏ qua để tránh tạo cảnh báo trùng lặp, (iv) tạo bản ghi cảnh báo mới trong bảng \texttt{alerts}. Kết quả trả về Controller, nếu có cảnh báo mới, Controller phát sự kiện \texttt{new-alert} qua Socket.IO để Admin Dashboard hiển thị thông báo tức thì.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/seq_alert_threshold.png}
+    \caption{Biểu đồ trình tự xử lý cảnh báo vượt ngưỡng}
+    \label{fig:seq_alert}
+\end{figure}
 
 \subsection{Thiết kế cơ sở dữ liệu}
 \label{subsection:4.2.5}
@@ -293,15 +319,13 @@ Bảng \ref{table:req_mapping} đối sánh kết quả đạt được với c�
 \hline
 \multicolumn{4}{|l|}{\textit{Yêu cầu phi chức năng (Bảng~\ref{table:nfr})}} \\
 \hline
-10 & Hiệu năng: realtime $\leq$ 2s, lịch sử $\leq$ 3s & Đạt & %todo: bổ sung kết quả đo latency thực tế trên production \\
+10 & Độ tin cậy: 24/7, phát hiện offline & Đạt & Cron job 5 phút, ring buffer trên Gateway \\
 \hline
-11 & Độ tin cậy: 24/7, phát hiện offline & Đạt & Cron job 5 phút, ring buffer trên Gateway \\
+11 & Khả năng mở rộng: Hub-Spoke & Đạt & Mục~\ref{subsection:4.1.1}, tự đăng ký Gateway \\
 \hline
-12 & Khả năng mở rộng: Hub-Spoke & Đạt & Mục~\ref{subsection:4.1.1}, tự đăng ký Gateway \\
+12 & Tính dễ sử dụng: responsive, đa ngôn ngữ & Đạt & Mục~\ref{subsection:4.2.3}, i18n Việt--Anh \\
 \hline
-13 & Tính dễ sử dụng: responsive, đa ngôn ngữ & Đạt & Mục~\ref{subsection:4.2.3}, i18n Việt--Anh \\
-\hline
-14 & Bảo mật: JWT, bcrypt, audit log & Đạt & Mục~\ref{subsection:4.2.4}, kiểm thử TC6 Bảng~\ref{table:test_device} \\
+13 & Bảo mật: JWT, bcrypt, audit log & Đạt & Mục~\ref{subsection:4.2.4}, kiểm thử TC6 Bảng~\ref{table:test_device} \\
 \hline
 \end{tabular}
 \end{table}
@@ -322,11 +346,15 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
 
 \textbf{Lịch sử dữ liệu.} Trang lịch sử cho phép người dùng chọn trạm đo, thông số cần xem và chế độ hiển thị (theo giờ hoặc theo ngày). Biểu đồ được vẽ bằng ECharts, hỗ trợ zoom, tooltip và responsive. Chế độ theo giờ truy vấn từ Continuous Aggregate \texttt{hourly\_measurements} để đảm bảo hiệu năng.
 
-%todo: Screenshot Lịch sử dữ liệu — user tự thêm hình
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/lich_su.png}
+    \caption{Lịch sử dữ liệu}
+    \label{fig:lich_su}
+\end{figure}
 
 \textbf{Bản đồ AQI.} Trang bản đồ hiển thị toàn bộ các trạm đo trên bản đồ Leaflet với tile OpenStreetMap. Mỗi trạm được đánh dấu bằng marker hình tròn với mã màu AQI. Người dùng nhấn vào marker để xem popup thông tin chi tiết gồm tên trạm, giá trị AQI, PM2.5 và thời gian cập nhật cuối.
 
-%todo: Screenshot Bản đồ AQI — user tự thêm hình
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/ban_do_aqi.png}
@@ -336,7 +364,6 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
 
 \textbf{Xếp hạng ô nhiễm.} Trang xếp hạng hiển thị danh sách tất cả trạm đo được sắp xếp theo mức AQI từ cao đến thấp. Mỗi dòng hiển thị tên trạm, giá trị AQI, nồng độ PM2.5 và badge mã màu tương ứng.
 
-%todo: Screenshot Xếp hạng — user tự thêm hình
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/xep_hang.png}
@@ -346,7 +373,6 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
 
 \textbf{Dashboard quản trị.} Trang dashboard quản trị hiển thị thông tin tổng quan về hệ thống, bao gồm số lượng Gateway và Sensor Node, trạng thái online/offline, thời gian gửi cuối, mức pin (đối với Sensor Node) và cường độ tín hiệu LoRa (RSSI). 
 
-%todo: Screenshot Quản lý thiết bị — user tự thêm hình
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/dashboard_quan_tri.png}
@@ -356,7 +382,6 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
 
 \textbf{Quản lý thiết bị.} Trang quản trị thiết bị hiển thị hai bảng riêng biệt cho Gateway và Sensor Node. Mỗi bảng cho biết trạng thái online/offline, thời gian gửi cuối, mức pin (đối với Sensor Node) và cường độ tín hiệu LoRa (RSSI). Quản trị viên thêm, sửa, xóa thiết bị thông qua modal form với xác thực dữ liệu đầu vào.
 
-%todo: Screenshot Quản lý thiết bị — user tự thêm hình
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/quan_ly_thiet_bi.png}
@@ -366,7 +391,6 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
 
 \textbf{Giám sát cảnh báo.} Trang cảnh báo hiển thị danh sách phân trang các cảnh báo, hỗ trợ lọc theo thiết bị, mức độ (warn/danger) và trạng thái xác nhận. Mỗi cảnh báo hiển thị thông tin thời gian, thiết bị, thông số, giá trị vi phạm và ngưỡng. Quản trị viên có thể xác nhận đã xử lý (acknowledge) từng cảnh báo. Cảnh báo mới được phát thời gian thực qua Socket.IO.
 
-%todo: Screenshot Giám sát cảnh báo — user tự thêm hình
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/giam_sat_canh_bao.png}
@@ -376,7 +400,6 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
 
 \textbf{Cấu hình hệ thống.} Trang cấu hình cho phép quản trị viên thiết lập ngưỡng cảnh báo cho năm thông số, mỗi thông số có hai mức warn và danger. Giao diện hiển thị các trường nhập liệu nhóm theo thông số, kèm giá trị mặc định theo chuẩn \gls{USEPA}.
 
-%todo: Screenshot Cấu hình — user tự thêm hình
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/cau_hinh.png}
@@ -386,7 +409,6 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
 
 \textbf{Xuất dữ liệu CSV.} Trang xuất dữ liệu cho phép quản trị viên chọn Sensor Node và khoảng thời gian, sau đó xuất tệp CSV chứa toàn bộ dữ liệu đo lường. Tệp CSV được tạo phía Backend bằng thư viện \texttt{json2csv} và trả về dưới dạng download.
 
-%todo: Screenshot Xuất CSV — user tự thêm hình
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/xuat_csv.png}
@@ -396,7 +418,6 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
 
 \textbf{Quản lý tài khoản.} Trang quản lý tài khoản hiển thị danh sách các tài khoản trong hệ thống, hỗ trợ tìm kiếm, lọc và phân trang. Quản trị viên có thể thêm, sửa, xóa tài khoản thông qua modal form với xác thực dữ liệu đầu vào.
 
-%todo: Screenshot Quản lý tài khoản — user tự thêm hình
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/quan_ly_tai_khoan.png}
@@ -406,7 +427,6 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
 
 \textbf{Nhật ký hệ thống.} Trang nhật ký hệ thống hiển thị danh sách các sự kiện xảy ra trong hệ thống, hỗ trợ tìm kiếm, lọc và phân trang. Quản trị viên có thể xem nhật ký hệ thống thông qua modal form với xác thực dữ liệu đầu vào.
 
-%todo: Screenshot Nhật ký hệ thống — user tự thêm hình
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/nhat_ky_he_thong.png}
@@ -524,7 +544,6 @@ Quy trình triển khai được thực hiện bằng một lệnh duy nhất: \
 
 Sau khi triển khai, hệ thống được xác nhận hoạt động ổn định trên môi trường production. Giao diện web truy cập được tại địa chỉ \texttt{https://datn.thamnguyen.dev} với chứng chỉ SSL hợp lệ. Kết nối WebSocket (Socket.IO) hoạt động đúng: khi Gateway gửi dữ liệu mới, dashboard cập nhật trong thời gian thực mà không cần tải lại trang. Bốn container Docker (db, backend, nginx, certbot) duy trì trạng thái healthy liên tục.
 
-%todo: Bổ sung thông tin uptime thực tế (số ngày chạy liên tục) và screenshot trình duyệt truy cập https://datn.thamnguyen.dev — user tự thêm
 
 \subsection{So sánh với các hệ thống hiện có}
 \label{subsection:4.5.2}
