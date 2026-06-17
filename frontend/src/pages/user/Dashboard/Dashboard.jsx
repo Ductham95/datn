@@ -1,4 +1,5 @@
 import { useState, useMemo, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Wind, Droplets, Thermometer, CloudSun, Gauge, Leaf } from 'lucide-react';
 import { useDashboard } from '@/hooks/useDashboard';
@@ -185,7 +186,17 @@ export default function Dashboard() {
 
       {/* Map + Station List Row */}
       <div className={styles.gridRow}>
-        <Card title={t('dashboard.mapTitle')} icon={null} className={styles.mapCard} padding="none">
+        <Card
+          title={t('dashboard.mapTitle')}
+          icon={null}
+          className={styles.mapCard}
+          padding="none"
+          action={
+            <Link to="/map" className={styles.viewDetailLink}>
+              {t('history.viewDetail')} →
+            </Link>
+          }
+        >
           <AQIMap stations={mergedStations} userPosition={position} focusPosition={focusPosition} />
         </Card>
         <NearestStation
@@ -198,7 +209,21 @@ export default function Dashboard() {
 
       {/* History Chart */}
       <div className={styles.chartRow}>
-        <Card title={t('dashboard.historyTitle')} className={styles.chartCard} padding="sm">
+        <Card
+          title={t('dashboard.historyTitle')}
+          className={styles.chartCard}
+          padding="sm"
+          action={
+            primaryStation && (
+              <Link
+                to={`/history?stationId=${primaryStation.id}`}
+                className={styles.viewDetailLink}
+              >
+                {t('history.viewDetail')} →
+              </Link>
+            )
+          }
+        >
           {primaryStation && (
             <HistoryChart stationId={primaryStation.id} />
           )}

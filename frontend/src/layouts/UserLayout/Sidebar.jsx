@@ -6,6 +6,7 @@ import styles from './Sidebar.module.css';
 const navItems = [
   { path: '/',         icon: LayoutDashboard, labelKey: 'nav.dashboard' },
   { path: '/map',      icon: Map,             labelKey: 'nav.map' },
+  { path: '/history',  icon: BarChart3,        labelKey: 'nav.history' },
   { path: '/ranking',  icon: Trophy,          labelKey: 'nav.ranking' },
 ];
 

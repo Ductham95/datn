@@ -76,6 +76,10 @@
   },
   "history": {
     "title": "Lịch sử dữ liệu",
+    "pageTitle": "Lịch sử dữ liệu",
+    "pageSubtitle": "Xem lịch sử chi tiết các thông số chất lượng không khí",
+    "viewDetail": "Xem chi tiết",
+    "selectStation": "Chọn trạm quan trắc",
     "hourly": "Theo giờ",
     "raw": "Dữ liệu thô",
     "selectMetric": "Chọn thông số",

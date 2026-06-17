@@ -76,6 +76,10 @@
   },
   "history": {
     "title": "Data History",
+    "pageTitle": "Data History",
+    "pageSubtitle": "View detailed historical data for air quality metrics",
+    "viewDetail": "View details",
+    "selectStation": "Select monitoring station",
     "hourly": "Hourly",
     "raw": "Raw Data",
     "selectMetric": "Select metric",

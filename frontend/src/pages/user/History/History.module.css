@@ -1,0 +1,87 @@
+.page {
+  animation: fadeIn 300ms ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.header {
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+
+/* ─── Station Selector ─── */
+.selectorRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.selectorLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.select {
+  flex: 1;
+  max-width: 400px;
+  padding: 8px 12px;
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light, rgba(99, 102, 241, 0.15));
+}
+
+/* ─── Chart Card ─── */
+.chartCard {
+  min-height: 500px;
+}
+
+/* ─── Empty State ─── */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-16) 0;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 480px) {
+  .selectorRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .select {
+    max-width: 100%;
+    width: 100%;
+  }
+}

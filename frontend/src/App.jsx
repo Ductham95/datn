@@ -11,6 +11,7 @@ const Dashboard = lazy(() => import('@/pages/user/Dashboard/Dashboard'));
 const MapView = lazy(() => import('@/pages/user/MapView/MapView'));
 const StationDetail = lazy(() => import('@/pages/user/StationDetail/StationDetail'));
 const Ranking = lazy(() => import('@/pages/user/Ranking/Ranking'));
+const History = lazy(() => import('@/pages/user/History/History'));
 const NotFound = lazy(() => import('@/pages/user/NotFound/NotFound'));
 const Login = lazy(() => import('@/pages/admin/Login/Login'));
 const AdminDashboard = lazy(() => import('@/pages/admin/AdminDashboard/AdminDashboard'));
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/map" element={<MapView />} />
             <Route path="/station/:id" element={<StationDetail />} />
             <Route path="/ranking" element={<Ranking />} />
+            <Route path="/history" element={<History />} />
           </Route>
 
           {/* === Admin Routes === */}

@@ -313,7 +313,12 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
 
 \textbf{Dashboard chất lượng không khí.} Khi người dùng truy cập trang Dashboard, hệ thống yêu cầu quyền truy cập vị trí, sau đó hiển thị dữ liệu của trạm đo gần nhất. Giao diện hiển thị chỉ số AQI tổng hợp dưới dạng gauge lớn ở trung tâm, kèm mã màu theo chuẩn \gls{USEPA}. Phía dưới là sáu thẻ metric hiển thị PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ và độ ẩm, mỗi thẻ kèm đánh giá mức độ. Bên cạnh là khuyến nghị sức khỏe dựa trên mức AQI hiện tại. Dữ liệu được cập nhật thời gian thực khi Backend phát sự kiện qua Socket.IO.
 
-%todo: Screenshot Dashboard — user tự thêm hình
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/dashboard.png}
+    \caption{Dashboard chất lượng không khí}
+    \label{fig:dashboard}
+\end{figure}
 
 \textbf{Lịch sử dữ liệu.} Trang lịch sử cho phép người dùng chọn trạm đo, thông số cần xem và chế độ hiển thị (theo giờ hoặc theo ngày). Biểu đồ được vẽ bằng ECharts, hỗ trợ zoom, tooltip và responsive. Chế độ theo giờ truy vấn từ Continuous Aggregate \texttt{hourly\_measurements} để đảm bảo hiệu năng.
 
@@ -322,26 +327,92 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
 \textbf{Bản đồ AQI.} Trang bản đồ hiển thị toàn bộ các trạm đo trên bản đồ Leaflet với tile OpenStreetMap. Mỗi trạm được đánh dấu bằng marker hình tròn với mã màu AQI. Người dùng nhấn vào marker để xem popup thông tin chi tiết gồm tên trạm, giá trị AQI, PM2.5 và thời gian cập nhật cuối.
 
 %todo: Screenshot Bản đồ AQI — user tự thêm hình
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/ban_do_aqi.png}
+    \caption{Bản đồ AQI}
+    \label{fig:ban_do_aqi}
+\end{figure}
 
 \textbf{Xếp hạng ô nhiễm.} Trang xếp hạng hiển thị danh sách tất cả trạm đo được sắp xếp theo mức AQI từ cao đến thấp. Mỗi dòng hiển thị tên trạm, giá trị AQI, nồng độ PM2.5 và badge mã màu tương ứng.
 
 %todo: Screenshot Xếp hạng — user tự thêm hình
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/xep_hang.png}
+    \caption{Xếp hạng ô nhiễm}
+    \label{fig:xep_hang}
+\end{figure}
+
+\textbf{Dashboard quản trị.} Trang dashboard quản trị hiển thị thông tin tổng quan về hệ thống, bao gồm số lượng Gateway và Sensor Node, trạng thái online/offline, thời gian gửi cuối, mức pin (đối với Sensor Node) và cường độ tín hiệu LoRa (RSSI). 
+
+%todo: Screenshot Quản lý thiết bị — user tự thêm hình
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/dashboard_quan_tri.png}
+    \caption{Dashboard quản trị}
+    \label{fig:dashboard_quan_tri}
+\end{figure}
 
 \textbf{Quản lý thiết bị.} Trang quản trị thiết bị hiển thị hai bảng riêng biệt cho Gateway và Sensor Node. Mỗi bảng cho biết trạng thái online/offline, thời gian gửi cuối, mức pin (đối với Sensor Node) và cường độ tín hiệu LoRa (RSSI). Quản trị viên thêm, sửa, xóa thiết bị thông qua modal form với xác thực dữ liệu đầu vào.
 
 %todo: Screenshot Quản lý thiết bị — user tự thêm hình
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/quan_ly_thiet_bi.png}
+    \caption{Quản lý thiết bị}
+    \label{fig:quan_ly_thiet_bi}
+\end{figure}
 
 \textbf{Giám sát cảnh báo.} Trang cảnh báo hiển thị danh sách phân trang các cảnh báo, hỗ trợ lọc theo thiết bị, mức độ (warn/danger) và trạng thái xác nhận. Mỗi cảnh báo hiển thị thông tin thời gian, thiết bị, thông số, giá trị vi phạm và ngưỡng. Quản trị viên có thể xác nhận đã xử lý (acknowledge) từng cảnh báo. Cảnh báo mới được phát thời gian thực qua Socket.IO.
 
 %todo: Screenshot Giám sát cảnh báo — user tự thêm hình
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/giam_sat_canh_bao.png}
+    \caption{Giám sát cảnh báo}
+    \label{fig:giam_sat_canh_bao}
+\end{figure}
 
 \textbf{Cấu hình hệ thống.} Trang cấu hình cho phép quản trị viên thiết lập ngưỡng cảnh báo cho năm thông số, mỗi thông số có hai mức warn và danger. Giao diện hiển thị các trường nhập liệu nhóm theo thông số, kèm giá trị mặc định theo chuẩn \gls{USEPA}.
 
 %todo: Screenshot Cấu hình — user tự thêm hình
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/cau_hinh.png}
+    \caption{Cấu hình hệ thống}
+    \label{fig:cau_hinh}
+\end{figure}
 
 \textbf{Xuất dữ liệu CSV.} Trang xuất dữ liệu cho phép quản trị viên chọn Sensor Node và khoảng thời gian, sau đó xuất tệp CSV chứa toàn bộ dữ liệu đo lường. Tệp CSV được tạo phía Backend bằng thư viện \texttt{json2csv} và trả về dưới dạng download.
 
 %todo: Screenshot Xuất CSV — user tự thêm hình
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/xuat_csv.png}
+    \caption{Xuất dữ liệu CSV}
+    \label{fig:xuat_csv}
+\end{figure}
+
+\textbf{Quản lý tài khoản.} Trang quản lý tài khoản hiển thị danh sách các tài khoản trong hệ thống, hỗ trợ tìm kiếm, lọc và phân trang. Quản trị viên có thể thêm, sửa, xóa tài khoản thông qua modal form với xác thực dữ liệu đầu vào.
+
+%todo: Screenshot Quản lý tài khoản — user tự thêm hình
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/quan_ly_tai_khoan.png}
+    \caption{Quản lý tài khoản}
+    \label{fig:quan_ly_tai_khoan}
+\end{figure}
+
+\textbf{Nhật ký hệ thống.} Trang nhật ký hệ thống hiển thị danh sách các sự kiện xảy ra trong hệ thống, hỗ trợ tìm kiếm, lọc và phân trang. Quản trị viên có thể xem nhật ký hệ thống thông qua modal form với xác thực dữ liệu đầu vào.
+
+%todo: Screenshot Nhật ký hệ thống — user tự thêm hình
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/nhat_ky_he_thong.png}
+    \caption{Nhật ký hệ thống}
+    \label{fig:nhat_ky_he_thong}
+\end{figure}
 
 \section{Kiểm thử}
 \label{section:4.4}
