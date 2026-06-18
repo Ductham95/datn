@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  17 JUN 2026 22:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  18 JUN 2026 16:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1205,7 +1205,7 @@ Package hyperref Info: Link coloring OFF on input line 2.
  [1
 
 {C:/Users/ADMIN/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/vntex/t5.enc}]
-<../Hinhve/package_tongquan.png, id=99, 3405.72375pt x 1327.96124pt>
+<../Hinhve/package_tongquan.png, id=107, 3405.72375pt x 1327.96124pt>
 File: ../Hinhve/package_tongquan.png Graphic file (type png)
 <use ../Hinhve/package_tongquan.png>
 Package pdftex.def Info: ../Hinhve/package_tongquan.png  used on input line 27.
@@ -1256,30 +1256,29 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [2 <../Hinhve/package_tongquan.png>]
-<../Hinhve/module_backend_services.png, id=109, 4044.10875pt x 2839.60875pt>
+<../Hinhve/module_backend_services.png, id=117, 4044.10875pt x 2839.60875pt>
 File: ../Hinhve/module_backend_services.png Graphic file (type png)
 <use ../Hinhve/module_backend_services.png>
 Package pdftex.def Info: ../Hinhve/module_backend_services.png  used on input line 47.
 (pdftex.def)             Requested size: 426.79135pt x 299.66257pt.
- [3 <../Hinhve/module_backend_services.png>]
-<../Hinhve/schematic_sensor_node.png, id=116, 879.285pt x 719.68875pt>
+
+Overfull \hbox (10.30563pt too wide) in paragraph at lines 55--56
+[]\T5/ptm/b/n/13 Nhâm xû lþ dú li»u teleme-try \T5/ptm/m/n/13 bao gçm bèn mod-ule: \T5/pcr/m/n/13 teleme-tryCon-troller
+ []
+
+[3 <../Hinhve/module_backend_services.png>]
+<../Hinhve/schematic_sensor_node.png, id=128, 879.285pt x 719.68875pt>
 File: ../Hinhve/schematic_sensor_node.png Graphic file (type png)
 <use ../Hinhve/schematic_sensor_node.png>
 Package pdftex.def Info: ../Hinhve/schematic_sensor_node.png  used on input line 71.
 (pdftex.def)             Requested size: 426.79135pt x 349.32317pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../Hinhve/schematic_gateway.png, id=117, 1057.9525pt x 811.03pt>
+ [4 <../Hinhve/schematic_sensor_node.png (PNG copy)>]
+<../Hinhve/schematic_gateway.png, id=135, 1057.9525pt x 811.03pt>
 File: ../Hinhve/schematic_gateway.png Graphic file (type png)
 <use ../Hinhve/schematic_gateway.png>
 Package pdftex.def Info: ../Hinhve/schematic_gateway.png  used on input line 82.
 (pdftex.def)             Requested size: 426.79135pt x 327.17831pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[4] [5 <../Hinhve/schematic_sensor_node.png (PNG copy)>] [6 <../Hinhve/schematic_gateway.png (PNG copy)>]
+ [5 <../Hinhve/schematic_gateway.png (PNG copy)>] [6]
 
 LaTeX Warning: Reference `table:bp_pm25' on page 7 undefined on input line 117.
 
@@ -1292,7 +1291,7 @@ Overfull \hbox (2.39058pt too wide) in paragraph at lines 121--122
  []
 
 [7]
-<../Hinhve/seq_telemetry_ingestion.png, id=139, 4233.8175pt x 2746.26pt>
+<../Hinhve/seq_telemetry_ingestion.png, id=151, 4233.8175pt x 2746.26pt>
 File: ../Hinhve/seq_telemetry_ingestion.png Graphic file (type png)
 <use ../Hinhve/seq_telemetry_ingestion.png>
 Package pdftex.def Info: ../Hinhve/seq_telemetry_ingestion.png  used on input line 129.
@@ -1303,7 +1302,7 @@ Overfull \hbox (16.98961pt too wide) in paragraph at lines 134--135
  []
 
 [8 <../Hinhve/seq_telemetry_ingestion.png>]
-<../Hinhve/seq_dashboard_realtime.png, id=148, 4691.5275pt x 2806.485pt>
+<../Hinhve/seq_dashboard_realtime.png, id=159, 4691.5275pt x 2806.485pt>
 File: ../Hinhve/seq_dashboard_realtime.png Graphic file (type png)
 <use ../Hinhve/seq_dashboard_realtime.png>
 Package pdftex.def Info: ../Hinhve/seq_dashboard_realtime.png  used on input line 138.
@@ -1318,13 +1317,13 @@ Overfull \hbox (3.87265pt too wide) in paragraph at lines 143--144
 \T5/ptm/m/n/13 Mod-ule \T5/pcr/m/n/13 alert-Ser-vice \T5/ptm/m/n/13 thüc hi»n bèn b÷îc: (i) truy v§n b£ng \T5/pcr/m/n/13 alert_configs
  []
 
-<../Hinhve/seq_alert_threshold.png, id=150, 4540.965pt x 2746.26pt>
+<../Hinhve/seq_alert_threshold.png, id=161, 4540.965pt x 2746.26pt>
 File: ../Hinhve/seq_alert_threshold.png Graphic file (type png)
 <use ../Hinhve/seq_alert_threshold.png>
 Package pdftex.def Info: ../Hinhve/seq_alert_threshold.png  used on input line 147.
 (pdftex.def)             Requested size: 426.79135pt x 258.08981pt.
 [9 <../Hinhve/seq_dashboard_realtime.png>]
-<../Hinhve/er_database.png, id=157, 3499.0725pt x 3408.735pt>
+<../Hinhve/er_database.png, id=169, 3499.0725pt x 3408.735pt>
 File: ../Hinhve/er_database.png Graphic file (type png)
 <use ../Hinhve/er_database.png>
 Package pdftex.def Info: ../Hinhve/er_database.png  used on input line 159.
@@ -1333,102 +1332,13 @@ Package pdftex.def Info: ../Hinhve/er_database.png  used on input line 159.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[10 <../Hinhve/seq_alert_threshold.png>]
 
-LaTeX Warning: Reference `table:nfr' on page 10 undefined on input line 172.
+LaTeX Warning: Reference `table:nfr' on page 11 undefined on input line 172.
 
-[10 <../Hinhve/seq_alert_threshold.png>] [11 <../Hinhve/er_database.png>]
+[11 <../Hinhve/er_database.png>]
 LaTeX Font Info:    Calculating math sizes for size <11.86258> on input line 193.
-
-Overfull \hbox (3.14519pt too wide) in paragraph at lines 199--200
-[]|\T5/ptm/m/n/11.86258 https://expressjs.com/| 
- []
-
-
-Overfull \hbox (9.2188pt too wide) in paragraph at lines 201--202
-[]|\T5/ptm/m/n/11.86258 https://www.prisma.io/| 
- []
-
-
-Overfull \hbox (47.06047pt too wide) in paragraph at lines 205--206
-[]|\T5/ptm/m/n/11.86258 https://github.com/auth0/node-
- []
-
-
-Overfull \hbox (23.99962pt too wide) in paragraph at lines 207--208
-[]|\T5/ptm/m/n/11.86258 https://github.com/nicolo-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 209--209
-[]|\T5/ptm/m/n/11.86258 B£o mªt HTTP
- []
-
-
-Overfull \hbox (22.36255pt too wide) in paragraph at lines 209--210
-[]|\T5/ptm/m/n/11.86258 https://helmetjs.github.io/| 
- []
-
-
-Overfull \hbox (17.40404pt too wide) in paragraph at lines 211--212
-[]|\T5/ptm/m/n/11.86258 https://github.com/node-
- []
-
-
-Overfull \hbox (79.04193pt too wide) in paragraph at lines 213--214
-[]|\T5/ptm/m/n/11.86258 https://mircoithink.github.io/json2csv| 
- []
-
-
-Overfull \hbox (31.81699pt too wide) in paragraph at lines 215--216
-[]|\T5/ptm/m/n/11.86258 https://www.postgresql.org/| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 217--217
-[]|\T5/ptm/m/n/11.86258 Extension time-
- []
-
-
-Overfull \hbox (32.69482pt too wide) in paragraph at lines 217--218
-[]|\T5/ptm/m/n/11.86258 https://www.timescale.com/| 
- []
-
-
-Overfull \hbox (10.87961pt too wide) in paragraph at lines 237--238
-[]|\T5/ptm/m/n/11.86258 https://reactrouter.com/| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 239--240
-[]|\T5/ptm/m/n/11.86258 https://axios-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--241
-[]|\T5/ptm/m/n/11.86258 Leaflet + React-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--242
-[]|\T5/ptm/m/n/11.86258 https://react-
- []
-
-
-Overfull \hbox (24.6876pt too wide) in paragraph at lines 243--244
-[]|\T5/ptm/m/n/11.86258 https://echarts.apache.org/| 
- []
-
-
-Overfull \hbox (21.25935pt too wide) in paragraph at lines 245--246
-[]|\T5/ptm/m/n/11.86258 https://react.i18next.com/| 
- []
-
-
-Overfull \hbox (38.97015pt too wide) in paragraph at lines 247--248
-[]|\T5/ptm/m/n/11.86258 https://zustand.docs.pmnd.rs/| 
- []
-
-[12]
+ [12]
 Underfull \hbox (badness 10000) in paragraph at lines 274--274
 []|\T5/ptm/m/n/11.86258 Firmware Sen-sor
  []
@@ -1522,237 +1432,317 @@ Underfull \hbox (badness 10000) in paragraph at lines 318--318
 LaTeX Warning: Reference `table:nfr' on page 13 undefined on input line 320.
 
 [13]
-<../Hinhve/dashboard.png, id=202, 1920.17375pt x 1871.99374pt>
+<../Hinhve/dashboard.png, id=214, 1920.17375pt x 1871.99374pt>
 File: ../Hinhve/dashboard.png Graphic file (type png)
 <use ../Hinhve/dashboard.png>
 Package pdftex.def Info: ../Hinhve/dashboard.png  used on input line 342.
 (pdftex.def)             Requested size: 426.79135pt x 416.06741pt.
  [14]
-<../Hinhve/lich_su.png, id=211, 1920.17375pt x 1104.125pt>
+<../Hinhve/lich_su.png, id=223, 1920.17375pt x 1104.125pt>
 File: ../Hinhve/lich_su.png Graphic file (type png)
 <use ../Hinhve/lich_su.png>
 Package pdftex.def Info: ../Hinhve/lich_su.png  used on input line 351.
 (pdftex.def)             Requested size: 426.79135pt x 245.40169pt.
  [15 <../Hinhve/dashboard.png>]
-<../Hinhve/ban_do_aqi.png, id=218, 1920.17375pt x 998.73125pt>
+<../Hinhve/ban_do_aqi.png, id=230, 1920.17375pt x 998.73125pt>
 File: ../Hinhve/ban_do_aqi.png Graphic file (type png)
 <use ../Hinhve/ban_do_aqi.png>
 Package pdftex.def Info: ../Hinhve/ban_do_aqi.png  used on input line 360.
 (pdftex.def)             Requested size: 426.79135pt x 221.97697pt.
-<../Hinhve/xep_hang.png, id=219, 1154.51324pt x 584.78474pt>
+<../Hinhve/xep_hang.png, id=233, 1154.51324pt x 584.78474pt>
 File: ../Hinhve/xep_hang.png Graphic file (type png)
 <use ../Hinhve/xep_hang.png>
 Package pdftex.def Info: ../Hinhve/xep_hang.png  used on input line 369.
 (pdftex.def)             Requested size: 426.79135pt x 216.17958pt.
  [16 <../Hinhve/lich_su.png> <../Hinhve/ban_do_aqi.png>]
-<../Hinhve/dashboard_quan_tri.png, id=228, 1920.17375pt x 1555.8125pt>
-File: ../Hinhve/dashboard_quan_tri.png Graphic file (type png)
-<use ../Hinhve/dashboard_quan_tri.png>
-Package pdftex.def Info: ../Hinhve/dashboard_quan_tri.png  used on input line 378.
-(pdftex.def)             Requested size: 426.79135pt x 345.79329pt.
- [17 <../Hinhve/xep_hang.png> <../Hinhve/dashboard_quan_tri.png>]
-<../Hinhve/quan_ly_thiet_bi.png, id=237, 1920.17375pt x 1158.3275pt>
-File: ../Hinhve/quan_ly_thiet_bi.png Graphic file (type png)
-<use ../Hinhve/quan_ly_thiet_bi.png>
-Package pdftex.def Info: ../Hinhve/quan_ly_thiet_bi.png  used on input line 387.
-(pdftex.def)             Requested size: 426.79135pt x 257.44868pt.
-<../Hinhve/giam_sat_canh_bao.png, id=238, 1920.17375pt x 1163.34625pt>
-File: ../Hinhve/giam_sat_canh_bao.png Graphic file (type png)
-<use ../Hinhve/giam_sat_canh_bao.png>
-Package pdftex.def Info: ../Hinhve/giam_sat_canh_bao.png  used on input line 396.
-(pdftex.def)             Requested size: 426.79135pt x 258.56415pt.
- [18 <../Hinhve/quan_ly_thiet_bi.png>]
-<../Hinhve/cau_hinh.png, id=245, 1927.2pt x 973.6375pt>
-File: ../Hinhve/cau_hinh.png Graphic file (type png)
-<use ../Hinhve/cau_hinh.png>
-Package pdftex.def Info: ../Hinhve/cau_hinh.png  used on input line 405.
-(pdftex.def)             Requested size: 426.79135pt x 215.61227pt.
-<../Hinhve/xuat_csv.png, id=246, 1927.2pt x 973.6375pt>
+<../Hinhve/xuat_csv.png, id=244, 1927.2pt x 973.6375pt>
 File: ../Hinhve/xuat_csv.png Graphic file (type png)
 <use ../Hinhve/xuat_csv.png>
-Package pdftex.def Info: ../Hinhve/xuat_csv.png  used on input line 414.
+Package pdftex.def Info: ../Hinhve/xuat_csv.png  used on input line 376.
 (pdftex.def)             Requested size: 426.79135pt x 215.61227pt.
- [19 <../Hinhve/giam_sat_canh_bao.png> <../Hinhve/cau_hinh.png>]
-<../Hinhve/quan_ly_tai_khoan.png, id=256, 1927.2pt x 973.6375pt>
+<../Hinhve/quan_ly_tai_khoan.png, id=245, 1927.2pt x 973.6375pt>
 File: ../Hinhve/quan_ly_tai_khoan.png Graphic file (type png)
 <use ../Hinhve/quan_ly_tai_khoan.png>
-Package pdftex.def Info: ../Hinhve/quan_ly_tai_khoan.png  used on input line 423.
+Package pdftex.def Info: ../Hinhve/quan_ly_tai_khoan.png  used on input line 383.
 (pdftex.def)             Requested size: 426.79135pt x 215.61227pt.
-<../Hinhve/nhat_ky_he_thong.png, id=257, 1920.17375pt x 1129.21875pt>
+ [17 <../Hinhve/xep_hang.png> <../Hinhve/xuat_csv.png>]
+<../Hinhve/nhat_ky_he_thong.png, id=253, 1920.17375pt x 1129.21875pt>
 File: ../Hinhve/nhat_ky_he_thong.png Graphic file (type png)
 <use ../Hinhve/nhat_ky_he_thong.png>
-Package pdftex.def Info: ../Hinhve/nhat_ky_he_thong.png  used on input line 432.
+Package pdftex.def Info: ../Hinhve/nhat_ky_he_thong.png  used on input line 390.
 (pdftex.def)             Requested size: 426.79135pt x 250.979pt.
- [20 <../Hinhve/xuat_csv.png> <../Hinhve/quan_ly_tai_khoan.png>]
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 454--454
+
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 412--412
 []|\T5/ptm/b/n/11.86258 STT| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 460--460
+Underfull \hbox (badness 10000) in paragraph at lines 418--418
 []|\T5/ptm/m/n/11.86258 Dashboard nhªn
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 460--460
+Underfull \hbox (badness 10000) in paragraph at lines 418--418
 \T5/ptm/m/n/11.86258 dú li»u mîi qua
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 462--462
+Underfull \hbox (badness 10000) in paragraph at lines 420--420
 []|\T5/ptm/m/n/11.86258 Hiºn thà thæng b¡o
  []
 
 
-Underfull \hbox (badness 3158) in paragraph at lines 464--464
+Underfull \hbox (badness 3158) in paragraph at lines 422--422
 []|\T5/ptm/m/n/11.86258 Kiºm tra m¢ m u
  []
 
-
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 481--481
+[18 <../Hinhve/quan_ly_tai_khoan.png> <../Hinhve/nhat_ky_he_thong.png>]
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 439--439
 []|\T5/ptm/b/n/11.86258 STT| 
  []
 
 
-Underfull \hbox (badness 7832) in paragraph at lines 485--485
+Underfull \hbox (badness 7832) in paragraph at lines 443--443
 []|\T5/ptm/m/n/11.86258 Th¶m mîi Sen-sor
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 487--487
+Underfull \hbox (badness 10000) in paragraph at lines 445--445
 []|\T5/ptm/m/n/11.86258 Thæng tin cªp nhªt
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 489--489
+Underfull \hbox (badness 10000) in paragraph at lines 447--447
 []|\T5/ptm/m/n/11.86258 Xâa Gate-way câ
  []
 
 
-Underfull \hbox (badness 1418) in paragraph at lines 493--493
+Underfull \hbox (badness 1418) in paragraph at lines 451--451
 []|\T5/ptm/m/n/11.86258 Kiºm tra au-dit log
  []
 
 
-Underfull \hbox (badness 5189) in paragraph at lines 493--493
+Underfull \hbox (badness 5189) in paragraph at lines 451--451
 \T5/ptm/m/n/11.86258 thao t¡c, ng÷íi thüc
  []
 
-[21 <../Hinhve/nhat_ky_he_thong.png>]
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 510--510
+
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 468--468
 []|\T5/ptm/b/n/11.86258 STT| 
  []
 
 
-Underfull \hbox (badness 4156) in paragraph at lines 512--512
+Underfull \hbox (badness 4156) in paragraph at lines 470--470
 []|\T5/ptm/m/n/11.86258 C£nh b¡o mùc warn
  []
 
 
-Underfull \hbox (badness 6141) in paragraph at lines 514--514
+Underfull \hbox (badness 6141) in paragraph at lines 472--472
 []|\T5/ptm/m/n/11.86258 C£nh b¡o mùc dan-
  []
 
 
-Underfull \hbox (badness 6691) in paragraph at lines 516--516
+Underfull \hbox (badness 6691) in paragraph at lines 474--474
 []|\T5/ptm/m/n/11.86258 Gûi dú li»u v÷ñt
  []
 
 
-Underfull \hbox (badness 4217) in paragraph at lines 516--516
+Underfull \hbox (badness 4217) in paragraph at lines 474--474
 []|\T5/ptm/m/n/11.86258 Khæng t¤o c£nh b¡o
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 520--520
+Underfull \hbox (badness 1215) in paragraph at lines 478--478
 []|\T5/ptm/m/n/11.86258 Låc c£nh b¡o theo
  []
 
 
-Underfull \hbox (badness 7468) in paragraph at lines 522--522
+Underfull \hbox (badness 7468) in paragraph at lines 480--480
 []|\T5/ptm/m/n/11.86258 Tr¤ng th¡i cªp nhªt
  []
 
-[22]
-Overfull \hbox (12.41371pt too wide) in paragraph at lines 541--542
-\T5/pcr/m/n/13 pose --env-file .env.production -f docker-compose.prod.yml
+[19]
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 499--499
+[]|\T5/ptm/b/n/11.86258 STT| 
  []
 
 
-Overfull \hbox (45.56369pt too wide) in paragraph at lines 545--546
+Underfull \hbox (badness 5985) in paragraph at lines 499--499
+[]|\T5/ptm/b/n/11.86258 K¸t qu£ mong
+ []
+
+
+Overfull \hbox (26.3242pt too wide) in paragraph at lines 501--501
+[]|\T5/pcr/m/n/11.86258 calculateSubAQI| 
+ []
+
+
+Underfull \hbox (badness 6725) in paragraph at lines 501--501
+[]|\T5/ptm/m/n/11.86258 PM2.5 = 0 (bi¶n
+ []
+
+
+Overfull \hbox (26.3242pt too wide) in paragraph at lines 503--503
+[]|\T5/pcr/m/n/11.86258 calculateSubAQI| 
+ []
+
+
+Overfull \hbox (26.3242pt too wide) in paragraph at lines 505--505
+[]|\T5/pcr/m/n/11.86258 calculateSubAQI| 
+ []
+
+
+Overfull \hbox (26.3242pt too wide) in paragraph at lines 507--507
+[]|\T5/pcr/m/n/11.86258 calculateSubAQI| 
+ []
+
+
+Overfull \hbox (26.3242pt too wide) in paragraph at lines 509--509
+[]|\T5/pcr/m/n/11.86258 calculateSubAQI| 
+ []
+
+
+Overfull \hbox (26.3242pt too wide) in paragraph at lines 511--511
+[]|\T5/pcr/m/n/11.86258 calculateSubAQI| 
+ []
+
+
+Overfull \hbox (4.97159pt too wide) in paragraph at lines 513--513
+[]|\T5/pcr/m/n/11.86258 calculateAQI| 
+ []
+
+
+Overfull \hbox (4.97159pt too wide) in paragraph at lines 515--515
+[]|\T5/pcr/m/n/11.86258 calculateAQI| 
+ []
+
+
+Overfull \hbox (4.97159pt too wide) in paragraph at lines 517--517
+[]|\T5/pcr/m/n/11.86258 calculateAQI| 
+ []
+
+
+Underfull \hbox (badness 1975) in paragraph at lines 517--517
+[]|\T5/ptm/m/n/11.86258 AQI theo PM10
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 523--523
+[]|\T5/ptm/m/n/11.86258 Mùc Un-healthy
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 527--527
+[]|\T5/ptm/m/n/11.86258 Mùc Very Un-
+ []
+
+[20] [21]
+<../Hinhve/deployment_diagram.png, id=281, 4670.44875pt x 2562.57375pt>
+File: ../Hinhve/deployment_diagram.png Graphic file (type png)
+<use ../Hinhve/deployment_diagram.png>
+Package pdftex.def Info: ../Hinhve/deployment_diagram.png  used on input line 558.
+(pdftex.def)             Requested size: 426.79135pt x 234.14084pt.
+
+Overfull \hbox (12.41371pt too wide) in paragraph at lines 565--566
+\T5/pcr/m/n/13 pose --env-file .env.production -f docker-compose.prod.yml
+ []
+
+<../Hinhve/docker_ps.png, id=283, 931.68076pt x 115.632pt>
+File: ../Hinhve/docker_ps.png Graphic file (type png)
+<use ../Hinhve/docker_ps.png>
+Package pdftex.def Info: ../Hinhve/docker_ps.png  used on input line 571.
+(pdftex.def)             Requested size: 426.79135pt x 52.97081pt.
+[22 <../Hinhve/deployment_diagram.png>]
+Overfull \hbox (45.56369pt too wide) in paragraph at lines 576--577
 \T5/ptm/m/n/13 pro-duc-tion. Giao di»n web truy cªp ^^_÷ñc t¤i ^^_àa ch¿ \T5/pcr/m/n/13 https://datn.thamnguyen.dev
  []
 
 
-LaTeX Warning: Reference `table:so_sanh_he_thong' on page 23 undefined on input line 551.
+Overfull \hbox (6.35289pt too wide) in paragraph at lines 583--584
+[]\T5/ptm/b/n/13 ^^^¡nh gi¡ hi»u n«ng: \T5/ptm/m/n/13 Thíi gian ph£n hçi cõa API \T5/pcr/m/n/13 /api/stations/nearest
+ []
 
 
-Underfull \hbox (badness 2111) in paragraph at lines 560--561
+Overfull \hbox (83.51059pt too wide) in paragraph at lines 583--584
+\T5/ptm/m/n/13 (NFR1 ð B£ng 2.5), biºu ^^_ç theo gií truy v§n tø Con-tin-u-ous Ag-gre-gate \T5/pcr/m/n/13 hourly_measurements
+ []
+
+<example-image.pdf, id=290, 321.2pt x 240.9pt>
+File: example-image.pdf Graphic file (type pdf)
+<use example-image.pdf>
+Package pdftex.def Info: example-image.pdf  used on input line 594.
+(pdftex.def)             Requested size: 426.79135pt x 320.10257pt.
+[23 <../Hinhve/docker_ps.png>]
+
+LaTeX Warning: Reference `table:so_sanh_he_thong' on page 24 undefined on input line 600.
+
+
+Underfull \hbox (badness 2111) in paragraph at lines 609--610
 []|\T5/ptm/b/n/11.86258 H» thèng ^^_·
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 562--562
+Underfull \hbox (badness 10000) in paragraph at lines 611--611
 []|\T5/ptm/m/n/11.86258 PM2.5,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 562--562
+Underfull \hbox (badness 10000) in paragraph at lines 611--611
 []|\T5/ptm/m/n/11.86258 PM2.5,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 562--562
+Underfull \hbox (badness 10000) in paragraph at lines 611--611
 []|\T5/ptm/m/n/11.86258 ^^^¦y ^^_õ
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 562--563
+Underfull \hbox (badness 10000) in paragraph at lines 611--612
 \T5/ptm/m/n/11.86258 CO$[]$, TVOC,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 564--564
+Underfull \hbox (badness 10000) in paragraph at lines 613--613
 []|\T5/ptm/m/n/11.86258 Chuy¶n
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 566--566
+Underfull \hbox (badness 10000) in paragraph at lines 615--615
 []|\T5/ptm/m/n/11.86258 Trung
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 566--566
+Underfull \hbox (badness 10000) in paragraph at lines 615--615
 []|\T5/ptm/m/n/11.86258 Cao
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 566--566
+Underfull \hbox (badness 10000) in paragraph at lines 615--615
 \T5/ptm/m/n/11.86258 ($\OMS/cmsy/m/n/12 ^^X$\T5/ptm/m/n/11.86258 269
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 566--566
+Underfull \hbox (badness 10000) in paragraph at lines 615--615
 []|\T5/ptm/m/n/11.86258 Trung
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 574--575
+Underfull \hbox (badness 10000) in paragraph at lines 623--624
 []|\T5/ptm/m/n/11.86258 Câ
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 576--576
+Underfull \hbox (badness 10000) in paragraph at lines 625--625
 []|\T5/ptm/m/n/11.86258 Câ (nëi
  []
 
-[23]
+[24 <C:/Program Files/MiKTeX/tex/latex/mwe/example-image.pdf>]
 
 Package glossaries Warning: No \printnoidxglossary or \printnoidxglossaries
  found. (Remove \makenoidxglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-[24] (4_Ket_qua_thuc_nghiem.aux)
+[25] (4_Ket_qua_thuc_nghiem.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -1766,23 +1756,23 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `4_Ket_qua_thuc_nghiem.out' has not changed.
-(rerunfilecheck)             Checksum: 2C35955D2E1414563CE4070A7C1F37A7;4102.
+(rerunfilecheck)             Checksum: 30D9652C122C46A7B5E77CBFD8D0CA52;4570.
 Package logreq Info: Writing requests to '4_Ket_qua_thuc_nghiem.run.xml'.
 \openout1 = `4_Ket_qua_thuc_nghiem.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33678 strings out of 467691
- 629478 string characters out of 5425054
- 1546625 words of memory out of 5000000
- 62202 multiletter control sequences out of 15000+600000
- 653591 words of font info for 83 fonts, out of 8000000 for 9000
+ 33680 strings out of 467691
+ 629276 string characters out of 5425054
+ 1547962 words of memory out of 5000000
+ 62201 multiletter control sequences out of 15000+600000
+ 654790 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,124p,2618b,856s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
-Output written on 4_Ket_qua_thuc_nghiem.pdf (24 pages, 6158314 bytes).
+<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
+Output written on 4_Ket_qua_thuc_nghiem.pdf (25 pages, 6151336 bytes).
 PDF statistics:
- 337 PDF objects out of 1000 (max. 8388607)
- 73 named destinations out of 1000 (max. 500000)
- 264 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 367 PDF objects out of 1000 (max. 8388607)
+ 76 named destinations out of 1000 (max. 500000)
+ 275 words of extra memory for PDF output out of 10000 (max. 10000000)
 

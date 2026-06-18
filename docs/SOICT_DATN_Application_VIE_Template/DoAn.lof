@@ -8,12 +8,30 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Kiến trúc tổng thể hệ thống giám sát chất lượng không khí}}{18}{figure.caption.20}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Biểu đồ gói UML tổng quan của hệ thống}}{28}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Biểu đồ quan hệ module cho backend services}}{29}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Sơ đồ mạch Sensor Node}}{30}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Sơ đồ mạch Gateway}}{31}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Biểu đồ trình tự xử lý dữ liệu Telemetry}}{34}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Biểu đồ trình tự xem Dashboard thời gian thực}}{35}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Biểu đồ trình tự xử lý cảnh báo vượt ngưỡng}}{36}{figure.caption.31}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Entity-Relationship Diagram}}{37}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Dashboard chất lượng không khí}}{41}{figure.caption.37}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Lịch sử dữ liệu}}{42}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Bản đồ AQI}}{42}{figure.caption.39}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Xếp hạng ô nhiễm}}{43}{figure.caption.40}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Xuất dữ liệu CSV}}{43}{figure.caption.41}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Quản lý tài khoản}}{44}{figure.caption.42}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Nhật ký hệ thống}}{44}{figure.caption.43}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Biểu đồ triển khai hệ thống}}{48}{figure.caption.48}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Kết quả lệnh \texttt {docker ps} trên máy chủ production}}{49}{figure.caption.49}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Biểu đồ dữ liệu PM2.5 và AQI thực tế thu thập qua 48 giờ}}{50}{figure.caption.50}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Internet vạn vật}}{49}{figure.caption.36}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Qui cách đóng quyển đồ án}}{51}{figure.caption.39}%
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Qui cách đóng quyển đồ án}}{51}{figure.caption.40}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Internet vạn vật}}{61}{figure.caption.57}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Qui cách đóng quyển đồ án}}{63}{figure.caption.60}%
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Qui cách đóng quyển đồ án}}{63}{figure.caption.61}%
 \addvspace {10\p@ }
 \contentsfinish 
 \contentsfinish 

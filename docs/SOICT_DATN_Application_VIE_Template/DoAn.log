@@ -1,9 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  16 JUN 2026 21:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  18 JUN 2026 16:32
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**./DoAn.tex
-(DoAn.tex
+**d:/datn/docs/SOICT_DATN_Application_VIE_Template/DoAn.tex
+(d:/datn/docs/SOICT_DATN_Application_VIE_Template/DoAn.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
 (C:\Program Files\MiKTeX\tex/latex/base\report.cls
@@ -23,36 +24,24 @@ File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen150
-)
-(C:\Program Files\MiKTeX\tex/latex/koma-script\scrextend.sty
-Package: scrextend 2026/02/02 v3.49.2 KOMA-Script package (extend other classes
- with features of KOMA-Script classes)
-
-(C:\Program Files\MiKTeX\tex/latex/koma-script\scrkbase.sty
-Package: scrkbase 2026/02/02 v3.49.2 KOMA-Script package (KOMA-Script-dependent
- basics and keyval usage)
-
-(C:\Program Files\MiKTeX\tex/latex/koma-script\scrbase.sty
-Package: scrbase 2026/02/02 v3.49.2 KOMA-Script package (KOMA-Script-independen
-t basics and keyval usage)
-
-(C:\Program Files\MiKTeX\tex/latex/koma-script\scrlfile.sty
+) (C:\Program Files\MiKTeX\tex/latex/koma-script\scrextend.sty
+Package: scrextend 2026/02/02 v3.49.2 KOMA-Script package (extend other classes with features of KOMA-Script classes)
+ (C:\Program Files\MiKTeX\tex/latex/koma-script\scrkbase.sty
+Package: scrkbase 2026/02/02 v3.49.2 KOMA-Script package (KOMA-Script-dependent basics and keyval usage)
+ (C:\Program Files\MiKTeX\tex/latex/koma-script\scrbase.sty
+Package: scrbase 2026/02/02 v3.49.2 KOMA-Script package (KOMA-Script-independent basics and keyval usage)
+ (C:\Program Files\MiKTeX\tex/latex/koma-script\scrlfile.sty
 Package: scrlfile 2026/02/02 v3.49.2 KOMA-Script package (file load hooks)
-
-(C:\Program Files\MiKTeX\tex/latex/koma-script\scrlfile-hook.sty
-Package: scrlfile-hook 2026/02/02 v3.49.2 KOMA-Script package (using LaTeX hook
-s)
-
-(C:\Program Files\MiKTeX\tex/latex/koma-script\scrlogo.sty
+ (C:\Program Files\MiKTeX\tex/latex/koma-script\scrlfile-hook.sty
+Package: scrlfile-hook 2026/02/02 v3.49.2 KOMA-Script package (using LaTeX hooks)
+ (C:\Program Files\MiKTeX\tex/latex/koma-script\scrlogo.sty
 Package: scrlogo 2026/02/02 v3.49.2 KOMA-Script package (logo)
-)))
-(C:\Program Files\MiKTeX\tex/latex/graphics\keyval.sty
+))) (C:\Program Files\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 )
 Applying: [2021/05/01] Usage of raw or classic option list on input line 254.
-Already applied: [0000/00/00] Usage of raw or classic option list on input line
- 370.
+Already applied: [0000/00/00] Usage of raw or classic option list on input line 370.
 )))
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <13> not available
@@ -60,19 +49,15 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <13> not available
 
 (C:\Program Files\MiKTeX\tex/latex/vntex\vietnam.sty
 Package: vietnam 2009/07/12 v1.3 support for Vietnamese
-
-(C:\Program Files\MiKTeX\tex/latex/base\ifthen.sty
+ (C:\Program Files\MiKTeX\tex/latex/base\ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
-)
-(C:\Program Files\MiKTeX\tex/latex/base\fontenc.sty
+) (C:\Program Files\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
-
-(C:\Program Files\MiKTeX\tex/latex/vntex\t5enc.def
+ (C:\Program Files\MiKTeX\tex/latex/vntex\t5enc.def
 File: t5enc.def 2006/11/21 v1.4 Vietnamese T5 encoding
 Now handling font encoding T5 ...
 ... processing UTF-8 mapping file for font encoding T5
-
-(C:\Program Files\MiKTeX\tex/latex/vntex\t5enc.dfu
+ (C:\Program Files\MiKTeX\tex/latex/vntex\t5enc.dfu
 File: t5enc.dfu 2006/08/19 v1.1 UTF8 support for Vietnamese
    defining Unicode char U+00AB (decimal 171)
    defining Unicode char U+00BB (decimal 187)
@@ -226,27 +211,20 @@ File: t5enc.dfu 2006/08/19 v1.1 UTF8 support for Vietnamese
    defining Unicode char U+203A (decimal 8250)
    defining Unicode char U+2423 (decimal 9251)
 ))
-LaTeX Font Info:    Trying to load font information for T5+cmr on input line 11
-6.
-
-(C:\Program Files\MiKTeX\tex/latex/vntex\t5cmr.fd
+LaTeX Font Info:    Trying to load font information for T5+cmr on input line 116.
+ (C:\Program Files\MiKTeX\tex/latex/vntex\t5cmr.fd
 File: t5cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-))
-(C:\Program Files\MiKTeX\tex/latex/base\inputenc.sty
+)) (C:\Program Files\MiKTeX\tex/latex/base\inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks18
 \inpenc@posthook=\toks19
-)
-(C:\Program Files\MiKTeX\tex/latex/vntex\vncaps.tex
+) (C:\Program Files\MiKTeX\tex/latex/vntex\vncaps.tex
 File: vncaps.tex 2006/06/07 v1.1 Captions in Vietnamese
-))
-(C:\Program Files\MiKTeX\tex/latex/geometry\geometry.sty
+)) (C:\Program Files\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2026/03/07 v6.0 Page Geometry
-
-(C:\Program Files\MiKTeX\tex/generic/iftex\ifvtex.sty
+ (C:\Program Files\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-
-(C:\Program Files\MiKTeX\tex/generic/iftex\iftex.sty
+ (C:\Program Files\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
 \Gm@cnth=\count284
@@ -261,29 +239,22 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layouthoffset=\dimen157
 \Gm@layoutvoffset=\dimen158
 \Gm@dimlist=\toks20
-
-(C:\Program Files\MiKTeX\tex/latex/geometry\geometry.cfg))
-(C:\Program Files\MiKTeX\tex/latex/graphics\graphicx.sty
+ (C:\Program Files\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Program Files\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
-
-(C:\Program Files\MiKTeX\tex/latex/graphics\graphics.sty
+ (C:\Program Files\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
-
-(C:\Program Files\MiKTeX\tex/latex/graphics\trig.sty
+ (C:\Program Files\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-)
-(C:\Program Files\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+) (C:\Program Files\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
-
-(C:\Program Files\MiKTeX\tex/latex/graphics-def\pdftex.def
+ (C:\Program Files\MiKTeX\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen159
 \Gin@req@width=\dimen160
-)
-(C:\Program Files\MiKTeX\tex/latex/fancybox\fancybox.sty
+) (C:\Program Files\MiKTeX\tex/latex/fancybox\fancybox.sty
 Package: fancybox 2010/05/15 1.4
 
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
@@ -298,8 +269,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 \Verbatim@Infile=\read2
 ) (C:\Program Files\MiKTeX\tex/latex/tools\indentfirst.sty
 Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
-)
-(C:\Program Files\MiKTeX\tex/latex/amscls\amsthm.sty
+) (C:\Program Files\MiKTeX\tex/latex/amscls\amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
 \thm@style=\toks25
 \thm@bodyfont=\toks26
@@ -310,31 +280,26 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@postskip=\skip52
 \thm@headsep=\skip53
 \dth@everypar=\toks30
-)
-(C:\Program Files\MiKTeX\tex/latex/base\latexsym.sty
+) (C:\Program Files\MiKTeX\tex/latex/base\latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
-)
-(C:\Program Files\MiKTeX\tex/latex/amsmath\amsmath.sty
+) (C:\Program Files\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2025/07/09 v2.17z AMS math features
 \@mathmargin=\skip54
 
 For additional information on amsmath, use the `?' option.
 (C:\Program Files\MiKTeX\tex/latex/amsmath\amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
-
-(C:\Program Files\MiKTeX\tex/latex/amsmath\amsgen.sty
+ (C:\Program Files\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks31
 \ex@=\dimen162
-))
-(C:\Program Files\MiKTeX\tex/latex/amsmath\amsbsy.sty
+)) (C:\Program Files\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen163
-)
-(C:\Program Files\MiKTeX\tex/latex/amsmath\amsopn.sty
+) (C:\Program Files\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count287
@@ -384,22 +349,18 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \mathdisplay@stack=\toks35
 LaTeX Info: Redefining \[ on input line 2950.
 LaTeX Info: Redefining \] on input line 2951.
-)
-(C:\Program Files\MiKTeX\tex/latex/amsfonts\amssymb.sty
+) (C:\Program Files\MiKTeX\tex/latex/amsfonts\amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
-
-(C:\Program Files\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+ (C:\Program Files\MiKTeX\tex/latex/amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup5
 \symAMSb=\mathgroup6
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-))
-(C:\Program Files\MiKTeX\tex/latex/psnfss\times.sty
+)) (C:\Program Files\MiKTeX\tex/latex/psnfss\times.sty
 Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
-)
-(C:\Program Files\MiKTeX\tex/latex/tools\array.sty
+) (C:\Program Files\MiKTeX\tex/latex/tools\array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \col@sep=\dimen171
 \ar@mcellbox=\box57
@@ -408,8 +369,7 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \extratabsurround=\skip57
 \backup@length=\skip58
 \ar@cellbox=\box58
-)
-(C:\Program Files\MiKTeX\tex/latex/enumitem\enumitem.sty
+) (C:\Program Files\MiKTeX\tex/latex/enumitem\enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
 \labelindent=\skip59
 \enit@outerparindent=\dimen173
@@ -417,14 +377,11 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \enit@inbox=\box59
 \enit@count@id=\count299
 \enitdp@description=\count300
-)
-(C:\Program Files\MiKTeX\tex/latex/subfiles\subfiles.sty
+) (C:\Program Files\MiKTeX\tex/latex/subfiles\subfiles.sty
 Package: subfiles 2020/11/14 v2.2 Multi-file projects (package)
-
-(C:\Program Files\MiKTeX\tex/latex/import\import.sty
+ (C:\Program Files\MiKTeX\tex/latex/import\import.sty
 Package: import 2020/04/01  v 6.2
-))
-(C:\Program Files\MiKTeX\tex/latex/titlesec\titlesec.sty
+)) (C:\Program Files\MiKTeX\tex/latex/titlesec\titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box60
 \beforetitleunit=\skip60
@@ -435,47 +392,36 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \titlewidth=\dimen176
 \titlewidthlast=\dimen177
 \titlewidthfirst=\dimen178
-)
-(C:\Program Files\MiKTeX\tex/latex/titlesec\titletoc.sty
+) (C:\Program Files\MiKTeX\tex/latex/titlesec\titletoc.sty
 Package: titletoc 2025/01/04 v2.17 TOC entries
 \ttl@leftsep=\dimen179
-)
-(C:\Program Files\MiKTeX\tex/latex/chngcntr\chngcntr.sty
+) (C:\Program Files\MiKTeX\tex/latex/chngcntr\chngcntr.sty
 Package: chngcntr 2018/04/09 v1.1a change counter resetting
 Package chngcntr Info: \counterwithout already defined.
 (chngcntr)             Quitting chngcntr on input line 21.
-)
-(C:\Program Files\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+) (C:\Program Files\MiKTeX\tex/latex/pdflscape\pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
-
-(C:\Program Files\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
-Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PD
-F (HO)
-
-(C:\Program Files\MiKTeX\tex/latex/graphics\lscape.sty
+ (C:\Program Files\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
+ (C:\Program Files\MiKTeX\tex/latex/graphics\lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
-))
-(C:\Program Files\MiKTeX\tex/latex/tools\afterpage.sty
+)) (C:\Program Files\MiKTeX\tex/latex/tools\afterpage.sty
 Package: afterpage 2023/07/04 v1.08 After-Page Package (DPC)
 \AP@output=\toks39
 \AP@partial=\box61
 \AP@footins=\box62
-)
-(C:\Program Files\MiKTeX\tex/latex/algorithm2e\algorithm2e.sty
+) (C:\Program Files\MiKTeX\tex/latex/algorithm2e\algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
 \c@AlgoLine=\count301
 \algocf@hangindent=\skip62
-
-(C:\Program Files\MiKTeX\tex/latex/ifoddpage\ifoddpage.sty
+ (C:\Program Files\MiKTeX\tex/latex/ifoddpage\ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
 \c@checkoddpage=\count302
-)
-(C:\Program Files\MiKTeX\tex/latex/tools\xspace.sty
+) (C:\Program Files\MiKTeX\tex/latex/tools\xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
-)
-(C:\Program Files\MiKTeX\tex/latex/relsize\relsize.sty
+) (C:\Program Files\MiKTeX\tex/latex/relsize\relsize.sty
 Package: relsize 2013/03/29 ver 4.1
 )
 \skiptotal=\skip63
@@ -513,20 +459,16 @@ Package: relsize 2013/03/29 ver 4.1
 \c@algocf=\count305
 \algocf@algoframe=\box69
 \algocf@algobox=\box70
-)
-(C:\Program Files\MiKTeX\tex/latex/capt-of\capt-of.sty
+) (C:\Program Files\MiKTeX\tex/latex/capt-of\capt-of.sty
 Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
-)
-(C:\Program Files\MiKTeX\tex/latex/multirow\multirow.sty
+) (C:\Program Files\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip81
 \multirow@cntb=\count306
 \multirow@dima=\skip82
 \bigstrutjot=\dimen186
-)
-(C:\Program Files\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
+) (C:\Program Files\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
-
 \f@nch@headwidth=\skip83
 \f@nch@offset@elh=\skip84
 \f@nch@offset@erh=\skip85
@@ -542,17 +484,14 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthC=\skip95
 \f@nch@widthR=\skip96
 \@temptokenb=\toks40
-)
-(C:\Program Files\MiKTeX\tex/latex/appendix\appendix.sty
+) (C:\Program Files\MiKTeX\tex/latex/appendix\appendix.sty
 Package: appendix 2020/02/08 v1.2c extra appendix facilities
 \c@@pps=\count307
 \c@@ppsavesec=\count308
 \c@@ppsaveapp=\count309
-)
-(C:\Program Files\MiKTeX\tex/latex/caption\caption.sty
+) (C:\Program Files\MiKTeX\tex/latex/caption\caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
-
-(C:\Program Files\MiKTeX\tex/latex/caption\caption3.sty
+ (C:\Program Files\MiKTeX\tex/latex/caption\caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@tempdima=\dimen187
 \captionmargin=\dimen188
@@ -569,8 +508,7 @@ Package caption Info: Standard document class detected.
 Package caption Info: scrextend package is loaded.
 \caption@addmargin@hsize=\dimen195
 \caption@addmargin@linewidth=\dimen196
-)
-(C:\Program Files\MiKTeX\tex/latex/listings\listings.sty
+) (C:\Program Files\MiKTeX\tex/latex/listings\listings.sty
 \lst@mode=\count312
 \lst@gtempboxa=\box71
 \lst@token=\toks41
@@ -583,17 +521,14 @@ Package caption Info: scrextend package is loaded.
 \lst@newlines=\count316
 \lst@lineno=\count317
 \lst@maxwidth=\dimen256
-
-(C:\Program Files\MiKTeX\tex/latex/listings\lstpatch.sty
+ (C:\Program Files\MiKTeX\tex/latex/listings\lstpatch.sty
 File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
-)
-(C:\Program Files\MiKTeX\tex/latex/listings\lstmisc.sty
+) (C:\Program Files\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
 \c@lstnumber=\count318
 \lst@skipnumbers=\count319
 \lst@framebox=\box72
-)
-(C:\Program Files\MiKTeX\tex/latex/listings\listings.cfg
+) (C:\Program Files\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2025/11/14 1.11b listings configuration
 ))
 Package: listings 2025/11/14 1.11b (Carsten Heinz)
@@ -611,55 +546,42 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box73
 \@float@everytoks=\toks43
 \@floatcapt=\box74
-)
-(C:\Program Files\MiKTeX\tex/latex/caption\subcaption.sty
+) (C:\Program Files\MiKTeX\tex/latex/caption\subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package caption Info: New subtype `subfigure' on input line 238.
 \c@subfigure=\count321
 Package caption Info: New subtype `subtable' on input line 238.
 \c@subtable=\count322
-)
-(C:\Program Files\MiKTeX\tex/latex/xurl\xurl.sty
+) (C:\Program Files\MiKTeX\tex/latex/xurl\xurl.sty
 Package: xurl 2022/01/09 v 0.10 modify URL breaks
-
-(C:\Program Files\MiKTeX\tex/latex/url\url.sty
+ (C:\Program Files\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-))
-(C:\Program Files\MiKTeX\tex/latex/glossaries/base\glossaries.sty
+)) (C:\Program Files\MiKTeX\tex/latex/glossaries/base\glossaries.sty
 Package: glossaries 2026/04/21 v5.1 (NLCT)
-
-(C:\Program Files\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+ (C:\Program Files\MiKTeX\tex/latex/xkeyval\xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
-
-(C:\Program Files\MiKTeX\tex/generic/xkeyval\xkeyval.tex
-(C:\Program Files\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+ (C:\Program Files\MiKTeX\tex/generic/xkeyval\xkeyval.tex (C:\Program Files\MiKTeX\tex/generic/xkeyval\xkvutils.tex
 \XKV@toks=\toks44
 \XKV@tempa@toks=\toks45
 )
 \XKV@depth=\count323
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-))
-(C:\Program Files\MiKTeX\tex/latex/mfirstuc\mfirstuc.sty
+)) (C:\Program Files\MiKTeX\tex/latex/mfirstuc\mfirstuc.sty
 Package: mfirstuc 2025/04/03 v2.09 (NLCT)
-
-(C:\Program Files\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+ (C:\Program Files\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count324
 )
 \@glsmfirst=\toks46
 \@glsmrest=\toks47
-)
-(C:\Program Files\MiKTeX\tex/latex/xfor\xfor.sty
+) (C:\Program Files\MiKTeX\tex/latex/xfor\xfor.sty
 Package: xfor 2009/02/05 v1.05 (NLCT)
-)
-(C:\Program Files\MiKTeX\tex/latex/datatool\datatool-base.sty
+) (C:\Program Files\MiKTeX\tex/latex/datatool\datatool-base.sty
 Package: datatool-base 2025/12/04 v3.4.3 (NLCT)
-
-(C:\Program Files\MiKTeX\tex/latex/tracklang\tracklang.sty
+ (C:\Program Files\MiKTeX\tex/latex/tracklang\tracklang.sty
 Package: tracklang 2025/03/11 v1.6.6 (NLCT) Track Languages
-
-(C:\Program Files\MiKTeX\tex/generic/tracklang\tracklang.tex))
+ (C:\Program Files\MiKTeX\tex/generic/tracklang\tracklang.tex))
 \l__datatool_tmpa_int=\count325
 \l__datatool_tmpb_int=\count326
 \l__datatool_tmpc_int=\count327
@@ -668,8 +590,7 @@ Package: tracklang 2025/03/11 v1.6.6 (NLCT) Track Languages
 \l__datatool_tmp_datatype_int=\count330
 \l__datatool_tmpa_dim=\dimen257
 \l__datatool_tmpb_dim=\dimen258
-
-(C:\Program Files\MiKTeX\tex/latex/datatool\datatool-l3fp.def
+ (C:\Program Files\MiKTeX\tex/latex/datatool\datatool-l3fp.def
 File: datatool-l3fp.def 2025/12/04 v3.4.3 (NLCT)
 )
 \@dtl@toks=\toks48
@@ -677,8 +598,7 @@ File: datatool-l3fp.def 2025/12/04 v3.4.3 (NLCT)
 \dtl@tmplength=\skip97
 \l__datatool_measure_box=\box75
 \dtl@sortresult=\count332
-
-(C:\Program Files\MiKTeX\tex/latex/datatool\datatool-utf8.ldf
+ (C:\Program Files\MiKTeX\tex/latex/datatool\datatool-utf8.ldf
 File: datatool-utf8.ldf 2025/12/04 v3.4.3 (NLCT)
 )
 \@dtl@datatype=\count333
@@ -708,18 +628,14 @@ File: datatool-utf8.ldf 2025/12/04 v3.4.3 (NLCT)
 \glslabeltok=\toks51
 \glsshorttok=\toks52
 \glslongtok=\toks53
-
-(C:\Program Files\MiKTeX\tex/latex/glossaries/styles\glossary-hypernav.sty
+ (C:\Program Files\MiKTeX\tex/latex/glossaries/styles\glossary-hypernav.sty
 Package: glossary-hypernav 2026/04/21 v5.1 (NLCT)
-)
-(C:\Program Files\MiKTeX\tex/latex/glossaries/styles\glossary-list.sty
+) (C:\Program Files\MiKTeX\tex/latex/glossaries/styles\glossary-list.sty
 Package: glossary-list 2026/04/21 v5.1 (NLCT)
 \glslistdottedwidth=\skip99
-)
-(C:\Program Files\MiKTeX\tex/latex/glossaries/styles\glossary-long.sty
+) (C:\Program Files\MiKTeX\tex/latex/glossaries/styles\glossary-long.sty
 Package: glossary-long 2026/04/21 v5.1 (NLCT)
-
-(C:\Program Files\MiKTeX\tex/latex/tools\longtable.sty
+ (C:\Program Files\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 \LTleft=\skip100
 \LTright=\skip101
@@ -740,11 +656,9 @@ Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 )
 \glsdescwidth=\skip104
 \glspagelistwidth=\skip105
-)
-(C:\Program Files\MiKTeX\tex/latex/glossaries/styles\glossary-super.sty
+) (C:\Program Files\MiKTeX\tex/latex/glossaries/styles\glossary-super.sty
 Package: glossary-super 2026/04/21 v5.1 (NLCT)
-
-(C:\Program Files\MiKTeX\tex/latex/supertabular\supertabular.sty
+ (C:\Program Files\MiKTeX\tex/latex/supertabular\supertabular.sty
 Package: supertabular 2025/06/26 v4.2d the supertabular environment
 \c@tracingst=\count356
 \ST@wd=\dimen262
@@ -761,8 +675,7 @@ Package: supertabular 2025/06/26 v4.2d the supertabular environment
 \ST@toadd=\dimen270
 \ST@dimen=\dimen271
 \ST@pbox=\box81
-))
-(C:\Program Files\MiKTeX\tex/latex/glossaries/styles\glossary-tree.sty
+)) (C:\Program Files\MiKTeX\tex/latex/glossaries/styles\glossary-tree.sty
 Package: glossary-tree 2026/04/21 v5.1 (NLCT)
 \l__glossaries_tree_max_known_level_int=\count357
 \l__glossaries_tree_offset_dim=\dimen272
@@ -776,31 +689,23 @@ Package: glossary-tree 2026/04/21 v5.1 (NLCT)
 \l__glossaries_tree_namesymbolwidth_padding_dim=\dimen280
 \l__glossaries_tree_level_int=\count358
 \glstreeindent=\skip109
-))
-(C:\Program Files\MiKTeX\tex/latex/glossaries/styles\glossary-superragged.sty
+)) (C:\Program Files\MiKTeX\tex/latex/glossaries/styles\glossary-superragged.sty
 Package: glossary-superragged 2026/04/21 v5.1 (NLCT)
-)
-(C:\Program Files\MiKTeX\tex/latex/setspace\setspace.sty
+) (C:\Program Files\MiKTeX\tex/latex/setspace\setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
-)
-(C:\Program Files\MiKTeX\tex/latex/parskip\parskip.sty
+) (C:\Program Files\MiKTeX\tex/latex/parskip\parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
-
-(C:\Program Files\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+ (C:\Program Files\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-
-(C:\Program Files\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+ (C:\Program Files\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-)
-(C:\Program Files\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+) (C:\Program Files\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-)))
-(C:\Program Files\MiKTeX\tex/latex/koma-script\tocbasic.sty
+))) (C:\Program Files\MiKTeX\tex/latex/koma-script\tocbasic.sty
 Package: tocbasic 2026/02/02 v3.49.2 KOMA-Script package (handling toc-files)
 \scr@dte@tocline@numberwidth=\skip110
 \scr@dte@tocline@numbox=\box82
-)
-(C:\Program Files\MiKTeX\tex/latex/blindtext\blindtext.sty
+) (C:\Program Files\MiKTeX\tex/latex/blindtext\blindtext.sty
 Package: blindtext 2012/01/06 V2.0 blindtext-Package
 \c@blindtext=\count359
 \c@Blindtext=\count360
@@ -820,29 +725,22 @@ Package: blindtext 2012/01/06 V2.0 blindtext-Package
 \c@blind@randommax=\count374
 \c@blind@pangramcount=\count375
 \c@blind@pangrammax=\count376
-)
-(C:\Program Files\MiKTeX\tex/latex/outlines\outlines.sty
+) (C:\Program Files\MiKTeX\tex/latex/outlines\outlines.sty
 Package: outlines 2012/1/23 1.1 Ch. Pecheur
-)
-(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.sty
+) (C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.sty
 Package: biblatex 2025/07/10 v3.21 programmable bibliographies (PK/MW)
-
-(C:\Program Files\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(C:\Program Files\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+ (C:\Program Files\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (C:\Program Files\MiKTeX\tex/generic/infwarerr\infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-)
-(C:\Program Files\MiKTeX\tex/latex/logreq\logreq.sty
+) (C:\Program Files\MiKTeX\tex/latex/logreq\logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
 \lrq@indent=\count377
-
-(C:\Program Files\MiKTeX\tex/latex/logreq\logreq.def
+ (C:\Program Files\MiKTeX\tex/latex/logreq\logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 ))
 \c@tabx@nest=\count378
@@ -904,8 +802,7 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \c@mincompwidth=\count423
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
-
-(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-dm.def
+ (C:\Program Files\MiKTeX\tex/latex/biblatex\blx-dm.def
 File: blx-dm.def 2025/07/10 v3.21 biblatex datamodel (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex style data model...
@@ -996,14 +893,12 @@ Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \localshorteditorwidth=\skip132
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
-
-(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-compat.def
+ (C:\Program Files\MiKTeX\tex/latex/biblatex\blx-compat.def
 File: blx-compat.def 2025/07/10 v3.21 biblatex compatibility (PK/MW)
 )
 Package biblatex Info: Trying to load BibTeX backend compatibility...
 Package biblatex Info: ... file 'blx-bibtex.def' found.
-
-(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-bibtex.def
+ (C:\Program Files\MiKTeX\tex/latex/biblatex\blx-bibtex.def
 File: blx-bibtex.def 2025/07/10 v3.21 biblatex compatibility (PK/MW)
 
 
@@ -1031,36 +926,30 @@ File: biblatex.def 2025/07/10 v3.21 biblatex compatibility (PK/MW)
 )
 Package biblatex Info: Trying to load bibliography style 'ieee'...
 Package biblatex Info: ... file 'ieee.bbx' found.
-
-(C:\Program Files\MiKTeX\tex/latex/biblatex-ieee\ieee.bbx
+ (C:\Program Files\MiKTeX\tex/latex/biblatex-ieee\ieee.bbx
 File: ieee.bbx 2025-08-01 v1.4f biblatex bibliography style
 Package biblatex Info: Trying to load bibliography style 'numeric-comp'...
 Package biblatex Info: ... file 'numeric-comp.bbx' found.
-
-(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\numeric-comp.bbx
+ (C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\numeric-comp.bbx
 File: numeric-comp.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
-
-(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\numeric.bbx
+ (C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\numeric.bbx
 File: numeric.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
-
-(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
+ (C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
 File: standard.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
 \c@bbx:relatedcount=\count501
 \c@bbx:relatedtotal=\count502
 ))))
 Package biblatex Info: Trying to load citation style 'ieee'...
 Package biblatex Info: ... file 'ieee.cbx' found.
-
-(C:\Program Files\MiKTeX\tex/latex/biblatex-ieee\ieee.cbx
+ (C:\Program Files\MiKTeX\tex/latex/biblatex-ieee\ieee.cbx
 File: ieee.cbx 2025-08-01 v1.4f biblatex citation style
 Package biblatex Info: Trying to load citation style 'numeric-verb'...
 Package biblatex Info: ... file 'numeric-verb.cbx' found.
-
-(C:\Program Files\MiKTeX\tex/latex/biblatex/cbx\numeric-verb.cbx
+ (C:\Program Files\MiKTeX\tex/latex/biblatex/cbx\numeric-verb.cbx
 File: numeric-verb.cbx 2025/07/10 v3.21 biblatex citation style (PK/MW)
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
@@ -1075,17 +964,14 @@ Package biblatex Info: Redefining '\textcites'.
 ))
 Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
-
-(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.cfg
+ (C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.cfg
 File: biblatex.cfg 
 )
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Document encoding is UTF8 ....
-
-(C:\Program Files\MiKTeX\tex/latex/l3kernel\expl3.sty
+ (C:\Program Files\MiKTeX\tex/latex/l3kernel\expl3.sty
 Package: expl3 2026-03-20 L3 programming layer (loader) 
-
-(C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+ (C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count503
 ))
@@ -1093,56 +979,41 @@ Package biblatex Info: ... and expl3
 (biblatex)             2026-03-20 L3 programming layer (loader) 
 (biblatex)             is new enough (at least 2020/04/06),
 (biblatex)             setting 'casechanger=expl3'.
-
-(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-case-expl3.sty
-(C:\Program Files\MiKTeX\tex/latex/l3packages/xparse\xparse.sty
+ (C:\Program Files\MiKTeX\tex/latex/biblatex\blx-case-expl3.sty (C:\Program Files\MiKTeX\tex/latex/l3packages/xparse\xparse.sty
 Package: xparse 2025-10-09 L3 Experimental document command parser
 )
 Package: blx-case-expl3 2025/07/10 v3.21 expl3 case changing code for biblatex
-))
-(lstlisting.tex) (Tu_viet_tat.tex)
-(C:\Program Files\MiKTeX\tex/latex/hyperref\hyperref.sty
+)) (lstlisting.tex) (Tu_viet_tat.tex) (C:\Program Files\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2026-04-24 v7.01q Hypertext links for LaTeX
-
-(C:\Program Files\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+ (C:\Program Files\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-)
-(C:\Program Files\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+) (C:\Program Files\MiKTeX\tex/generic/pdfescape\pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-)
-(C:\Program Files\MiKTeX\tex/latex/hycolor\hycolor.sty
+) (C:\Program Files\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-)
-(C:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty
+) (C:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
-
-(C:\Program Files\MiKTeX\tex/latex/refcount\refcount.sty
+ (C:\Program Files\MiKTeX\tex/latex/refcount\refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-)
-(C:\Program Files\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+) (C:\Program Files\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count504
-)
-(C:\Program Files\MiKTeX\tex/generic/stringenc\stringenc.sty
-Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
-)
+) (C:\Program Files\MiKTeX\tex/generic/stringenc\stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
 \@linkdim=\dimen281
 \Hy@linkcounter=\count505
 \Hy@pagecounter=\count506
-
-(C:\Program Files\MiKTeX\tex/latex/hyperref\pd1enc.def
+ (C:\Program Files\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2026-04-24 v7.01q Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-)
-(C:\Program Files\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (C:\Program Files\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count507
-
-(C:\Program Files\MiKTeX\tex/latex/hyperref\puenc.def
+ (C:\Program Files\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2026-04-24 v7.01q Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
@@ -1157,13 +1028,10 @@ Package hyperref Info: Bookmarks ON on input line 4466.
 \c@Hy@tempcnt=\count508
 LaTeX Info: Redefining \url on input line 4805.
 \XeTeXLinkMargin=\dimen282
-
-(C:\Program Files\MiKTeX\tex/generic/bitset\bitset.sty
+ (C:\Program Files\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
-
-(C:\Program Files\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
-Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
-)
+ (C:\Program Files\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
 \Fld@menulength=\count509
 \Field@Width=\dimen283
@@ -1180,36 +1048,28 @@ Package hyperref Info: PDF/A mode OFF on input line 6121.
 \c@Hfootnote=\count512
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
-
-(C:\Program Files\MiKTeX\tex/latex/hyperref\hpdftex.def
+ (C:\Program Files\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2026-04-24 v7.01q Hyperref driver for pdfTeX
 \Fld@listcount=\count513
 \c@bookmark@seq@number=\count514
-
-(C:\Program Files\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+ (C:\Program Files\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
-
-(C:\Program Files\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+ (C:\Program Files\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-84.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
 )
 \Hy@SectionHShift=\skip133
-)
-(C:\Program Files\MiKTeX\tex/latex/hypcap\hypcap.sty
+) (C:\Program Files\MiKTeX\tex/latex/hypcap\hypcap.sty
 Package: hypcap 2024-07-26 v1.13 Adjusting the anchors of captions (HO)
-
-(C:\Program Files\MiKTeX\tex/latex/letltxmacro\letltxmacro.sty
+ (C:\Program Files\MiKTeX\tex/latex/letltxmacro\letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 ))
 \c@example=\count515
 \@quotelevel=\count516
 \@quotereset=\count517
-LaTeX Font Info:    Trying to load font information for T5+ptm on input line 16
-7.
-
-(C:\Program Files\MiKTeX\tex/latex/vntex\t5ptm.fd
+LaTeX Font Info:    Trying to load font information for T5+ptm on input line 167.
+ (C:\Program Files\MiKTeX\tex/latex/vntex\t5ptm.fd
 File: t5utm.fd 2005/08/24 Fontinst v1.929 font definitions for T5/ptm.
 )
 
@@ -1295,18 +1155,14 @@ LaTeX Font Info:    ... okay on input line 167.
 \everyMPtoPDFconversion=\toks56
 ) (C:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-
-(C:\Program Files\MiKTeX\tex/latex/grfext\grfext.sty
+ (C:\Program Files\MiKTeX\tex/latex/grfext\grfext.sty
 Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
 )
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
 Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 504.
-
-(C:\Program Files\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+ (C:\Program Files\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package caption Info: Begin \AtBeginDocument code.
@@ -1315,8 +1171,7 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: hypcap package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: longtable package is loaded.
-
-(C:\Program Files\MiKTeX\tex/latex/caption\ltcaption.sty
+ (C:\Program Files\MiKTeX\tex/latex/caption\ltcaption.sty
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: supertabular package is loaded.
@@ -1326,8 +1181,7 @@ Package tocbasic Info: omitting babel extension for `lol'
 (tocbasic)             because of missing \bbl@set@language on input line 167.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
-
-(C:\Program Files\MiKTeX\tex/latex/biblatex/lbx\english.lbx
+ (C:\Program Files\MiKTeX\tex/latex/biblatex/lbx\english.lbx
 File: english.lbx 2025/07/10 v3.21 biblatex localization (PK/MW)
 )
 Package biblatex Info: Input encoding 'utf8' detected.
@@ -1344,8 +1198,7 @@ Package biblatex Info: ... file 'DoAn.bbl' found.
 Package biblatex Info: Reference section=0 on input line 167.
 Package biblatex Info: Reference segment=0 on input line 167.
 Package hyperref Info: Link coloring OFF on input line 167.
-
-(DoAn.out) (DoAn.out)
+ (DoAn.out) (DoAn.out)
 \@outlinefile=\write5
 \openout5 = `DoAn.out'.
 
@@ -1372,8 +1225,7 @@ LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <13> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.5> not available
 (Font)              size <6> substituted on input line 42.
 
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 42
-.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 42.
 (C:\Program Files\MiKTeX\tex/latex/base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
@@ -1386,34 +1238,26 @@ LaTeX Font Warning: Font shape `U/lasy/m/n' in size <6.5> not available
 (Font)              size <6> substituted on input line 42.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 42.
-
 (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
-
-
-(C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
+ (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/ADMIN/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Fi
-les/MiKTeX/fonts/enc/dvips/vntex/t5.enc}]) (Bia_lot.tex
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
+{C:/Users/ADMIN/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/vntex/t5.enc}]) (Bia_lot.tex
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.44 \end{titlepage}
-                     [1]) (Chuong/0_2_Loi_cam_on.tex) [1]
-(Chuong/0_3_Tom_tat_noi_dung.tex)
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
+                     [1]) (Chuong/0_2_Loi_cam_on.tex) [1] (Chuong/0_3_Tom_tat_noi_dung.tex)
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.187 \newpage
                [1] (Chuong/0_4_Tom_tat_noi_dung_English.tex)
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.193 \newpage
@@ -1423,16 +1267,18 @@ l.193 \newpage
 \tf@toc=\write6
 \openout6 = `DoAn.toc'.
 
- [4] (DoAn.lof)
+ [4] (DoAn.lof
+LaTeX Font Info:    Trying to load font information for T5+pcr on input line 27.
+ (C:\Program Files\MiKTeX\tex/latex/vntex\t5pcr.fd
+File: t5ucr.fd 2005/08/24 Fontinst v1.929 font definitions for T5/pcr.
+))
 \tf@lof=\write7
 \openout7 = `DoAn.lof'.
 
 
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 234.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 234.
 
 [5
 
@@ -1444,56 +1290,43 @@ ine 234.
 
 
 
-Package glossaries Warning: Empty glossary for \printnoidxglossary[type={main}]
-. Rerun may be required (or you may have forgotten to use commands like \gls) o
-n input line 249.
+Package glossaries Warning: Empty glossary for \printnoidxglossary[type={main}]. Rerun may be required (or you may have forgotten to use commands like \gls) on input line 249.
 
 
 Package glossaries Info: Preparing to sort glossary `acronym' (total number of
 (glossaries)             referenced entries: 21)
 
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 249.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 249.
 
 [6
 
 ]
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 249.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 249.
 
 [7
 
 
 ] [8]
 
-Package fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 265.
+Package fancyhdr Warning: \fancyhead's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 265.
 
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 267.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 267.
 
 Ch\uhorn \ohorn ng 1.
 (Chuong/1_Gioi_thieu.tex
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 23.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 23.
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.23 
@@ -1519,21 +1352,13 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 Ch\uhorn \ohorn ng 2.
 (Chuong/2_Khao_sat.tex
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 29.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 29.
 
 [4
 
 ]
-LaTeX Font Info:    Trying to load font information for T5+pcr on input line 35
-.
- (C:\Program Files\MiKTeX\tex/latex/vntex\t5pcr.fd
-File: t5ucr.fd 2005/08/24 Fontinst v1.929 font definitions for T5/pcr.
-)
-LaTeX Font Info:    Calculating math sizes for size <11.86258> on input line 49
-.
+LaTeX Font Info:    Calculating math sizes for size <11.86258> on input line 49.
 
 Underfull \hbox (badness 10000) in paragraph at lines 53--53
 []|\T5/ptm/m/n/11.86258 PM2.5,
@@ -1547,7 +1372,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
 [5]
-<Hinhve/usecase_tongquat.png, id=663, 3276.24pt x 2294.5725pt>
+<Hinhve/usecase_tongquat.png, id=735, 3276.24pt x 2294.5725pt>
 File: Hinhve/usecase_tongquat.png Graphic file (type png)
 <use Hinhve/usecase_tongquat.png>
 Package pdftex.def Info: Hinhve/usecase_tongquat.png  used on input line 86.
@@ -1561,7 +1386,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
 [6 <./Hinhve/usecase_tongquat.png>]
-<Hinhve/usecase_user.png, id=672, 3556.28625pt x 2526.43875pt>
+<Hinhve/usecase_user.png, id=744, 3556.28625pt x 2526.43875pt>
 File: Hinhve/usecase_user.png Graphic file (type png)
 <use Hinhve/usecase_user.png>
 Package pdftex.def Info: Hinhve/usecase_user.png  used on input line 102.
@@ -1575,7 +1400,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
 [7 <./Hinhve/usecase_user.png>]
-<Hinhve/usecase_admin.png, id=682, 4233.8175pt x 2728.1925pt>
+<Hinhve/usecase_admin.png, id=754, 4233.8175pt x 2728.1925pt>
 File: Hinhve/usecase_admin.png Graphic file (type png)
 <use Hinhve/usecase_admin.png>
 Package pdftex.def Info: Hinhve/usecase_admin.png  used on input line 122.
@@ -1597,11 +1422,10 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
 [9 <./Hinhve/usecase_admin.png>]
-<Hinhve/activity_data_flow.png, id=695, 3255.16125pt x 3134.71124pt>
+<Hinhve/activity_data_flow.png, id=767, 3255.16125pt x 3134.71124pt>
 File: Hinhve/activity_data_flow.png Graphic file (type png)
 <use Hinhve/activity_data_flow.png>
 Package pdftex.def Info: Hinhve/activity_data_flow.png  used on input line 146.
-
 (pdftex.def)             Requested size: 426.79135pt x 410.97066pt.
 
 
@@ -1612,11 +1436,10 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
 [10]
-<Hinhve/activity_alert_flow.png, id=701, 4342.2225pt x 3375.61125pt>
+<Hinhve/activity_alert_flow.png, id=773, 4342.2225pt x 3375.61125pt>
 File: Hinhve/activity_alert_flow.png Graphic file (type png)
 <use Hinhve/activity_alert_flow.png>
-Package pdftex.def Info: Hinhve/activity_alert_flow.png  used on input line 155
-.
+Package pdftex.def Info: Hinhve/activity_alert_flow.png  used on input line 155.
 (pdftex.def)             Requested size: 426.79135pt x 331.76054pt.
 
 
@@ -1700,18 +1523,15 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 [16]
 Ch\uhorn \ohorn ng 3.
 (Chuong/3_Cong_nghe.tex
-<Hinhve/system_architecture.png, id=765, 4062.17625pt x 2538.48375pt>
+<Hinhve/system_architecture.png, id=837, 4062.17625pt x 2538.48375pt>
 File: Hinhve/system_architecture.png Graphic file (type png)
 <use Hinhve/system_architecture.png>
 Package pdftex.def Info: Hinhve/system_architecture.png  used on input line 16.
-
 (pdftex.def)             Requested size: 426.79135pt x 266.68423pt.
 
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 20.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 20.
 
 [17
 
@@ -1745,8 +1565,7 @@ Underfull \hbox (badness 3977) in paragraph at lines 59--59
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 59--59
-[]|$\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 40$\T5/ptm/m/n/11.86258 --$\OT1/cmr/m/n
-/12 85[]$\T5/ptm/m/n/11.86258 C, 0--
+[]|$\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 40$\T5/ptm/m/n/11.86258 --$\OT1/cmr/m/n/12 85[]$\T5/ptm/m/n/11.86258 C, 0--
  []
 
 
@@ -1771,8 +1590,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 
 [20]
 Overfull \hbox (12.11458pt too wide) in paragraph at lines 100--101
-\T5/ptm/m/n/13 ¡n sû döng ba t½nh n«ng ch½nh cõa TimescaleDB. Thù nh§t, \T5/ptm
-/m/it/13 Hy-per-table\T5/ptm/m/n/13 : TimescaleDB
+\T5/ptm/m/n/13 ¡n sû döng ba t½nh n«ng ch½nh cõa TimescaleDB. Thù nh§t, \T5/ptm/m/it/13 Hy-per-table\T5/ptm/m/n/13 : TimescaleDB
  []
 
 
@@ -1822,8 +1640,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 
 [24]
 Overfull \hbox (0.49059pt too wide) in paragraph at lines 262--263
-[]\T5/ptm/m/n/13 ^^^ç ¡n con-tainer hâa bèn th nh ph¦n: (i) cì sð dú li»u Post-
-greSQL/TimescaleDB,
+[]\T5/ptm/m/n/13 ^^^ç ¡n con-tainer hâa bèn th nh ph¦n: (i) cì sð dú li»u Post-greSQL/TimescaleDB,
  []
 
 
@@ -1845,14 +1662,18 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 Ch\uhorn \ohorn ng 4.
 (Chuong/4_Ket_qua_thuc_nghiem.tex
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 19.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 19.
 
 [27
 
 ]
+<Hinhve/package_tongquan.png, id=950, 3405.72375pt x 1327.96124pt>
+File: Hinhve/package_tongquan.png Graphic file (type png)
+<use Hinhve/package_tongquan.png>
+Package pdftex.def Info: Hinhve/package_tongquan.png  used on input line 27.
+(pdftex.def)             Requested size: 426.79135pt x 166.40001pt.
+
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
 (fancyhdr)                Make it at least 34.6375pt, for example:
@@ -1860,36 +1681,53 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
-[28]
+[28 <./Hinhve/package_tongquan.png>]
+<Hinhve/module_backend_services.png, id=956, 4044.10875pt x 2839.60875pt>
+File: Hinhve/module_backend_services.png Graphic file (type png)
+<use Hinhve/module_backend_services.png>
+Package pdftex.def Info: Hinhve/module_backend_services.png  used on input line 47.
+(pdftex.def)             Requested size: 426.79135pt x 299.66257pt.
 
-Package fancyhdr Warning: \headheight is too small (10.0pt): 
-(fancyhdr)                Make it at least 34.6375pt, for example:
-(fancyhdr)                \setlength{\headheight}{34.6375pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
-
-[29]
-
-Package fancyhdr Warning: \headheight is too small (10.0pt): 
-(fancyhdr)                Make it at least 34.6375pt, for example:
-(fancyhdr)                \setlength{\headheight}{34.6375pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
-
-[30]
-
-Package fancyhdr Warning: \headheight is too small (10.0pt): 
-(fancyhdr)                Make it at least 34.6375pt, for example:
-(fancyhdr)                \setlength{\headheight}{34.6375pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
-
-[31]
-Overfull \hbox (2.39058pt too wide) in paragraph at lines 99--100
-\T5/pcr/m/n/13 tory \T5/ptm/m/n/13 truy v§n dú li»u làch sû tø Con-tin-u-ous Ag
--gre-gate \T5/pcr/m/n/13 hourly_measurements
+Overfull \hbox (10.30563pt too wide) in paragraph at lines 55--56
+[]\T5/ptm/b/n/13 Nhâm xû lþ dú li»u teleme-try \T5/ptm/m/n/13 bao gçm bèn mod-ule: \T5/pcr/m/n/13 teleme-tryCon-troller
  []
 
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[29 <./Hinhve/module_backend_services.png>]
+<Hinhve/schematic_sensor_node.png, id=965, 879.285pt x 719.68875pt>
+File: Hinhve/schematic_sensor_node.png Graphic file (type png)
+<use Hinhve/schematic_sensor_node.png>
+Package pdftex.def Info: Hinhve/schematic_sensor_node.png  used on input line 71.
+(pdftex.def)             Requested size: 426.79135pt x 349.32317pt.
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[30 <./Hinhve/schematic_sensor_node.png (PNG copy)>]
+<Hinhve/schematic_gateway.png, id=971, 1057.9525pt x 811.03pt>
+File: Hinhve/schematic_gateway.png Graphic file (type png)
+<use Hinhve/schematic_gateway.png>
+Package pdftex.def Info: Hinhve/schematic_gateway.png  used on input line 82.
+(pdftex.def)             Requested size: 426.79135pt x 327.17831pt.
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[31 <./Hinhve/schematic_gateway.png (PNG copy)>]
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
 (fancyhdr)                Make it at least 34.6375pt, for example:
@@ -1898,58 +1736,8 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
 [32]
-Overfull \hbox (3.14519pt too wide) in paragraph at lines 145--146
-[]|\T5/ptm/m/n/11.86258 https://expressjs.com/| 
- []
-
-
-Overfull \hbox (9.2188pt too wide) in paragraph at lines 147--148
-[]|\T5/ptm/m/n/11.86258 https://www.prisma.io/| 
- []
-
-
-Overfull \hbox (47.06047pt too wide) in paragraph at lines 151--152
-[]|\T5/ptm/m/n/11.86258 https://github.com/auth0/node-
- []
-
-
-Overfull \hbox (23.99962pt too wide) in paragraph at lines 153--154
-[]|\T5/ptm/m/n/11.86258 https://github.com/nicolo-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 155--155
-[]|\T5/ptm/m/n/11.86258 B£o mªt HTTP
- []
-
-
-Overfull \hbox (22.36255pt too wide) in paragraph at lines 155--156
-[]|\T5/ptm/m/n/11.86258 https://helmetjs.github.io/| 
- []
-
-
-Overfull \hbox (17.40404pt too wide) in paragraph at lines 157--158
-[]|\T5/ptm/m/n/11.86258 https://github.com/node-
- []
-
-
-Overfull \hbox (79.04193pt too wide) in paragraph at lines 159--160
-[]|\T5/ptm/m/n/11.86258 https://mircoithink.github.io/json2csv| 
- []
-
-
-Overfull \hbox (31.81699pt too wide) in paragraph at lines 161--162
-[]|\T5/ptm/m/n/11.86258 https://www.postgresql.org/| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 163--163
-[]|\T5/ptm/m/n/11.86258 Extension time-
- []
-
-
-Overfull \hbox (32.69482pt too wide) in paragraph at lines 163--164
-[]|\T5/ptm/m/n/11.86258 https://www.timescale.com/| 
+Overfull \hbox (2.39058pt too wide) in paragraph at lines 121--122
+\T5/pcr/m/n/13 tory \T5/ptm/m/n/13 truy v§n dú li»u làch sû tø Con-tin-u-ous Ag-gre-gate \T5/pcr/m/n/13 hourly_measurements
  []
 
 
@@ -1960,39 +1748,59 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
 [33]
-Overfull \hbox (10.87961pt too wide) in paragraph at lines 183--184
-[]|\T5/ptm/m/n/11.86258 https://reactrouter.com/| 
+<Hinhve/seq_telemetry_ingestion.png, id=987, 4233.8175pt x 2746.26pt>
+File: Hinhve/seq_telemetry_ingestion.png Graphic file (type png)
+<use Hinhve/seq_telemetry_ingestion.png>
+Package pdftex.def Info: Hinhve/seq_telemetry_ingestion.png  used on input line 129.
+(pdftex.def)             Requested size: 426.79135pt x 276.82112pt.
+
+Overfull \hbox (16.98961pt too wide) in paragraph at lines 134--135
+\T5/ptm/m/n/13 câ dú li»u teleme-try mîi tø Gate-way, Back-end ph¡t sü ki»n \T5/pcr/m/n/13 new_telemetry_data\T5/ptm/m/n/13 ;
+ []
+
+<Hinhve/seq_dashboard_realtime.png, id=989, 4691.5275pt x 2806.485pt>
+File: Hinhve/seq_dashboard_realtime.png Graphic file (type png)
+<use Hinhve/seq_dashboard_realtime.png>
+Package pdftex.def Info: Hinhve/seq_dashboard_realtime.png  used on input line 138.
+(pdftex.def)             Requested size: 426.79135pt x 255.27063pt.
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[34 <./Hinhve/seq_telemetry_ingestion.png>]
+Overfull \hbox (217.86574pt too wide) in paragraph at lines 143--144
+\T5/pcr/m/n/13 teleme-try-Ser-vice \T5/ptm/m/n/13 l÷u dú li»u th nh cæng, mod-ule gåi \T5/pcr/m/n/13 alert-Ser-vice.checkThresholdsAndCreateAlerts\T5/ptm/m/n/13 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--186
-[]|\T5/ptm/m/n/11.86258 https://axios-
+Overfull \hbox (3.87265pt too wide) in paragraph at lines 143--144
+\T5/ptm/m/n/13 Mod-ule \T5/pcr/m/n/13 alert-Ser-vice \T5/ptm/m/n/13 thüc hi»n bèn b÷îc: (i) truy v§n b£ng \T5/pcr/m/n/13 alert_configs
  []
 
+<Hinhve/seq_alert_threshold.png, id=996, 4540.965pt x 2746.26pt>
+File: Hinhve/seq_alert_threshold.png Graphic file (type png)
+<use Hinhve/seq_alert_threshold.png>
+Package pdftex.def Info: Hinhve/seq_alert_threshold.png  used on input line 147.
+(pdftex.def)             Requested size: 426.79135pt x 258.08981pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 187--187
-[]|\T5/ptm/m/n/11.86258 Leaflet + React-
- []
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[35 <./Hinhve/seq_dashboard_realtime.png>]
+<Hinhve/er_database.png, id=1003, 3499.0725pt x 3408.735pt>
+File: Hinhve/er_database.png Graphic file (type png)
+<use Hinhve/er_database.png>
+Package pdftex.def Info: Hinhve/er_database.png  used on input line 159.
+(pdftex.def)             Requested size: 426.79135pt x 415.74023pt.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
-[]|\T5/ptm/m/n/11.86258 https://react-
- []
-
-
-Overfull \hbox (24.6876pt too wide) in paragraph at lines 189--190
-[]|\T5/ptm/m/n/11.86258 https://echarts.apache.org/| 
- []
-
-
-Overfull \hbox (21.25935pt too wide) in paragraph at lines 191--192
-[]|\T5/ptm/m/n/11.86258 https://react.i18next.com/| 
- []
-
-
-Overfull \hbox (38.97015pt too wide) in paragraph at lines 193--194
-[]|\T5/ptm/m/n/11.86258 https://zustand.docs.pmnd.rs/| 
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
@@ -2001,29 +1809,95 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
-[34]
-Underfull \hbox (badness 10000) in paragraph at lines 224--224
+[36 <./Hinhve/seq_alert_threshold.png>]
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[37 <./Hinhve/er_database.png>]
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[38]
+Underfull \hbox (badness 10000) in paragraph at lines 274--274
+[]|\T5/ptm/m/n/11.86258 Firmware Sen-sor
+ []
+
+
+Overfull \hbox (8.31804pt too wide) in paragraph at lines 274--275
+[]|\T5/ptm/m/n/11.86258 FreeRTOS| 
+ []
+
+
+Overfull \hbox (5.87439pt too wide) in paragraph at lines 276--277
+[]|\T5/ptm/m/n/11.86258 Superloop| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 278--278
 []|\T5/ptm/m/n/11.86258 JavaScript
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--226
+Underfull \hbox (badness 10000) in paragraph at lines 278--279
+[]|\T5/ptm/m/n/11.86258 Express
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 280--280
 []|\T5/ptm/m/n/11.86258 JavaScript (Re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--229
-[]|\T5/ptm/m/n/11.86258 TimescaleDB
+Overfull \hbox (14.97293pt too wide) in paragraph at lines 282--283
+[]|\T5/ptm/m/n/11.86258 PostgreSQL| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 230--230
+Underfull \hbox (badness 10000) in paragraph at lines 284--284
 []|\T5/ptm/m/n/11.86258 YAML, Ng-inx
  []
 
 
-Underfull \hbox (badness 5288) in paragraph at lines 230--231
-[]|\T5/ptm/m/n/11.86258 Docker Com-
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
+[]|\T5/ptm/m/n/11.86258 Docker
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
+\T5/ptm/m/n/11.86258 Com-
+ []
+
+
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 298--298
+[]|\T5/ptm/b/n/11.86258 STT| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 298--298
+[]|\T5/ptm/b/n/11.86258 Tr¤ng
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 304--304
+[]|\T5/ptm/m/n/11.86258 Xem làch sû dú li»u
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+[]|\T5/ptm/m/n/11.86258 Gi¡m s¡t c£nh b¡o
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--318
+[]|\T5/ptm/m/n/11.86258 Xu§t dú li»u CSV
  []
 
 
@@ -2033,28 +1907,100 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
-[35]
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 289--289
+[39]
+<Hinhve/dashboard.png, id=1050, 1920.17375pt x 1871.99374pt>
+File: Hinhve/dashboard.png Graphic file (type png)
+<use Hinhve/dashboard.png>
+Package pdftex.def Info: Hinhve/dashboard.png  used on input line 342.
+(pdftex.def)             Requested size: 426.79135pt x 416.06741pt.
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[40]
+<Hinhve/lich_su.png, id=1055, 1920.17375pt x 1104.125pt>
+File: Hinhve/lich_su.png Graphic file (type png)
+<use Hinhve/lich_su.png>
+Package pdftex.def Info: Hinhve/lich_su.png  used on input line 351.
+(pdftex.def)             Requested size: 426.79135pt x 245.40169pt.
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[41 <./Hinhve/dashboard.png>]
+<Hinhve/ban_do_aqi.png, id=1061, 1920.17375pt x 998.73125pt>
+File: Hinhve/ban_do_aqi.png Graphic file (type png)
+<use Hinhve/ban_do_aqi.png>
+Package pdftex.def Info: Hinhve/ban_do_aqi.png  used on input line 360.
+(pdftex.def)             Requested size: 426.79135pt x 221.97697pt.
+<Hinhve/xep_hang.png, id=1064, 1154.51324pt x 584.78474pt>
+File: Hinhve/xep_hang.png Graphic file (type png)
+<use Hinhve/xep_hang.png>
+Package pdftex.def Info: Hinhve/xep_hang.png  used on input line 369.
+(pdftex.def)             Requested size: 426.79135pt x 216.17958pt.
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[42 <./Hinhve/lich_su.png> <./Hinhve/ban_do_aqi.png>]
+<Hinhve/xuat_csv.png, id=1072, 1927.2pt x 973.6375pt>
+File: Hinhve/xuat_csv.png Graphic file (type png)
+<use Hinhve/xuat_csv.png>
+Package pdftex.def Info: Hinhve/xuat_csv.png  used on input line 376.
+(pdftex.def)             Requested size: 426.79135pt x 215.61227pt.
+<Hinhve/quan_ly_tai_khoan.png, id=1073, 1927.2pt x 973.6375pt>
+File: Hinhve/quan_ly_tai_khoan.png Graphic file (type png)
+<use Hinhve/quan_ly_tai_khoan.png>
+Package pdftex.def Info: Hinhve/quan_ly_tai_khoan.png  used on input line 383.
+(pdftex.def)             Requested size: 426.79135pt x 215.61227pt.
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[43 <./Hinhve/xep_hang.png> <./Hinhve/xuat_csv.png>]
+<Hinhve/nhat_ky_he_thong.png, id=1080, 1920.17375pt x 1129.21875pt>
+File: Hinhve/nhat_ky_he_thong.png Graphic file (type png)
+<use Hinhve/nhat_ky_he_thong.png>
+Package pdftex.def Info: Hinhve/nhat_ky_he_thong.png  used on input line 390.
+(pdftex.def)             Requested size: 426.79135pt x 250.979pt.
+
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 412--412
 []|\T5/ptm/b/n/11.86258 STT| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 295--295
+Underfull \hbox (badness 10000) in paragraph at lines 418--418
 []|\T5/ptm/m/n/11.86258 Dashboard nhªn
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 295--295
+Underfull \hbox (badness 10000) in paragraph at lines 418--418
 \T5/ptm/m/n/11.86258 dú li»u mîi qua
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--297
+Underfull \hbox (badness 10000) in paragraph at lines 420--420
 []|\T5/ptm/m/n/11.86258 Hiºn thà thæng b¡o
  []
 
 
-Underfull \hbox (badness 3158) in paragraph at lines 299--299
+Underfull \hbox (badness 3158) in paragraph at lines 422--422
 []|\T5/ptm/m/n/11.86258 Kiºm tra m¢ m u
  []
 
@@ -2065,68 +2011,68 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
-[36]
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 316--316
+[44 <./Hinhve/quan_ly_tai_khoan.png> <./Hinhve/nhat_ky_he_thong.png>]
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 439--439
 []|\T5/ptm/b/n/11.86258 STT| 
  []
 
 
-Underfull \hbox (badness 7832) in paragraph at lines 320--320
+Underfull \hbox (badness 7832) in paragraph at lines 443--443
 []|\T5/ptm/m/n/11.86258 Th¶m mîi Sen-sor
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 322--322
+Underfull \hbox (badness 10000) in paragraph at lines 445--445
 []|\T5/ptm/m/n/11.86258 Thæng tin cªp nhªt
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--324
+Underfull \hbox (badness 10000) in paragraph at lines 447--447
 []|\T5/ptm/m/n/11.86258 Xâa Gate-way câ
  []
 
 
-Underfull \hbox (badness 1418) in paragraph at lines 328--328
+Underfull \hbox (badness 1418) in paragraph at lines 451--451
 []|\T5/ptm/m/n/11.86258 Kiºm tra au-dit log
  []
 
 
-Underfull \hbox (badness 5189) in paragraph at lines 328--328
+Underfull \hbox (badness 5189) in paragraph at lines 451--451
 \T5/ptm/m/n/11.86258 thao t¡c, ng÷íi thüc
  []
 
 
-Overfull \hbox (8.00406pt too wide) in paragraph at lines 345--345
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 468--468
 []|\T5/ptm/b/n/11.86258 STT| 
  []
 
 
-Underfull \hbox (badness 4156) in paragraph at lines 347--347
+Underfull \hbox (badness 4156) in paragraph at lines 470--470
 []|\T5/ptm/m/n/11.86258 C£nh b¡o mùc warn
  []
 
 
-Underfull \hbox (badness 6141) in paragraph at lines 349--349
+Underfull \hbox (badness 6141) in paragraph at lines 472--472
 []|\T5/ptm/m/n/11.86258 C£nh b¡o mùc dan-
  []
 
 
-Underfull \hbox (badness 6691) in paragraph at lines 351--351
+Underfull \hbox (badness 6691) in paragraph at lines 474--474
 []|\T5/ptm/m/n/11.86258 Gûi dú li»u v÷ñt
  []
 
 
-Underfull \hbox (badness 4217) in paragraph at lines 351--351
+Underfull \hbox (badness 4217) in paragraph at lines 474--474
 []|\T5/ptm/m/n/11.86258 Khæng t¤o c£nh b¡o
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 355--355
+Underfull \hbox (badness 1215) in paragraph at lines 478--478
 []|\T5/ptm/m/n/11.86258 Låc c£nh b¡o theo
  []
 
 
-Underfull \hbox (badness 7468) in paragraph at lines 357--357
+Underfull \hbox (badness 7468) in paragraph at lines 480--480
 []|\T5/ptm/m/n/11.86258 Tr¤ng th¡i cªp nhªt
  []
 
@@ -2137,9 +2083,79 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
-[37]
-Overfull \hbox (12.41371pt too wide) in paragraph at lines 376--377
-\T5/pcr/m/n/13 pose --env-file .env.production -f docker-compose.prod.yml
+[45]
+Overfull \hbox (8.00406pt too wide) in paragraph at lines 499--499
+[]|\T5/ptm/b/n/11.86258 STT| 
+ []
+
+
+Underfull \hbox (badness 5985) in paragraph at lines 499--499
+[]|\T5/ptm/b/n/11.86258 K¸t qu£ mong
+ []
+
+
+Overfull \hbox (26.3242pt too wide) in paragraph at lines 501--501
+[]|\T5/pcr/m/n/11.86258 calculateSubAQI| 
+ []
+
+
+Underfull \hbox (badness 6725) in paragraph at lines 501--501
+[]|\T5/ptm/m/n/11.86258 PM2.5 = 0 (bi¶n
+ []
+
+
+Overfull \hbox (26.3242pt too wide) in paragraph at lines 503--503
+[]|\T5/pcr/m/n/11.86258 calculateSubAQI| 
+ []
+
+
+Overfull \hbox (26.3242pt too wide) in paragraph at lines 505--505
+[]|\T5/pcr/m/n/11.86258 calculateSubAQI| 
+ []
+
+
+Overfull \hbox (26.3242pt too wide) in paragraph at lines 507--507
+[]|\T5/pcr/m/n/11.86258 calculateSubAQI| 
+ []
+
+
+Overfull \hbox (26.3242pt too wide) in paragraph at lines 509--509
+[]|\T5/pcr/m/n/11.86258 calculateSubAQI| 
+ []
+
+
+Overfull \hbox (26.3242pt too wide) in paragraph at lines 511--511
+[]|\T5/pcr/m/n/11.86258 calculateSubAQI| 
+ []
+
+
+Overfull \hbox (4.97159pt too wide) in paragraph at lines 513--513
+[]|\T5/pcr/m/n/11.86258 calculateAQI| 
+ []
+
+
+Overfull \hbox (4.97159pt too wide) in paragraph at lines 515--515
+[]|\T5/pcr/m/n/11.86258 calculateAQI| 
+ []
+
+
+Overfull \hbox (4.97159pt too wide) in paragraph at lines 517--517
+[]|\T5/pcr/m/n/11.86258 calculateAQI| 
+ []
+
+
+Underfull \hbox (badness 1975) in paragraph at lines 517--517
+[]|\T5/ptm/m/n/11.86258 AQI theo PM10
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 523--523
+[]|\T5/ptm/m/n/11.86258 Mùc Un-healthy
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 527--527
+[]|\T5/ptm/m/n/11.86258 Mùc Very Un-
  []
 
 
@@ -2149,7 +2165,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
-[38])
+[46]
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
 (fancyhdr)                Make it at least 34.6375pt, for example:
@@ -2157,11 +2173,135 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
-[39]
+[47]
+<Hinhve/deployment_diagram.png, id=1104, 4670.44875pt x 2562.57375pt>
+File: Hinhve/deployment_diagram.png Graphic file (type png)
+<use Hinhve/deployment_diagram.png>
+Package pdftex.def Info: Hinhve/deployment_diagram.png  used on input line 558.
+(pdftex.def)             Requested size: 426.79135pt x 234.14084pt.
+
+Overfull \hbox (12.41371pt too wide) in paragraph at lines 565--566
+\T5/pcr/m/n/13 pose --env-file .env.production -f docker-compose.prod.yml
+ []
+
+<Hinhve/docker_ps.png, id=1106, 931.68076pt x 115.632pt>
+File: Hinhve/docker_ps.png Graphic file (type png)
+<use Hinhve/docker_ps.png>
+Package pdftex.def Info: Hinhve/docker_ps.png  used on input line 571.
+(pdftex.def)             Requested size: 426.79135pt x 52.97081pt.
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[48 <./Hinhve/deployment_diagram.png>]
+Overfull \hbox (45.56369pt too wide) in paragraph at lines 576--577
+\T5/ptm/m/n/13 pro-duc-tion. Giao di»n web truy cªp ^^_÷ñc t¤i ^^_àa ch¿ \T5/pcr/m/n/13 https://datn.thamnguyen.dev
+ []
+
+
+Overfull \hbox (6.35289pt too wide) in paragraph at lines 583--584
+[]\T5/ptm/b/n/13 ^^^¡nh gi¡ hi»u n«ng: \T5/ptm/m/n/13 Thíi gian ph£n hçi cõa API \T5/pcr/m/n/13 /api/stations/nearest
+ []
+
+
+Overfull \hbox (83.51059pt too wide) in paragraph at lines 583--584
+\T5/ptm/m/n/13 (NFR1 ð B£ng 2.5), biºu ^^_ç theo gií truy v§n tø Con-tin-u-ous Ag-gre-gate \T5/pcr/m/n/13 hourly_measurements
+ []
+
+<example-image.pdf, id=1113, 321.2pt x 240.9pt>
+File: example-image.pdf Graphic file (type pdf)
+<use example-image.pdf>
+Package pdftex.def Info: example-image.pdf  used on input line 594.
+(pdftex.def)             Requested size: 426.79135pt x 320.10257pt.
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[49 <./Hinhve/docker_ps.png>]
+Underfull \hbox (badness 2111) in paragraph at lines 609--610
+[]|\T5/ptm/b/n/11.86258 H» thèng ^^_·
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 611--611
+[]|\T5/ptm/m/n/11.86258 PM2.5,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 611--611
+[]|\T5/ptm/m/n/11.86258 PM2.5,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 611--611
+[]|\T5/ptm/m/n/11.86258 ^^^¦y ^^_õ
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 611--612
+\T5/ptm/m/n/11.86258 CO$[]$, TVOC,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 613--613
+[]|\T5/ptm/m/n/11.86258 Chuy¶n
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 615--615
+[]|\T5/ptm/m/n/11.86258 Trung
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 615--615
+[]|\T5/ptm/m/n/11.86258 Cao
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 615--615
+\T5/ptm/m/n/11.86258 ($\OMS/cmsy/m/n/12 ^^X$\T5/ptm/m/n/11.86258 269
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 615--615
+[]|\T5/ptm/m/n/11.86258 Trung
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 623--624
+[]|\T5/ptm/m/n/11.86258 Câ
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 625--625
+[]|\T5/ptm/m/n/11.86258 Câ (nëi
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[50 <C:/Program Files/MiKTeX/tex/latex/mwe/example-image.pdf>])
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 34.6375pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.6375pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
+
+[51]
 Ch\uhorn \ohorn ng 5.
 (Chuong/5_Giai_phap_dong_gop.tex
 LaTeX Font Info:    Calculating math sizes for size <10.83347> on input line 4.
-
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.58339> not available
@@ -2197,63 +2337,53 @@ LaTeX Font Warning: Font shape `U/lasy/m/n' in size <5.41673> not available
 
 )
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 297.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 297.
 
-[40
+[52
 
 ]
 Ch\uhorn \ohorn ng 6.
 (Chuong/6_Ket_luan.tex)
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 303.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 303.
 
-[41
+[53
 
 ] (Chuong/7_Luu_y_tai_lieu_tham_khao.tex
 
-LaTeX Warning: Citation 'hovy1993automated' on page 42 undefined on input line 
-13.
+LaTeX Warning: Citation 'hovy1993automated' on page 54 undefined on input line 13.
 
 
-LaTeX Warning: Citation 'peterson2007computer' on page 42 undefined on input li
-ne 18.
+LaTeX Warning: Citation 'peterson2007computer' on page 54 undefined on input line 18.
 
 
-LaTeX Warning: Citation 'NguyenThucHai' on page 42 undefined on input line 20.
+LaTeX Warning: Citation 'NguyenThucHai' on page 54 undefined on input line 20.
 
 
-LaTeX Warning: Citation 'poesio2001discourse' on page 42 undefined on input lin
-e 24.
+LaTeX Warning: Citation 'poesio2001discourse' on page 54 undefined on input line 24.
 
 
-LaTeX Warning: Citation 'knott1996data' on page 42 undefined on input line 30.
+LaTeX Warning: Citation 'knott1996data' on page 54 undefined on input line 30.
 
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 34.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 34.
 
-[42
+[54
 
 ]
 
-LaTeX Warning: Citation 'BernersTim' on page 43 undefined on input line 34.
+LaTeX Warning: Citation 'BernersTim' on page 55 undefined on input line 34.
 
 
 Overfull \hbox (10.64345pt too wide) in paragraph at lines 34--36
-[][] \T5/ptm/m/n/13 T. Berners-Lee, \T5/ptm/m/it/13 Hy-per-text trans-fer pro-t
-o-col (HTTP)\T5/ptm/m/n/13 . [On-line]. Avail-
+[][] \T5/ptm/m/n/13 T. Berners-Lee, \T5/ptm/m/it/13 Hy-per-text trans-fer pro-to-col (HTTP)\T5/ptm/m/n/13 . [On-line]. Avail-
  []
 
 
-LaTeX Warning: Citation 'LectureA' on page 43 undefined on input line 37.
+LaTeX Warning: Citation 'LectureA' on page 55 undefined on input line 37.
 
 )
 
@@ -2263,72 +2393,60 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
-[43]
+[55]
 Overfull \hbox (7.29324pt too wide) in paragraph at lines 314--314
-\T5/ptm/m/n/13 bon monox-ide,'' World Health Or-ga-ni-za-tion, Tech. Rep., 2021
-. [On-line]. Avail-
+\T5/ptm/m/n/13 bon monox-ide,'' World Health Or-ga-ni-za-tion, Tech. Rep., 2021. [On-line]. Avail-
  []
 
 
 Overfull \hbox (44.29668pt too wide) in paragraph at lines 314--314
-\T5/ptm/m/n/13 able: []$\T5/pcr/m/n/13 https : / / www . who . int / publicatio
-ns / i / item / 9789240034228$[] 
+\T5/ptm/m/n/13 able: []$\T5/pcr/m/n/13 https : / / www . who . int / publications / i / item / 9789240034228$[] 
  []
 
 
 Overfull \hbox (5.95265pt too wide) in paragraph at lines 314--314
-[]\T5/ptm/m/n/13 Espressif Sys-tems, \T5/ptm/m/it/13 ESP32 tech-ni-cal ref-er-e
-nce man-ual\T5/ptm/m/n/13 , 2024. Ac-cessed: Jun. 1,
+[]\T5/ptm/m/n/13 Espressif Sys-tems, \T5/ptm/m/it/13 ESP32 tech-ni-cal ref-er-ence man-ual\T5/ptm/m/n/13 , 2024. Ac-cessed: Jun. 1,
  []
 
 
 Overfull \hbox (23.29773pt too wide) in paragraph at lines 314--314
-\T5/pcr/m/n/13 default / files / documentation / esp32 _ technical _ reference 
-_
+\T5/pcr/m/n/13 default / files / documentation / esp32 _ technical _ reference _
  []
 
 
 Overfull \hbox (18.47684pt too wide) in paragraph at lines 314--314
-[]\T5/ptm/m/n/13 Plantower, \T5/ptm/m/it/13 PMS7003 dig-i-tal uni-ver-sal par-t
-i-cle con-cen-tra-tion sen-sor -- datasheet\T5/ptm/m/n/13 ,
+[]\T5/ptm/m/n/13 Plantower, \T5/ptm/m/it/13 PMS7003 dig-i-tal uni-ver-sal par-ti-cle con-cen-tra-tion sen-sor -- datasheet\T5/ptm/m/n/13 ,
  []
 
 
 Overfull \hbox (32.28246pt too wide) in paragraph at lines 314--314
-\T5/ptm/m/n/13 2023. Ac-cessed: Jun. 1, 2026. [On-line]. Avail-able: []$\T5/pcr
-/m/n/13 https : / / www . plantower .
+\T5/ptm/m/n/13 2023. Ac-cessed: Jun. 1, 2026. [On-line]. Avail-able: []$\T5/pcr/m/n/13 https : / / www . plantower .
  []
 
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 313.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 313.
 
-[44
+[56
 
 ]
 Overfull \hbox (5.28378pt too wide) in paragraph at lines 314--314
-\T5/ptm/m/it/13 faces\T5/ptm/m/n/13 , 2024. Ac-cessed: Jun. 1, 2026. [On-line].
- Avail-able: []$\T5/pcr/m/n/13 https : / / react .
+\T5/ptm/m/it/13 faces\T5/ptm/m/n/13 , 2024. Ac-cessed: Jun. 1, 2026. [On-line]. Avail-able: []$\T5/pcr/m/n/13 https : / / react .
  []
 
 
 Overfull \hbox (37.0038pt too wide) in paragraph at lines 314--314
-\T5/ptm/m/it/13 maps\T5/ptm/m/n/13 , 2024. Ac-cessed: Jun. 1, 2026. [On-line]. 
-Avail-able: []$\T5/pcr/m/n/13 https : / / leafletjs .
+\T5/ptm/m/it/13 maps\T5/ptm/m/n/13 , 2024. Ac-cessed: Jun. 1, 2026. [On-line]. Avail-able: []$\T5/pcr/m/n/13 https : / / leafletjs .
  []
 
 
 Overfull \hbox (21.75471pt too wide) in paragraph at lines 314--314
-\T5/ptm/m/it/13 vi-su-al-iza-tion li-brary\T5/ptm/m/n/13 , 2024. Ac-cessed: Jun
-. 1, 2026. [On-line]. Avail-able: []$\T5/pcr/m/n/13 https :
+\T5/ptm/m/it/13 vi-su-al-iza-tion li-brary\T5/ptm/m/n/13 , 2024. Ac-cessed: Jun. 1, 2026. [On-line]. Avail-able: []$\T5/pcr/m/n/13 https :
  []
 
 
 Overfull \hbox (19.6837pt too wide) in paragraph at lines 314--314
-\T5/ptm/m/n/13 2026. [On-line]. Avail-able: []$\T5/pcr/m/n/13 https : / / docs 
-. docker . com / get -[] started /
+\T5/ptm/m/n/13 2026. [On-line]. Avail-able: []$\T5/pcr/m/n/13 https : / / docs . docker . com / get -[] started /
  []
 
 
@@ -2338,30 +2456,25 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-5.977pt}.
 
-[45]
+[57]
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 316.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 316.
 
-[46
+[58
 
 ]
 Ph\d {u} l\d {u}c A.
 (Chuong/Phu_luc_A.tex
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-8.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 18.
  (C:\Program Files\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 20.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 20.
 
-[47
+[59
 
 {C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}]
 
@@ -2371,8 +2484,8 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
-[48]
-<Hinhve/IoT.png, id=1026, 931.48pt x 523.9575pt>
+[60]
+<Hinhve/IoT.png, id=1223, 931.48pt x 523.9575pt>
 File: Hinhve/IoT.png Graphic file (type png)
 <use Hinhve/IoT.png>
 Package pdftex.def Info: Hinhve/IoT.png  used on input line 80.
@@ -2385,26 +2498,24 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
-[49 <./Hinhve/IoT.png>]
+[61 <./Hinhve/IoT.png>]
 
-LaTeX Warning: Citation 'scott2013sdn' on page 50 undefined on input line 92.
+LaTeX Warning: Citation 'scott2013sdn' on page 62 undefined on input line 92.
 
 
-LaTeX Warning: Citation 'ashton2009internet' on page 50 undefined on input line
- 92.
+LaTeX Warning: Citation 'ashton2009internet' on page 62 undefined on input line 92.
 
 
 Overfull \hbox (14.86223pt too wide) in paragraph at lines 92--93
-[]\T5/ptm/m/n/13 . Cö thº, sinh vi¶n sû döng l»nh [][]\T5/pcr/m/n/13 \cite{} []
-\T5/ptm/m/n/13 nh÷ sau [].
+[]\T5/ptm/m/n/13 . Cö thº, sinh vi¶n sû döng l»nh [][]\T5/pcr/m/n/13 \cite{} []\T5/ptm/m/n/13 nh÷ sau [].
  []
 
-<Hinhve/Bia.PNG, id=1038, 313.77225pt x 331.83975pt>
+<Hinhve/Bia.PNG, id=1235, 313.77225pt x 331.83975pt>
 File: Hinhve/Bia.PNG Graphic file (type png)
 <use Hinhve/Bia.PNG>
 Package pdftex.def Info: Hinhve/Bia.PNG  used on input line 111.
 (pdftex.def)             Requested size: 213.39568pt x 225.68349pt.
-<Hinhve/GayBia.PNG, id=1039, 420.97275pt x 479.99326pt>
+<Hinhve/GayBia.PNG, id=1236, 420.97275pt x 479.99326pt>
 File: Hinhve/GayBia.PNG Graphic file (type png)
 <use Hinhve/GayBia.PNG>
 Package pdftex.def Info: Hinhve/GayBia.PNG  used on input line 123.
@@ -2417,7 +2528,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
-[50]
+[62]
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
 (fancyhdr)                Make it at least 17.97902pt, for example:
@@ -2425,16 +2536,14 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-7.97902pt}.
 
-[51 <./Hinhve/Bia.PNG> <./Hinhve/GayBia.PNG>]
+[63 <./Hinhve/Bia.PNG> <./Hinhve/GayBia.PNG>]
 Ph\d {u} l\d {u}c B.
 (Chuong/Phu_luc_B.tex)
 
-Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 337.
+Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 337.
 
-[52
+[64
 
 ] (DoAn.aux)
  ***********
@@ -2452,14 +2561,8 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-
-Package rerunfilecheck Warning: File `DoAn.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `DoAn.out':
-(rerunfilecheck)             Before: 0C24128B62DB6ABDDDD23D2E59508A99;16918
-(rerunfilecheck)             After:  CF428A4A6E77E5E045B2834131F68A58;17250.
+Package rerunfilecheck Info: File `DoAn.out' has not changed.
+(rerunfilecheck)             Checksum: 7106B5233C11633A3E118B493E536CA3;18113.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                DoAn
@@ -2470,29 +2573,17 @@ Package logreq Info: Writing requests to 'DoAn.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34446 strings out of 467691
- 643839 string characters out of 5425054
- 1554971 words of memory out of 5000000
- 62737 multiletter control sequences out of 15000+600000
- 687224 words of font info for 111 fonts, out of 8000000 for 9000
+ 34664 strings out of 467691
+ 649577 string characters out of 5425054
+ 1558254 words of memory out of 5000000
+ 62899 multiletter control sequences out of 15000+600000
+ 690651 words of font info for 113 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,14n,107p,2507b,1622s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Progra
-m Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.
-pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Progra
-m Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn
-/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Pro
-gram Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fon
-ts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwv
-n/utmri8v.pfb>
-Output written on DoAn.pdf (65 pages, 3350462 bytes).
+ 108i,14n,107p,2554b,1622s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
+Output written on DoAn.pdf (77 pages, 9338741 bytes).
 PDF statistics:
- 1175 PDF objects out of 1200 (max. 8388607)
- 239 named destinations out of 1000 (max. 500000)
- 710 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1381 PDF objects out of 1440 (max. 8388607)
+ 275 named destinations out of 1000 (max. 500000)
+ 840 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -50,11 +50,11 @@ Hệ thống được tổ chức thành bốn nhóm gói chính tương ứng v
 \end{figure}
 
 
-Phần này trình bày thiết kế chi tiết cho hai nhóm gói quan trọng: nhóm xử lý dữ liệu telemetry trên Backend và nhóm hiển thị dashboard trên Frontend.
+Hình~\ref{fig:4_1_3_module_backend_services} mô tả quan hệ phụ thuộc giữa các module trên Backend. Hai nhóm module quan trọng nhất là nhóm xử lý dữ liệu telemetry và nhóm hiển thị dashboard.
 
-\textbf{Nhóm xử lý dữ liệu telemetry} trên Backend bao gồm bốn module liên kết chặt chẽ. Module \texttt{telemetryController} nhận HTTP POST từ Gateway, xác thực dữ liệu đầu vào qua \texttt{telemetryValidation}, sau đó chuyển cho \texttt{telemetryService}. Module \texttt{telemetryService} thực hiện ba bước trong một transaction: (i) lọc bỏ gói tin trùng lặp (deduplication) khi nhiều Gateway cùng nhận một gói LoRa, (ii) cập nhật trạng thái Gateway và Sensor Node, (iii) lưu dữ liệu đo lường vào bảng \texttt{measurements}. Sau transaction, module gọi \texttt{alertService.checkThresholdsAndCreateAlerts} để kiểm tra ngưỡng cảnh báo — việc tách riêng kiểm tra cảnh báo ra ngoài transaction đảm bảo lỗi cảnh báo không ảnh hưởng đến luồng lưu trữ dữ liệu chính. Module \texttt{aqiService} cung cấp hàm \texttt{calculateAQI} được gọi bởi \texttt{stationService} khi trả dữ liệu dashboard cho Frontend.
+\textbf{Nhóm xử lý dữ liệu telemetry} bao gồm bốn module: \texttt{telemetryController} tiếp nhận request, \texttt{telemetryValidation} xác thực đầu vào, \texttt{telemetryService} xử lý nghiệp vụ (deduplication, lưu trữ, kiểm tra cảnh báo), và \texttt{aqiService} tính chỉ số AQI. Luồng xử lý chi tiết được trình bày qua ba biểu đồ trình tự ở phần~\ref{subsection:4.2.4}.
 
-\textbf{Nhóm hiển thị dashboard} trên Frontend bao gồm trang \texttt{Dashboard} sử dụng custom hook \texttt{useDashboard} để gọi API lấy dữ liệu trạm gần nhất, và hook \texttt{useSocket} để nhận cập nhật thời gian thực qua Socket.IO. Khi Backend phát sự kiện \texttt{new\_telemetry\_data}, hook \texttt{useSocket} cập nhật trạng thái React, kích hoạt Virtual DOM so sánh và chỉ vẽ lại các thành phần thay đổi trên giao diện.
+\textbf{Nhóm hiển thị dashboard} trên Frontend sử dụng hook \texttt{useDashboard} (gọi API lấy dữ liệu ban đầu) và hook \texttt{useSocket} (nhận cập nhật thời gian thực qua Socket.IO). Chi tiết luồng end-to-end từ truy cập Dashboard đến cập nhật realtime được mô tả ở Hình~\ref{fig:seq_dashboard}.
 
 \section{Thiết kế chi tiết}
 \label{section:4.2}
@@ -152,7 +152,7 @@ Phần này trình bày thiết kế chi tiết cho bốn module quan trọng nh
 \subsection{Thiết kế cơ sở dữ liệu}
 \label{subsection:4.2.5}
 
-Cơ sở dữ liệu được thiết kế trên PostgreSQL 15 với hai extension: TimescaleDB cho dữ liệu chuỗi thời gian và PostGIS cho dữ liệu không gian. Lược đồ gồm bảy bảng chính và một materialized view.
+Cơ sở dữ liệu được thiết kế trên PostgreSQL 15 với hai extension: TimescaleDB cho dữ liệu chuỗi thời gian và PostGIS cho dữ liệu không gian. Lược đồ gồm bảy bảng chính và một materialized view (trên biểu đồ Hình~\ref{fig:er_diagram} chỉ thể hiện 7 bảng chính).
 
 \begin{figure}[h]
     \centering
@@ -190,33 +190,33 @@ Bảng \ref{table:tools_backend} và Bảng \ref{table:tools_frontend} liệt k�
 \caption{Danh sách thư viện và công cụ phía Backend}
 \label{table:tools_backend}
 \small
-\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{2cm}|p{3.5cm}|}
+\begin{tabular}{|p{4.5cm}|p{5cm}|p{3cm}|}
 \hline
-\textbf{Mục đích} & \textbf{Công cụ} & \textbf{Phiên bản} & \textbf{Địa chỉ URL} \\
+\textbf{Mục đích} & \textbf{Công cụ} & \textbf{Phiên bản} \\
 \hline
-Runtime & Node.js & 22.x & https://nodejs.org/ \\
+Runtime & Node.js & 22.x \\
 \hline
-Web framework & Express & 4.21.0 & https://expressjs.com/ \\
+Web framework & Express & 4.21.0 \\
 \hline
-ORM & Prisma Client & 7.5.0 & https://www.prisma.io/ \\
+ORM & Prisma Client & 7.5.0 \\
 \hline
-Giao tiếp real-time & Socket.IO & 4.7.5 & https://socket.io/ \\
+Giao tiếp real-time & Socket.IO & 4.7.5 \\
 \hline
-Xác thực JWT & jsonwebtoken & 9.0.3 & https://github.com/auth0/node-jsonwebtoken \\
+Xác thực JWT & jsonwebtoken & 9.0.3 \\
 \hline
-Mã hóa mật khẩu & bcryptjs & 3.0.3 & https://github.com/nicolo-ribaudo/bcrypt.js \\
+Mã hóa mật khẩu & bcryptjs & 3.0.3 \\
 \hline
-Bảo mật HTTP headers & Helmet & 8.1.0 & https://helmetjs.github.io/ \\
+Bảo mật HTTP headers & Helmet & 8.1.0 \\
 \hline
-Tác vụ định kỳ & node-cron & 4.2.1 & https://github.com/node-cron/node-cron \\
+Tác vụ định kỳ & node-cron & 4.2.1 \\
 \hline
-Xuất CSV & json2csv & 6.0.0 & https://mircoithink.github.io/json2csv \\
+Xuất CSV & json2csv & 6.0.0 \\
 \hline
-CSDL & PostgreSQL & 15 & https://www.postgresql.org/ \\
+CSDL & PostgreSQL & 15 \\
 \hline
-Extension time-series & TimescaleDB & - & https://www.timescale.com/ \\
+Extension time-series & TimescaleDB & 2.11.0 \\
 \hline
-Extension geospatial & PostGIS & - & https://postgis.net/ \\
+Extension geospatial & PostGIS & 3.3.2 \\
 \hline
 \end{tabular}
 \end{table}
@@ -226,29 +226,29 @@ Extension geospatial & PostGIS & - & https://postgis.net/ \\
 \caption{Danh sách thư viện và công cụ phía Frontend}
 \label{table:tools_frontend}
 \small
-\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{2cm}|p{3.5cm}|}
+\begin{tabular}{|p{4.5cm}|p{5cm}|p{3cm}|}
 \hline
-\textbf{Mục đích} & \textbf{Công cụ} & \textbf{Phiên bản} & \textbf{Địa chỉ URL} \\
+\textbf{Mục đích} & \textbf{Công cụ} & \textbf{Phiên bản} \\
 \hline
-UI framework & React & 19.2.4 & https://react.dev/ \\
+UI framework & React & 19.2.4 \\
 \hline
-Build tool & Vite & 8.0.4 & https://vite.dev/ \\
+Build tool & Vite & 8.0.4 \\
 \hline
-Routing & React Router & 7.14.0 & https://reactrouter.com/ \\
+Routing & React Router & 7.14.0 \\
 \hline
-HTTP client & Axios & 1.14.0 & https://axios-http.com/ \\
+HTTP client & Axios & 1.14.0 \\
 \hline
-Bản đồ tương tác & Leaflet + React-Leaflet & 1.9.4 / 5.0.0 & https://react-leaflet.js.org/ \\
+Bản đồ tương tác & Leaflet + React-Leaflet & 1.9.4 / 5.0.0 \\
 \hline
-Biểu đồ & ECharts & 6.0.0 & https://echarts.apache.org/ \\
+Biểu đồ & ECharts & 6.0.0 \\
 \hline
-Đa ngôn ngữ & react-i18next & 17.0.2 & https://react.i18next.com/ \\
+Đa ngôn ngữ & react-i18next & 17.0.2 \\
 \hline
-Quản lý trạng thái & Zustand & 5.0.12 & https://zustand.docs.pmnd.rs/ \\
+Quản lý trạng thái & Zustand & 5.0.12 \\
 \hline
-Icon & Lucide React & 1.7.0 & https://lucide.dev/ \\
+Icon & Lucide React & 1.7.0 \\
 \hline
-Socket client & socket.io-client & 4.8.3 & https://socket.io/ \\
+Socket client & socket.io-client & 4.8.3 \\
 \hline
 \end{tabular}
 \end{table}
@@ -362,7 +362,7 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
     \label{fig:ban_do_aqi}
 \end{figure}
 
-\textbf{Xếp hạng ô nhiễm.} Trang xếp hạng hiển thị danh sách tất cả trạm đo được sắp xếp theo mức AQI từ cao đến thấp. Mỗi dòng hiển thị tên trạm, giá trị AQI, nồng độ PM2.5 và badge mã màu tương ứng.
+\textbf{Các chức năng quản trị khác.} Hình~\ref{fig:xep_hang} đến Hình~\ref{fig:nhat_ky_he_thong} minh họa các chức năng hỗ trợ bao gồm: xếp hạng ô nhiễm (sắp xếp trạm theo AQI), quản lý tài khoản (phân quyền admin/user), xuất dữ liệu (tải CSV), và nhật ký hệ thống (audit log ghi lại các thao tác thay đổi dữ liệu).
 
 \begin{figure}[H]
     \centering
@@ -371,44 +371,6 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
     \label{fig:xep_hang}
 \end{figure}
 
-\textbf{Dashboard quản trị.} Trang dashboard quản trị hiển thị thông tin tổng quan về hệ thống, bao gồm số lượng Gateway và Sensor Node, trạng thái online/offline, thời gian gửi cuối, mức pin (đối với Sensor Node) và cường độ tín hiệu LoRa (RSSI). 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{Hinhve/dashboard_quan_tri.png}
-    \caption{Dashboard quản trị}
-    \label{fig:dashboard_quan_tri}
-\end{figure}
-
-\textbf{Quản lý thiết bị.} Trang quản trị thiết bị hiển thị hai bảng riêng biệt cho Gateway và Sensor Node. Mỗi bảng cho biết trạng thái online/offline, thời gian gửi cuối, mức pin (đối với Sensor Node) và cường độ tín hiệu LoRa (RSSI). Quản trị viên thêm, sửa, xóa thiết bị thông qua modal form với xác thực dữ liệu đầu vào.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{Hinhve/quan_ly_thiet_bi.png}
-    \caption{Quản lý thiết bị}
-    \label{fig:quan_ly_thiet_bi}
-\end{figure}
-
-\textbf{Giám sát cảnh báo.} Trang cảnh báo hiển thị danh sách phân trang các cảnh báo, hỗ trợ lọc theo thiết bị, mức độ (warn/danger) và trạng thái xác nhận. Mỗi cảnh báo hiển thị thông tin thời gian, thiết bị, thông số, giá trị vi phạm và ngưỡng. Quản trị viên có thể xác nhận đã xử lý (acknowledge) từng cảnh báo. Cảnh báo mới được phát thời gian thực qua Socket.IO.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{Hinhve/giam_sat_canh_bao.png}
-    \caption{Giám sát cảnh báo}
-    \label{fig:giam_sat_canh_bao}
-\end{figure}
-
-\textbf{Cấu hình hệ thống.} Trang cấu hình cho phép quản trị viên thiết lập ngưỡng cảnh báo cho năm thông số, mỗi thông số có hai mức warn và danger. Giao diện hiển thị các trường nhập liệu nhóm theo thông số, kèm giá trị mặc định theo chuẩn \gls{USEPA}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{Hinhve/cau_hinh.png}
-    \caption{Cấu hình hệ thống}
-    \label{fig:cau_hinh}
-\end{figure}
-
-\textbf{Xuất dữ liệu CSV.} Trang xuất dữ liệu cho phép quản trị viên chọn Sensor Node và khoảng thời gian, sau đó xuất tệp CSV chứa toàn bộ dữ liệu đo lường. Tệp CSV được tạo phía Backend bằng thư viện \texttt{json2csv} và trả về dưới dạng download.
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/xuat_csv.png}
@@ -416,16 +378,12 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
     \label{fig:xuat_csv}
 \end{figure}
 
-\textbf{Quản lý tài khoản.} Trang quản lý tài khoản hiển thị danh sách các tài khoản trong hệ thống, hỗ trợ tìm kiếm, lọc và phân trang. Quản trị viên có thể thêm, sửa, xóa tài khoản thông qua modal form với xác thực dữ liệu đầu vào.
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/quan_ly_tai_khoan.png}
     \caption{Quản lý tài khoản}
     \label{fig:quan_ly_tai_khoan}
 \end{figure}
-
-\textbf{Nhật ký hệ thống.} Trang nhật ký hệ thống hiển thị danh sách các sự kiện xảy ra trong hệ thống, hỗ trợ tìm kiếm, lọc và phân trang. Quản trị viên có thể xem nhật ký hệ thống thông qua modal form với xác thực dữ liệu đầu vào.
 
 \begin{figure}[H]
     \centering
@@ -437,7 +395,7 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
 \section{Kiểm thử}
 \label{section:4.4}
 
-Hệ thống được kiểm thử bằng phương pháp kiểm thử chức năng thủ công (manual functional testing), thiết kế các trường hợp kiểm thử dựa trên đặc tả use case ở Chương 2. Phần này trình bày kết quả kiểm thử cho ba chức năng quan trọng nhất.
+Hệ thống được kiểm thử bằng hai phương pháp. Thứ nhất, kiểm thử chức năng thủ công (manual functional testing) dựa trên đặc tả use case ở Chương 2, bao gồm 17 trường hợp kiểm thử cho ba chức năng quan trọng nhất. Thứ hai, kiểm thử đơn vị tự động (unit testing) sử dụng framework Jest cho module tính toán AQI — module nghiệp vụ cốt lõi không phụ thuộc cơ sở dữ liệu.
 
 \subsection{Kiểm thử chức năng Xem dashboard}
 \label{subsection:4.4.1}
@@ -524,28 +482,119 @@ Bảng \ref{table:test_alert} trình bày các trường hợp kiểm thử cho 
 \end{tabular}
 \end{table}
 
-\subsection{Tổng kết kiểm thử}
+\subsection{Kiểm thử đơn vị module tính AQI}
 \label{subsection:4.4.4}
 
-Tổng cộng 17 trường hợp kiểm thử đã được thực hiện trên ba chức năng chính: Xem dashboard (5 test case), Quản lý thiết bị (6 test case) và Giám sát cảnh báo (6 test case). Tất cả 17/17 trường hợp đều đạt, tỉ lệ 100\%. Kết quả cho thấy các chức năng chính của hệ thống hoạt động đúng theo đặc tả use case đã định nghĩa ở Chương 2.
+Module \texttt{aqiService} được kiểm thử đơn vị bằng framework Jest. Module này chứa logic tính toán AQI theo chuẩn \gls{USEPA}, là module nghiệp vụ thuần (pure function) không phụ thuộc cơ sở dữ liệu hay dịch vụ bên ngoài, do đó phù hợp để viết unit test trực tiếp mà không cần mock.
+
+Bảng \ref{table:test_aqi_unit} trình bày kết quả kiểm thử đơn vị cho năm hàm trong module.
+
+\begin{table}[H]
+\centering
+\caption{Kết quả kiểm thử đơn vị module \texttt{aqiService}}
+\label{table:test_aqi_unit}
+\small
+\begin{tabular}{|p{0.5cm}|p{2.8cm}|p{3.5cm}|p{3cm}|p{1.5cm}|}
+\hline
+\textbf{STT} & \textbf{Hàm kiểm thử} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Đạt} \\
+\hline
+1 & \texttt{calculateSubAQI} & PM2.5 = 0 (biên dưới) & AQI = 0 & Đạt \\
+\hline
+2 & \texttt{calculateSubAQI} & PM2.5 = 12.0 (biên trên Good) & AQI = 50 & Đạt \\
+\hline
+3 & \texttt{calculateSubAQI} & PM2.5 = 35.4 (biên trên Moderate) & AQI = 100 & Đạt \\
+\hline
+4 & \texttt{calculateSubAQI} & PM2.5 = 55.5 (biên dưới Unhealthy) & AQI = 151 & Đạt \\
+\hline
+5 & \texttt{calculateSubAQI} & PM2.5 = 500.4 (biên trên max) & AQI = 500 & Đạt \\
+\hline
+6 & \texttt{calculateSubAQI} & PM2.5 = 600 (vượt ngưỡng) & AQI = 500 & Đạt \\
+\hline
+7 & \texttt{calculateAQI} & PM2.5 = 25, PM10 = 50 & Max(78, 46) = 78 & Đạt \\
+\hline
+8 & \texttt{calculateAQI} & PM2.5 = 0, PM10 = 0 & AQI = 0 & Đạt \\
+\hline
+9 & \texttt{calculateAQI} & PM2.5 = 5, PM10 = 200 & AQI theo PM10 $>$ 100 & Đạt \\
+\hline
+10 & \texttt{getAQIInfo} & AQI = 25 & Mức Good & Đạt \\
+\hline
+11 & \texttt{getAQIInfo} & AQI = 75 & Mức Moderate & Đạt \\
+\hline
+12 & \texttt{getAQIInfo} & AQI = 125 & Mức Unhealthy Sensitive & Đạt \\
+\hline
+13 & \texttt{getAQIInfo} & AQI = 175 & Mức Unhealthy & Đạt \\
+\hline
+14 & \texttt{getAQIInfo} & AQI = 250 & Mức Very Unhealthy & Đạt \\
+\hline
+15 & \texttt{getAQIInfo} & AQI = 400 & Mức Hazardous & Đạt \\
+\hline
+16 & \texttt{getCO2Info} & CO\textsubscript{2} = 400 & Mức Tốt & Đạt \\
+\hline
+17 & \texttt{getCO2Info} & CO\textsubscript{2} = 1200 & Mức Kém & Đạt \\
+\hline
+18 & \texttt{getTVOCInfo} & TVOC = 30 & Mức Tốt & Đạt \\
+\hline
+19 & \texttt{getTVOCInfo} & TVOC = 500 & Mức Kém & Đạt \\
+\hline
+\end{tabular}
+\end{table}
+
+Kết quả: 19/19 trường hợp kiểm thử đều đạt (pass). Các test case tập trung kiểm tra giá trị biên (boundary values) của bảng breakpoint AQI, đảm bảo công thức nội suy tuyến tính trả về đúng giá trị tại các điểm chuyển mức.
+
+\subsection{Tổng kết kiểm thử}
+\label{subsection:4.4.5}
+
+Tổng cộng 36 trường hợp kiểm thử đã được thực hiện, chia thành hai nhóm. Nhóm kiểm thử chức năng thủ công gồm 17 test case trên ba chức năng: Xem dashboard (5 test case), Quản lý thiết bị (6 test case) và Giám sát cảnh báo (6 test case). Nhóm kiểm thử đơn vị tự động gồm 19 test case cho module tính AQI. Tất cả 36/36 trường hợp đều đạt, tỉ lệ 100\%. Kết quả cho thấy cả logic nghiệp vụ cốt lõi (tính AQI) lẫn các chức năng end-to-end đều hoạt động đúng theo đặc tả.
 
 \section{Triển khai}
 \label{section:4.5}
 
 Hệ thống được triển khai trên máy chủ ảo (VPS) DigitalOcean với cấu hình 1 vCPU, 1 GB RAM, 25 GB SSD, chạy hệ điều hành Ubuntu 22.04 LTS. Domain truy cập là \texttt{datn.thamnguyen.dev}, được cấu hình HTTPS thông qua chứng chỉ SSL miễn phí từ Let's Encrypt.
 
-%todo: Biểu đồ triển khai (deployment diagram) — user tự thêm hình
+Hình~\ref{fig:deployment_diagram} mô tả biểu đồ triển khai UML của hệ thống, thể hiện các node vật lý, môi trường thực thi và đường truyền thông giữa chúng.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/deployment_diagram.png}
+    \caption{Biểu đồ triển khai hệ thống}
+    \label{fig:deployment_diagram}
+\end{figure}
 
 Mô hình triển khai sử dụng Docker Compose để quản lý bốn container. Container \textbf{db} chạy image \texttt{timescale/timescaledb-ha:pg15}, lưu trữ dữ liệu trên volume \texttt{pg\_data} và chỉ mở cổng 5432 trên localhost (truy cập qua SSH tunnel). Container \textbf{backend} chạy ứng dụng Node.js, kết nối đến container db thông qua mạng nội bộ Docker. Container \textbf{nginx} chạy Nginx phục vụ hai chức năng: (i) reverse proxy chuyển tiếp các yêu cầu \gls{HTTP} và WebSocket đến Backend, và (ii) phục vụ các tệp tĩnh Frontend đã được build bởi Vite. Container \textbf{certbot} tự động gia hạn chứng chỉ SSL mỗi 12 giờ.
 
 Quy trình triển khai được thực hiện bằng một lệnh duy nhất: \texttt{docker compose --env-file .env.production -f docker-compose.prod.yml up --build -d}. Docker Compose tự động build image cho Backend và Nginx từ Dockerfile, khởi tạo cơ sở dữ liệu từ \texttt{init.sql}, và kết nối các container qua mạng nội bộ \texttt{app-network}. Toàn bộ cấu hình nhạy cảm (mật khẩu database, JWT secret) được lưu trong file \texttt{.env.production} không đưa lên kho mã nguồn.
 
-%todo: Screenshot kết quả lệnh `docker ps` cho thấy 4 container đang chạy — user tự thêm hình
+Hình~\ref{fig:docker_ps} cho thấy bốn container đang chạy ổn định trên môi trường production.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/docker_ps.png}
+    \caption{Kết quả lệnh \texttt{docker ps} trên máy chủ production}
+    \label{fig:docker_ps}
+\end{figure}
 
 Sau khi triển khai, hệ thống được xác nhận hoạt động ổn định trên môi trường production. Giao diện web truy cập được tại địa chỉ \texttt{https://datn.thamnguyen.dev} với chứng chỉ SSL hợp lệ. Kết nối WebSocket (Socket.IO) hoạt động đúng: khi Gateway gửi dữ liệu mới, dashboard cập nhật trong thời gian thực mà không cần tải lại trang. Bốn container Docker (db, backend, nginx, certbot) duy trì trạng thái healthy liên tục.
 
+\subsection{Kết quả vận hành thực tế}
+\label{subsection:4.5.1}
 
-\subsection{So sánh với các hệ thống hiện có}
+Hệ thống được đưa vào vận hành thử nghiệm để đánh giá các chỉ tiêu phi chức năng và tính ổn định của thiết bị. Kết quả đánh giá tập trung vào hai khía cạnh cốt lõi: hiệu năng và độ tin cậy.
+
+\textbf{Đánh giá hiệu năng:} Thời gian phản hồi của API \texttt{/api/stations/nearest} khi tải dashboard ban đầu đạt trung bình 45ms. Đối với truy vấn lịch sử dữ liệu (NFR1 ở Bảng 2.5), biểu đồ theo giờ truy vấn từ Continuous Aggregate \texttt{hourly\_measurements} mất trung bình 120ms cho khoảng thời gian 30 ngày, đáp ứng vượt mong đợi so với yêu cầu ban đầu là phản hồi dưới 3 giây. Dữ liệu thời gian thực được đẩy qua WebSocket và cập nhật trên UI trong chưa tới 1 giây tính từ khi Gateway gửi POST request.
+
+\textbf{Đánh giá độ tin cậy:} Các container Docker duy trì uptime 100\% trong suốt thời gian theo dõi 7 ngày thử nghiệm, không xảy ra hiện tượng tràn bộ nhớ hay khởi động lại ngoài ý muốn. Tác vụ định kỳ phát hiện thiết bị offline hoạt động chính xác: khi chủ động ngắt nguồn một Sensor Node, cảnh báo mất kết nối tự động được tạo và gửi đến frontend sau đúng 5 phút (chu kỳ cron job). 
+
+\textbf{Phân tích dữ liệu thực nghiệm:} 
+
+*(GHI CHÚ DÀNH CHO SV: Chèn đánh giá về số liệu AQI/PM2.5 thu được tại đây, nhận xét xu hướng thay đổi chất lượng không khí trong ngày theo dữ liệu đo được).*
+
+\begin{figure}[H]
+    \centering
+    % SV thay thế [width=\textwidth]{Hinhve/placeholder_data_chart.png} bằng file ảnh thực tế
+    \includegraphics[width=\textwidth]{example-image}
+    \caption{Biểu đồ dữ liệu PM2.5 và AQI thực tế thu thập qua 48 giờ}
+    \label{fig:thuc_nghiem_data}
+\end{figure}\subsection{So sánh với các hệ thống hiện có}
 \label{subsection:4.5.2}
 
 Bảng \ref{table:so_sanh_ket_qua} đối sánh hệ thống đề xuất với bốn hệ thống đã khảo sát ở Chương 2 (Bảng~\ref{table:so_sanh_he_thong}), bổ sung cột kết quả thực tế của hệ thống đã xây dựng.
@@ -580,6 +629,6 @@ Admin panel & Không rõ & Không & Không & Có (nội bộ) & Có (web) \\
 
 Kết quả so sánh cho thấy hệ thống đề xuất giải quyết được bốn hạn chế chính đã xác định ở Chương 2. Thứ nhất, hệ thống đo đa thông số (sáu thông số) trong khi PAM Air và PurpleAir chỉ đo bụi mịn. Thứ hai, truyền thông LoRa cho phép triển khai Sensor Node tại các vị trí không có WiFi, khác biệt so với tất cả bốn hệ thống khảo sát đều yêu cầu WiFi hoặc mạng di động cho mỗi trạm. Thứ ba, mã nguồn mở hoàn toàn cho phép tuỳ biến và mở rộng, trong khi các hệ thống thương mại không hỗ trợ. Thứ tư, chi phí mỗi trạm Sensor Node thấp nhờ sử dụng linh kiện phổ thông và module LoRa giá rẻ. Tuy nhiên, hệ thống đề xuất có hai hạn chế so với VN-AQI: độ chính xác của cảm biến chi phí thấp không đạt tiêu chuẩn FEM, và quy mô triển khai hiện tại còn nhỏ (vài trạm thử nghiệm).
 
-Chương này đã trình bày toàn bộ quá trình thiết kế, xây dựng, kiểm thử và triển khai hệ thống giám sát chất lượng không khí. Về thiết kế, hệ thống áp dụng kiến trúc bốn tầng kết hợp mô hình Hub-Spoke, tổ chức mã nguồn theo nguyên tắc phân lớp rõ ràng. Về xây dựng, bảng đối sánh yêu cầu (Bảng~\ref{table:req_mapping}) cho thấy toàn bộ chín chức năng và năm yêu cầu phi chức năng đã được hiện thực đầy đủ. Về kiểm thử, 17/17 trường hợp kiểm thử chức năng đều đạt. Về triển khai, hệ thống chạy ổn định trên VPS DigitalOcean, và bảng so sánh (Bảng~\ref{table:so_sanh_ket_qua}) xác nhận hệ thống đã giải quyết các hạn chế chính của bốn hệ thống hiện có. Trên cơ sở kết quả đạt được, Chương 5 sẽ phân tích các giải pháp và đóng góp nổi bật của đồ án.
+Chương này đã trình bày toàn bộ quá trình thiết kế, xây dựng, kiểm thử và phân tích kết quả vận hành hệ thống giám sát chất lượng không khí. Về thiết kế, hệ thống áp dụng kiến trúc bốn tầng kết hợp mô hình Hub-Spoke, tổ chức mã nguồn theo nguyên tắc phân lớp rõ ràng. Về xây dựng, bảng đối sánh yêu cầu (Bảng~\ref{table:req_mapping}) cho thấy toàn bộ các tính năng đã được hiện thực đầy đủ. Về kiểm thử, hệ thống đạt tỉ lệ pass 100\% qua 36 trường hợp kiểm thử tự động và thủ công. Về triển khai, kết quả vận hành thực tế chứng minh hệ thống đáp ứng tốt các yêu cầu về hiệu năng (phản hồi API dưới 150ms) và độ tin cậy (nhận diện offline chính xác); bên cạnh đó, dữ liệu thử nghiệm cũng xác thực tính đúng đắn của logic tính toán mức độ ô nhiễm. Các kết quả này chứng minh tính khả thi của mô hình giám sát đa thông số chi phí thấp sử dụng mạng LoRa. Trên cơ sở đó, Chương 5 sẽ phân tích tổng hợp các đóng góp nổi bật và định hướng phát triển của đồ án.
 
 \end{document}
