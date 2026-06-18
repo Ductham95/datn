@@ -584,17 +584,105 @@ Hệ thống được đưa vào vận hành thử nghiệm để đánh giá c�
 
 \textbf{Đánh giá độ tin cậy:} Các container Docker duy trì uptime 100\% trong suốt thời gian theo dõi 7 ngày thử nghiệm, không xảy ra hiện tượng tràn bộ nhớ hay khởi động lại ngoài ý muốn. Tác vụ định kỳ phát hiện thiết bị offline hoạt động chính xác: khi chủ động ngắt nguồn một Sensor Node, cảnh báo mất kết nối tự động được tạo và gửi đến frontend sau đúng 5 phút (chu kỳ cron job). 
 
-\textbf{Phân tích dữ liệu thực nghiệm:} 
-
-*(GHI CHÚ DÀNH CHO SV: Chèn đánh giá về số liệu AQI/PM2.5 thu được tại đây, nhận xét xu hướng thay đổi chất lượng không khí trong ngày theo dữ liệu đo được).*
+\textbf{Kịch bản thử nghiệm môi trường ô nhiễm (đốt hương):} Để đánh giá tốc độ phản hồi và độ nhạy của các cảm biến, một thử nghiệm đốt hương (nhang) được thực hiện trong không gian phòng kín (diện tích $\sim$15m² -- xem Hình \ref{fig:thuc_nghiem_dot_huong_setup} về cách bố trí không gian). Quá trình thử nghiệm diễn ra trong 17 phút và được chia làm ba pha: pha Baseline (từ 16:20 đến 16:24, phòng đóng cửa, không có nguồn ô nhiễm), pha Đốt hương (từ 16:25 đến 16:32, thắp một nén hương cách Sensor Node khoảng 1 mét), và pha Phục hồi (từ 16:33 đến 16:37, dập tắt hương và mở cửa sổ để không khí lưu thông). Dữ liệu thu thập được từ Sensor Node trong suốt quá trình thử nghiệm được trình bày chi tiết tại Bảng \ref{table:thuc_nghiem_dot_huong}.
 
 \begin{figure}[H]
     \centering
-    % SV thay thế [width=\textwidth]{Hinhve/placeholder_data_chart.png} bằng file ảnh thực tế
-    \includegraphics[width=\textwidth]{example-image}
-    \caption{Biểu đồ dữ liệu PM2.5 và AQI thực tế thu thập qua 48 giờ}
-    \label{fig:thuc_nghiem_data}
-\end{figure}\subsection{So sánh với các hệ thống hiện có}
+    \includegraphics[width=0.7\textwidth]{Hinhve/thuc_nghiem_dot_huong_setup.jpg}
+    \caption{Bố trí thiết bị thử nghiệm đo lường không khí bằng khói hương}
+    \label{fig:thuc_nghiem_dot_huong_setup}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Dữ liệu đo lường theo thời gian — Kịch bản đốt hương}
+\label{table:thuc_nghiem_dot_huong}
+\small
+\begin{tabular}{|p{2cm}|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+\hline
+\textbf{Thời gian} & \textbf{Pha} & \textbf{PM2.5} & \textbf{PM10} & \textbf{eCO$_2$} & \textbf{eTVOC} & \textbf{Nhiệt độ} & \textbf{Độ ẩm} \\
+\hline
+16:20 & Baseline & 18 & 19 & 451 & 7 & 32.6 & 62.2 \\
+\hline
+16:21 & Baseline & 20 & 22 & 433 & 5 & 32.6 & 62.2 \\
+\hline
+16:22 & Baseline & 18 & 19 & 436 & 5 & 32.5 & 62.5 \\
+\hline
+16:23 & Baseline & 19 & 20 & 442 & 6 & 32.5 & 62.4 \\
+\hline
+16:24 & Baseline & 20 & 22 & 450 & 7 & 32.5 & 62.3 \\
+\hline
+\textbf{16:25} & \textbf{Đốt hương} & 22 & 24 & 448 & 7 & 32.6 & 62.3 \\
+\hline
+16:26 & Ô nhiễm & 416 & 513 & 543 & 21 & 32.6 & 62.4 \\
+\hline
+16:27 & Ô nhiễm & 321 & 374 & 646 & 37 & 32.6 & 62.5 \\
+\hline
+16:28 & Ô nhiễm & 199 & 231 & 1178 & 117 & 32.6 & 62.5 \\
+\hline
+16:29 & Ô nhiễm & 213 & 249 & 1801 & 451 & 32.6 & 62.5 \\
+\hline
+16:30 & Ô nhiễm & 332 & 394 & 1095 & 105 & 32.6 & 62.5 \\
+\hline
+16:31 & Ô nhiễm & 247 & 293 & 945 & 83 & 32.6 & 62.5 \\
+\hline
+16:32 & Ô nhiễm & 262 & 306 & 902 & 76 & 32.5 & 62.7 \\
+\hline
+\textbf{16:33} & \textbf{Phục hồi} & 237 & 275 & 683 & 43 & 32.5 & 62.3 \\
+\hline
+16:34 & Phục hồi & 149 & 170 & 529 & 19 & 32.3 & 62.0 \\
+\hline
+16:35 & Phục hồi & 71 & 82 & 481 & 12 & 32.4 & 61.3 \\
+\hline
+16:36 & Phục hồi & 48 & 60 & 418 & 2 & 32.4 & 61.2 \\
+\hline
+16:37 & Phục hồi & 41 & 50 & 405 & 0 & 32.4 & 61.2 \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Phân tích dữ liệu thực nghiệm:} Kết quả từ Bảng \ref{table:thuc_nghiem_dot_huong} cho thấy sự thay đổi rõ rệt của chất lượng không khí qua ba pha. Tại pha Baseline (5 phút đầu), nồng độ các chất ô nhiễm duy trì ở mức thấp và ổn định. Giá trị PM2.5 trung bình đạt $\sim$19 $\mu$g/m$^3$, tương ứng với chỉ số AQI ở mức ``Tốt'' (màu xanh lá cây). Giá trị eCO$_2$ dao động quanh mức 442 ppm, nằm trong khoảng an toàn (như hiển thị trên giao diện Dashboard ở Hình \ref{fig:thuc_nghiem_baseline_dashboard}). Cùng với đó, danh sách nhật ký tổng hợp các thông số (Hình \ref{fig:thuc_nghiem_baseline_chart}) cho thấy dãy dữ liệu đo được duy trì ở trạng thái bình ổn với biên độ dao động rất nhỏ.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/thuc_nghiem_baseline_dashboard.jpg}
+    \caption{Dashboard ghi nhận chất lượng không khí ở pha Baseline (trước khi đốt hương)}
+    \label{fig:thuc_nghiem_baseline_dashboard}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/thuc_nghiem_baseline_chart.png}
+    \caption{Danh sách nhật ký giám sát chất lượng không khí trong pha Baseline}
+    \label{fig:thuc_nghiem_baseline_chart}
+\end{figure}
+
+Ngay sau khi bắt đầu đốt hương tại thời điểm 16:25, các chỉ số ô nhiễm gia tăng đột biến, thể hiện rõ ở pha Ô nhiễm. Do khói hương tỏa ra trực tiếp chứa số lượng lớn hạt bụi mịn, nồng độ PM2.5 tăng vọt từ 22 $\mu$g/m$^3$ lên đỉnh điểm 416 $\mu$g/m$^3$ chỉ trong vòng một phút (tại 16:26), tức là tăng gần 20 lần. Giá trị này quy đổi ra chỉ số AQI vượt mức ``Nguy hại'' (màu nâu đỏ), cảnh báo khẩn cấp tới sức khỏe (Hình \ref{fig:thuc_nghiem_onhiem_dashboard}). Bên cạnh đó, quá trình đốt cháy cũng sinh ra các khí độc hại, khiến nồng độ eCO$_2$ và eTVOC bắt đầu tăng kể từ phút thứ hai sau khi đốt. Sự thay đổi đồng loạt của tất cả các thông số (AQI, PM2.5, PM10, CO$_2$, TVOC) được theo dõi sắc nét thông qua danh sách đo lường cùng cấu trúc tương ứng với pha trước (Hình \ref{fig:thuc_nghiem_onhiem_chart}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/thuc_nghiem_onhiem_dashboard.jpg}
+    \caption{Dashboard cảnh báo AQI ở mức Nguy hại trong pha Đốt hương}
+    \label{fig:thuc_nghiem_onhiem_dashboard}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/thuc_nghiem_onhiem_chart.png}
+    \caption{Danh sách nhật ký giám sát bao gồm tất cả các thông số trong pha Ô nhiễm}
+    \label{fig:thuc_nghiem_onhiem_chart}
+\end{figure}
+
+Tại pha Phục hồi (bắt đầu từ 16:33), thao tác dập tắt hương và mở cửa sổ đã tạo luồng đối lưu không khí, giúp các thông số ô nhiễm nhanh chóng giảm xuống. Qua sự quan trắc trên dữ liệu nhật ký của hệ thống (Hình \ref{fig:thuc_nghiem_phuchoi_chart}), ta có thể thấy các chỉ số đồng loạt khôi phục trạng thái an toàn. Nồng độ PM2.5 giảm mạnh từ 237 $\mu$g/m$^3$ xuống còn 41 $\mu$g/m$^3$ ở phút 16:37. Tương tự, eCO$_2$ cũng quay trở về sát mức nền là 405 ppm. Sự thay đổi nhạy bén và cập nhật liên tục này khẳng định hệ thống thu thập và hiển thị dữ liệu qua WebSocket chạy vô cùng ổn định với độ trễ cực thấp.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/thuc_nghiem_phuchoi_chart.png}
+    \caption{Danh sách nhật ký giám sát bao gồm tất cả các thông số trong pha Phục hồi}
+    \label{fig:thuc_nghiem_phuchoi_chart}
+\end{figure}
+
+\subsection{So sánh với các hệ thống hiện có}
 \label{subsection:4.5.2}
 
 Bảng \ref{table:so_sanh_ket_qua} đối sánh hệ thống đề xuất với bốn hệ thống đã khảo sát ở Chương 2 (Bảng~\ref{table:so_sanh_he_thong}), bổ sung cột kết quả thực tế của hệ thống đã xây dựng.

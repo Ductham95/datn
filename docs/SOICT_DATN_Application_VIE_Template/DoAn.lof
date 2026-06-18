@@ -25,13 +25,18 @@
 \contentsline {figure}{\numberline {4.15}{\ignorespaces Nhật ký hệ thống}}{44}{figure.caption.43}%
 \contentsline {figure}{\numberline {4.16}{\ignorespaces Biểu đồ triển khai hệ thống}}{48}{figure.caption.48}%
 \contentsline {figure}{\numberline {4.17}{\ignorespaces Kết quả lệnh \texttt {docker ps} trên máy chủ production}}{49}{figure.caption.49}%
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Biểu đồ dữ liệu PM2.5 và AQI thực tế thu thập qua 48 giờ}}{50}{figure.caption.50}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Bố trí thiết bị thử nghiệm đo lường không khí bằng khói hương}}{50}{figure.caption.50}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Dashboard ghi nhận chất lượng không khí ở pha Baseline (trước khi đốt hương)}}{52}{figure.caption.52}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Biểu đồ lịch sử giám sát chất lượng không khí trong pha Baseline}}{53}{figure.caption.53}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces Dashboard cảnh báo AQI ở mức Nguy hại trong pha Đốt hương}}{54}{figure.caption.54}%
+\contentsline {figure}{\numberline {4.22}{\ignorespaces Sự gia tăng đột biến của thông số PM2.5 trên biểu đồ lịch sử}}{55}{figure.caption.55}%
+\contentsline {figure}{\numberline {4.23}{\ignorespaces Quan trắc biến động của các thông số môi trường trong pha Phục hồi (đến 16:39)}}{56}{figure.caption.56}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Internet vạn vật}}{61}{figure.caption.57}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Qui cách đóng quyển đồ án}}{63}{figure.caption.60}%
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Qui cách đóng quyển đồ án}}{63}{figure.caption.61}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Internet vạn vật}}{67}{figure.caption.63}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Qui cách đóng quyển đồ án}}{69}{figure.caption.66}%
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Qui cách đóng quyển đồ án}}{69}{figure.caption.67}%
 \addvspace {10\p@ }
 \contentsfinish 
 \contentsfinish 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  18 JUN 2026 16:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  18 JUN 2026 22:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1667,82 +1667,121 @@ Overfull \hbox (83.51059pt too wide) in paragraph at lines 583--584
 \T5/ptm/m/n/13 (NFR1 ð B£ng 2.5), biºu ^^_ç theo gií truy v§n tø Con-tin-u-ous Ag-gre-gate \T5/pcr/m/n/13 hourly_measurements
  []
 
-<example-image.pdf, id=290, 321.2pt x 240.9pt>
-File: example-image.pdf Graphic file (type pdf)
-<use example-image.pdf>
-Package pdftex.def Info: example-image.pdf  used on input line 594.
-(pdftex.def)             Requested size: 426.79135pt x 320.10257pt.
-[23 <../Hinhve/docker_ps.png>]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 587.
+(C:\Program Files\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+) [23{C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc} <../Hinhve/docker_ps.png>]
+<../Hinhve/thuc_nghiem_dot_huong_setup.jpg, id=300, 3035.34pt x 4047.12pt>
+File: ../Hinhve/thuc_nghiem_dot_huong_setup.jpg Graphic file (type jpg)
+<use ../Hinhve/thuc_nghiem_dot_huong_setup.jpg>
+Package pdftex.def Info: ../Hinhve/thuc_nghiem_dot_huong_setup.jpg  used on input line 591.
+(pdftex.def)             Requested size: 298.75264pt x 398.3133pt.
 
-LaTeX Warning: Reference `table:so_sanh_he_thong' on page 24 undefined on input line 600.
+Overfull \hbox (42.69434pt too wide) in paragraph at lines 601--642
+ [][] 
+ []
+
+[24 <../Hinhve/thuc_nghiem_dot_huong_setup.jpg>]
+<../Hinhve/thuc_nghiem_baseline_dashboard.jpg, id=309, 3035.34pt x 4047.12pt>
+File: ../Hinhve/thuc_nghiem_baseline_dashboard.jpg Graphic file (type jpg)
+<use ../Hinhve/thuc_nghiem_baseline_dashboard.jpg>
+Package pdftex.def Info: ../Hinhve/thuc_nghiem_baseline_dashboard.jpg  used on input line 648.
+(pdftex.def)             Requested size: 426.79135pt x 569.00136pt.
+ [25]
+<../Hinhve/thuc_nghiem_baseline_chart.png, id=319, 906.38625pt x 537.207pt>
+File: ../Hinhve/thuc_nghiem_baseline_chart.png Graphic file (type png)
+<use ../Hinhve/thuc_nghiem_baseline_chart.png>
+Package pdftex.def Info: ../Hinhve/thuc_nghiem_baseline_chart.png  used on input line 655.
+(pdftex.def)             Requested size: 426.79135pt x 252.95456pt.
+ [26 <../Hinhve/thuc_nghiem_baseline_dashboard.jpg>]
+<../Hinhve/thuc_nghiem_onhiem_dashboard.jpg, id=326, 3035.34pt x 4047.12pt>
+File: ../Hinhve/thuc_nghiem_onhiem_dashboard.jpg Graphic file (type jpg)
+<use ../Hinhve/thuc_nghiem_onhiem_dashboard.jpg>
+Package pdftex.def Info: ../Hinhve/thuc_nghiem_onhiem_dashboard.jpg  used on input line 664.
+(pdftex.def)             Requested size: 426.79135pt x 569.00136pt.
+ [27 <../Hinhve/thuc_nghiem_baseline_chart.png>]
+<../Hinhve/thuc_nghiem_onhiem_chart.png, id=334, 904.5795pt x 292.6935pt>
+File: ../Hinhve/thuc_nghiem_onhiem_chart.png Graphic file (type png)
+<use ../Hinhve/thuc_nghiem_onhiem_chart.png>
+Package pdftex.def Info: ../Hinhve/thuc_nghiem_onhiem_chart.png  used on input line 671.
+(pdftex.def)             Requested size: 426.79135pt x 138.09743pt.
+ [28 <../Hinhve/thuc_nghiem_onhiem_dashboard.jpg>]
+<../Hinhve/thuc_nghiem_phuchoi_chart.png, id=340, 1512.65125pt x 2371.86125pt>
+File: ../Hinhve/thuc_nghiem_phuchoi_chart.png Graphic file (type png)
+<use ../Hinhve/thuc_nghiem_phuchoi_chart.png>
+Package pdftex.def Info: ../Hinhve/thuc_nghiem_phuchoi_chart.png  used on input line 680.
+(pdftex.def)             Requested size: 426.79135pt x 669.21965pt.
+ [29 <../Hinhve/thuc_nghiem_onhiem_chart.png>]
+
+LaTeX Warning: Reference `table:so_sanh_he_thong' on page 30 undefined on input line 688.
 
 
-Underfull \hbox (badness 2111) in paragraph at lines 609--610
+Underfull \hbox (badness 2111) in paragraph at lines 697--698
 []|\T5/ptm/b/n/11.86258 H» thèng ^^_·
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 611--611
+Underfull \hbox (badness 10000) in paragraph at lines 699--699
 []|\T5/ptm/m/n/11.86258 PM2.5,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 611--611
+Underfull \hbox (badness 10000) in paragraph at lines 699--699
 []|\T5/ptm/m/n/11.86258 PM2.5,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 611--611
+Underfull \hbox (badness 10000) in paragraph at lines 699--699
 []|\T5/ptm/m/n/11.86258 ^^^¦y ^^_õ
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 611--612
+Underfull \hbox (badness 10000) in paragraph at lines 699--700
 \T5/ptm/m/n/11.86258 CO$[]$, TVOC,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 613--613
+Underfull \hbox (badness 10000) in paragraph at lines 701--701
 []|\T5/ptm/m/n/11.86258 Chuy¶n
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 615--615
+Underfull \hbox (badness 10000) in paragraph at lines 703--703
 []|\T5/ptm/m/n/11.86258 Trung
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 615--615
+Underfull \hbox (badness 10000) in paragraph at lines 703--703
 []|\T5/ptm/m/n/11.86258 Cao
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 615--615
+Underfull \hbox (badness 10000) in paragraph at lines 703--703
 \T5/ptm/m/n/11.86258 ($\OMS/cmsy/m/n/12 ^^X$\T5/ptm/m/n/11.86258 269
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 615--615
+Underfull \hbox (badness 10000) in paragraph at lines 703--703
 []|\T5/ptm/m/n/11.86258 Trung
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 623--624
+Underfull \hbox (badness 10000) in paragraph at lines 711--712
 []|\T5/ptm/m/n/11.86258 Câ
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 625--625
+Underfull \hbox (badness 10000) in paragraph at lines 713--713
 []|\T5/ptm/m/n/11.86258 Câ (nëi
  []
 
-[24 <C:/Program Files/MiKTeX/tex/latex/mwe/example-image.pdf>]
+[30 <../Hinhve/thuc_nghiem_phuchoi_chart.png (PNG copy)>] [31]
 
 Package glossaries Warning: No \printnoidxglossary or \printnoidxglossaries
  found. (Remove \makenoidxglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-[25] (4_Ket_qua_thuc_nghiem.aux)
+[32] (4_Ket_qua_thuc_nghiem.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -1762,17 +1801,17 @@ Package logreq Info: Writing requests to '4_Ket_qua_thuc_nghiem.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33680 strings out of 467691
- 629276 string characters out of 5425054
- 1547962 words of memory out of 5000000
- 62201 multiletter control sequences out of 15000+600000
- 654790 words of font info for 84 fonts, out of 8000000 for 9000
+ 33769 strings out of 467691
+ 632225 string characters out of 5425054
+ 1555680 words of memory out of 5000000
+ 62271 multiletter control sequences out of 15000+600000
+ 656182 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,124p,2618b,856s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
-Output written on 4_Ket_qua_thuc_nghiem.pdf (25 pages, 6151336 bytes).
+<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
+Output written on 4_Ket_qua_thuc_nghiem.pdf (32 pages, 13022761 bytes).
 PDF statistics:
- 367 PDF objects out of 1000 (max. 8388607)
- 76 named destinations out of 1000 (max. 500000)
- 275 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 428 PDF objects out of 1000 (max. 8388607)
+ 89 named destinations out of 1000 (max. 500000)
+ 300 words of extra memory for PDF output out of 10000 (max. 10000000)
 
