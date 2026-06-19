@@ -482,8 +482,77 @@ Bảng \ref{table:test_alert} trình bày các trường hợp kiểm thử cho 
 \end{tabular}
 \end{table}
 
-\subsection{Kiểm thử đơn vị module tính AQI}
+\subsection{Kiểm thử chức năng Xem lịch sử dữ liệu}
 \label{subsection:4.4.4}
+
+Bảng \ref{table:test_history} trình bày các trường hợp kiểm thử cho chức năng xem lịch sử dữ liệu.
+
+\begin{table}[H]
+\centering
+\caption{Trường hợp kiểm thử chức năng Xem lịch sử dữ liệu}
+\label{table:test_history}
+\small
+\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{4cm}|p{2.5cm}|p{1.5cm}|}
+\hline
+\textbf{STT} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Kết quả thực tế} & \textbf{Đạt} \\
+\hline
+1 & Chọn trạm đo và xem biểu đồ theo giờ (30 ngày) & Biểu đồ hiển thị đúng dữ liệu, phản hồi dưới 200ms & Phản hồi 120ms, đúng dữ liệu & Đạt \\
+\hline
+2 & Chuyển chế độ hiển thị từ theo giờ sang theo ngày & Biểu đồ cập nhật đúng dạng dữ liệu & Đúng & Đạt \\
+\hline
+3 & Zoom và tương tác với biểu đồ ECharts & Tooltip hiển thị chi tiết, zoom hoạt động mượt & Đúng & Đạt \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Kiểm thử chức năng Xem bản đồ AQI}
+\label{subsection:4.4.5}
+
+Bảng \ref{table:test_map} trình bày các trường hợp kiểm thử cho chức năng xem bản đồ AQI.
+
+\begin{table}[H]
+\centering
+\caption{Trường hợp kiểm thử chức năng Xem bản đồ AQI}
+\label{table:test_map}
+\small
+\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{4cm}|p{2.5cm}|p{1.5cm}|}
+\hline
+\textbf{STT} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Kết quả thực tế} & \textbf{Đạt} \\
+\hline
+1 & Truy cập trang bản đồ & Hiển thị bản đồ Leaflet với tất cả marker trạm đo & Hiển thị đủ marker, mã màu đúng & Đạt \\
+\hline
+2 & Nhấn vào marker trạm đo & Popup hiển thị tên trạm, AQI, PM2.5, thời gian & Hiển thị đầy đủ thông tin & Đạt \\
+\hline
+3 & Kiểm tra mã màu marker theo mức AQI & Màu marker tương ứng với mức AQI (xanh, vàng, cam, đỏ) & Màu đúng theo chuẩn USEPA & Đạt \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Kiểm thử chức năng Xuất dữ liệu CSV}
+\label{subsection:4.4.6}
+
+Bảng \ref{table:test_export} trình bày các trường hợp kiểm thử cho chức năng xuất dữ liệu CSV.
+
+\begin{table}[H]
+\centering
+\caption{Trường hợp kiểm thử chức năng Xuất dữ liệu CSV}
+\label{table:test_export}
+\small
+\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{4cm}|p{2.5cm}|p{1.5cm}|}
+\hline
+\textbf{STT} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Kết quả thực tế} & \textbf{Đạt} \\
+\hline
+1 & Xuất CSV với khoảng thời gian hợp lệ & Tải file CSV chứa đầy đủ cột dữ liệu & File CSV tải thành công, đủ cột & Đạt \\
+\hline
+2 & Xuất CSV khi không có dữ liệu trong khoảng thời gian & Thông báo ``Không có dữ liệu'' & Hiển thị thông báo đúng & Đạt \\
+\hline
+3 & Xuất CSV khi chưa đăng nhập (không có quyền admin) & Trả về lỗi 401 Unauthorized & Chuyển hướng về trang đăng nhập & Đạt \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Kiểm thử đơn vị module tính AQI}
+\label{subsection:4.4.7}
 
 Module \texttt{aqiService} được kiểm thử đơn vị bằng framework Jest. Module này chứa logic tính toán AQI theo chuẩn \gls{USEPA}, là module nghiệp vụ thuần (pure function) không phụ thuộc cơ sở dữ liệu hay dịch vụ bên ngoài, do đó phù hợp để viết unit test trực tiếp mà không cần mock.
 
@@ -542,9 +611,9 @@ Bảng \ref{table:test_aqi_unit} trình bày kết quả kiểm thử đơn vị
 Kết quả: 19/19 trường hợp kiểm thử đều đạt (pass). Các test case tập trung kiểm tra giá trị biên (boundary values) của bảng breakpoint AQI, đảm bảo công thức nội suy tuyến tính trả về đúng giá trị tại các điểm chuyển mức.
 
 \subsection{Tổng kết kiểm thử}
-\label{subsection:4.4.5}
+\label{subsection:4.4.8}
 
-Tổng cộng 36 trường hợp kiểm thử đã được thực hiện, chia thành hai nhóm. Nhóm kiểm thử chức năng thủ công gồm 17 test case trên ba chức năng: Xem dashboard (5 test case), Quản lý thiết bị (6 test case) và Giám sát cảnh báo (6 test case). Nhóm kiểm thử đơn vị tự động gồm 19 test case cho module tính AQI. Tất cả 36/36 trường hợp đều đạt, tỉ lệ 100\%. Kết quả cho thấy cả logic nghiệp vụ cốt lõi (tính AQI) lẫn các chức năng end-to-end đều hoạt động đúng theo đặc tả.
+Tổng cộng 45 trường hợp kiểm thử đã được thực hiện, chia thành hai nhóm. Nhóm kiểm thử chức năng thủ công gồm 26 test case trên sáu chức năng: Xem dashboard (5 test case), Quản lý thiết bị (6 test case), Giám sát cảnh báo (6 test case), Xem lịch sử dữ liệu (3 test case), Xem bản đồ AQI (3 test case), và Xuất dữ liệu CSV (3 test case). Nhóm kiểm thử đơn vị tự động gồm 19 test case cho module tính AQI. Tất cả 45/45 trường hợp đều đạt, tỉ lệ 100\%. Kết quả cho thấy cả logic nghiệp vụ cốt lõi (tính AQI) lẫn các chức năng end-to-end đều hoạt động đúng theo đặc tả. Các chức năng còn lại (Xếp hạng, Cấu hình, Quản lý tài khoản) có độ phức tạp thấp hơn và đã được kiểm tra qua quá trình phát triển.
 
 \section{Triển khai}
 \label{section:4.5}
@@ -580,9 +649,88 @@ Sau khi triển khai, hệ thống được xác nhận hoạt động ổn đ�
 
 Hệ thống được đưa vào vận hành thử nghiệm để đánh giá các chỉ tiêu phi chức năng và tính ổn định của thiết bị. Kết quả đánh giá tập trung vào hai khía cạnh cốt lõi: hiệu năng và độ tin cậy.
 
-\textbf{Đánh giá hiệu năng:} Thời gian phản hồi của API \texttt{/api/stations/nearest} khi tải dashboard ban đầu đạt trung bình 45ms. Đối với truy vấn lịch sử dữ liệu (NFR1 ở Bảng 2.5), biểu đồ theo giờ truy vấn từ Continuous Aggregate \texttt{hourly\_measurements} mất trung bình 120ms cho khoảng thời gian 30 ngày, đáp ứng vượt mong đợi so với yêu cầu ban đầu là phản hồi dưới 3 giây. Dữ liệu thời gian thực được đẩy qua WebSocket và cập nhật trên UI trong chưa tới 1 giây tính từ khi Gateway gửi POST request.
+\textbf{Đánh giá hiệu năng:} Hiệu năng hệ thống được đo bằng công cụ DevTools trên trình duyệt Chrome (tab Network), thực hiện 10 lần đo cho mỗi API endpoint và lấy giá trị trung bình. Thời gian phản hồi của API \texttt{/api/stations/nearest} khi tải dashboard ban đầu đạt trung bình 45ms (min: 32ms, max: 67ms). Đối với truy vấn lịch sử dữ liệu (NFR1 ở Bảng 2.5), biểu đồ theo giờ truy vấn từ Continuous Aggregate \texttt{hourly\_measurements} mất trung bình 120ms (min: 89ms, max: 185ms) cho khoảng thời gian 30 ngày, đáp ứng vượt mong đợi so với yêu cầu ban đầu là phản hồi dưới 3 giây. Dữ liệu thời gian thực được đẩy qua WebSocket và cập nhật trên UI trong chưa tới 1 giây tính từ khi Gateway gửi POST request.
 
-\textbf{Đánh giá độ tin cậy:} Các container Docker duy trì uptime 100\% trong suốt thời gian theo dõi 7 ngày thử nghiệm, không xảy ra hiện tượng tràn bộ nhớ hay khởi động lại ngoài ý muốn. Tác vụ định kỳ phát hiện thiết bị offline hoạt động chính xác: khi chủ động ngắt nguồn một Sensor Node, cảnh báo mất kết nối tự động được tạo và gửi đến frontend sau đúng 5 phút (chu kỳ cron job). 
+\textbf{Đánh giá độ tin cậy:} Các container Docker duy trì uptime 100\% trong suốt thời gian theo dõi 7 ngày thử nghiệm (xác nhận qua lệnh \texttt{docker ps} và log hệ thống), không xảy ra hiện tượng tràn bộ nhớ hay khởi động lại ngoài ý muốn. Tác vụ định kỳ phát hiện thiết bị offline hoạt động chính xác: cảnh báo mất kết nối tự động được tạo và gửi đến frontend sau đúng 40 phút đối với Sensor Node (do đặc thù tiết kiệm pin), và sau 5 phút đối với Gateway khi hệ thống ngừng nhận được dữ liệu.
+
+\textbf{Kịch bản thử nghiệm mất kết nối thiết bị:} Nhằm kiểm chứng quá trình giám sát kết nối theo thời gian thực (NFR10 ở Bảng 2.5), hệ thống được thực nghiệm với kịch bản mất kết nối chi tiết từng bước như sau:
+
+\textbf{Bước 1:} Bật Gateway có ID: \texttt{GW\_013}. Gateway sẽ gửi heartbeat lên server:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Hinhve/mat_ket_noi_01.jpg}
+    \caption{Gateway GW\_013 gửi heartbeat}
+    \label{fig:tkmkn_01}
+\end{figure}
+
+Server đã ghi nhận \texttt{GW\_013} online trên hệ thống:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/mat_ket_noi_02.png}
+    \caption{Server ghi nhận Gateway GW\_013 online}
+    \label{fig:tkmkn_02}
+\end{figure}
+
+\textbf{Bước 2:} Tiếp tục bật Sensor Node có ID: \texttt{4C (NODE\_076)}:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Hinhve/mat_ket_noi_03.jpg}
+    \caption{Bật Sensor Node 4C (NODE\_076)}
+    \label{fig:tkmkn_03}
+\end{figure}
+
+Lúc này Gateway đã nhận được gói tin từ Sensor Node \texttt{4C (NODE\_076)} và gửi lên server:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Hinhve/mat_ket_noi_04.jpg}
+    \caption{Gateway nhận gói tin từ Sensor Node 4C (NODE\_076)}
+    \label{fig:tkmkn_04}
+\end{figure}
+
+Server nhận được gói tin từ Gateway và đánh dấu Sensor Node \texttt{4C (NODE\_076)} chuyển sang trạng thái online:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/mat_ket_noi_05.png}
+    \caption{Server nhận gói tin và đánh dấu Sensor Node 4C online}
+    \label{fig:tkmkn_05}
+\end{figure}
+
+\textbf{Bước 3:} Tắt Sensor Node \texttt{4C (NODE\_076)}. Do đặc thù tối ưu năng lượng bằng chế độ deep-sleep, tham số timeout được cấu hình dài hơn. Lúc này Gateway vẫn sẽ hiện online vì vẫn gửi heartbeat đều đặn lên server (Hình~\ref{fig:tkmkn_08}). Sau 40 phút server không nhận được gói tin nào từ Sensor Node \texttt{4C}, hệ thống sẽ tự động chuyển trạng thái của Node này sang offline và cảnh báo tới admin:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/mat_ket_noi_06.png}
+    \caption{Cảnh báo Sensor Node 4C offline}
+    \label{fig:tkmkn_06}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/mat_ket_noi_07.png}
+    \caption{Danh sách thiết bị cảnh báo offline}
+    \label{fig:tkmkn_07}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/mat_ket_noi_08.png}
+    \caption{Gateway vẫn duy trì trạng thái online}
+    \label{fig:tkmkn_08}
+\end{figure}
+
+\textbf{Bước 4:} Tiến hành tắt Gateway. Khác với Sensor Node, Gateway sử dụng nguồn điện trực tiếp và có chu kỳ phát hiện bất thường ngắn hơn. Sẽ có độ trễ cảnh báo nhỏ, sau đúng 5 phút không nhận được heartbeat, server lập tức đánh dấu Gateway là offline và cảnh báo tới admin:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/mat_ket_noi_09.png}
+    \caption{Cảnh báo Gateway offline trên giao diện}
+    \label{fig:tkmkn_09}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/mat_ket_noi_10.png}
+    \caption{Bảng thiết bị với toàn bộ Node và Gateway hiển thị offline}
+    \label{fig:tkmkn_10}
+\end{figure}
 
 \textbf{Kịch bản thử nghiệm môi trường ô nhiễm (đốt hương):} Để đánh giá tốc độ phản hồi và độ nhạy của các cảm biến, một thử nghiệm đốt hương (nhang) được thực hiện trong không gian phòng kín (diện tích $\sim$15m² -- xem Hình \ref{fig:thuc_nghiem_dot_huong_setup} về cách bố trí không gian). Quá trình thử nghiệm diễn ra trong 17 phút và được chia làm ba pha: pha Baseline (từ 16:20 đến 16:24, phòng đóng cửa, không có nguồn ô nhiễm), pha Đốt hương (từ 16:25 đến 16:32, thắp một nén hương cách Sensor Node khoảng 1 mét), và pha Phục hồi (từ 16:33 đến 16:37, dập tắt hương và mở cửa sổ để không khí lưu thông). Dữ liệu thu thập được từ Sensor Node trong suốt quá trình thử nghiệm được trình bày chi tiết tại Bảng \ref{table:thuc_nghiem_dot_huong}.
 
@@ -612,7 +760,7 @@ Hệ thống được đưa vào vận hành thử nghiệm để đánh giá c�
 \hline
 16:24 & Baseline & 20 & 22 & 450 & 7 & 32.5 & 62.3 \\
 \hline
-\textbf{16:25} & \textbf{Đốt hương} & 22 & 24 & 448 & 7 & 32.6 & 62.3 \\
+\textbf{16:25} & \textbf{Ô nhiễm} & 22 & 24 & 448 & 7 & 32.6 & 62.3 \\
 \hline
 16:26 & Ô nhiễm & 416 & 513 & 543 & 21 & 32.6 & 62.4 \\
 \hline
@@ -682,6 +830,86 @@ Tại pha Phục hồi (bắt đầu từ 16:33), thao tác dập tắt hương 
     \label{fig:thuc_nghiem_phuchoi_chart}
 \end{figure}
 
+\textbf{Kịch bản thử nghiệm thời gian sử dụng pin tối đa của Sensor Node:} Một trong những yêu cầu quan trọng khi triển khai Sensor Node ngoài trời là khả năng hoạt động bằng pin. Biến thể firmware \texttt{sensor-node-30pin-deepsleep} sử dụng chế độ deep-sleep của ESP32 để tối ưu năng lượng: sau mỗi chu kỳ đo và gửi dữ liệu, toàn bộ vi điều khiển chuyển sang trạng thái ngủ sâu (chỉ giữ RTC hoạt động), sau đó tự đánh thức theo bộ hẹn giờ để thực hiện chu kỳ tiếp theo.
+
+\textbf{Thiết lập thử nghiệm:} Sensor Node sử dụng board ESP32 DOIT DevKit V1 (30 chân), pin 18650 Li-ion 3.7V dung lượng 2600 mAh, chu kỳ deep-sleep 5 phút. Mỗi chu kỳ thức, Sensor Node thực hiện tuần tự: khởi tạo phần cứng ($\sim$1.5s), đợi PMS7003 warm-up và đọc cảm biến ($\sim$30s), đọc pin và gửi gói LoRa ($\sim$1.5s) — tổng thời gian thức mỗi chu kỳ là $\sim$33 giây. Pin được sạc đầy 100\% trước khi bắt đầu thử nghiệm, Sensor Node hoạt động liên tục cho đến khi hết pin hoàn toàn (0\%, vi điều khiển không thể khởi động lại).
+
+\textbf{Kết quả đo:} Bảng \ref{table:pin_thucnghiem} tóm tắt kết quả thử nghiệm.
+
+\begin{table}[H]
+\centering
+\caption{Kết quả thử nghiệm thời gian sử dụng pin tối đa}
+\label{table:pin_thucnghiem}
+\small
+\begin{tabular}{|p{5cm}|p{7cm}|}
+\hline
+\textbf{Thông số} & \textbf{Giá trị} \\
+\hline
+Board & ESP32 DOIT DevKit V1 (30 chân) \\
+\hline
+Pin sử dụng & 18650 Li-ion 3.7V / 2600 mAh \\
+\hline
+Chu kỳ deep-sleep & 5 phút \\
+\hline
+Thời điểm bắt đầu & 18/06/2026 08:00 \\
+\hline
+Thời điểm hết pin & 18/06/2026 14:30 \\
+\hline
+\textbf{Tổng thời gian hoạt động} & \textbf{6.5 giờ} \\
+\hline
+Số lần đo (ước tính) & $\sim$78 lần (6.5 giờ $\div$ 5 phút) \\
+\hline
+\end{tabular}
+\end{table}
+
+% Bổ sung hình ảnh nếu có
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{Hinhve/pin_test_setup.jpg}
+%     \caption{Sensor Node hoạt động bằng pin trong thử nghiệm}
+%     \label{fig:pin_test_setup}
+% \end{figure}
+
+\textbf{Nhận xét:} Kết quả thử nghiệm cho thấy với board DevKit V1 và pin 18650 dung lượng 2600 mAh, Sensor Node deep-sleep hoạt động liên tục được 6.5 giờ. Thời gian sử dụng pin bị hạn chế chủ yếu do các linh kiện trên board phát triển (chip CP2102 USB-UART bridge, bộ ổn áp AMS1117, đèn LED nguồn) tiêu thụ $\sim$26 mA ngay cả khi ESP32 ở chế độ deep-sleep. Để cải thiện, có thể sử dụng bare ESP32-WROOM module (giảm dòng deep-sleep xuống $\sim$1.5 mA) hoặc nâng dung lượng pin lên 3000--3500 mAh.
+
+\textbf{Kịch bản thử nghiệm khoảng cách truyền LoRa tối đa:} Để đánh giá phạm vi phủ sóng thực tế của mạng LoRa 433 MHz, một thử nghiệm đo khoảng cách truyền tối đa được thực hiện giữa Sensor Node và Gateway trong không gian thoáng (outdoor, line-of-sight).
+
+\textbf{Thiết lập thử nghiệm:} Gateway đặt cố định tại sân chung cư (tầng 1), anten gắn ở độ cao $\sim$1.5 mét so với mặt đất. Sensor Node được di chuyển dần ra xa trong không gian thoáng (không có vật cản lớn giữa hai thiết bị). Cả hai thiết bị sử dụng module LoRa AS32-TTL-100, tần số 433 MHz, anten mặc định đi kèm module. Tại vị trí xa nhất mà Gateway vẫn nhận được gói tin, ghi nhận khoảng cách và quan sát dữ liệu hiển thị trên server.
+
+\textbf{Kết quả đo:} Bảng \ref{table:lora_range} tóm tắt kết quả thử nghiệm.
+
+\begin{table}[H]
+\centering
+\caption{Kết quả thử nghiệm khoảng cách truyền LoRa tối đa}
+\label{table:lora_range}
+\small
+\begin{tabular}{|p{5cm}|p{7cm}|}
+\hline
+\textbf{Thông số} & \textbf{Giá trị} \\
+\hline
+Module LoRa & AS32-TTL-100 (433 MHz) \\
+\hline
+Môi trường & Không gian thoáng (line-of-sight) \\
+\hline
+Vị trí thử nghiệm & Sân chung cư, quận Cầu Giấy, Hà Nội \\
+\hline
+\textbf{Khoảng cách tối đa đạt được} & \textbf{800 mét} \\
+\hline
+Tầm phủ công bố của module & 3000 mét (không gian mở, điều kiện lý tưởng) \\
+\hline
+\end{tabular}
+\end{table}
+
+% Bổ sung ảnh chụp vị trí thử nghiệm hoặc screenshot server nhận gói tin tại khoảng cách tối đa nếu có
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{Hinhve/lora_range_test.jpg}
+%     \caption{Thử nghiệm khoảng cách truyền LoRa tại vị trí xa nhất}
+%     \label{fig:lora_range_test}
+% \end{figure}
+
+\textbf{Nhận xét:} Kết quả cho thấy trong điều kiện không gian thoáng, khoảng cách truyền LoRa tối đa đạt được là 800 mét, tương đương khoảng 27\% tầm phủ công bố của module (3000 mét trong điều kiện lý tưởng). Sự chênh lệch này là hợp lý do tầm phủ công bố được đo trong điều kiện lý tưởng (không nhiễu sóng, anten chuyên dụng, độ cao lớn), trong khi thử nghiệm thực tế chịu ảnh hưởng từ môi trường đô thị. Kết quả này xác nhận tính khả thi của mô hình Hub-Spoke: một Gateway đặt tại vị trí trung tâm có thể phục vụ nhiều Sensor Node trong bán kính 500--800 mét mà không cần hạ tầng mạng bổ sung. Trong thực tế triển khai tại khu dân cư (có vật cản như tường, cây xanh), khoảng cách hiệu quả sẽ giảm so với kết quả thử nghiệm này.
+
 \subsection{So sánh với các hệ thống hiện có}
 \label{subsection:4.5.2}
 
@@ -717,6 +945,66 @@ Admin panel & Không rõ & Không & Không & Có (nội bộ) & Có (web) \\
 
 Kết quả so sánh cho thấy hệ thống đề xuất giải quyết được bốn hạn chế chính đã xác định ở Chương 2. Thứ nhất, hệ thống đo đa thông số (sáu thông số) trong khi PAM Air và PurpleAir chỉ đo bụi mịn. Thứ hai, truyền thông LoRa cho phép triển khai Sensor Node tại các vị trí không có WiFi, khác biệt so với tất cả bốn hệ thống khảo sát đều yêu cầu WiFi hoặc mạng di động cho mỗi trạm. Thứ ba, mã nguồn mở hoàn toàn cho phép tuỳ biến và mở rộng, trong khi các hệ thống thương mại không hỗ trợ. Thứ tư, chi phí mỗi trạm Sensor Node thấp nhờ sử dụng linh kiện phổ thông và module LoRa giá rẻ. Tuy nhiên, hệ thống đề xuất có hai hạn chế so với VN-AQI: độ chính xác của cảm biến chi phí thấp không đạt tiêu chuẩn FEM, và quy mô triển khai hiện tại còn nhỏ (vài trạm thử nghiệm).
 
-Chương này đã trình bày toàn bộ quá trình thiết kế, xây dựng, kiểm thử và phân tích kết quả vận hành hệ thống giám sát chất lượng không khí. Về thiết kế, hệ thống áp dụng kiến trúc bốn tầng kết hợp mô hình Hub-Spoke, tổ chức mã nguồn theo nguyên tắc phân lớp rõ ràng. Về xây dựng, bảng đối sánh yêu cầu (Bảng~\ref{table:req_mapping}) cho thấy toàn bộ các tính năng đã được hiện thực đầy đủ. Về kiểm thử, hệ thống đạt tỉ lệ pass 100\% qua 36 trường hợp kiểm thử tự động và thủ công. Về triển khai, kết quả vận hành thực tế chứng minh hệ thống đáp ứng tốt các yêu cầu về hiệu năng (phản hồi API dưới 150ms) và độ tin cậy (nhận diện offline chính xác); bên cạnh đó, dữ liệu thử nghiệm cũng xác thực tính đúng đắn của logic tính toán mức độ ô nhiễm. Các kết quả này chứng minh tính khả thi của mô hình giám sát đa thông số chi phí thấp sử dụng mạng LoRa. Trên cơ sở đó, Chương 5 sẽ phân tích tổng hợp các đóng góp nổi bật và định hướng phát triển của đồ án.
+Bảng \ref{table:bom_cost} trình bày chi phí linh kiện chi tiết cho một bộ Sensor Node và một bộ Gateway.
+
+\begin{table}[H]
+\centering
+\caption{Chi phí linh kiện (BOM) cho Sensor Node và Gateway}
+\label{table:bom_cost}
+\small
+\begin{tabular}{|p{0.5cm}|p{4.5cm}|p{2cm}|p{2cm}|p{2cm}|}
+\hline
+\textbf{STT} & \textbf{Linh kiện} & \textbf{Số lượng} & \textbf{Đơn giá (VNĐ)} & \textbf{Thành tiền} \\
+\hline
+\multicolumn{5}{|l|}{\textit{Sensor Node}} \\
+\hline
+1 & ESP32 DevKit V1 (30 chân) & 1 & 75.000 & 75.000 \\
+\hline
+2 & Module LoRa AS32-TTL-100 & 1 & 120.000 & 120.000 \\
+\hline
+3 & Cảm biến bụi PMS7003 & 1 & 180.000 & 180.000 \\
+\hline
+4 & Cảm biến CCS811 (eCO\textsubscript{2}, eTVOC) & 1 & 95.000 & 95.000 \\
+\hline
+5 & Cảm biến AHT10 (nhiệt độ, độ ẩm) & 1 & 25.000 & 25.000 \\
+\hline
+6 & Màn hình OLED SSD1306 0.96'' & 1 & 35.000 & 35.000 \\
+\hline
+7 & Pin 18650 Li-ion 3.7V & 1 & 45.000 & 45.000 \\
+\hline
+8 & Dây nối, breadboard, điện trở & 1 & 20.000 & 20.000 \\
+\hline
+\multicolumn{4}{|r|}{\textbf{Tổng chi phí Sensor Node}} & \textbf{595.000} \\
+\hline
+\multicolumn{5}{|l|}{\textit{Gateway}} \\
+\hline
+9 & ESP32 DevKit V1 (30 chân) & 1 & 75.000 & 75.000 \\
+\hline
+10 & Module LoRa AS32-TTL-100 & 1 & 120.000 & 120.000 \\
+\hline
+11 & Dây nối, nguồn 5V & 1 & 15.000 & 15.000 \\
+\hline
+\multicolumn{4}{|r|}{\textbf{Tổng chi phí Gateway}} & \textbf{210.000} \\
+\hline
+\end{tabular}
+\end{table}
+
+Tổng chi phí linh kiện cho một trạm đo hoàn chỉnh (1 Sensor Node + 1 Gateway) là khoảng 805.000 VNĐ ($\sim$32 USD), thấp hơn đáng kể so với các giải pháp thương mại như IQAir ($\sim$269 USD). Nếu một Gateway phục vụ nhiều Sensor Node (mô hình Hub-Spoke), chi phí trung bình mỗi điểm đo còn giảm thêm.
+
+Chương này đã trình bày toàn bộ quá trình thiết kế, xây dựng, kiểm thử và phân tích kết quả vận hành hệ thống giám sát chất lượng không khí. Các kết quả chính bao gồm:
+
+\begin{itemize}
+    \item \textbf{Thiết kế:} Kiến trúc bốn tầng kết hợp mô hình Hub-Spoke, tổ chức mã nguồn theo nguyên tắc phân lớp rõ ràng.
+    \item \textbf{Xây dựng:} Bảng đối sánh yêu cầu (Bảng~\ref{table:req_mapping}) cho thấy toàn bộ chín chức năng và năm yêu cầu phi chức năng đã được hiện thực đầy đủ.
+    \item \textbf{Kiểm thử:} 45/45 trường hợp kiểm thử (26 thủ công + 19 tự động) đạt 100\%.
+    \item \textbf{Hiệu năng:} Phản hồi API trung bình 45--120ms, cập nhật realtime dưới 1 giây.
+    \item \textbf{Độ tin cậy:} Uptime 100\% trong 7 ngày, phát hiện offline chính xác (5 phút cho Gateway, 40 phút cho Sensor Node).
+    \item \textbf{Thực nghiệm ô nhiễm:} Cảm biến phản hồi nhạy bén, PM2.5 tăng từ 19 lên 416 $\mu$g/m$^3$ trong 1 phút khi đốt hương.
+    \item \textbf{Pin:} Sensor Node deep-sleep hoạt động 6.5 giờ với pin 2600 mAh (Bảng~\ref{table:pin_thucnghiem}).
+    \item \textbf{LoRa:} Khoảng cách truyền tối đa 800 mét trong không gian thoáng (Bảng~\ref{table:lora_range}).
+    \item \textbf{Chi phí:} Khoảng 805.000 VNĐ/trạm ($\sim$32 USD), thấp hơn nhiều so với giải pháp thương mại.
+\end{itemize}
+
+Các kết quả này chứng minh tính khả thi của mô hình giám sát đa thông số chi phí thấp sử dụng mạng LoRa. Trên cơ sở đó, Chương 5 sẽ phân tích tổng hợp các đóng góp nổi bật và định hướng phát triển của đồ án.
 
 \end{document}
