@@ -9,9 +9,9 @@ Chương 3 đã trình bày nền tảng lý thuyết và các công nghệ đư
 \subsection{Lựa chọn kiến trúc phần mềm}
 \label{subsection:4.1.1}
 
-Hệ thống được thiết kế theo kiến trúc bốn tầng, bao gồm tầng cảm biến (Sensor Layer), tầng trung chuyển (Gateway Layer), tầng máy chủ (Server Layer) và tầng hiển thị (Presentation Layer). Kiến trúc bốn tầng được lựa chọn vì ba lý do chính. Thứ nhất, mỗi tầng có trách nhiệm rõ ràng và có thể phát triển độc lập: tầng cảm biến thu thập dữ liệu môi trường, tầng trung chuyển chuyển tiếp dữ liệu từ mạng \gls{LoRa} sang Internet, tầng máy chủ xử lý nghiệp vụ và lưu trữ, tầng hiển thị cung cấp giao diện cho người dùng. Thứ hai, kiến trúc này cho phép mở rộng theo chiều ngang tại từng tầng — ví dụ thêm Sensor Node mới mà không thay đổi phần mềm Backend. Thứ ba, độ phức tạp phù hợp với quy mô hệ thống: triển khai trên một máy chủ VPS duy nhất, không yêu cầu kiến trúc Microservice.
+Hệ thống được thiết kế theo kiến trúc bốn tầng, bao gồm tầng cảm biến (Sensor Layer), tầng trung chuyển (Gateway Layer), tầng máy chủ (Server Layer) và tầng hiển thị (Presentation Layer). Kiến trúc bốn tầng được lựa chọn vì ba lý do chính. Thứ nhất, mỗi tầng có trách nhiệm rõ ràng và có thể phát triển độc lập: tầng cảm biến thu thập dữ liệu môi trường, tầng trung chuyển chuyển tiếp dữ liệu từ mạng \gls{LoRa} sang Internet, tầng máy chủ xử lý nghiệp vụ và lưu trữ, tầng hiển thị cung cấp giao diện cho người dùng. Thứ hai, kiến trúc này cho phép mở rộng theo chiều ngang tại từng tầng — ví dụ thêm Sensor Node mới mà không thay đổi phần mềm Backend. Thứ ba, độ phức tạp phù hợp với quy mô hệ thống: triển khai trên một máy chủ VPS duy nhất, không yêu cầu kiến trúc Microservice phức tạp.
 
-\textbf{Tầng cảm biến} gồm các Sensor Node, mỗi node tích hợp vi điều khiển ESP32, ba module cảm biến (PMS7003, CCS811, AHT10) và module \gls{LoRa} AS32-TTL-100. Firmware sử dụng FreeRTOS để quản lý đồng thời bốn tác vụ: đọc cảm biến, gửi dữ liệu \gls{LoRa}, hiển thị OLED và đo pin. Dữ liệu được đóng gói thành gói tin nhị phân 18 byte và phát qua \gls{LoRa} 433 MHz.
+\textbf{Tầng cảm biến} gồm các Sensor Node, mỗi node tích hợp vi điều khiển ESP32, ba module cảm biến (PMS7003, CCS811, AHT10) và module \gls{LoRa} AS32-TTL-100. Firmware được thiết kế tối ưu điện năng bằng cơ chế Deep-sleep: thiết bị thức dậy theo chu kỳ để đọc cảm biến và gửi LoRa, chỉ hiển thị OLED khi người dùng nhấn nút. Dữ liệu được đóng gói thành gói tin nhị phân 18 byte và phát qua \gls{LoRa} 433 MHz.
 
 \textbf{Tầng trung chuyển} gồm các Gateway, mỗi Gateway tích hợp ESP32 với module \gls{LoRa} và kết nối WiFi. Gateway nhận gói tin \gls{LoRa}, lưu vào bộ đệm vòng (ring buffer), sau đó gửi lên tầng máy chủ dưới dạng \gls{HTTP} POST (\gls{JSON} batch). Ở tầng này, hệ thống áp dụng mô hình Hub-Spoke: nhiều Sensor Node (spoke) gửi dữ liệu đến một Gateway (hub) trung tâm, cho phép một Gateway phục vụ nhiều Sensor Node trong phạm vi phủ sóng mà không cần định tuyến phức tạp.
 
@@ -31,13 +31,13 @@ Hệ thống được thiết kế theo kiến trúc bốn tầng, bao gồm t�
 
 Hệ thống được tổ chức thành bốn nhóm gói chính tương ứng với bốn tầng kiến trúc, mỗi nhóm chứa các gói con với trách nhiệm cụ thể.
 
-\textbf{Nhóm gói Tầng cảm biến (sensor-node)} chứa các module: \texttt{drivers} (giao tiếp cảm biến PMS7003, CCS811, AHT10, màn hình OLED, module LoRa), \texttt{core} (quản lý cấu hình NVS, provisioning qua WiFi AP, vòng lặp chính), và \texttt{config} (định nghĩa chân GPIO, tham số LoRa). Hệ thống có ba biến thể firmware cho các loại board ESP32 khác nhau.
+\textbf{Nhóm gói Tầng cảm biến (sensor-node)} chứa các module: \texttt{drivers} (giao tiếp cảm biến PMS7003, CCS811, AHT10, màn hình OLED, module LoRa), \texttt{core} (quản lý cấu hình NVS, provisioning qua WiFi AP, quản lý chu kỳ deep-sleep), và \texttt{config} (định nghĩa chân GPIO, tham số LoRa).
 
 \textbf{Nhóm gói Tầng trung chuyển (gateway)} chứa các module: \texttt{drivers} (giao tiếp LoRa), \texttt{core} (bộ đệm vòng, gửi \gls{HTTP} batch lên tầng máy chủ), và \texttt{config} (cấu hình WiFi, địa chỉ Backend). Nhóm gói này hoạt động độc lập, không phụ thuộc vào nhóm gói tầng cảm biến.
 
-\textbf{Nhóm gói Tầng máy chủ (backend)} gồm sáu gói: \texttt{routes} (định nghĩa endpoint API), \texttt{controllers} (tiếp nhận request, trả response), \texttt{services} (logic nghiệp vụ), \texttt{middlewares} (xác thực JWT, xử lý lỗi), \texttt{validations} (kiểm tra dữ liệu đầu vào), và \texttt{config} (kết nối Prisma Client). Luồng phụ thuộc tuân thủ nguyên tắc một chiều: routes $\rightarrow$ controllers $\rightarrow$ services $\rightarrow$ config (Prisma), đảm bảo gói tầng dưới không phụ thuộc gói tầng trên.
+\textbf{Nhóm gói Tầng máy chủ (backend)} gồm bốn gói chính: \texttt{routes} (định nghĩa endpoint API), \texttt{controllers} (tiếp nhận request, trả response), \texttt{services} (logic nghiệp vụ), và \texttt{config} (kết nối Prisma Client và cấu hình hệ thống). Luồng phụ thuộc tuân thủ nguyên tắc một chiều: \texttt{routes} $\rightarrow$ \texttt{controllers} $\rightarrow$ \texttt{services} $\rightarrow$ \texttt{config}, đảm bảo gói tầng dưới không phụ thuộc ngược lại gói tầng trên.
 
-\textbf{Nhóm gói Tầng hiển thị (frontend)} gồm bảy gói: \texttt{pages} (các trang giao diện), \texttt{components} (thành phần tái sử dụng), \texttt{hooks} (custom React hooks), \texttt{services} (gọi API), \texttt{stores} (quản lý trạng thái Zustand), \texttt{layouts} (bố cục trang), và \texttt{i18n} (đa ngôn ngữ). Gói \texttt{pages} phụ thuộc \texttt{components} và \texttt{hooks}; gói \texttt{hooks} phụ thuộc \texttt{services}; gói \texttt{services} gọi \gls{REST} \gls{API} đến tầng máy chủ.
+\textbf{Nhóm gói Tầng hiển thị (frontend)} gồm bốn gói chính: \texttt{pages} (các trang giao diện), \texttt{components} (thành phần tái sử dụng), \texttt{hooks} (custom React hooks để nạp dữ liệu và xử lý logic), và \texttt{services} (giao tiếp API). Mô hình phụ thuộc được thiết kế rõ ràng: gói \texttt{pages} phụ thuộc vào \texttt{components} và \texttt{hooks}; gói \texttt{hooks} phụ thuộc vào \texttt{services}; gói \texttt{services} chịu trách nhiệm gọi \gls{REST} \gls{API} và giao tiếp Socket.IO đến Tầng máy chủ.
 
 \subsection{Mô tả luồng dữ liệu giữa các gói}
 \label{subsection:4.1.3}
@@ -75,7 +75,7 @@ Phần này trình bày thiết kế mạch kết nối phần cứng cho Sensor
 
     
 
-\textbf{Gateway} sử dụng cùng board ESP32 DevKit V1, nhưng chỉ kết nối một module ngoại vi: module \gls{LoRa} AS32-TTL-100 qua \gls{UART}1 (cùng cấu hình chân với Sensor Node). Gateway không cần cảm biến hay màn hình OLED, do chức năng duy nhất là nhận gói \gls{LoRa} và chuyển tiếp lên tầng máy chủ qua WiFi. Thiết kế tối giản này giảm chi phí linh kiện và giảm tiêu thụ năng lượng cho Gateway.
+\textbf{Gateway} sử dụng cùng board ESP32 DevKit V1, nhưng chỉ kết nối một module ngoại vi: module \gls{LoRa} AS32-TTL-100 qua \gls{UART}1 (cùng cấu hình chân với Sensor Node). Gateway sử dụng màn hình OLED SSD1306 để hiển thị trạng thái hoạt động và các thông tin cần thiết.
 
 \begin{figure}[h]
     \centering
@@ -89,9 +89,16 @@ Phần này trình bày thiết kế mạch kết nối phần cứng cho Sensor
 
 Phần này trình bày thiết kế firmware cho Sensor Node và Gateway.
 
-\textbf{Firmware Sensor Node} sử dụng FreeRTOS với bốn tác vụ chạy song song trên hai nhân của ESP32. Tác vụ \texttt{sensor\_task} (ưu tiên 2, Core 0, stack 4096 byte) đọc dữ liệu từ ba cảm biến theo chu kỳ 15 giây, thực hiện đến 3 lần retry khi đọc lỗi, sau đó đẩy dữ liệu vào hàng đợi FreeRTOS (queue depth = 3). Tác vụ \texttt{lora\_task} (ưu tiên 3 — cao nhất, Core 1) nhận dữ liệu từ hàng đợi, đóng gói thành struct \texttt{SensorPayload} và phát qua module \gls{LoRa}. Tác vụ \texttt{battery\_task} (ưu tiên 1, Core 0) đọc pin mỗi 30 giây qua ADC với 16 mẫu lấy trung bình. Tác vụ \texttt{watchdog\_task} (ưu tiên 0, Core 0) giám sát hoạt động: nếu hệ thống không gửi dữ liệu trong 60 giây, tự động reset ESP32.
+\textbf{Firmware Sensor Node} được thiết kế tối ưu năng lượng dựa trên cơ chế Deep-sleep của hệ điều hành quản lý ESP32. Thay vì chạy vòng lặp liên tục, vi điều khiển chỉ thức dậy theo chu kỳ hẹn giờ Timer hoặc qua ngắt bằng nút cứng (nút BOOT). Khi được đánh thức bởi Timer, firmware thực hiện tuần tự các tác vụ khởi tạo phần cứng, gọi hệ thống lấy mẫu cảm biến, chờ cấp nhiệt (warm-up) cảm biến bụi thư viện, lấy mẫu pin qua ADC, đóng gói tải trọng dữ liệu gửi qua LoRa, và cuối cùng đối chiếu lưu trữ lại kết quả vừa gửi vào vùng nhớ RTC trước khi quay về lại trạng thái Deep-sleep. Ngược lại, nếu được đánh thức bởi người dùng, thiết bị bỏ qua quá trình lấy mẫu, mà truy cập vùng nhớ RTC để hiển thị dữ liệu lịch sử ngay lên màn hình OLED trong vòng 10 giây trước khi tiếp tục tắt hiển thị. Kiến trúc này giúp ngắt triệt để điện năng của các module ngoại vi, triệt tiêu hao phí thừa so với cơ chế FreeRTOS thông thường.
 
 Cấu trúc gói tin \gls{LoRa} được định nghĩa dưới dạng struct C packed (không có padding), tổng kích thước 18 byte. Gói tin gồm: \texttt{nodeId} (1 byte, ID node 1--255), \texttt{pktType} (1 byte, phân biệt gói dữ liệu/heartbeat/lỗi), \texttt{msgId} (1 byte, bộ đếm tuần hoàn 0--255 phục vụ deduplication), bảy trường dữ liệu cảm biến (PM1, PM2.5, PM10 mỗi trường 2 byte nhân 10, CO\textsubscript{2} và TVOC mỗi trường 2 byte, nhiệt độ 2 byte có dấu nhân 10, độ ẩm 2 byte nhân 10), và \texttt{battery} (1 byte, 0--100\%). Các giá trị dạng số thực được nhân 10 và lưu dạng số nguyên để tránh sử dụng floating-point trong truyền thông, giảm kích thước gói tin. Giá trị sentinel (0xFFFF cho unsigned, 0x7FFF cho signed) đánh dấu cảm biến bị lỗi.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/packet_lora.png}
+    \caption{Cấu trúc gói tin LoRa}
+    \label{fig:packet_lora}
+\end{figure}
 
 Cơ chế provisioning cho phép cấu hình Node ID qua giao diện web. Khi chưa có cấu hình (hoặc sau factory reset), Sensor Node khởi động WiFi AP với SSID ``AirQuality-SN-Setup'', phục vụ trang web captive portal tại địa chỉ 192.168.4.1. Người dùng nhập Node ID, firmware lưu vào bộ nhớ NVS (Non-Volatile Storage) và khởi động lại ở chế độ hoạt động bình thường.
 
@@ -258,7 +265,7 @@ Ngoài ra, hệ thống sử dụng các công cụ phát triển và triển kh
 \subsection{Kết quả đạt được}
 \label{subsection:4.3.2}
 
-Sản phẩm cuối cùng bao gồm bốn thành phần được đóng gói riêng biệt. Thứ nhất, \textbf{Firmware Sensor Node} chạy trên ESP32, sử dụng FreeRTOS để quản lý đồng thời các tác vụ đọc cảm biến, gửi LoRa và hiển thị OLED, với ba biến thể: board 38 chân, board 30 chân, và board 30 chân có chế độ deep-sleep. Thứ hai, \textbf{Firmware Gateway} chạy trên ESP32, sử dụng kiến trúc superloop để nhận gói LoRa và chuyển tiếp lên Backend Server qua WiFi, với hai biến thể cho board 38 chân và 30 chân. Thứ ba, \textbf{Backend Server} là ứng dụng Node.js/Express cung cấp \gls{REST} \gls{API} và giao tiếp real-time qua Socket.IO. Thứ tư, \textbf{Frontend} là ứng dụng React \gls{SPA} được build bởi Vite thành các tệp tĩnh, phục vụ bởi Nginx.
+Sản phẩm cuối cùng bao gồm bốn thành phần được đóng gói riêng biệt. Thứ nhất, \textbf{Firmware Sensor Node} chạy trên ESP32, sử dụng cơ chế Deep-sleep để tối ưu năng lượng thông qua việc thức giấc định kỳ để tuần tự đọc các cảm biến và gửi qua LoRa. Thứ hai, \textbf{Firmware Gateway} chạy trên ESP32, sử dụng kiến trúc superloop để nhận gói LoRa và chuyển tiếp lên Backend Server qua WiFi. Thứ ba, \textbf{Backend Server} là ứng dụng Node.js/Express cung cấp \gls{REST} \gls{API} và giao tiếp real-time qua Socket.IO. Thứ tư, \textbf{Frontend} là ứng dụng React \gls{SPA} được build bởi Vite thành các tệp tĩnh, phục vụ bởi Nginx.
 
 Bảng \ref{table:stats} thống kê quy mô mã nguồn của từng thành phần.
 
@@ -271,7 +278,7 @@ Bảng \ref{table:stats} thống kê quy mô mã nguồn của từng thành ph�
 \hline
 \textbf{Thành phần} & \textbf{Ngôn ngữ chính} & \textbf{LOC} & \textbf{Ghi chú} \\
 \hline
-Firmware Sensor Node & C/C++ & 1262 & FreeRTOS \\
+Firmware Sensor Node & C/C++ & 1262 & Deep-sleep \\
 \hline
 Firmware Gateway & C/C++ & 1608 & Superloop \\
 \hline
@@ -958,38 +965,38 @@ Bảng \ref{table:bom_cost} trình bày chi phí linh kiện chi tiết cho mộ
 \hline
 \multicolumn{5}{|l|}{\textit{Sensor Node}} \\
 \hline
-1 & ESP32 DevKit V1 (30 chân) & 1 & 75.000 & 75.000 \\
+1 & ESP32 DevKit V1 (30 chân) & 1 & 100.000 & 100.000 \\
 \hline
 2 & Module LoRa AS32-TTL-100 & 1 & 120.000 & 120.000 \\
 \hline
-3 & Cảm biến bụi PMS7003 & 1 & 180.000 & 180.000 \\
+3 & Cảm biến bụi PMS7003 & 1 & 350.000 & 350.000 \\
 \hline
-4 & Cảm biến CCS811 (eCO\textsubscript{2}, eTVOC) & 1 & 95.000 & 95.000 \\
+4 & Cảm biến CCS811 (eCO\textsubscript{2}, eTVOC) & 1 & 150.000 & 150.000 \\
 \hline
-5 & Cảm biến AHT10 (nhiệt độ, độ ẩm) & 1 & 25.000 & 25.000 \\
+5 & Cảm biến AHT10 (nhiệt độ, độ ẩm) & 1 & 35.000 & 35.000 \\
 \hline
-6 & Màn hình OLED SSD1306 0.96'' & 1 & 35.000 & 35.000 \\
+6 & Màn hình OLED SSD1306 0.96'' & 1 & 40.000 & 40.000 \\
 \hline
-7 & Pin 18650 Li-ion 3.7V & 1 & 45.000 & 45.000 \\
+7 & Pin 18650 Li-ion 3.7V & 1 & 30.000 & 30.000 \\
 \hline
-8 & Dây nối, breadboard, điện trở & 1 & 20.000 & 20.000 \\
+8 & Dây nối, mạch in, điện trở & 1 & 50.000 & 50.000 \\
 \hline
-\multicolumn{4}{|r|}{\textbf{Tổng chi phí Sensor Node}} & \textbf{595.000} \\
+\multicolumn{4}{|r|}{\textbf{Tổng chi phí Sensor Node}} & \textbf{895.000} \\
 \hline
 \multicolumn{5}{|l|}{\textit{Gateway}} \\
 \hline
-9 & ESP32 DevKit V1 (30 chân) & 1 & 75.000 & 75.000 \\
+9 & ESP32 DevKit V1 (30 chân) & 1 & 100.000 & 100.000 \\
 \hline
 10 & Module LoRa AS32-TTL-100 & 1 & 120.000 & 120.000 \\
 \hline
-11 & Dây nối, nguồn 5V & 1 & 15.000 & 15.000 \\
+11 & Dây nối, nguồn 5V & 1 & 20.000 & 20.000 \\
 \hline
-\multicolumn{4}{|r|}{\textbf{Tổng chi phí Gateway}} & \textbf{210.000} \\
+\multicolumn{4}{|r|}{\textbf{Tổng chi phí Gateway}} & \textbf{240.000} \\
 \hline
 \end{tabular}
 \end{table}
 
-Tổng chi phí linh kiện cho một trạm đo hoàn chỉnh (1 Sensor Node + 1 Gateway) là khoảng 805.000 VNĐ ($\sim$32 USD), thấp hơn đáng kể so với các giải pháp thương mại như IQAir ($\sim$269 USD). Nếu một Gateway phục vụ nhiều Sensor Node (mô hình Hub-Spoke), chi phí trung bình mỗi điểm đo còn giảm thêm.
+Tổng chi phí linh kiện cho một trạm đo hoàn chỉnh (1 Sensor Node + 1 Gateway) là khoảng 1.135.000 VNĐ ($\sim$45 USD), thấp hơn đáng kể so với các giải pháp thương mại như IQAir 10.000.000 VNĐ($\sim$400 USD). Nếu một Gateway phục vụ nhiều Sensor Node (mô hình Hub-Spoke), chi phí trung bình mỗi điểm đo còn giảm thêm.
 
 Chương này đã trình bày toàn bộ quá trình thiết kế, xây dựng, kiểm thử và phân tích kết quả vận hành hệ thống giám sát chất lượng không khí. Các kết quả chính bao gồm:
 
@@ -1002,7 +1009,7 @@ Chương này đã trình bày toàn bộ quá trình thiết kế, xây dựng,
     \item \textbf{Thực nghiệm ô nhiễm:} Cảm biến phản hồi nhạy bén, PM2.5 tăng từ 19 lên 416 $\mu$g/m$^3$ trong 1 phút khi đốt hương.
     \item \textbf{Pin:} Sensor Node deep-sleep hoạt động 6.5 giờ với pin 2600 mAh (Bảng~\ref{table:pin_thucnghiem}).
     \item \textbf{LoRa:} Khoảng cách truyền tối đa 800 mét trong không gian thoáng (Bảng~\ref{table:lora_range}).
-    \item \textbf{Chi phí:} Khoảng 805.000 VNĐ/trạm ($\sim$32 USD), thấp hơn nhiều so với giải pháp thương mại.
+    \item \textbf{Chi phí:} Khoảng 895.000 VNĐ/trạm ($\sim$32 USD), thấp hơn nhiều so với giải pháp thương mại.
 \end{itemize}
 
 Các kết quả này chứng minh tính khả thi của mô hình giám sát đa thông số chi phí thấp sử dụng mạng LoRa. Trên cơ sở đó, Chương 5 sẽ phân tích tổng hợp các đóng góp nổi bật và định hướng phát triển của đồ án.

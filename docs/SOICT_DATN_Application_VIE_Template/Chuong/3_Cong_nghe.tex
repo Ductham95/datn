@@ -35,11 +35,11 @@ So với các lựa chọn thay thế, Arduino Mega không tích hợp WiFi nên
 
 Hệ thống sử dụng ba loại cảm biến để đo sáu thông số môi trường theo yêu cầu đặt ra ở Chương 2. Tất cả các cảm biến đều giao tiếp qua giao tiếp nối tiếp (\gls{UART} hoặc I2C), giúp đơn giản hóa thiết kế phần cứng.
 
-\textbf{PMS7003} (Plantower) là cảm biến laser đo nồng độ bụi mịn PM2.5 và PM10 trong không khí \cite{plantower2023}. Cảm biến hoạt động theo nguyên lý tán xạ laser: luồng không khí được hút qua buồng đo, các hạt bụi đi qua chùm laser sẽ tạo ra tín hiệu tán xạ, từ đó vi xử lý tích hợp tính toán nồng độ theo đơn vị $\mu g/m^3$. PMS7003 giao tiếp qua \gls{UART} với tốc độ 9600 baud, kích thước nhỏ gọn ($48 \times 37 \times 12$ mm) và chi phí khoảng 350.000 VNĐ. Lựa chọn thay thế bao gồm PMS5003 cùng hãng Plantower với thông số tương tự nhưng tỉ lệ hỏng cao hơn, và SDS011 (Nova Fitness) có kích thước lớn hơn đáng kể ($71 \times 70 \times 23$ mm).
+\textbf{PMS7003} (Plantower) là cảm biến laser đo nồng độ bụi mịn PM2.5 và PM10 trong không khí \cite{plantower2023}. Cảm biến hoạt động theo nguyên lý tán xạ laser: luồng không khí được hút qua buồng đo, các hạt bụi đi qua chùm laser sẽ tạo ra tín hiệu tán xạ, từ đó vi xử lý tích hợp tính toán nồng độ theo đơn vị $\mu g/m^3$. PMS7003 giao tiếp qua \gls{UART} với tốc độ 9600 baud, kích thước nhỏ gọn ($48 \times 37 \times 12$ mm) và chi phí khoảng 180.000 VNĐ. Lựa chọn thay thế bao gồm PMS5003 cùng hãng Plantower với thông số tương tự nhưng tỉ lệ hỏng cao hơn, và SDS011 (Nova Fitness) có kích thước lớn hơn đáng kể ($71 \times 70 \times 23$ mm).
 
-\textbf{CCS811} là cảm biến chất lượng không khí sử dụng công nghệ oxit kim loại (MOX), đo đồng thời nồng độ CO\textsubscript{2} tương đương (eCO\textsubscript{2}, phạm vi 400--8192 ppm) và tổng hợp chất hữu cơ bay hơi (\gls{TVOC}, phạm vi 0--1187 ppb) \cite{ams2023}. Cảm biến giao tiếp qua I2C, chi phí khoảng 150.000 VNĐ. Lựa chọn thay thế bao gồm SGP30 (Sensirion) có thông số tương đương và SCD30 (Sensirion) sử dụng công nghệ NDIR cho độ chính xác cao hơn nhưng chi phí đắt gấp năm lần, vượt mục tiêu chi phí thấp của đề tài.
+\textbf{CCS811} là cảm biến chất lượng không khí sử dụng công nghệ oxit kim loại (MOX), đo đồng thời nồng độ CO\textsubscript{2} tương đương (eCO\textsubscript{2}, phạm vi 400--8192 ppm) và tổng hợp chất hữu cơ bay hơi (\gls{TVOC}, phạm vi 0--1187 ppb) \cite{ams2023}. Cảm biến giao tiếp qua I2C, chi phí khoảng 95.000 VNĐ. Lựa chọn thay thế bao gồm SGP30 (Sensirion) có thông số tương đương và SCD30 (Sensirion) sử dụng công nghệ NDIR cho độ chính xác cao hơn nhưng chi phí đắt gấp năm lần, vượt mục tiêu chi phí thấp của đề tài.
 
-\textbf{AHT10} (Aosong Electronics) là cảm biến đo nhiệt độ (phạm vi $-40$ đến $85^{\circ}$C, sai số $\pm 0.3^{\circ}$C) và độ ẩm tương đối (phạm vi 0--100\% RH, sai số $\pm 2$\% RH) \cite{aosong2023}. Cảm biến sử dụng giao tiếp I2C (địa chỉ 0x38), chia sẻ chung bus I2C với CCS811, giúp giảm số chân GPIO cần sử dụng trên ESP32. Chi phí rất thấp (khoảng 35.000 VNĐ). Lựa chọn thay thế gồm DHT22 (cùng hãng Aosong, giao tiếp 1-wire, sai số $\pm 0.5^{\circ}$C) và SHT31 (Sensirion) có độ chính xác cao hơn ($\pm 0.2^{\circ}$C) nhưng chi phí gấp năm lần.
+\textbf{AHT10} (Aosong Electronics) là cảm biến đo nhiệt độ (phạm vi $-40$ đến $85^{\circ}$C, sai số $\pm 0.3^{\circ}$C) và độ ẩm tương đối (phạm vi 0--100\% RH, sai số $\pm 2$\% RH) \cite{aosong2023}. Cảm biến sử dụng giao tiếp I2C (địa chỉ 0x38), chia sẻ chung bus I2C với CCS811, giúp giảm số chân GPIO cần sử dụng trên ESP32. Chi phí rất thấp (khoảng 25.000 VNĐ). Lựa chọn thay thế gồm DHT22 (cùng hãng Aosong, giao tiếp 1-wire, sai số $\pm 0.5^{\circ}$C) và SHT31 (Sensirion) có độ chính xác cao hơn ($\pm 0.2^{\circ}$C) nhưng chi phí gấp năm lần.
 
 Bảng \ref{table:so_sanh_cam_bien} tổng hợp thông số kỹ thuật của các cảm biến được sử dụng trong hệ thống.
 
@@ -52,11 +52,11 @@ Bảng \ref{table:so_sanh_cam_bien} tổng hợp thông số kỹ thuật của 
 \hline
 \textbf{Cảm biến} & \textbf{Thông số đo} & \textbf{Phạm vi} & \textbf{Giao tiếp} & \textbf{Chi phí} \\
 \hline
-PMS7003 & PM2.5, PM10 & 0--500 $\mu g/m^3$ & UART & $\sim$350.000 VNĐ \\
+PMS7003 & PM2.5, PM10 & 0--500 $\mu g/m^3$ & UART & $\sim$180.000 VNĐ \\
 \hline
-CCS811 & eCO\textsubscript{2}, eTVOC & 400--8192 ppm, 0--1187 ppb & I2C & $\sim$150.000 VNĐ \\
+CCS811 & eCO\textsubscript{2}, eTVOC & 400--8192 ppm, 0--1187 ppb & I2C & $\sim$95.000 VNĐ \\
 \hline
-AHT10 & Nhiệt độ, độ ẩm & $-40$--$85^{\circ}$C, 0--100\% RH & I2C & $\sim$35.000 VNĐ \\
+AHT10 & Nhiệt độ, độ ẩm & $-40$--$85^{\circ}$C, 0--100\% RH & I2C & $\sim$25.000 VNĐ \\
 \hline
 \end{tabular}
 \end{table}
