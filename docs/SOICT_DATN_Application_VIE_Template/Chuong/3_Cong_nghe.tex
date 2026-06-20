@@ -48,7 +48,7 @@ Bảng \ref{table:so_sanh_cam_bien} tổng hợp thông số kỹ thuật của 
 \caption{Thông số kỹ thuật các cảm biến sử dụng trong hệ thống}
 \label{table:so_sanh_cam_bien}
 \small
-\begin{tabular}{|p{2cm}|p{2.5cm}|p{3cm}|p{2cm}|p{2cm}|}
+\begin{tabularx}{\textwidth}{|X|X|X|c|c|}
 \hline
 \textbf{Cảm biến} & \textbf{Thông số đo} & \textbf{Phạm vi} & \textbf{Giao tiếp} & \textbf{Chi phí} \\
 \hline
@@ -58,7 +58,7 @@ CCS811 & eCO\textsubscript{2}, eTVOC & 400--8192 ppm, 0--1187 ppb & I2C & $\sim$
 \hline
 AHT10 & Nhiệt độ, độ ẩm & $-40$--$85^{\circ}$C, 0--100\% RH & I2C & $\sim$25.000 VNĐ \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \section{Giao thức truyền thông LoRa}
@@ -149,7 +149,7 @@ Chỉ số chất lượng không khí (\gls{AQI}) là thước đo tổng hợp
 \caption{Phân loại các mức chỉ số AQI theo tiêu chuẩn US EPA \cite{usepa2018}}
 \label{table:aqi_levels}
 \small
-\begin{tabular}{|c|p{4.5cm}|p{2cm}|p{4.5cm}|}
+\begin{tabularx}{\textwidth}{|c|X|c|X|}
 \hline
 \textbf{AQI} & \textbf{Mức độ} & \textbf{Mã màu} & \textbf{Ảnh hưởng sức khỏe} \\
 \hline
@@ -165,7 +165,7 @@ Chỉ số chất lượng không khí (\gls{AQI}) là thước đo tổng hợp
 \hline
 301--500 & Nguy hiểm (Hazardous) & Nâu đỏ & Toàn bộ dân số bị ảnh hưởng \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Công thức và bảng điểm ngắt}
@@ -187,7 +187,7 @@ Bảng \ref{table:bp_pm25} và Bảng \ref{table:bp_pm10} trình bày các đi�
 \caption{Bảng điểm ngắt AQI cho PM2.5 \cite{usepa2018}}
 \label{table:bp_pm25}
 \small
-\begin{tabular}{|c|c|c|c|}
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
 \hline
 \textbf{$BP_{Lo}$ ($\mu g/m^3$)} & \textbf{$BP_{Hi}$ ($\mu g/m^3$)} & \textbf{$I_{Lo}$} & \textbf{$I_{Hi}$} \\
 \hline
@@ -203,7 +203,7 @@ Bảng \ref{table:bp_pm25} và Bảng \ref{table:bp_pm10} trình bày các đi�
 \hline
 250,5 & 500,4 & 301 & 500 \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \begin{table}[H]
@@ -211,7 +211,7 @@ Bảng \ref{table:bp_pm25} và Bảng \ref{table:bp_pm10} trình bày các đi�
 \caption{Bảng điểm ngắt AQI cho PM10 \cite{usepa2018}}
 \label{table:bp_pm10}
 \small
-\begin{tabular}{|c|c|c|c|}
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
 \hline
 \textbf{$BP_{Lo}$ ($\mu g/m^3$)} & \textbf{$BP_{Hi}$ ($\mu g/m^3$)} & \textbf{$I_{Lo}$} & \textbf{$I_{Hi}$} \\
 \hline
@@ -227,7 +227,7 @@ Bảng \ref{table:bp_pm25} và Bảng \ref{table:bp_pm10} trình bày các đi�
 \hline
 425 & 604 & 301 & 500 \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Ví dụ tính toán}

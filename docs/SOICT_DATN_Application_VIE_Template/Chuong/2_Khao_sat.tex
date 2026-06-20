@@ -46,7 +46,7 @@ Bảng \ref{table:so_sanh_he_thong} tổng hợp so sánh bốn hệ thống đ�
 \caption{So sánh các hệ thống giám sát chất lượng không khí hiện có}
 \label{table:so_sanh_he_thong}
 \small
-\begin{tabular}{|p{2.8cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}|p{2.5cm}|}
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|}
 \hline
 \textbf{Tiêu chí} & \textbf{PAM Air} & \textbf{IQAir} & \textbf{PurpleAir} & \textbf{VN-AQI} \\
 \hline
@@ -66,7 +66,7 @@ Realtime web & Có & Có & Có & Hạn chế \\
 \hline
 Admin panel & Không rõ & Không & Không & Có (nội bộ) \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 Từ kết quả khảo sát, có thể nhận thấy các hệ thống hiện tại đều có những hạn chế nhất định. Các hệ thống thương mại như PAM Air và IQAir không cho phép tuỳ biến và mở rộng. Các hệ thống cộng đồng như PurpleAir chỉ đo được bụi mịn và yêu cầu WiFi cho mỗi trạm. Hệ thống quan trắc quốc gia đáp ứng tiêu chuẩn FEM nhưng chi phí quá cao cho quy mô triển khai vi mô. Đặc biệt, không hệ thống nào hỗ trợ giao thức LoRa để truyền dữ liệu tầm xa mà không cần hạ tầng mạng WiFi tại mỗi điểm đo — trong khi LoRa đã được chứng minh có khả năng truyền thông đến 10--15 km trong điều kiện tầm nhìn thẳng với mức tiêu thụ năng lượng rất thấp \cite{augustin2016}.
@@ -170,7 +170,7 @@ Phần này đặc tả chi tiết năm use case quan trọng nhất của hệ 
 \caption{Đặc tả use case Xem dashboard chất lượng không khí}
 \label{table:uc_dashboard}
 \small
-\begin{tabular}{|p{3.5cm}|p{9cm}|}
+\begin{tabularx}{\textwidth}{|c|X|}
 \hline
 \textbf{Tên use case} & Xem dashboard chất lượng không khí \\
 \hline
@@ -198,7 +198,7 @@ Phần này đặc tả chi tiết năm use case quan trọng nhất của hệ 
 \hline
 \textbf{Hậu điều kiện} & Người dùng xem được dữ liệu chất lượng không khí thời gian thực. \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Đặc tả use case Xem lịch sử dữ liệu}
@@ -209,7 +209,7 @@ Phần này đặc tả chi tiết năm use case quan trọng nhất của hệ 
 \caption{Đặc tả use case Xem lịch sử dữ liệu}
 \label{table:uc_history}
 \small
-\begin{tabular}{|p{3.5cm}|p{9cm}|}
+\begin{tabularx}{\textwidth}{|c|X|}
 \hline
 \textbf{Tên use case} & Xem lịch sử dữ liệu \\
 \hline
@@ -235,7 +235,7 @@ Phần này đặc tả chi tiết năm use case quan trọng nhất của hệ 
 \hline
 \textbf{Hậu điều kiện} & Người dùng xem được biểu đồ lịch sử dữ liệu. \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Đặc tả use case Quản lý thiết bị}
@@ -246,7 +246,7 @@ Phần này đặc tả chi tiết năm use case quan trọng nhất của hệ 
 \caption{Đặc tả use case Quản lý thiết bị}
 \label{table:uc_device}
 \small
-\begin{tabular}{|p{3.5cm}|p{9cm}|}
+\begin{tabularx}{\textwidth}{|c|X|}
 \hline
 \textbf{Tên use case} & Quản lý thiết bị (Gateway và Sensor Node) \\
 \hline
@@ -273,7 +273,7 @@ Phần này đặc tả chi tiết năm use case quan trọng nhất của hệ 
 \hline
 \textbf{Hậu điều kiện} & Danh sách thiết bị được cập nhật trong cơ sở dữ liệu. Hệ thống ghi lại thao tác vào nhật ký kiểm toán (audit log). \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Đặc tả use case Giám sát và xử lý cảnh báo}
@@ -284,7 +284,7 @@ Phần này đặc tả chi tiết năm use case quan trọng nhất của hệ 
 \caption{Đặc tả use case Giám sát và xử lý cảnh báo}
 \label{table:uc_alert}
 \small
-\begin{tabular}{|p{3.5cm}|p{9cm}|}
+\begin{tabularx}{\textwidth}{|c|X|}
 \hline
 \textbf{Tên use case} & Giám sát và xử lý cảnh báo \\
 \hline
@@ -310,7 +310,7 @@ Phần này đặc tả chi tiết năm use case quan trọng nhất của hệ 
 \hline
 \textbf{Hậu điều kiện} & Cảnh báo được cập nhật trạng thái trong cơ sở dữ liệu. \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Đặc tả use case Xuất dữ liệu CSV}
@@ -321,7 +321,7 @@ Phần này đặc tả chi tiết năm use case quan trọng nhất của hệ 
 \caption{Đặc tả use case Xuất dữ liệu CSV}
 \label{table:uc_export}
 \small
-\begin{tabular}{|p{3.5cm}|p{9cm}|}
+\begin{tabularx}{\textwidth}{|c|X|}
 \hline
 \textbf{Tên use case} & Xuất dữ liệu CSV \\
 \hline
@@ -348,7 +348,7 @@ Phần này đặc tả chi tiết năm use case quan trọng nhất của hệ 
 \hline
 \textbf{Hậu điều kiện} & Tệp CSV được tải xuống máy tính quản trị viên. \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \section{Yêu cầu phi chức năng}
@@ -361,7 +361,7 @@ Ngoài các yêu cầu chức năng đã đặc tả ở trên, hệ thống c�
 \caption{Các yêu cầu phi chức năng của hệ thống}
 \label{table:nfr}
 \small
-\begin{tabular}{|p{0.5cm}|p{2.5cm}|p{9.5cm}|}
+\begin{tabularx}{\textwidth}{|c|c|X|}
 \hline
 \textbf{STT} & \textbf{Yêu cầu} & \textbf{Mô tả} \\
 \hline
@@ -375,7 +375,7 @@ Ngoài các yêu cầu chức năng đã đặc tả ở trên, hệ thống c�
 \hline
 5 & Bảo mật & Xác thực quản trị viên bằng JWT. Mật khẩu được mã hoá bằng bcrypt. Mọi thao tác quản trị được ghi nhận trong nhật ký kiểm toán (audit log) gồm người thực hiện, thời gian, nội dung thay đổi và địa chỉ IP. \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 Chương này đã khảo sát bốn hệ thống giám sát chất lượng không khí tiêu biểu, phân tích ưu nhược điểm và xác định rõ khoảng trống mà các hệ thống hiện tại chưa giải quyết được. Trên cơ sở đó, hệ thống đề xuất kết hợp cảm biến chi phí thấp, truyền thông LoRa tầm xa, mã nguồn mở và dashboard web thời gian thực. Phân tích yêu cầu đã xác định đầy đủ các chức năng cho hai tác nhân (Người dùng và Quản trị viên), đặc tả chi tiết năm use case quan trọng nhất, và định nghĩa sáu yêu cầu phi chức năng. Các yêu cầu này là cơ sở để lựa chọn nền tảng công nghệ phù hợp, được trình bày trong Chương 3.

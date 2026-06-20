@@ -1,6 +1,12 @@
 \documentclass[a4paper,13pt,3p,oneside]{report}
 \usepackage{scrextend}
 \changefontsizes{13pt}
+
+% Lệnh hỗ trợ copy text từ PDF không bị lỗi font hay mất dấu phụ / dấu cách
+\usepackage{cmap}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
 \usepackage[utf8]{vietnam}
 \usepackage[top=2cm, bottom=2cm, left=3.5cm, right=2.5cm]{geometry}
 
@@ -24,6 +30,7 @@
 \usepackage[ruled,vlined]{algorithm2e}  % Hỗ trợ viết các giải thuật
 \usepackage{capt-of} % Cho phép sử dụng caption lớn đối với landscape page
 \usepackage{multirow} % Merge cells
+\usepackage{tabularx} % Tự động co giãn cột bảng
 \usepackage{fancyhdr} % Cho phép tùy biến header và footer
 % \usepackage[natbib,backend=biber,style=ieee]{biblatex} % Giúp chèn tài liệu tham khảo
 \usepackage{appendix}

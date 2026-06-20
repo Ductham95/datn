@@ -111,7 +111,7 @@ Giao diện hệ thống được thiết kế cho trình duyệt web, hỗ tr�
 
 Giao diện được tổ chức thành hai nhóm layout riêng biệt. \textbf{UserLayout} dành cho người dùng, gồm thanh điều hướng ngang (navbar) ở trên cùng với các liên kết đến bốn trang: Dashboard, Lịch sử, Bản đồ và Xếp hạng. \textbf{AdminLayout} dành cho quản trị viên, gồm thanh điều hướng dọc (sidebar) bên trái có thể thu gọn, chứa các mục: Dashboard, Gateways, Sensor Nodes, Cảnh báo, Cấu hình, Người dùng, Xuất dữ liệu và Nhật ký.
 
-Hệ thống sử dụng bộ thành phần giao diện tái sử dụng (component library) tự xây dựng, bao gồm 28 component: Button, Modal, Badge, Input, Select, Table, Pagination, Card, Tooltip và các component chuyên biệt như AQIGauge, MetricCard, HealthAdvisory. Tất cả component tuân thủ thiết kế nhất quán: dark theme với bảng màu chính là xanh dương đậm, các trạng thái tương tác (hover, focus, disabled) được định nghĩa thống nhất, và hiệu ứng chuyển đổi mượt mà (transition 200ms).
+Hệ thống sử dụng bộ thành phần giao diện tái sử dụng (component library) tự xây dựng, bao gồm 28 component: Button, Modal, Badge, Input, Select, Table, Pagination, Card, Tooltip và các component chuyên biệt như AQICard, MetricCard, HealthAdvisory. Tất cả component tuân thủ thiết kế nhất quán: dark theme với bảng màu chính là xanh dương đậm, các trạng thái tương tác (hover, focus, disabled) được định nghĩa thống nhất, và hiệu ứng chuyển đổi mượt mà (transition 200ms).
 
 
 \subsection{Thiết kế module Backend}
@@ -119,7 +119,7 @@ Hệ thống sử dụng bộ thành phần giao diện tái sử dụng (compon
 
 Phần này trình bày thiết kế chi tiết cho bốn module quan trọng nhất trên Backend Server.
 
-\textbf{Module telemetryService} chịu trách nhiệm xử lý dữ liệu đo lường từ Gateway. Module này cung cấp hai hàm chính: \texttt{processTelemetry(gateway\_id, data)} xử lý gói dữ liệu batch và \texttt{processHeartbeat(gateway\_id)} xử lý tín hiệu heartbeat. Hàm \texttt{processTelemetry} thực hiện tuần tự ba bước: lọc trùng lặp qua module \texttt{dedupCache}, thực thi transaction cập nhật trạng thái thiết bị và lưu dữ liệu đo lường, sau đó kiểm tra ngưỡng cảnh báo ngoài transaction.
+\textbf{Module telemetryService} chịu trách nhiệm xử lý dữ liệu đo lường từ Gateway. Module này cung cấp hai hàm chính: \texttt{processTelemetry} (với tham số \texttt{gateway\_id}, \texttt{data}) xử lý gói dữ liệu batch và \texttt{processHeartbeat} (với tham số \texttt{gateway\_id}) xử lý tín hiệu heartbeat. Hàm \texttt{processTelemetry} thực hiện tuần tự ba bước: lọc trùng lặp qua module \texttt{dedupCache}, thực thi transaction cập nhật trạng thái thiết bị và lưu dữ liệu đo lường, sau đó kiểm tra ngưỡng cảnh báo ngoài transaction.
 
 \textbf{Module aqiService} triển khai thuật toán tính \gls{AQI} theo chuẩn \gls{USEPA} đã trình bày ở Chương 3. Module cung cấp năm hàm: \texttt{calculateSubAQI} tính AQI thành phần cho một chất ô nhiễm, \texttt{calculateAQI} tính AQI tổng hợp (giá trị lớn nhất giữa PM2.5 và PM10), \texttt{getAQIInfo} ánh xạ giá trị AQI sang mức và mã màu, \texttt{getCO2Info} và \texttt{getTVOCInfo} đánh giá mức CO\textsubscript{2} và TVOC. Bảng breakpoint được lưu trữ dưới dạng mảng hằng số trong mã nguồn, tương ứng chính xác với Bảng \ref{table:bp_pm25} và Bảng \ref{table:bp_pm10} ở Chương 3.
 
@@ -147,7 +147,7 @@ Phần này trình bày thiết kế chi tiết cho bốn module quan trọng nh
     \label{fig:seq_dashboard}
 \end{figure}
 
-\textbf{Biểu đồ trình tự 3: Xử lý cảnh báo vượt ngưỡng.} Hình~\ref{fig:seq_alert} mô tả chi tiết luồng kiểm tra và tạo cảnh báo khi dữ liệu đo lường vượt ngưỡng cấu hình. Sau khi \texttt{telemetryService} lưu dữ liệu thành công, module gọi \texttt{alertService.checkThresholdsAndCreateAlerts}. Module \texttt{alertService} thực hiện bốn bước: (i) truy vấn bảng \texttt{alert\_configs} để lấy ngưỡng warn/danger cho năm thông số (PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ), (ii) so sánh từng giá trị đo với ngưỡng tương ứng, (iii) kiểm tra cơ chế cooldown 15 phút — nếu cùng Sensor Node và cùng thông số đã có cảnh báo trong 15 phút gần đây thì bỏ qua để tránh tạo cảnh báo trùng lặp, (iv) tạo bản ghi cảnh báo mới trong bảng \texttt{alerts}. Kết quả trả về Controller, nếu có cảnh báo mới, Controller phát sự kiện \texttt{new-alert} qua Socket.IO để Admin Dashboard hiển thị thông báo tức thì.
+\textbf{Biểu đồ trình tự 3: Xử lý cảnh báo vượt ngưỡng.} Hình~\ref{fig:seq_alert} mô tả chi tiết luồng kiểm tra và tạo cảnh báo khi dữ liệu đo lường vượt ngưỡng cấu hình. Sau khi \texttt{telemetryService} lưu dữ liệu thành công, module gọi hàm \texttt{checkThresholdsAndCreateAlerts} của \texttt{alertService}. Module \texttt{alertService} thực hiện bốn bước: (i) truy vấn bảng \texttt{alert\_configs} để lấy ngưỡng warn/danger cho năm thông số (PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ), (ii) so sánh từng giá trị đo với ngưỡng tương ứng, (iii) kiểm tra cơ chế cooldown 15 phút — nếu cùng Sensor Node và cùng thông số đã có cảnh báo trong 15 phút gần đây thì bỏ qua để tránh tạo cảnh báo trùng lặp, (iv) tạo bản ghi cảnh báo mới trong bảng \texttt{alerts}. Kết quả trả về Controller, nếu có cảnh báo mới, Controller phát sự kiện \texttt{new-alert} qua Socket.IO để Admin Dashboard hiển thị thông báo tức thì.
 
 \begin{figure}[H]
     \centering
@@ -161,7 +161,7 @@ Phần này trình bày thiết kế chi tiết cho bốn module quan trọng nh
 
 Cơ sở dữ liệu được thiết kế trên PostgreSQL 15 với hai extension: TimescaleDB cho dữ liệu chuỗi thời gian và PostGIS cho dữ liệu không gian. Lược đồ gồm bảy bảng chính và một materialized view (trên biểu đồ Hình~\ref{fig:er_diagram} chỉ thể hiện 7 bảng chính).
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/er_database.png}
     \caption{Entity-Relationship Diagram}
@@ -176,7 +176,7 @@ Cơ sở dữ liệu được thiết kế trên PostgreSQL 15 với hai extensi
 
 \textbf{Bảng measurements} là hypertable TimescaleDB, được tự động phân mảnh theo cột thời gian \texttt{time}. Khóa chính composite gồm (\texttt{time}, \texttt{node\_id}) đảm bảo mỗi Sensor Node chỉ có một bản ghi tại mỗi thời điểm. Bảng lưu sáu thông số: PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ và độ ẩm. Retention policy tự động xóa dữ liệu thô quá 3 tháng.
 
-\textbf{Materialized view hourly\_measurements} là Continuous Aggregate tự động tính giá trị trung bình theo giờ cho mỗi Sensor Node. View này được TimescaleDB tự động cập nhật khi có dữ liệu mới ghi vào bảng \texttt{measurements}, đáp ứng yêu cầu phi chức năng truy vấn lịch sử 30 ngày trong vòng 3 giây (Bảng \ref{table:nfr}).
+\textbf{Materialized view hourly\_measurements} là Continuous Aggregate tự động tính giá trị trung bình theo giờ cho mỗi Sensor Node. View này được TimescaleDB tự động cập nhật khi có dữ liệu mới ghi vào bảng \texttt{measurements}.
 
 \textbf{Bảng alert\_configs} lưu cấu hình ngưỡng cảnh báo dưới dạng singleton row (chỉ một bản ghi với id = ``default''). Cấu hình bao gồm ngưỡng warn và danger cho bốn thông số (PM2.5, PM10, CO\textsubscript{2}, TVOC), ngưỡng nhiệt độ tối thiểu/tối đa, và chu kỳ lấy mẫu.
 
@@ -197,7 +197,7 @@ Bảng \ref{table:tools_backend} và Bảng \ref{table:tools_frontend} liệt k�
 \caption{Danh sách thư viện và công cụ phía Backend}
 \label{table:tools_backend}
 \small
-\begin{tabular}{|p{4.5cm}|p{5cm}|p{3cm}|}
+\begin{tabularx}{\textwidth}{|X|X|c|}
 \hline
 \textbf{Mục đích} & \textbf{Công cụ} & \textbf{Phiên bản} \\
 \hline
@@ -225,7 +225,7 @@ Extension time-series & TimescaleDB & 2.11.0 \\
 \hline
 Extension geospatial & PostGIS & 3.3.2 \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \begin{table}[H]
@@ -233,7 +233,7 @@ Extension geospatial & PostGIS & 3.3.2 \\
 \caption{Danh sách thư viện và công cụ phía Frontend}
 \label{table:tools_frontend}
 \small
-\begin{tabular}{|p{4.5cm}|p{5cm}|p{3cm}|}
+\begin{tabularx}{\textwidth}{|X|X|c|}
 \hline
 \textbf{Mục đích} & \textbf{Công cụ} & \textbf{Phiên bản} \\
 \hline
@@ -257,7 +257,7 @@ Icon & Lucide React & 1.7.0 \\
 \hline
 Socket client & socket.io-client & 4.8.3 \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 Ngoài ra, hệ thống sử dụng các công cụ phát triển và triển khai: VS Code làm IDE chính, PlatformIO với framework Arduino để phát triển firmware ESP32, Docker và Docker Compose để container hóa, Nginx làm reverse proxy, và Certbot để quản lý chứng chỉ SSL.
@@ -274,7 +274,7 @@ Bảng \ref{table:stats} thống kê quy mô mã nguồn của từng thành ph�
 \caption{Thống kê quy mô mã nguồn hệ thống}
 \label{table:stats}
 \small
-\begin{tabular}{|p{3.5cm}|p{3cm}|p{2.5cm}|p{1.5cm}|p{2cm}|}
+\begin{tabularx}{\textwidth}{|X|X|c|X|}
 \hline
 \textbf{Thành phần} & \textbf{Ngôn ngữ chính} & \textbf{LOC} & \textbf{Ghi chú} \\
 \hline
@@ -290,7 +290,7 @@ Database & SQL & 107 & PostgreSQL \\
 \hline
 Triển khai & YAML, Nginx conf & 277 & Docker Compose \\
 \hline  
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 Bảng \ref{table:req_mapping} đối sánh kết quả đạt được với các yêu cầu chức năng và phi chức năng đã đặc tả ở Chương 2, cho thấy hệ thống đã hiện thực đầy đủ toàn bộ chín chức năng và đáp ứng năm yêu cầu phi chức năng.
@@ -300,7 +300,7 @@ Bảng \ref{table:req_mapping} đối sánh kết quả đạt được với c�
 \caption{Đối sánh yêu cầu đặc tả với kết quả đạt được}
 \label{table:req_mapping}
 \small
-\begin{tabular}{|p{0.5cm}|p{4.5cm}|p{1.5cm}|p{6cm}|}
+\begin{tabularx}{\textwidth}{|c|X|c|X|}
 \hline
 \textbf{STT} & \textbf{Yêu cầu (Chương 2)} & \textbf{Trạng thái} & \textbf{Minh chứng} \\
 \hline
@@ -334,7 +334,7 @@ Bảng \ref{table:req_mapping} đối sánh kết quả đạt được với c�
 \hline
 13 & Bảo mật: JWT, bcrypt, audit log & Đạt & Mục~\ref{subsection:4.2.4}, kiểm thử TC6 Bảng~\ref{table:test_device} \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Minh họa các chức năng chính}
@@ -342,7 +342,7 @@ Bảng \ref{table:req_mapping} đối sánh kết quả đạt được với c�
 
 Phần này minh hoạ các chức năng chính của hệ thống thông qua giao diện thực tế trên môi trường production.
 
-\textbf{Dashboard chất lượng không khí.} Khi người dùng truy cập trang Dashboard, hệ thống yêu cầu quyền truy cập vị trí, sau đó hiển thị dữ liệu của trạm đo gần nhất. Giao diện hiển thị chỉ số AQI tổng hợp dưới dạng gauge lớn ở trung tâm, kèm mã màu theo chuẩn \gls{USEPA}. Phía dưới là sáu thẻ metric hiển thị PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ và độ ẩm, mỗi thẻ kèm đánh giá mức độ. Bên cạnh là khuyến nghị sức khỏe dựa trên mức AQI hiện tại. Dữ liệu được cập nhật thời gian thực khi Backend phát sự kiện qua Socket.IO.
+\textbf{Dashboard chất lượng không khí.} Khi người dùng truy cập trang Dashboard, hệ thống yêu cầu quyền truy cập vị trí, sau đó ưu tiên hiển thị dữ liệu của trạm đo gần nhất. Giao diện trang chủ được bố cục từ trên xuống dưới với hàng đầu tiên là sáu thẻ thông số nổi bật hiển thị lần lượt các chỉ số: \gls{AQI} tổng hợp, PM2.5, PM10, CO\textsubscript{2}, nhiệt độ và độ ẩm, mỗi thẻ được thiết kế kèm viền màu cảnh báo mức độ tương ứng. Ngay bên dưới là khu vực Bản đồ AQI khu vực cùng danh sách các trạm đo lân cận. Ở nửa dưới bảng điều khiển, hệ thống cung cấp biểu đồ lịch sử theo dõi xu hướng thay đổi của các thông số theo thời gian, kết hợp với các thẻ tính năng bổ trợ như Khuyến nghị sức khỏe và Thời tiết hiện tại. Dữ liệu được cập nhật liên tục theo thời gian thực khi Backend phát sự kiện qua Socket.IO.
 
 \begin{figure}[H]
     \centering
@@ -351,7 +351,7 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
     \label{fig:dashboard}
 \end{figure}
 
-\textbf{Lịch sử dữ liệu.} Trang lịch sử cho phép người dùng chọn trạm đo, thông số cần xem và chế độ hiển thị (theo giờ hoặc theo ngày). Biểu đồ được vẽ bằng ECharts, hỗ trợ zoom, tooltip và responsive. Chế độ theo giờ truy vấn từ Continuous Aggregate \texttt{hourly\_measurements} để đảm bảo hiệu năng.
+\textbf{Lịch sử dữ liệu.} Trang lịch sử cho phép người dùng chọn trạm đo, thông số cần xem và chế độ hiển thị (theo giờ hoặc theo ngày). Biểu đồ được vẽ bằng ECharts, hỗ trợ tooltip và responsive. Chế độ theo giờ truy vấn từ Continuous Aggregate \texttt{hourly\_measurements} để đảm bảo hiệu năng.
 
 \begin{figure}[H]
     \centering
@@ -414,7 +414,7 @@ Bảng \ref{table:test_dashboard} trình bày các trường hợp kiểm thử 
 \caption{Trường hợp kiểm thử chức năng Xem dashboard}
 \label{table:test_dashboard}
 \small
-\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{4cm}|p{2.5cm}|p{1.5cm}|}
+\begin{tabularx}{\textwidth}{|c|X|X|X|c|}
 \hline
 \textbf{STT} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Kết quả thực tế} & \textbf{Đạt} \\
 \hline
@@ -426,9 +426,9 @@ Bảng \ref{table:test_dashboard} trình bày các trường hợp kiểm thử 
 \hline
 4 & Không có trạm nào hoạt động & Hiển thị thông báo ``Không có dữ liệu'' & Đúng & Đạt \\
 \hline
-5 & Kiểm tra mã màu AQI & Gauge và badge hiển thị đúng mã màu theo mức AQI & Đúng & Đạt \\
+5 & Kiểm tra mã màu AQI & Thẻ AQI và badge hiển thị đúng mã màu theo mức AQI & Đúng & Đạt \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Kiểm thử chức năng Quản lý thiết bị}
@@ -441,7 +441,7 @@ Bảng \ref{table:test_device} trình bày các trường hợp kiểm thử cho
 \caption{Trường hợp kiểm thử chức năng Quản lý thiết bị}
 \label{table:test_device}
 \small
-\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{4cm}|p{2.5cm}|p{1.5cm}|}
+\begin{tabularx}{\textwidth}{|c|X|X|X|c|}
 \hline
 \textbf{STT} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Kết quả thực tế} & \textbf{Đạt} \\
 \hline
@@ -455,9 +455,9 @@ Bảng \ref{table:test_device} trình bày các trường hợp kiểm thử cho
 \hline
 5 & Thêm thiết bị với dữ liệu không hợp lệ (để trống tên) & Hiển thị thông báo lỗi & Đúng & Đạt \\
 \hline
-6 & Kiểm tra audit log sau thao tác & Nhật ký ghi nhận đúng thao tác, người thực hiện, IP & Đúng & Đạt \\
+6 & Kiểm tra audit log sau thao tác & Nhật ký ghi nhận đúng thao tác, người thực hiện. & Đúng & Đạt \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Kiểm thử chức năng Giám sát cảnh báo}
@@ -470,7 +470,7 @@ Bảng \ref{table:test_alert} trình bày các trường hợp kiểm thử cho 
 \caption{Trường hợp kiểm thử chức năng Giám sát cảnh báo}
 \label{table:test_alert}
 \small
-\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{4cm}|p{2.5cm}|p{1.5cm}|}
+\begin{tabularx}{\textwidth}{|c|X|X|X|c|}
 \hline
 \textbf{STT} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Kết quả thực tế} & \textbf{Đạt} \\
 \hline
@@ -486,7 +486,7 @@ Bảng \ref{table:test_alert} trình bày các trường hợp kiểm thử cho 
 \hline
 6 & Xác nhận cảnh báo (acknowledge) & Trạng thái cập nhật thành ``đã xác nhận'' & Đúng & Đạt \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Kiểm thử chức năng Xem lịch sử dữ liệu}
@@ -499,17 +499,17 @@ Bảng \ref{table:test_history} trình bày các trường hợp kiểm thử ch
 \caption{Trường hợp kiểm thử chức năng Xem lịch sử dữ liệu}
 \label{table:test_history}
 \small
-\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{4cm}|p{2.5cm}|p{1.5cm}|}
+\begin{tabularx}{\textwidth}{|c|X|X|X|c|}
 \hline
 \textbf{STT} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Kết quả thực tế} & \textbf{Đạt} \\
 \hline
-1 & Chọn trạm đo và xem biểu đồ theo giờ (30 ngày) & Biểu đồ hiển thị đúng dữ liệu, phản hồi dưới 200ms & Phản hồi 120ms, đúng dữ liệu & Đạt \\
+1 & Chọn trạm đo và xem biểu đồ theo ngày (30 ngày) & Biểu đồ hiển thị đúng dữ liệu & Phản hồi dưới 3000ms, đúng dữ liệu & Đạt \\
 \hline
-2 & Chuyển chế độ hiển thị từ theo giờ sang theo ngày & Biểu đồ cập nhật đúng dạng dữ liệu & Đúng & Đạt \\
+2 & Chuyển chế độ hiển thị từ theo ngày sang theo giờ & Biểu đồ cập nhật đúng dạng dữ liệu & Đúng & Đạt \\
 \hline
-3 & Zoom và tương tác với biểu đồ ECharts & Tooltip hiển thị chi tiết, zoom hoạt động mượt & Đúng & Đạt \\
+3 & Tương tác với biểu đồ ECharts & Tooltip hiển thị chi tiết & Đúng & Đạt \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Kiểm thử chức năng Xem bản đồ AQI}
@@ -522,7 +522,7 @@ Bảng \ref{table:test_map} trình bày các trường hợp kiểm thử cho ch
 \caption{Trường hợp kiểm thử chức năng Xem bản đồ AQI}
 \label{table:test_map}
 \small
-\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{4cm}|p{2.5cm}|p{1.5cm}|}
+\begin{tabularx}{\textwidth}{|c|X|X|X|c|}
 \hline
 \textbf{STT} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Kết quả thực tế} & \textbf{Đạt} \\
 \hline
@@ -532,7 +532,7 @@ Bảng \ref{table:test_map} trình bày các trường hợp kiểm thử cho ch
 \hline
 3 & Kiểm tra mã màu marker theo mức AQI & Màu marker tương ứng với mức AQI (xanh, vàng, cam, đỏ) & Màu đúng theo chuẩn USEPA & Đạt \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Kiểm thử chức năng Xuất dữ liệu CSV}
@@ -545,7 +545,7 @@ Bảng \ref{table:test_export} trình bày các trường hợp kiểm thử cho
 \caption{Trường hợp kiểm thử chức năng Xuất dữ liệu CSV}
 \label{table:test_export}
 \small
-\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{4cm}|p{2.5cm}|p{1.5cm}|}
+\begin{tabularx}{\textwidth}{|c|X|X|X|c|}
 \hline
 \textbf{STT} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Kết quả thực tế} & \textbf{Đạt} \\
 \hline
@@ -553,9 +553,7 @@ Bảng \ref{table:test_export} trình bày các trường hợp kiểm thử cho
 \hline
 2 & Xuất CSV khi không có dữ liệu trong khoảng thời gian & Thông báo ``Không có dữ liệu'' & Hiển thị thông báo đúng & Đạt \\
 \hline
-3 & Xuất CSV khi chưa đăng nhập (không có quyền admin) & Trả về lỗi 401 Unauthorized & Chuyển hướng về trang đăng nhập & Đạt \\
-\hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Kiểm thử đơn vị module tính AQI}
@@ -570,7 +568,7 @@ Bảng \ref{table:test_aqi_unit} trình bày kết quả kiểm thử đơn vị
 \caption{Kết quả kiểm thử đơn vị module \texttt{aqiService}}
 \label{table:test_aqi_unit}
 \small
-\begin{tabular}{|p{0.5cm}|p{2.8cm}|p{3.5cm}|p{3cm}|p{1.5cm}|}
+\begin{tabularx}{\textwidth}{|c|X|X|X|c|}
 \hline
 \textbf{STT} & \textbf{Hàm kiểm thử} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Đạt} \\
 \hline
@@ -612,7 +610,7 @@ Bảng \ref{table:test_aqi_unit} trình bày kết quả kiểm thử đơn vị
 \hline
 19 & \texttt{getTVOCInfo} & TVOC = 500 & Mức Kém & Đạt \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 Kết quả: 19/19 trường hợp kiểm thử đều đạt (pass). Các test case tập trung kiểm tra giá trị biên (boundary values) của bảng breakpoint AQI, đảm bảo công thức nội suy tuyến tính trả về đúng giá trị tại các điểm chuyển mức.
@@ -620,7 +618,7 @@ Kết quả: 19/19 trường hợp kiểm thử đều đạt (pass). Các test 
 \subsection{Tổng kết kiểm thử}
 \label{subsection:4.4.8}
 
-Tổng cộng 45 trường hợp kiểm thử đã được thực hiện, chia thành hai nhóm. Nhóm kiểm thử chức năng thủ công gồm 26 test case trên sáu chức năng: Xem dashboard (5 test case), Quản lý thiết bị (6 test case), Giám sát cảnh báo (6 test case), Xem lịch sử dữ liệu (3 test case), Xem bản đồ AQI (3 test case), và Xuất dữ liệu CSV (3 test case). Nhóm kiểm thử đơn vị tự động gồm 19 test case cho module tính AQI. Tất cả 45/45 trường hợp đều đạt, tỉ lệ 100\%. Kết quả cho thấy cả logic nghiệp vụ cốt lõi (tính AQI) lẫn các chức năng end-to-end đều hoạt động đúng theo đặc tả. Các chức năng còn lại (Xếp hạng, Cấu hình, Quản lý tài khoản) có độ phức tạp thấp hơn và đã được kiểm tra qua quá trình phát triển.
+Tổng cộng 44 trường hợp kiểm thử đã được thực hiện, chia thành hai nhóm. Nhóm kiểm thử chức năng thủ công gồm 25 test case trên sáu chức năng: Xem dashboard (5 test case), Quản lý thiết bị (6 test case), Giám sát cảnh báo (6 test case), Xem lịch sử dữ liệu (3 test case), Xem bản đồ AQI (3 test case), và Xuất dữ liệu CSV (2 test case). Nhóm kiểm thử đơn vị tự động gồm 19 test case cho module tính AQI. Tất cả 44/44 trường hợp đều đạt, tỉ lệ 100\%. Kết quả cho thấy cả logic nghiệp vụ cốt lõi (tính AQI) lẫn các chức năng end-to-end đều hoạt động đúng theo đặc tả. Các chức năng còn lại (Xếp hạng, Cấu hình, Quản lý tài khoản) có độ phức tạp thấp hơn và đã được kiểm tra qua quá trình phát triển.
 
 \section{Triển khai}
 \label{section:4.5}
@@ -656,7 +654,7 @@ Sau khi triển khai, hệ thống được xác nhận hoạt động ổn đ�
 
 Hệ thống được đưa vào vận hành thử nghiệm để đánh giá các chỉ tiêu phi chức năng và tính ổn định của thiết bị. Kết quả đánh giá tập trung vào hai khía cạnh cốt lõi: hiệu năng và độ tin cậy.
 
-\textbf{Đánh giá hiệu năng:} Hiệu năng hệ thống được đo bằng công cụ DevTools trên trình duyệt Chrome (tab Network), thực hiện 10 lần đo cho mỗi API endpoint và lấy giá trị trung bình. Thời gian phản hồi của API \texttt{/api/stations/nearest} khi tải dashboard ban đầu đạt trung bình 45ms (min: 32ms, max: 67ms). Đối với truy vấn lịch sử dữ liệu (NFR1 ở Bảng 2.5), biểu đồ theo giờ truy vấn từ Continuous Aggregate \texttt{hourly\_measurements} mất trung bình 120ms (min: 89ms, max: 185ms) cho khoảng thời gian 30 ngày, đáp ứng vượt mong đợi so với yêu cầu ban đầu là phản hồi dưới 3 giây. Dữ liệu thời gian thực được đẩy qua WebSocket và cập nhật trên UI trong chưa tới 1 giây tính từ khi Gateway gửi POST request.
+\textbf{Đánh giá hiệu năng:} Hệ thống cho thấy tốc độ phản hồi nhanh chóng và ổn định trong quá trình thử nghiệm. Khi người dùng truy cập trang chủ (Dashboard), dữ liệu của trạm đo gần nhất được hệ thống tải về gần như tức thời. Đối với truy vấn khối lượng dữ liệu lớn như dải lịch sử 30 ngày (yêu cầu NFR1 ở Bảng 2.5), nhờ ứng dụng cơ chế Continuous Aggregate của TimescaleDB, dữ liệu biểu đồ được hệ thống trích xuất mượt mà, luôn đáp ứng dễ dàng tiêu chuẩn phản hồi dưới 3 giây. Ở tính năng thời gian thực, luồng dữ liệu thông qua Socket.IO hoạt động trơn tru: ngay sau khi có dữ liệu mới từ Gateway, giao diện người dùng lập tức tự động cập nhật số liệu mới nhất mà không xảy ra độ trễ (lag) đáng kể nào.
 
 \textbf{Đánh giá độ tin cậy:} Các container Docker duy trì uptime 100\% trong suốt thời gian theo dõi 7 ngày thử nghiệm (xác nhận qua lệnh \texttt{docker ps} và log hệ thống), không xảy ra hiện tượng tràn bộ nhớ hay khởi động lại ngoài ý muốn. Tác vụ định kỳ phát hiện thiết bị offline hoạt động chính xác: cảnh báo mất kết nối tự động được tạo và gửi đến frontend sau đúng 40 phút đối với Sensor Node (do đặc thù tiết kiệm pin), và sau 5 phút đối với Gateway khi hệ thống ngừng nhận được dữ liệu.
 
@@ -706,14 +704,14 @@ Server nhận được gói tin từ Gateway và đánh dấu Sensor Node \textt
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/mat_ket_noi_06.png}
-    \caption{Cảnh báo Sensor Node 4C offline}
+    \caption{Hệ thống ghi nhận Sensor Node 4C (NODE\_076) offline}
     \label{fig:tkmkn_06}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/mat_ket_noi_07.png}
-    \caption{Danh sách thiết bị cảnh báo offline}
+    \caption{Hệ thống cảnh báo Sensor Node 4C (NODE\_076) offline}
     \label{fig:tkmkn_07}
 \end{figure}
 
@@ -728,14 +726,14 @@ Server nhận được gói tin từ Gateway và đánh dấu Sensor Node \textt
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/mat_ket_noi_09.png}
-    \caption{Cảnh báo Gateway offline trên giao diện}
+    \caption{Hệ thống ghi nhận Gateway offline}
     \label{fig:tkmkn_09}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/mat_ket_noi_10.png}
-    \caption{Bảng thiết bị với toàn bộ Node và Gateway hiển thị offline}
+    \caption{Hệ thống cảnh báo Gateway offline}
     \label{fig:tkmkn_10}
 \end{figure}
 
@@ -753,7 +751,7 @@ Server nhận được gói tin từ Gateway và đánh dấu Sensor Node \textt
 \caption{Dữ liệu đo lường theo thời gian — Kịch bản đốt hương}
 \label{table:thuc_nghiem_dot_huong}
 \small
-\begin{tabular}{|p{2cm}|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|}
 \hline
 \textbf{Thời gian} & \textbf{Pha} & \textbf{PM2.5} & \textbf{PM10} & \textbf{eCO$_2$} & \textbf{eTVOC} & \textbf{Nhiệt độ} & \textbf{Độ ẩm} \\
 \hline
@@ -793,7 +791,7 @@ Server nhận được gói tin từ Gateway và đánh dấu Sensor Node \textt
 \hline
 16:37 & Phục hồi & 41 & 50 & 405 & 0 & 32.4 & 61.2 \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \textbf{Phân tích dữ liệu thực nghiệm:} Kết quả từ Bảng \ref{table:thuc_nghiem_dot_huong} cho thấy sự thay đổi rõ rệt của chất lượng không khí qua ba pha. Tại pha Baseline (5 phút đầu), nồng độ các chất ô nhiễm duy trì ở mức thấp và ổn định. Giá trị PM2.5 trung bình đạt $\sim$19 $\mu$g/m$^3$, tương ứng với chỉ số AQI ở mức ``Tốt'' (màu xanh lá cây). Giá trị eCO$_2$ dao động quanh mức 442 ppm, nằm trong khoảng an toàn (như hiển thị trên giao diện Dashboard ở Hình \ref{fig:thuc_nghiem_baseline_dashboard}). Cùng với đó, danh sách nhật ký tổng hợp các thông số (Hình \ref{fig:thuc_nghiem_baseline_chart}) cho thấy dãy dữ liệu đo được duy trì ở trạng thái bình ổn với biên độ dao động rất nhỏ.
@@ -848,7 +846,7 @@ Tại pha Phục hồi (bắt đầu từ 16:33), thao tác dập tắt hương 
 \caption{Kết quả thử nghiệm thời gian sử dụng pin tối đa}
 \label{table:pin_thucnghiem}
 \small
-\begin{tabular}{|p{5cm}|p{7cm}|}
+\begin{tabularx}{\textwidth}{|c|X|}
 \hline
 \textbf{Thông số} & \textbf{Giá trị} \\
 \hline
@@ -866,7 +864,7 @@ Thời điểm hết pin & 18/06/2026 14:30 \\
 \hline
 Số lần đo (ước tính) & $\sim$78 lần (6.5 giờ $\div$ 5 phút) \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 % Bổ sung hình ảnh nếu có
@@ -890,7 +888,7 @@ Số lần đo (ước tính) & $\sim$78 lần (6.5 giờ $\div$ 5 phút) \\
 \caption{Kết quả thử nghiệm khoảng cách truyền LoRa tối đa}
 \label{table:lora_range}
 \small
-\begin{tabular}{|p{5cm}|p{7cm}|}
+\begin{tabularx}{\textwidth}{|c|X|}
 \hline
 \textbf{Thông số} & \textbf{Giá trị} \\
 \hline
@@ -904,7 +902,7 @@ Vị trí thử nghiệm & Sân chung cư, quận Cầu Giấy, Hà Nội \\
 \hline
 Tầm phủ công bố của module & 3000 mét (không gian mở, điều kiện lý tưởng) \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 % Bổ sung ảnh chụp vị trí thử nghiệm hoặc screenshot server nhận gói tin tại khoảng cách tối đa nếu có
@@ -927,7 +925,7 @@ Bảng \ref{table:so_sanh_ket_qua} đối sánh hệ thống đề xuất với 
 \caption{So sánh hệ thống đề xuất với các hệ thống hiện có}
 \label{table:so_sanh_ket_qua}
 \small
-\begin{tabular}{|p{2.5cm}|p{1.8cm}|p{1.8cm}|p{1.8cm}|p{1.8cm}|p{2.5cm}|}
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|X|}
 \hline
 \textbf{Tiêu chí} & \textbf{PAM Air} & \textbf{IQAir} & \textbf{PurpleAir} & \textbf{VN-AQI} & \textbf{Hệ thống đề xuất} \\
 \hline
@@ -935,7 +933,7 @@ Cảm biến & PM2.5 & PM2.5, CO\textsubscript{2} & PM2.5, PM10 & Đầy đủ (
 \hline
 Truyền thông & WiFi/4G & WiFi & WiFi & Chuyên dụng & LoRa + WiFi \\
 \hline
-Chi phí/trạm & Trung bình & Cao ($\sim$269 USD) & Trung bình & Rất cao & Thấp \\
+Chi phí/trạm & Trung bình & Cao & Trung bình & Rất cao & Thấp \\
 \hline
 Mã nguồn mở & Không & Không & Một phần & Không & Có (toàn bộ) \\
 \hline
@@ -947,7 +945,7 @@ Realtime web & Có & Có & Có & Hạn chế & Có (Socket.IO) \\
 \hline
 Admin panel & Không rõ & Không & Không & Có (nội bộ) & Có (web) \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 Kết quả so sánh cho thấy hệ thống đề xuất giải quyết được bốn hạn chế chính đã xác định ở Chương 2. Thứ nhất, hệ thống đo đa thông số (sáu thông số) trong khi PAM Air và PurpleAir chỉ đo bụi mịn. Thứ hai, truyền thông LoRa cho phép triển khai Sensor Node tại các vị trí không có WiFi, khác biệt so với tất cả bốn hệ thống khảo sát đều yêu cầu WiFi hoặc mạng di động cho mỗi trạm. Thứ ba, mã nguồn mở hoàn toàn cho phép tuỳ biến và mở rộng, trong khi các hệ thống thương mại không hỗ trợ. Thứ tư, chi phí mỗi trạm Sensor Node thấp nhờ sử dụng linh kiện phổ thông và module LoRa giá rẻ. Tuy nhiên, hệ thống đề xuất có hai hạn chế so với VN-AQI: độ chính xác của cảm biến chi phí thấp không đạt tiêu chuẩn FEM, và quy mô triển khai hiện tại còn nhỏ (vài trạm thử nghiệm).
@@ -959,7 +957,7 @@ Bảng \ref{table:bom_cost} trình bày chi phí linh kiện chi tiết cho mộ
 \caption{Chi phí linh kiện (BOM) cho Sensor Node và Gateway}
 \label{table:bom_cost}
 \small
-\begin{tabular}{|p{0.5cm}|p{4.5cm}|p{2cm}|p{2cm}|p{2cm}|}
+\begin{tabularx}{\textwidth}{|c|X|c|c|c|}
 \hline
 \textbf{STT} & \textbf{Linh kiện} & \textbf{Số lượng} & \textbf{Đơn giá (VNĐ)} & \textbf{Thành tiền} \\
 \hline
@@ -993,7 +991,7 @@ Bảng \ref{table:bom_cost} trình bày chi phí linh kiện chi tiết cho mộ
 \hline
 \multicolumn{4}{|r|}{\textbf{Tổng chi phí Gateway}} & \textbf{240.000} \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 Tổng chi phí linh kiện cho một trạm đo hoàn chỉnh (1 Sensor Node + 1 Gateway) là khoảng 1.135.000 VNĐ ($\sim$45 USD), thấp hơn đáng kể so với các giải pháp thương mại như IQAir 10.000.000 VNĐ($\sim$400 USD). Nếu một Gateway phục vụ nhiều Sensor Node (mô hình Hub-Spoke), chi phí trung bình mỗi điểm đo còn giảm thêm.
