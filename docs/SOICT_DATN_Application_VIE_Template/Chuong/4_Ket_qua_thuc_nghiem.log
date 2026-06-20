@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  20 JUN 2026 10:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  20 JUN 2026 15:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1734,85 +1734,85 @@ Package pdftex.def Info: ../Hinhve/thuc_nghiem_phuchoi_chart.png  used on input 
 (pdftex.def)             Requested size: 426.79135pt x 669.21965pt.
  [35 <../Hinhve/thuc_nghiem_onhiem_chart.png>] [36 <../Hinhve/thuc_nghiem_phuchoi_chart.png (PNG copy)>] [37]
 
-LaTeX Warning: Reference `table:so_sanh_he_thong' on page 38 undefined on input line 921.
+LaTeX Warning: Reference `table:so_sanh_he_thong' on page 38 undefined on input line 919.
 
 
-Underfull \hbox (badness 3039) in paragraph at lines 948--948
+Underfull \hbox (badness 3039) in paragraph at lines 946--946
 []|\T5/ptm/b/n/11.86258 H» thèng
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 948--948
+Underfull \hbox (badness 10000) in paragraph at lines 946--946
 []|\T5/ptm/m/n/11.86258 PM2.5,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 948--948
+Underfull \hbox (badness 10000) in paragraph at lines 946--946
 \T5/ptm/m/n/11.86258 PM10,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 948--948
+Underfull \hbox (badness 10000) in paragraph at lines 946--946
 \T5/ptm/m/n/11.86258 CO$[]$,
  []
 
 
-Underfull \hbox (badness 2343) in paragraph at lines 948--948
+Underfull \hbox (badness 2343) in paragraph at lines 946--946
 \T5/ptm/m/n/11.86258 TVOC, T,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 948--948
+Underfull \hbox (badness 10000) in paragraph at lines 946--946
 []|\T5/ptm/m/n/11.86258 Truy·n
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 948--948
+Underfull \hbox (badness 10000) in paragraph at lines 946--946
 []|\T5/ptm/m/n/11.86258 LoRa +
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 948--948
+Underfull \hbox (badness 10000) in paragraph at lines 946--946
 []|\T5/ptm/m/n/11.86258 Chi
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 948--948
+Underfull \hbox (badness 10000) in paragraph at lines 946--946
 []|\T5/ptm/m/n/11.86258 Câ (to n
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 948--948
+Underfull \hbox (badness 10000) in paragraph at lines 946--946
 []|\T5/ptm/m/n/11.86258 Câ (433
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 948--948
+Underfull \hbox (badness 10000) in paragraph at lines 946--946
 []|\T5/ptm/m/n/11.86258 Realtime
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 948--948
+Underfull \hbox (badness 10000) in paragraph at lines 946--946
 []|\T5/ptm/m/n/11.86258 Câ
  []
 
 
-Overfull \hbox (3.1952pt too wide) in paragraph at lines 948--948
+Overfull \hbox (3.1952pt too wide) in paragraph at lines 946--946
 \T5/ptm/m/n/11.86258 (Socket.IO)| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 948--948
+Underfull \hbox (badness 10000) in paragraph at lines 946--946
 []|\T5/ptm/m/n/11.86258 Admin
  []
 
-[38] [39] [40]
+[38] [39]
 
 Package glossaries Warning: No \printnoidxglossary or \printnoidxglossaries
  found. (Remove \makenoidxglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-[41] (4_Ket_qua_thuc_nghiem.aux)
+[40] (4_Ket_qua_thuc_nghiem.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -1825,9 +1825,6 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `4_Ket_qua_thuc_nghiem.out' has not changed.
 (rerunfilecheck)             Checksum: F4A6F5C9E9DAC87EDFC99CC61793C2D0;5418.
 Package logreq Info: Writing requests to '4_Ket_qua_thuc_nghiem.run.xml'.
@@ -1835,17 +1832,17 @@ Package logreq Info: Writing requests to '4_Ket_qua_thuc_nghiem.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34084 strings out of 467691
- 639233 string characters out of 5425054
- 1560237 words of memory out of 5000000
- 62514 multiletter control sequences out of 15000+600000
+ 34079 strings out of 467691
+ 639132 string characters out of 5425054
+ 1560197 words of memory out of 5000000
+ 62510 multiletter control sequences out of 15000+600000
  656182 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,124p,2618b,856s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
-Output written on 4_Ket_qua_thuc_nghiem.pdf (41 pages, 20504176 bytes).
+Output written on 4_Ket_qua_thuc_nghiem.pdf (40 pages, 20503141 bytes).
 PDF statistics:
- 558 PDF objects out of 1000 (max. 8388607)
- 118 named destinations out of 1000 (max. 500000)
+ 554 PDF objects out of 1000 (max. 8388607)
+ 117 named destinations out of 1000 (max. 500000)
  399 words of extra memory for PDF output out of 10000 (max. 10000000)
 

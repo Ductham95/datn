@@ -837,7 +837,7 @@ Tại pha Phục hồi (bắt đầu từ 16:33), thao tác dập tắt hương 
 
 \textbf{Kịch bản thử nghiệm thời gian sử dụng pin tối đa của Sensor Node:} Một trong những yêu cầu quan trọng khi triển khai Sensor Node ngoài trời là khả năng hoạt động bằng pin. Biến thể firmware \texttt{sensor-node-30pin-deepsleep} sử dụng chế độ deep-sleep của ESP32 để tối ưu năng lượng: sau mỗi chu kỳ đo và gửi dữ liệu, toàn bộ vi điều khiển chuyển sang trạng thái ngủ sâu (chỉ giữ RTC hoạt động), sau đó tự đánh thức theo bộ hẹn giờ để thực hiện chu kỳ tiếp theo.
 
-\textbf{Thiết lập thử nghiệm:} Sensor Node sử dụng board ESP32 DOIT DevKit V1 (30 chân), pin 18650 Li-ion 3.7V dung lượng 2600 mAh, chu kỳ deep-sleep 5 phút. Mỗi chu kỳ thức, Sensor Node thực hiện tuần tự: khởi tạo phần cứng ($\sim$1.5s), đợi PMS7003 warm-up và đọc cảm biến ($\sim$30s), đọc pin và gửi gói LoRa ($\sim$1.5s) — tổng thời gian thức mỗi chu kỳ là $\sim$33 giây. Pin được sạc đầy 100\% trước khi bắt đầu thử nghiệm, Sensor Node hoạt động liên tục cho đến khi hết pin hoàn toàn (0\%, vi điều khiển không thể khởi động lại).
+\textbf{Thiết lập thử nghiệm:} Sensor Node sử dụng board ESP32 DOIT DevKit V1 (30 chân), pin 18650 Li-ion 3.7V dung lượng 1500 mAh, chu kỳ deep-sleep 30 phút. Mỗi chu kỳ thức, Sensor Node thực hiện tuần tự: khởi tạo phần cứng ($\sim$1.5s), đợi PMS7003 warm-up và đọc cảm biến ($\sim$30s), đọc pin và gửi gói LoRa ($\sim$1.5s) — tổng thời gian thức mỗi chu kỳ là $\sim$33 giây. Pin được sạc đầy 100\% trước khi bắt đầu thử nghiệm, Sensor Node hoạt động liên tục cho đến khi hết pin hoàn toàn (0\%, vi điều khiển không thể khởi động lại).
 
 \textbf{Kết quả đo:} Bảng \ref{table:pin_thucnghiem} tóm tắt kết quả thử nghiệm.
 
@@ -854,15 +854,15 @@ Board & ESP32 DOIT DevKit V1 (30 chân) \\
 \hline
 Pin sử dụng & 18650 Li-ion 3.7V / 2600 mAh \\
 \hline
-Chu kỳ deep-sleep & 5 phút \\
+Chu kỳ deep-sleep & 30 phút \\
 \hline
-Thời điểm bắt đầu & 18/06/2026 08:00 \\
+Thời điểm bắt đầu & 19/06/2026 09:30 \\
 \hline
-Thời điểm hết pin & 18/06/2026 14:30 \\
+Thời điểm hết pin & 20/06/2026 06:00 \\
 \hline
-\textbf{Tổng thời gian hoạt động} & \textbf{6.5 giờ} \\
+\textbf{Tổng thời gian hoạt động} & \textbf{20.5 giờ} \\
 \hline
-Số lần đo (ước tính) & $\sim$78 lần (6.5 giờ $\div$ 5 phút) \\
+Số lần đo (ước tính) & $\sim$41 lần (20.5 giờ $\div$ 30 phút) \\
 \hline
 \end{tabularx}
 \end{table}
@@ -875,11 +875,11 @@ Số lần đo (ước tính) & $\sim$78 lần (6.5 giờ $\div$ 5 phút) \\
 %     \label{fig:pin_test_setup}
 % \end{figure}
 
-\textbf{Nhận xét:} Kết quả thử nghiệm cho thấy với board DevKit V1 và pin 18650 dung lượng 2600 mAh, Sensor Node deep-sleep hoạt động liên tục được 6.5 giờ. Thời gian sử dụng pin bị hạn chế chủ yếu do các linh kiện trên board phát triển (chip CP2102 USB-UART bridge, bộ ổn áp AMS1117, đèn LED nguồn) tiêu thụ $\sim$26 mA ngay cả khi ESP32 ở chế độ deep-sleep. Để cải thiện, có thể sử dụng bare ESP32-WROOM module (giảm dòng deep-sleep xuống $\sim$1.5 mA) hoặc nâng dung lượng pin lên 3000--3500 mAh.
+\textbf{Nhận xét:} Kết quả thử nghiệm cho thấy với board DevKit V1 và pin 18650 dung lượng 1500 mAh, Sensor Node deep-sleep hoạt động liên tục được 20.5 giờ. Thời gian sử dụng pin bị hạn chế chủ yếu do các linh kiện trên board phát triển (chip CP2102 USB-UART bridge, bộ ổn áp AMS1117, đèn LED nguồn) tiêu thụ $\sim$26 mA ngay cả khi ESP32 ở chế độ deep-sleep. Để cải thiện, có thể sử dụng bare ESP32-WROOM module (giảm dòng deep-sleep xuống $\sim$1.5 mA) hoặc nâng dung lượng pin lên 3000--3500 mAh.
 
 \textbf{Kịch bản thử nghiệm khoảng cách truyền LoRa tối đa:} Để đánh giá phạm vi phủ sóng thực tế của mạng LoRa 433 MHz, một thử nghiệm đo khoảng cách truyền tối đa được thực hiện giữa Sensor Node và Gateway trong không gian thoáng (outdoor, line-of-sight).
 
-\textbf{Thiết lập thử nghiệm:} Gateway đặt cố định tại sân chung cư (tầng 1), anten gắn ở độ cao $\sim$1.5 mét so với mặt đất. Sensor Node được di chuyển dần ra xa trong không gian thoáng (không có vật cản lớn giữa hai thiết bị). Cả hai thiết bị sử dụng module LoRa AS32-TTL-100, tần số 433 MHz, anten mặc định đi kèm module. Tại vị trí xa nhất mà Gateway vẫn nhận được gói tin, ghi nhận khoảng cách và quan sát dữ liệu hiển thị trên server.
+\textbf{Thiết lập thử nghiệm:} Gateway đặt cố định, anten gắn ở độ cao $\sim$1.5 mét so với mặt đất. Sensor Node được di chuyển dần ra xa trong không gian thoáng (không có vật cản lớn giữa hai thiết bị). Cả hai thiết bị sử dụng module LoRa AS32-TTL-100, tần số 433 MHz, anten mặc định đi kèm module. Tại vị trí xa nhất mà Gateway vẫn nhận được gói tin, ghi nhận khoảng cách và quan sát dữ liệu hiển thị trên server.
 
 \textbf{Kết quả đo:} Bảng \ref{table:lora_range} tóm tắt kết quả thử nghiệm.
 
@@ -895,8 +895,6 @@ Số lần đo (ước tính) & $\sim$78 lần (6.5 giờ $\div$ 5 phút) \\
 Module LoRa & AS32-TTL-100 (433 MHz) \\
 \hline
 Môi trường & Không gian thoáng (line-of-sight) \\
-\hline
-Vị trí thử nghiệm & Sân chung cư, quận Cầu Giấy, Hà Nội \\
 \hline
 \textbf{Khoảng cách tối đa đạt được} & \textbf{800 mét} \\
 \hline
@@ -987,29 +985,17 @@ Bảng \ref{table:bom_cost} trình bày chi phí linh kiện chi tiết cho mộ
 \hline
 10 & Module LoRa AS32-TTL-100 & 1 & 120.000 & 120.000 \\
 \hline
-11 & Dây nối, nguồn 5V & 1 & 20.000 & 20.000 \\
+11 & Màn hình OLED SSD1306 0.96'' & 1 & 40.000 & 40.000 \\
 \hline
-\multicolumn{4}{|r|}{\textbf{Tổng chi phí Gateway}} & \textbf{240.000} \\
+12 & Dây nối, mạch in, nguồn 5V & 1 & 50.000 & 50.000 \\
+\hline
+\multicolumn{4}{|r|}{\textbf{Tổng chi phí Gateway}} & \textbf{310.000} \\
 \hline
 \end{tabularx}
 \end{table}
 
-Tổng chi phí linh kiện cho một trạm đo hoàn chỉnh (1 Sensor Node + 1 Gateway) là khoảng 1.135.000 VNĐ ($\sim$45 USD), thấp hơn đáng kể so với các giải pháp thương mại như IQAir 10.000.000 VNĐ($\sim$400 USD). Nếu một Gateway phục vụ nhiều Sensor Node (mô hình Hub-Spoke), chi phí trung bình mỗi điểm đo còn giảm thêm.
+Tổng chi phí linh kiện cho một trạm đo hoàn chỉnh (1 Sensor Node + 1 Gateway) là khoảng 1.205.000 VNĐ ($\sim$48 USD), thấp hơn đáng kể so với các giải pháp thương mại như IQAir 10.000.000 VNĐ($\sim$400 USD). Nếu một Gateway phục vụ nhiều Sensor Node (mô hình Hub-Spoke), chi phí trung bình mỗi điểm đo còn giảm thêm.
 
-Chương này đã trình bày toàn bộ quá trình thiết kế, xây dựng, kiểm thử và phân tích kết quả vận hành hệ thống giám sát chất lượng không khí. Các kết quả chính bao gồm:
-
-\begin{itemize}
-    \item \textbf{Thiết kế:} Kiến trúc bốn tầng kết hợp mô hình Hub-Spoke, tổ chức mã nguồn theo nguyên tắc phân lớp rõ ràng.
-    \item \textbf{Xây dựng:} Bảng đối sánh yêu cầu (Bảng~\ref{table:req_mapping}) cho thấy toàn bộ chín chức năng và năm yêu cầu phi chức năng đã được hiện thực đầy đủ.
-    \item \textbf{Kiểm thử:} 45/45 trường hợp kiểm thử (26 thủ công + 19 tự động) đạt 100\%.
-    \item \textbf{Hiệu năng:} Phản hồi API trung bình 45--120ms, cập nhật realtime dưới 1 giây.
-    \item \textbf{Độ tin cậy:} Uptime 100\% trong 7 ngày, phát hiện offline chính xác (5 phút cho Gateway, 40 phút cho Sensor Node).
-    \item \textbf{Thực nghiệm ô nhiễm:} Cảm biến phản hồi nhạy bén, PM2.5 tăng từ 19 lên 416 $\mu$g/m$^3$ trong 1 phút khi đốt hương.
-    \item \textbf{Pin:} Sensor Node deep-sleep hoạt động 6.5 giờ với pin 2600 mAh (Bảng~\ref{table:pin_thucnghiem}).
-    \item \textbf{LoRa:} Khoảng cách truyền tối đa 800 mét trong không gian thoáng (Bảng~\ref{table:lora_range}).
-    \item \textbf{Chi phí:} Khoảng 895.000 VNĐ/trạm ($\sim$32 USD), thấp hơn nhiều so với giải pháp thương mại.
-\end{itemize}
-
-Các kết quả này chứng minh tính khả thi của mô hình giám sát đa thông số chi phí thấp sử dụng mạng LoRa. Trên cơ sở đó, Chương 5 sẽ phân tích tổng hợp các đóng góp nổi bật và định hướng phát triển của đồ án.
+Chương này đã trình bày toàn bộ quá trình thiết kế, xây dựng, kiểm thử và phân tích kết quả vận hành của hệ thống giám sát chất lượng không khí. Các kết quả chính đạt được bao gồm: (i) về thiết kế, hoàn thiện kiến trúc bốn tầng kết hợp mô hình Hub-Spoke với mã nguồn được tổ chức theo nguyên tắc phân lớp rõ ràng; (ii) về xây dựng, hiện thực hóa đầy đủ chín chức năng và năm yêu cầu phi chức năng (Bảng~\ref{table:req_mapping}); (iii) về kiểm thử, hoàn thành 44 kịch bản kiểm thử (25 thủ công và 19 tự động) với tỷ lệ đạt 100\%; (iv) về hiệu năng và độ tin cậy, hệ thống đạt thời gian phản hồi API dưới 3s, duy trì uptime tuyệt đối trong 7 ngày liên tục và phát hiện thiết bị mất kết nối chuẩn xác; (v) về thực nghiệm, cảm biến mức độ phản hồi nhạy bén trong môi trường ô nhiễm, Sensor Node duy trì hoạt động liên tục 20.5 giờ (Bảng~\ref{table:pin_thucnghiem}), truyền thông LoRa đạt khoảng cách truyền tối đa 800 mét (Bảng~\ref{table:lora_range}), đồng thời tối ưu chi phí phần cứng ở mức cạnh tranh khoảng 895.000 VNĐ cho mỗi trạm đo. Những kết quả này chứng minh rõ nét tính khả thi của cấu trúc giám sát đa thông số chi phí thấp sử dụng mạng thông tin vô tuyến LoRa. Thừa hưởng các đánh giá thực chứng đó, Chương 5 sẽ phân tích tổng hợp các đóng góp nổi bật và định hướng phát triển của hệ thống trong tương lai.
 
 \end{document}
