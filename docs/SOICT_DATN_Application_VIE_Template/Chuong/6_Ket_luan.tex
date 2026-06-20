@@ -1,12 +1,30 @@
 \documentclass[../DoAn.tex]{subfiles}
 \begin{document}
-\section{Kết luận}
-Sinh viên so sánh kết quả nghiên cứu hoặc sản phẩm của mình với các nghiên cứu hoặc sản phẩm tương tự.
 
-Sinh viên phân tích trong suốt quá trình thực hiện ĐATN, mình đã làm được gì, chưa làm được gì, các đóng góp nổi bật là gì, và tổng hợp những bài học kinh nghiệm rút ra nếu có.
+Chương 5 đã phân tích bốn đóng góp kỹ thuật nổi bật, chứng minh rằng từng quyết định thiết kế trong hệ thống đều xuất phát từ thách thức cụ thể và được đánh giá qua kết quả đo lường thực tế. Chương 6 tổng kết toàn bộ đồ án, đánh giá mức độ hoàn thành mục tiêu, ghi nhận những hạn chế còn tồn tại, và đề xuất các hướng phát triển để nâng cao hệ thống trong tương lai.
+
+\section{Kết luận}
+\label{section:6.1}
+
+Đồ án đặt ra mục tiêu xây dựng một hệ thống giám sát chất lượng không khí chi phí thấp, hoạt động ổn định trong điều kiện thực tế, có khả năng mở rộng quy mô triển khai và công khai toàn bộ mã nguồn. Hệ thống hoàn chỉnh bốn tầng — Sensor Node, Gateway, Backend, và Frontend — được đưa vào vận hành trong khoảng bốn tháng phát triển, với tổng quy mô 13.759 dòng mã trải qua bốn nhóm công nghệ. Toàn bộ chín chức năng và năm yêu cầu phi chức năng được hiện thực đầy đủ (Bảng~\ref{table:req_mapping}). Kết quả kiểm thử đạt 44/44 kịch bản (Bảng~\ref{table:test_summary}), trong đó 19 test case kiểm thử đơn vị module tính \gls{AQI} đều pass. Hệ thống duy trì uptime 100\% trong bảy ngày theo dõi liên tục trên môi trường production.
+
+Khi đặt cạnh các giải pháp thương mại và nghiên cứu khảo sát ở Chương 2, hệ thống đề xuất là giải pháp duy nhất đồng thời đáp ứng bốn tiêu chí: đo đa thông số (sáu thông số: PM1, PM2.5, PM10, CO\textsubscript{2}, TVOC, nhiệt độ và độ ẩm), truyền thông \gls{LoRa} không yêu cầu WiFi tại từng điểm đo, mã nguồn mở hoàn toàn, và chi phí phần cứng thấp. Chi phí một Sensor Node hoàn chỉnh ở mức khoảng 895.000 VNĐ — thấp hơn giải pháp IQAir khoảng 11 lần (Bảng~\ref{table:bom_cost}). Nhờ mô hình Hub-Spoke, một Gateway có thể phục vụ nhiều Sensor Node trong bán kính 500–800 mét (Bảng~\ref{table:lora_range}), khiến chi phí bình quân mỗi điểm đo tiếp tục giảm khi quy mô tăng lên.
+
+Trong quá trình thực hiện, em rút ra ba bài học kinh nghiệm chính. Thứ nhất, chiến lược phát triển contract-first — định nghĩa đầy đủ giao thức và schema giao tiếp giữa các tầng trước khi viết mã nguồn từng tầng — là yếu tố then chốt giúp kiểm soát độ phức tạp tích hợp trong hệ thống đa tầng, đa công nghệ. Thứ hai, tính năng Continuous Aggregate của TimescaleDB là lựa chọn phù hợp để đảm bảo hiệu năng truy vấn dữ liệu lịch sử khối lượng lớn mà không cần thay đổi schema hay thêm tầng cache phức tạp. Thứ ba, kết hợp chế độ deep sleep với giao thức LoRa binary 18 byte là cặp giải pháp bổ trợ lẫn nhau: deep sleep giảm tiêu thụ điện ở phía phần cứng, trong khi giao thức binary giảm thời gian phát sóng — hai yếu tố cùng quyết định tuổi thọ pin của Sensor Node.
+
+Bên cạnh những kết quả đạt được, hệ thống còn một số hạn chế cần thừa nhận. Thứ nhất, thời gian hoạt động pin trong dài hạn (trên một tháng) chưa được đo kiểm thực tế trong điều kiện triển khai liên tục; kết quả ước tính dựa trên công suất tiêu thụ lý thuyết và chưa tính đến suy giảm dung lượng pin theo thời gian. Thứ hai, hệ thống chưa tích hợp tính năng hiệu chuẩn cảm biến (calibration) theo chuẩn đo lường, khiến số liệu có thể lệch dần so với giá trị chuẩn sau một thời gian vận hành. Thứ ba, giao diện giám sát hiện chỉ hỗ trợ truy cập qua trình duyệt web; chưa có ứng dụng di động để theo dõi khi không có máy tính.
 
 \section{Hướng phát triển}
-Trong phần này, sinh viên trình bày định hướng công việc trong tương lai để hoàn thiện sản phẩm hoặc nghiên cứu của mình.
+\label{section:6.2}
 
-Trước tiên, sinh viên trình bày các công việc cần thiết để hoàn thiện các chức năng/nhiệm vụ đã làm. Sau đó sinh viên phân tích các hướng đi mới cho phép cải thiện và nâng cấp các chức năng/nhiệm vụ đã làm.
+Hướng phát triển thứ nhất tập trung vào phần cứng và firmware. Thiết kế lại mạch điện sử dụng chip ESP32 bare (không dùng board phát triển DevKit) cho phép tối ưu sâu hơn tiêu thụ điện, vì các board phát triển thường tích hợp thêm mạch nạp USB-UART và đèn LED tiêu thụ dòng điện ngay cả khi vi điều khiển đang ở chế độ deep sleep. Ngoài ra, việc bổ sung cảm biến khí độc như SO\textsubscript{2}, NO\textsubscript{2}, và O\textsubscript{3} sẽ mở rộng phạm vi đo, làm cho hệ thống phù hợp hơn với các kịch bản giám sát khu công nghiệp hoặc khu vực giao thông mật độ cao.
+
+Hướng phát triển thứ hai liên quan đến hệ thống truyền thông. Giao thức LoRa binary hiện tại được thiết kế riêng cho hệ thống này và có hạn chế về khả năng tương tác với hạ tầng mạng của bên thứ ba. Tích hợp chuẩn \gls{LoRaWAN} (thông qua Chirpstack hoặc The Things Network) sẽ cho phép Sensor Node kết nối vào các hạ tầng mạng LoRaWAN sẵn có, mở rộng phạm vi triển khai mà không cần đặt thêm Gateway riêng. Đồng thời, cơ chế downlink của LoRaWAN cho phép Backend điều chỉnh chu kỳ đo của từng Sensor Node từ xa, linh hoạt hơn trong việc cân đối giữa độ chi tiết dữ liệu và tuổi thọ pin.
+
+Hướng phát triển thứ ba nâng cấp tầng Backend và khả năng phân tích dữ liệu. Với lượng dữ liệu lịch sử tích lũy qua nhiều tháng vận hành, hệ thống có tiền đề để tích hợp mô hình dự báo \gls{AQI} ngắn hạn (ví dụ, LSTM hoặc Prophet) nhằm cảnh báo trước các đợt ô nhiễm; đây là tính năng mà không giải pháp nào trong số các hệ thống đã khảo sát hỗ trợ. Bổ sung kênh push notification qua email hoặc Telegram sẽ làm cho cơ chế cảnh báo ngưỡng trở nên chủ động hơn so với cơ chế hiển thị thụ động trên giao diện web hiện tại. Hỗ trợ kiến trúc multi-tenant sẽ cho phép nhiều tổ chức — trường học, khu dân cư, hoặc nhà máy — quản lý mạng lưới Sensor Node của riêng mình trên cùng một nền tảng Backend.
+
+Hướng phát triển thứ tư hướng đến triển khai thực tế quy mô lớn hơn. Hiệu chuẩn chéo (cross-calibration) bằng cách đặt Sensor Node cạnh trạm đo chuẩn của cơ quan quản lý môi trường trong một khoảng thời gian nhất định sẽ cho phép xác định hệ số bù sai số (offset) đặc trưng cho từng lô cảm biến. Phát triển ứng dụng di động (React Native hoặc Flutter) sẽ bổ sung kênh truy cập thuận tiện hơn, đặc biệt cho người dùng cuối không ngồi trước máy tính. Thử nghiệm triển khai tại các kịch bản thực tế như trường học, bệnh viện, hoặc khu công nghiệp sẽ cung cấp dữ liệu thực địa để đánh giá và hoàn thiện hệ thống trước khi nhân rộng.
+
+Tóm lại, hệ thống giám sát chất lượng không khí được xây dựng trong đồ án đã chứng minh tính khả thi của mô hình triển khai chi phí thấp, mã nguồn mở, trên nền tảng linh kiện phổ thông. Các hướng phát triển đề xuất tạo ra lộ trình rõ ràng để hệ thống đáp ứng các kịch bản triển khai thực tế quy mô lớn hơn, đóng góp vào bài toán giám sát môi trường đô thị tại Việt Nam.
+
 \end{document}
