@@ -1,38 +1,38 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces So sánh các hệ thống giám sát chất lượng không khí hiện có}}{5}{table.caption.8}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Đặc tả use case Xem dashboard chất lượng không khí}}{13}{table.caption.14}%
-\contentsline {table}{\numberline {2.3}{\ignorespaces Đặc tả use case Xem lịch sử dữ liệu}}{13}{table.caption.15}%
-\contentsline {table}{\numberline {2.4}{\ignorespaces Đặc tả use case Quản lý thiết bị}}{14}{table.caption.16}%
-\contentsline {table}{\numberline {2.5}{\ignorespaces Đặc tả use case Giám sát và xử lý cảnh báo}}{14}{table.caption.17}%
-\contentsline {table}{\numberline {2.6}{\ignorespaces Đặc tả use case Xuất dữ liệu CSV}}{15}{table.caption.18}%
-\contentsline {table}{\numberline {2.7}{\ignorespaces Các yêu cầu phi chức năng của hệ thống}}{15}{table.caption.19}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces So sánh các hệ thống giám sát chất lượng không khí hiện có}}{6}{table.caption.8}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Đặc tả use case Xem dashboard chất lượng không khí}}{14}{table.caption.14}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces Đặc tả use case Xem lịch sử dữ liệu}}{14}{table.caption.15}%
+\contentsline {table}{\numberline {2.4}{\ignorespaces Đặc tả use case Quản lý thiết bị}}{15}{table.caption.16}%
+\contentsline {table}{\numberline {2.5}{\ignorespaces Đặc tả use case Giám sát và xử lý cảnh báo}}{15}{table.caption.17}%
+\contentsline {table}{\numberline {2.6}{\ignorespaces Đặc tả use case Xuất dữ liệu CSV}}{16}{table.caption.18}%
+\contentsline {table}{\numberline {2.7}{\ignorespaces Các yêu cầu phi chức năng của hệ thống}}{16}{table.caption.19}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Thông số kỹ thuật các cảm biến sử dụng trong hệ thống}}{19}{table.caption.21}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Phân loại các mức chỉ số AQI theo tiêu chuẩn US EPA \blx@tocontentsinit {0}\cite {usepa2018}}}{24}{table.caption.22}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Bảng điểm ngắt AQI cho PM2.5 \blx@tocontentsinit {0}\cite {usepa2018}}}{24}{table.caption.23}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces Bảng điểm ngắt AQI cho PM10 \blx@tocontentsinit {0}\cite {usepa2018}}}{25}{table.caption.24}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Thông số kỹ thuật các cảm biến sử dụng trong hệ thống}}{20}{table.caption.21}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Phân loại các mức chỉ số AQI theo tiêu chuẩn US EPA \blx@tocontentsinit {0}\cite {usepa2018}}}{25}{table.caption.22}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Bảng điểm ngắt AQI cho PM2.5 \blx@tocontentsinit {0}\cite {usepa2018}}}{25}{table.caption.23}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Bảng điểm ngắt AQI cho PM10 \blx@tocontentsinit {0}\cite {usepa2018}}}{26}{table.caption.24}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Danh sách thư viện và công cụ phía Backend}}{38}{table.caption.34}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Danh sách thư viện và công cụ phía Frontend}}{39}{table.caption.35}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Thống kê quy mô mã nguồn hệ thống}}{39}{table.caption.36}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Đối sánh yêu cầu đặc tả với kết quả đạt được}}{40}{table.caption.37}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Trường hợp kiểm thử chức năng Xem dashboard}}{45}{table.caption.45}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces Trường hợp kiểm thử chức năng Quản lý thiết bị}}{45}{table.caption.46}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces Trường hợp kiểm thử chức năng Giám sát cảnh báo}}{46}{table.caption.47}%
-\contentsline {table}{\numberline {4.8}{\ignorespaces Trường hợp kiểm thử chức năng Xem lịch sử dữ liệu}}{46}{table.caption.48}%
-\contentsline {table}{\numberline {4.9}{\ignorespaces Trường hợp kiểm thử chức năng Xem bản đồ AQI}}{47}{table.caption.49}%
-\contentsline {table}{\numberline {4.10}{\ignorespaces Trường hợp kiểm thử chức năng Xuất dữ liệu CSV}}{47}{table.caption.50}%
-\contentsline {table}{\numberline {4.11}{\ignorespaces Kết quả kiểm thử đơn vị module \texttt {aqiService}}}{48}{table.caption.51}%
-\contentsline {table}{\numberline {4.12}{\ignorespaces Dữ liệu đo lường theo thời gian — Kịch bản đốt hương}}{57}{table.caption.65}%
-\contentsline {table}{\numberline {4.13}{\ignorespaces Kết quả thử nghiệm thời gian sử dụng pin tối đa}}{63}{table.caption.71}%
-\contentsline {table}{\numberline {4.14}{\ignorespaces Kết quả thử nghiệm khoảng cách truyền LoRa tối đa}}{64}{table.caption.72}%
-\contentsline {table}{\numberline {4.15}{\ignorespaces So sánh hệ thống đề xuất với các hệ thống hiện có}}{65}{table.caption.73}%
-\contentsline {table}{\numberline {4.16}{\ignorespaces Chi phí linh kiện (BOM) cho Sensor Node và Gateway}}{66}{table.caption.74}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Danh sách thư viện và công cụ phía Backend}}{39}{table.caption.34}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Danh sách thư viện và công cụ phía Frontend}}{40}{table.caption.35}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Thống kê quy mô mã nguồn hệ thống}}{40}{table.caption.36}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Đối sánh yêu cầu đặc tả với kết quả đạt được}}{41}{table.caption.37}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Trường hợp kiểm thử chức năng Xem dashboard}}{46}{table.caption.45}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Trường hợp kiểm thử chức năng Quản lý thiết bị}}{46}{table.caption.46}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Trường hợp kiểm thử chức năng Giám sát cảnh báo}}{47}{table.caption.47}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces Trường hợp kiểm thử chức năng Xem lịch sử dữ liệu}}{47}{table.caption.48}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Trường hợp kiểm thử chức năng Xem bản đồ AQI}}{48}{table.caption.49}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces Trường hợp kiểm thử chức năng Xuất dữ liệu CSV}}{48}{table.caption.50}%
+\contentsline {table}{\numberline {4.11}{\ignorespaces Kết quả kiểm thử đơn vị module \texttt {aqiService}}}{49}{table.caption.51}%
+\contentsline {table}{\numberline {4.12}{\ignorespaces Dữ liệu đo lường theo thời gian — Kịch bản đốt hương}}{58}{table.caption.65}%
+\contentsline {table}{\numberline {4.13}{\ignorespaces Kết quả thử nghiệm thời gian sử dụng pin tối đa}}{64}{table.caption.71}%
+\contentsline {table}{\numberline {4.14}{\ignorespaces Kết quả thử nghiệm khoảng cách truyền LoRa tối đa}}{65}{table.caption.72}%
+\contentsline {table}{\numberline {4.15}{\ignorespaces So sánh hệ thống đề xuất với các hệ thống hiện có}}{66}{table.caption.73}%
+\contentsline {table}{\numberline {4.16}{\ignorespaces Chi phí linh kiện (BOM) cho Sensor Node và Gateway}}{67}{table.caption.74}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Table to test captions and labels.}}{83}{table.caption.79}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces Table to test captions and labels.}}{84}{table.caption.79}%
 \addvspace {10\p@ }
 \contentsfinish 
 \contentsfinish 
