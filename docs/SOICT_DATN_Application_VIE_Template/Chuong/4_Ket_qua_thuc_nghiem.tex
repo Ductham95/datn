@@ -347,8 +347,17 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/dashboard.png}
-    \caption{Dashboard chất lượng không khí}
+    \caption{Dashboard chất lượng không khí (giao diện người dùng)}
     \label{fig:dashboard}
+\end{figure}
+
+\textbf{Dashboard quản trị hệ thống.} Khi quản trị viên đăng nhập và truy cập trang Tổng quan (Admin Dashboard), hệ thống hiển thị bức tranh toàn cảnh về trạng thái hoạt động: số lượng Sensor Node và Gateway đang hoạt động, số cảnh báo chờ xử lý, chỉ số AQI trung bình toàn hệ thống và uptime. Phần bên trái liệt kê biểu đồ AQI theo trạm theo thời gian thực; phần bên phải tổng hợp các cảnh báo gần đây và nhật ký hoạt động (audit log) mới nhất, giúp quản trị viên nắm bắt nhanh tình hình mà không cần điều hướng qua nhiều trang.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/dashboard_quan_tri.png}
+    \caption{Dashboard tổng quan quản trị hệ thống}
+    \label{fig:dashboard_quan_tri}
 \end{figure}
 
 \textbf{Lịch sử dữ liệu.} Trang lịch sử cho phép người dùng chọn trạm đo, thông số cần xem và chế độ hiển thị (theo giờ hoặc theo ngày). Biểu đồ được vẽ bằng ECharts, hỗ trợ tooltip và responsive. Chế độ theo giờ truy vấn từ Continuous Aggregate \texttt{hourly\_measurements} để đảm bảo hiệu năng.
@@ -369,7 +378,7 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
     \label{fig:ban_do_aqi}
 \end{figure}
 
-\textbf{Các chức năng quản trị khác.} Hình~\ref{fig:xep_hang} đến Hình~\ref{fig:nhat_ky_he_thong} minh họa các chức năng hỗ trợ bao gồm: xếp hạng ô nhiễm (sắp xếp trạm theo AQI), quản lý tài khoản (phân quyền admin/user), xuất dữ liệu (tải CSV), và nhật ký hệ thống (audit log ghi lại các thao tác thay đổi dữ liệu).
+\textbf{Các chức năng quản trị khác.} Hình~\ref{fig:xep_hang} đến Hình~\ref{fig:quan_ly_thiet_bi} minh họa các chức năng hỗ trợ bao gồm: xếp hạng ô nhiễm (sắp xếp trạm theo AQI), quản lý tài khoản (phân quyền admin/user), xuất dữ liệu (tải CSV), nhật ký hệ thống (audit log), giám sát cảnh báo, cấu hình ngưỡng, và quản lý thiết bị.
 
 \begin{figure}[H]
     \centering
@@ -395,8 +404,29 @@ Phần này minh hoạ các chức năng chính của hệ thống thông qua gi
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Hinhve/nhat_ky_he_thong.png}
-    \caption{Nhật ký hệ thống}
+    \caption{Nhật ký hệ thống (audit log)}
     \label{fig:nhat_ky_he_thong}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/giam_sat_canh_bao.png}
+    \caption{Giám sát cảnh báo — danh sách cảnh báo với bộ lọc theo thiết bị và mức độ}
+    \label{fig:giam_sat_canh_bao}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/cau_hinh.png}
+    \caption{Cấu hình ngưỡng cảnh báo cho các thông số môi trường}
+    \label{fig:cau_hinh}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Hinhve/quan_ly_thiet_bi.png}
+    \caption{Quản lý thiết bị — danh sách Sensor Node với trạng thái, mức pin, RSSI và lần cuối hoạt động}
+    \label{fig:quan_ly_thiet_bi}
 \end{figure}
 
 \section{Kiểm thử}
@@ -663,7 +693,7 @@ Hệ thống được đưa vào vận hành thử nghiệm để đánh giá c�
 \textbf{Bước 1:} Bật Gateway có ID: \texttt{GW\_013}. Gateway sẽ gửi heartbeat lên server:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{Hinhve/mat_ket_noi_01.jpg}
+    \includegraphics[angle=-90, origin=c, width=0.6\textwidth]{Hinhve/mat_ket_noi_01.jpg}
     \caption{Gateway GW\_013 gửi heartbeat}
     \label{fig:tkmkn_01}
 \end{figure}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  20 JUN 2026 15:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  21 JUN 2026 09:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1597,7 +1597,7 @@ Overfull \hbox (45.56369pt too wide) in paragraph at lines 650--651
 File: ../Hinhve/mat_ket_noi_01.jpg Graphic file (type jpg)
 <use ../Hinhve/mat_ket_noi_01.jpg>
 Package pdftex.def Info: ../Hinhve/mat_ket_noi_01.jpg  used on input line 666.
-(pdftex.def)             Requested size: 256.07741pt x 192.02406pt.
+(pdftex.def)             Requested size: 4047.11017pt x 3035.33263pt.
 [24 <../Hinhve/docker_ps.png>]
 <../Hinhve/mat_ket_noi_02.png, id=359, 931.68076pt x 386.6445pt>
 File: ../Hinhve/mat_ket_noi_02.png Graphic file (type png)
@@ -1832,15 +1832,15 @@ Package logreq Info: Writing requests to '4_Ket_qua_thuc_nghiem.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34079 strings out of 467691
- 639132 string characters out of 5425054
- 1560197 words of memory out of 5000000
- 62510 multiletter control sequences out of 15000+600000
+ 34109 strings out of 467691
+ 639680 string characters out of 5425054
+ 1560648 words of memory out of 5000000
+ 62540 multiletter control sequences out of 15000+600000
  656182 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,124p,2618b,856s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
-Output written on 4_Ket_qua_thuc_nghiem.pdf (40 pages, 20503141 bytes).
+Output written on 4_Ket_qua_thuc_nghiem.pdf (40 pages, 20503160 bytes).
 PDF statistics:
  554 PDF objects out of 1000 (max. 8388607)
  117 named destinations out of 1000 (max. 500000)
