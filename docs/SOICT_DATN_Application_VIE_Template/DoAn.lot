@@ -24,7 +24,7 @@
 \contentsline {table}{\numberline {4.9}{\ignorespaces Trường hợp kiểm thử chức năng Xem bản đồ AQI}}{50}{table.caption.53}%
 \contentsline {table}{\numberline {4.10}{\ignorespaces Trường hợp kiểm thử chức năng Xuất dữ liệu CSV}}{50}{table.caption.54}%
 \contentsline {table}{\numberline {4.11}{\ignorespaces Kết quả kiểm thử đơn vị module \texttt {aqiService}}}{51}{table.caption.55}%
-\contentsline {table}{\numberline {4.12}{\ignorespaces Dữ liệu đo lường theo thời gian — Kịch bản đốt hương}}{60}{table.caption.69}%
+\contentsline {table}{\numberline {4.12}{\ignorespaces Dữ liệu đo lường kịch bản đốt hương}}{60}{table.caption.69}%
 \contentsline {table}{\numberline {4.13}{\ignorespaces Kết quả thử nghiệm thời gian sử dụng pin tối đa}}{66}{table.caption.75}%
 \contentsline {table}{\numberline {4.14}{\ignorespaces Kết quả thử nghiệm khoảng cách truyền LoRa tối đa}}{67}{table.caption.76}%
 \contentsline {table}{\numberline {4.15}{\ignorespaces So sánh hệ thống đề xuất với các hệ thống hiện có}}{68}{table.caption.77}%

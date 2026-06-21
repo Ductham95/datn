@@ -139,7 +139,7 @@ Hình \ref{fig:usecase_admin} thể hiện biểu đồ phân rã năm use case 
 
 Hệ thống có hai quy trình nghiệp vụ chính.
 
-\textbf{Quy trình 1: Thu thập và hiển thị dữ liệu thời gian thực.} Sensor Node đọc dữ liệu từ các cảm biến (PMS7003, CCS811, DHT22), đóng gói thành gói tin 18 byte và gửi qua LoRa đến Gateway. Gateway nhận gói tin, lưu vào bộ đệm vòng (ring buffer), sau đó gửi lên Backend Server dưới dạng HTTP POST (JSON batch). Backend Server xử lý dữ liệu: lưu vào cơ sở dữ liệu TimescaleDB, tính chỉ số AQI theo công thức US EPA \cite{usepa2018}, kiểm tra ngưỡng cảnh báo, và phát sóng (broadcast) dữ liệu mới đến tất cả Frontend thông qua Socket.IO. Frontend cập nhật dashboard theo thời gian thực mà không cần người dùng tải lại trang. Hình \ref{fig:activity_data_flow} minh hoạ toàn bộ luồng xử lý của quy trình này, từ khi Sensor Node đọc dữ liệu đến khi Frontend hiển thị kết quả.
+\textbf{Quy trình 1: Thu thập và hiển thị dữ liệu thời gian thực.} Sensor Node đọc dữ liệu từ các cảm biến (PMS7003, CCS811, AHT10), đóng gói thành gói tin 18 byte và gửi qua LoRa đến Gateway. Gateway nhận gói tin, lưu vào bộ đệm vòng (ring buffer), sau đó gửi lên Backend Server dưới dạng HTTP POST (JSON batch). Backend Server xử lý dữ liệu: lưu vào cơ sở dữ liệu TimescaleDB, tính chỉ số AQI theo công thức US EPA \cite{usepa2018}, kiểm tra ngưỡng cảnh báo, và phát sóng (broadcast) dữ liệu mới đến tất cả Frontend thông qua Socket.IO. Frontend cập nhật dashboard theo thời gian thực mà không cần người dùng tải lại trang. Hình \ref{fig:activity_data_flow} minh hoạ toàn bộ luồng xử lý của quy trình này, từ khi Sensor Node đọc dữ liệu đến khi Frontend hiển thị kết quả.
 
 \begin{figure}[H]
 \centering
@@ -378,7 +378,7 @@ Ngoài các yêu cầu chức năng đã đặc tả ở trên, hệ thống c�
 \end{tabularx}
 \end{table}
 
-Chương này đã khảo sát bốn hệ thống giám sát chất lượng không khí tiêu biểu, phân tích ưu nhược điểm và xác định rõ khoảng trống mà các hệ thống hiện tại chưa giải quyết được. Trên cơ sở đó, hệ thống đề xuất kết hợp cảm biến chi phí thấp, truyền thông LoRa tầm xa, mã nguồn mở và dashboard web thời gian thực. Phân tích yêu cầu đã xác định đầy đủ các chức năng cho hai tác nhân (Người dùng và Quản trị viên), đặc tả chi tiết năm use case quan trọng nhất, và định nghĩa sáu yêu cầu phi chức năng. Các yêu cầu này là cơ sở để lựa chọn nền tảng công nghệ phù hợp, được trình bày trong Chương 3.
+Chương này đã khảo sát bốn hệ thống giám sát chất lượng không khí tiêu biểu, phân tích ưu nhược điểm và xác định rõ khoảng trống mà các hệ thống hiện tại chưa giải quyết được. Trên cơ sở đó, hệ thống đề xuất kết hợp cảm biến chi phí thấp, truyền thông LoRa tầm xa, mã nguồn mở và dashboard web thời gian thực. Phân tích yêu cầu đã xác định đầy đủ các chức năng cho hai tác nhân (Người dùng và Quản trị viên), đặc tả chi tiết năm use case quan trọng nhất, và định nghĩa năm yêu cầu phi chức năng. Các yêu cầu này là cơ sở để lựa chọn nền tảng công nghệ phù hợp, được trình bày trong Chương 3.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
