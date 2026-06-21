@@ -17,37 +17,36 @@
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Biểu đồ trình tự xem Dashboard thời gian thực}}{36}{figure.caption.31}%
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Biểu đồ trình tự xử lý cảnh báo vượt ngưỡng}}{37}{figure.caption.32}%
 \contentsline {figure}{\numberline {4.9}{\ignorespaces Entity-Relationship Diagram}}{38}{figure.caption.33}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Dashboard chất lượng không khí}}{42}{figure.caption.38}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Lịch sử dữ liệu}}{43}{figure.caption.39}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Bản đồ AQI}}{43}{figure.caption.40}%
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Xếp hạng ô nhiễm}}{44}{figure.caption.41}%
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Xuất dữ liệu CSV}}{44}{figure.caption.42}%
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Quản lý tài khoản}}{45}{figure.caption.43}%
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Nhật ký hệ thống}}{45}{figure.caption.44}%
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Biểu đồ triển khai hệ thống}}{50}{figure.caption.52}%
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Kết quả lệnh \texttt {docker ps} trên máy chủ production}}{51}{figure.caption.53}%
-\contentsline {figure}{\numberline {4.19}{\ignorespaces Gateway GW\_013 gửi heartbeat}}{52}{figure.caption.54}%
-\contentsline {figure}{\numberline {4.20}{\ignorespaces Server ghi nhận Gateway GW\_013 online}}{52}{figure.caption.55}%
-\contentsline {figure}{\numberline {4.21}{\ignorespaces Bật Sensor Node 4C (NODE\_076)}}{53}{figure.caption.56}%
-\contentsline {figure}{\numberline {4.22}{\ignorespaces Gateway nhận gói tin từ Sensor Node 4C (NODE\_076)}}{53}{figure.caption.57}%
-\contentsline {figure}{\numberline {4.23}{\ignorespaces Server nhận gói tin và đánh dấu Sensor Node 4C online}}{54}{figure.caption.58}%
-\contentsline {figure}{\numberline {4.24}{\ignorespaces Hệ thống ghi nhận Sensor Node 4C (NODE\_076) offline}}{54}{figure.caption.59}%
-\contentsline {figure}{\numberline {4.25}{\ignorespaces Hệ thống cảnh báo Sensor Node 4C (NODE\_076) offline}}{55}{figure.caption.60}%
-\contentsline {figure}{\numberline {4.26}{\ignorespaces Gateway vẫn duy trì trạng thái online}}{55}{figure.caption.61}%
-\contentsline {figure}{\numberline {4.27}{\ignorespaces Hệ thống ghi nhận Gateway offline}}{56}{figure.caption.62}%
-\contentsline {figure}{\numberline {4.28}{\ignorespaces Hệ thống cảnh báo Gateway offline}}{56}{figure.caption.63}%
-\contentsline {figure}{\numberline {4.29}{\ignorespaces Bố trí thiết bị thử nghiệm đo lường không khí bằng khói hương}}{57}{figure.caption.64}%
-\contentsline {figure}{\numberline {4.30}{\ignorespaces Dashboard ghi nhận chất lượng không khí ở pha Baseline (trước khi đốt hương)}}{59}{figure.caption.66}%
-\contentsline {figure}{\numberline {4.31}{\ignorespaces Danh sách nhật ký giám sát chất lượng không khí trong pha Baseline}}{60}{figure.caption.67}%
-\contentsline {figure}{\numberline {4.32}{\ignorespaces Dashboard cảnh báo AQI ở mức Nguy hại trong pha Đốt hương}}{61}{figure.caption.68}%
-\contentsline {figure}{\numberline {4.33}{\ignorespaces Danh sách nhật ký giám sát bao gồm tất cả các thông số trong pha Ô nhiễm}}{62}{figure.caption.69}%
-\contentsline {figure}{\numberline {4.34}{\ignorespaces Danh sách nhật ký giám sát bao gồm tất cả các thông số trong pha Phục hồi}}{63}{figure.caption.70}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Dashboard chất lượng không khí (giao diện người dùng)}}{42}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Dashboard tổng quan quản trị hệ thống}}{43}{figure.caption.39}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Lịch sử dữ liệu}}{44}{figure.caption.40}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Bản đồ AQI}}{44}{figure.caption.41}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Xếp hạng ô nhiễm}}{45}{figure.caption.42}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Xuất dữ liệu CSV}}{45}{figure.caption.43}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Quản lý tài khoản}}{46}{figure.caption.44}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Nhật ký hệ thống (audit log)}}{46}{figure.caption.45}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Giám sát cảnh báo — danh sách cảnh báo với bộ lọc theo thiết bị và mức độ}}{47}{figure.caption.46}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Cấu hình ngưỡng cảnh báo cho các thông số môi trường}}{47}{figure.caption.47}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Quản lý thiết bị — danh sách Sensor Node với trạng thái, mức pin, RSSI và lần cuối hoạt động}}{48}{figure.caption.48}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces Biểu đồ triển khai hệ thống}}{52}{figure.caption.56}%
+\contentsline {figure}{\numberline {4.22}{\ignorespaces Kết quả lệnh \texttt {docker ps} trên máy chủ production}}{53}{figure.caption.57}%
+\contentsline {figure}{\numberline {4.23}{\ignorespaces Gateway GW\_013 gửi heartbeat}}{54}{figure.caption.58}%
+\contentsline {figure}{\numberline {4.24}{\ignorespaces Server ghi nhận Gateway GW\_013 online}}{54}{figure.caption.59}%
+\contentsline {figure}{\numberline {4.25}{\ignorespaces Bật Sensor Node 4C (NODE\_076)}}{55}{figure.caption.60}%
+\contentsline {figure}{\numberline {4.26}{\ignorespaces Gateway nhận gói tin từ Sensor Node 4C (NODE\_076)}}{55}{figure.caption.61}%
+\contentsline {figure}{\numberline {4.27}{\ignorespaces Server nhận gói tin và đánh dấu Sensor Node 4C online}}{56}{figure.caption.62}%
+\contentsline {figure}{\numberline {4.28}{\ignorespaces Hệ thống ghi nhận Sensor Node 4C (NODE\_076) offline}}{56}{figure.caption.63}%
+\contentsline {figure}{\numberline {4.29}{\ignorespaces Hệ thống cảnh báo Sensor Node 4C (NODE\_076) offline}}{57}{figure.caption.64}%
+\contentsline {figure}{\numberline {4.30}{\ignorespaces Gateway vẫn duy trì trạng thái online}}{57}{figure.caption.65}%
+\contentsline {figure}{\numberline {4.31}{\ignorespaces Hệ thống ghi nhận Gateway offline}}{58}{figure.caption.66}%
+\contentsline {figure}{\numberline {4.32}{\ignorespaces Hệ thống cảnh báo Gateway offline}}{58}{figure.caption.67}%
+\contentsline {figure}{\numberline {4.33}{\ignorespaces Bố trí thiết bị thử nghiệm đo lường không khí bằng khói hương}}{59}{figure.caption.68}%
+\contentsline {figure}{\numberline {4.34}{\ignorespaces Dashboard ghi nhận chất lượng không khí ở pha Baseline (trước khi đốt hương)}}{61}{figure.caption.70}%
+\contentsline {figure}{\numberline {4.35}{\ignorespaces Danh sách nhật ký giám sát chất lượng không khí trong pha Baseline}}{62}{figure.caption.71}%
+\contentsline {figure}{\numberline {4.36}{\ignorespaces Dashboard cảnh báo AQI ở mức Nguy hại trong pha Đốt hương}}{63}{figure.caption.72}%
+\contentsline {figure}{\numberline {4.37}{\ignorespaces Danh sách nhật ký giám sát bao gồm tất cả các thông số trong pha Ô nhiễm}}{64}{figure.caption.73}%
+\contentsline {figure}{\numberline {4.38}{\ignorespaces Danh sách nhật ký giám sát bao gồm tất cả các thông số trong pha Phục hồi}}{65}{figure.caption.74}%
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Internet vạn vật}}{84}{figure.caption.80}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Qui cách đóng quyển đồ án}}{86}{figure.caption.83}%
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Qui cách đóng quyển đồ án}}{86}{figure.caption.84}%
 \addvspace {10\p@ }
 \contentsfinish 
 \contentsfinish 
