@@ -75,7 +75,7 @@ Phần này trình bày thiết kế mạch kết nối phần cứng cho Sensor
 
     
 
-\textbf{Gateway} sử dụng cùng board ESP32 DevKit V1, nhưng chỉ kết nối một module ngoại vi: module \gls{LoRa} AS32-TTL-100 qua \gls{UART}1 (cùng cấu hình chân với Sensor Node). Gateway sử dụng màn hình OLED SSD1306 để hiển thị trạng thái hoạt động và các thông tin cần thiết.
+\textbf{Gateway} sử dụng cùng board ESP32 DevKit V1 và kết nối với hai module ngoại vi: module \gls{LoRa} AS32-TTL-100 qua \gls{UART}1 (cùng cấu hình chân với Sensor Node), và màn hình OLED SSD1306 qua I2C để hiển thị trạng thái hoạt động.
 
 \begin{figure}[h]
     \centering
@@ -102,7 +102,7 @@ Cấu trúc gói tin \gls{LoRa} được định nghĩa dưới dạng struct C 
 
 Cơ chế provisioning cho phép cấu hình Node ID qua giao diện web. Khi chưa có cấu hình (hoặc sau factory reset), Sensor Node khởi động WiFi AP với SSID ``AirQuality-SN-Setup'', phục vụ trang web captive portal tại địa chỉ 192.168.4.1. Người dùng nhập Node ID, firmware lưu vào bộ nhớ NVS (Non-Volatile Storage) và khởi động lại ở chế độ hoạt động bình thường.
 
-\textbf{Firmware Gateway} sử dụng kiến trúc superloop (không dùng FreeRTOS) do chỉ thực hiện hai tác vụ tuần tự: nhận gói tin \gls{LoRa} từ \gls{UART} và tích luỹ vào bộ đệm vòng (ring buffer). Khi đủ số lượng gói hoặc hết chu kỳ thời gian, Gateway serialize bộ đệm thành \gls{JSON} array và gửi lên tầng máy chủ qua \gls{HTTP} POST. Gateway cũng hỗ trợ cơ chế self-provisioning: tự đăng ký với Backend Server khi kết nối lần đầu.
+\textbf{Firmware Gateway} sử dụng kiến trúc superloop (không dùng FreeRTOS) do chỉ thực hiện các tác vụ tuần tự: nhận gói tin \gls{LoRa} từ \gls{UART}, cập nhật trạng thái lên màn hình OLED và tích luỹ vào bộ đệm vòng (ring buffer). Khi đủ số lượng gói hoặc hết chu kỳ thời gian, Gateway serialize bộ đệm thành \gls{JSON} array và gửi lên tầng máy chủ qua \gls{HTTP} POST. Gateway cũng hỗ trợ cơ chế self-provisioning: tự đăng ký với Backend Server khi kết nối lần đầu.
 
 \subsection{Thiết kế giao diện}
 \label{subsection:4.2.3}
@@ -340,7 +340,7 @@ Bảng \ref{table:req_mapping} đối sánh kết quả đạt được với c�
 \subsection{Minh họa các chức năng chính}
 \label{subsection:4.3.3}
 
-Phần này minh hoạ các chức năng chính của hệ thống thông qua giao diện thực tế trên môi trường production.
+Phần này minh hoạ các chức năng chính của hệ thống thông qua giao diện thực tế trên môi trường production. \textbf{Lưu ý:} trong hệ thống triển khai thực tế, chỉ có một trạm đo duy nhất (NODE\_076) thu thập dữ liệu thật từ cảm biến phần cứng; các trạm đo còn lại hiển thị trên giao diện sử dụng dữ liệu mô phỏng (simulated data) được nạp vào cơ sở dữ liệu với mục đích minh họa đầy đủ các chức năng đa trạm của hệ thống như bản đồ AQI, xếp hạng ô nhiễm và chuyển đổi giữa các trạm.
 
 \textbf{Dashboard chất lượng không khí.} Khi người dùng truy cập trang Dashboard, hệ thống yêu cầu quyền truy cập vị trí, sau đó ưu tiên hiển thị dữ liệu của trạm đo gần nhất. Giao diện trang chủ được bố cục từ trên xuống dưới với hàng đầu tiên là sáu thẻ thông số nổi bật hiển thị lần lượt các chỉ số: \gls{AQI} tổng hợp, PM2.5, PM10, CO\textsubscript{2}, nhiệt độ và độ ẩm, mỗi thẻ được thiết kế kèm viền màu cảnh báo mức độ tương ứng. Ngay bên dưới là khu vực Bản đồ AQI khu vực cùng danh sách các trạm đo lân cận. Ở nửa dưới bảng điều khiển, hệ thống cung cấp biểu đồ lịch sử theo dõi xu hướng thay đổi của các thông số theo thời gian, kết hợp với các thẻ tính năng bổ trợ như Khuyến nghị sức khỏe và Thời tiết hiện tại. Dữ liệu được cập nhật liên tục theo thời gian thực khi Backend phát sự kiện qua Socket.IO.
 
@@ -684,11 +684,11 @@ Sau khi triển khai, hệ thống được xác nhận hoạt động ổn đ�
 
 Hệ thống được đưa vào vận hành thử nghiệm để đánh giá các chỉ tiêu phi chức năng và tính ổn định của thiết bị. Kết quả đánh giá tập trung vào hai khía cạnh cốt lõi: hiệu năng và độ tin cậy.
 
-\textbf{Đánh giá hiệu năng:} Hệ thống cho thấy tốc độ phản hồi nhanh chóng và ổn định trong quá trình thử nghiệm. Khi người dùng truy cập trang chủ (Dashboard), dữ liệu của trạm đo gần nhất được hệ thống tải về gần như tức thời. Đối với truy vấn khối lượng dữ liệu lớn như dải lịch sử 30 ngày (yêu cầu NFR1 ở Bảng 2.5), nhờ ứng dụng cơ chế Continuous Aggregate của TimescaleDB, dữ liệu biểu đồ được hệ thống trích xuất mượt mà, luôn đáp ứng dễ dàng tiêu chuẩn phản hồi dưới 3 giây. Ở tính năng thời gian thực, luồng dữ liệu thông qua Socket.IO hoạt động trơn tru: ngay sau khi có dữ liệu mới từ Gateway, giao diện người dùng lập tức tự động cập nhật số liệu mới nhất mà không xảy ra độ trễ (lag) đáng kể nào.
+\textbf{Đánh giá hiệu năng:} Hệ thống cho thấy tốc độ phản hồi nhanh chóng và ổn định trong quá trình thử nghiệm. Khi người dùng truy cập trang chủ (Dashboard), dữ liệu của trạm đo gần nhất được hệ thống tải về gần như tức thời. Đối với truy vấn khối lượng dữ liệu lớn như dải lịch sử 30 ngày (yêu cầu số 1 ở Bảng~\ref{table:nfr}), nhờ ứng dụng cơ chế Continuous Aggregate của TimescaleDB, dữ liệu biểu đồ được hệ thống trích xuất mượt mà, luôn đáp ứng dễ dàng tiêu chuẩn phản hồi dưới 3 giây. Ở tính năng thời gian thực, luồng dữ liệu thông qua Socket.IO hoạt động trơn tru: ngay sau khi có dữ liệu mới từ Gateway, giao diện người dùng lập tức tự động cập nhật số liệu mới nhất mà không xảy ra độ trễ (lag) đáng kể nào.
 
 \textbf{Đánh giá độ tin cậy:} Các container Docker duy trì uptime 100\% trong suốt thời gian theo dõi 7 ngày thử nghiệm (xác nhận qua lệnh \texttt{docker ps} và log hệ thống), không xảy ra hiện tượng tràn bộ nhớ hay khởi động lại ngoài ý muốn. Tác vụ định kỳ phát hiện thiết bị offline hoạt động chính xác: cảnh báo mất kết nối tự động được tạo và gửi đến frontend sau đúng 40 phút đối với Sensor Node (do đặc thù tiết kiệm pin), và sau 5 phút đối với Gateway khi hệ thống ngừng nhận được dữ liệu.
 
-\textbf{Kịch bản thử nghiệm mất kết nối thiết bị:} Nhằm kiểm chứng quá trình giám sát kết nối theo thời gian thực (NFR10 ở Bảng 2.5), hệ thống được thực nghiệm với kịch bản mất kết nối chi tiết từng bước như sau:
+\textbf{Kịch bản thử nghiệm mất kết nối thiết bị:} Nhằm kiểm chứng quá trình giám sát kết nối theo thời gian thực (yêu cầu số 2 ở Bảng~\ref{table:nfr}), hệ thống được thực nghiệm với kịch bản mất kết nối chi tiết từng bước như sau:
 
 \textbf{Bước 1:} Bật Gateway có ID: \texttt{GW\_013}. Gateway sẽ gửi heartbeat lên server:
 \begin{figure}[H]

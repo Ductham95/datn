@@ -12,7 +12,7 @@ Luồng dữ liệu của hệ thống diễn ra như sau. Sensor Node đọc d�
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.00\linewidth]{Hinhve/system_architecture.png}
+\includegraphics[width=1.00\linewidth]{Hinhve/system-architecture-simple.png}
 \caption{Kiến trúc tổng thể hệ thống giám sát chất lượng không khí}
 \label{fig:kien_truc_tong_the}
 \end{figure}
@@ -25,7 +25,7 @@ Luồng dữ liệu của hệ thống diễn ra như sau. Sensor Node đọc d�
 
 ESP32 là dòng vi điều khiển do Espressif Systems phát triển, tích hợp bộ xử lý hai nhân Xtensa LX6 32-bit hoạt động ở tần số tối đa 240 MHz, bộ nhớ SRAM 520 KB, WiFi 802.11 b/g/n và Bluetooth 4.2 \cite{espressif2024}. Vi điều khiển này hỗ trợ đầy đủ các giao tiếp ngoại vi cần thiết cho hệ thống: \gls{UART} để giao tiếp với module \gls{LoRa} và cảm biến PMS7003, và I2C để giao tiếp với cảm biến CCS811, AHT10 và màn hình OLED.
 
-Đồ án sử dụng board ESP32 DevKit V1 với framework Arduino trên nền tảng PlatformIO. Firmware của Sensor Node sử dụng kiến trúc Deep-sleep cycle thay vì chạy vòng lặp liên tục: vi điều khiển thức dậy theo chu kỳ hẹn giờ, thực hiện tuần tự các tác vụ đọc cảm biến, gửi gói \gls{LoRa} và cập nhật màn hình OLED (nếu được người dùng kích hoạt), rồi quay về trạng thái Deep-sleep để tiết kiệm điện năng. Firmware của Gateway sử dụng kiến trúc superloop do chỉ cần thực hiện hai tác vụ tuần tự: nhận gói tin \gls{LoRa} và chuyển tiếp lên Backend Server qua WiFi.
+Đồ án sử dụng board ESP32 DevKit V1 với framework Arduino trên nền tảng PlatformIO. Firmware của Sensor Node sử dụng kiến trúc Deep-sleep cycle thay vì chạy vòng lặp liên tục: vi điều khiển thức dậy theo chu kỳ hẹn giờ, thực hiện tuần tự các tác vụ đọc cảm biến, gửi gói \gls{LoRa} và cập nhật màn hình OLED (nếu được người dùng kích hoạt), rồi quay về trạng thái Deep-sleep để tiết kiệm điện năng. Firmware của Gateway sử dụng kiến trúc superloop do thực hiện các tác vụ tuần tự: nhận gói tin \gls{LoRa}, cập nhật màn hình OLED và chuyển tiếp lên Backend Server qua WiFi.
 
 So với các lựa chọn thay thế, Arduino Mega không tích hợp WiFi nên không thể thực hiện provisioning qua web. STM32 có hiệu năng tương đương nhưng thiếu WiFi tích hợp và hệ sinh thái thư viện cảm biến ít phong phú hơn. Raspberry Pi có năng lực xử lý vượt trội nhưng chi phí cao gấp ba đến năm lần và tiêu thụ năng lượng lớn, không phù hợp cho node cảm biến hoạt động bằng pin.
 
@@ -51,7 +51,7 @@ Bảng \ref{table:so_sanh_cam_bien} tổng hợp thông số kỹ thuật của 
 \hline
 \textbf{Cảm biến} & \textbf{Thông số đo} & \textbf{Phạm vi} & \textbf{Giao tiếp} & \textbf{Chi phí} \\
 \hline
-PMS7003 & PM2.5, PM10 & 0--500 $\mu g/m^3$ & UART & $\sim$350.000 VNĐ \\
+PMS7003 & PM2.5, PM10 & 0--2000 $\mu g/m^3$ & UART & $\sim$350.000 VNĐ \\
 \hline
 CCS811 & eCO\textsubscript{2}, eTVOC & 400--8192 ppm, 0--1187 ppb & I2C & $\sim$150.000 VNĐ \\
 \hline

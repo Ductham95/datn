@@ -1,198 +1,165 @@
-<mxfile host="app.diagrams.net" agent="5.0">
-  <diagram id="simple1" name="System Architecture (Simple)">
-    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-
-        <!-- ===== TITLE ===== -->
-        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;fontColor=#212121;fontStyle=1;" value="Kiến trúc hệ thống giám sát chất lượng không khí" vertex="1">
-          <mxGeometry x="400" y="15" width="420" height="25" as="geometry" />
-        </mxCell>
-
-        <!-- ===== SENSOR NODES — scattered around edges ===== -->
-
-        <mxCell id="sn1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=11;verticalAlign=middle;align=center;shadow=1;" value="&lt;b&gt;Sensor Node 1&lt;/b&gt;&lt;br&gt;&lt;font color='#666' style='font-size:10px'&gt;ESP32 · PMS7003&lt;br&gt;CCS811 · DHT22&lt;/font&gt;" vertex="1">
-          <mxGeometry x="40" y="100" width="140" height="60" as="geometry" />
-        </mxCell>
-
-        <mxCell id="sn2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=11;verticalAlign=middle;align=center;shadow=1;" value="&lt;b&gt;Sensor Node 2&lt;/b&gt;&lt;br&gt;&lt;font color='#666' style='font-size:10px'&gt;ESP32 · PMS7003&lt;br&gt;CCS811 · DHT22&lt;/font&gt;" vertex="1">
-          <mxGeometry x="30" y="310" width="140" height="60" as="geometry" />
-        </mxCell>
-
-        <mxCell id="sn3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=11;verticalAlign=middle;align=center;shadow=1;" value="&lt;b&gt;Sensor Node 3&lt;/b&gt;&lt;br&gt;&lt;font color='#666' style='font-size:10px'&gt;ESP32 · PMS7003&lt;br&gt;CCS811 · DHT22&lt;/font&gt;" vertex="1">
-          <mxGeometry x="60" y="530" width="140" height="60" as="geometry" />
-        </mxCell>
-
-        <mxCell id="sn4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=11;verticalAlign=middle;align=center;shadow=1;" value="&lt;b&gt;Sensor Node 4&lt;/b&gt;&lt;br&gt;&lt;font color='#666' style='font-size:10px'&gt;ESP32 · PMS7003&lt;br&gt;CCS811 · DHT22&lt;/font&gt;" vertex="1">
-          <mxGeometry x="140" y="720" width="140" height="60" as="geometry" />
-        </mxCell>
-
-        <mxCell id="sn5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=11;verticalAlign=middle;align=center;shadow=1;" value="&lt;b&gt;Sensor Node 5&lt;/b&gt;&lt;br&gt;&lt;font color='#666' style='font-size:10px'&gt;ESP32 · PMS7003&lt;br&gt;CCS811 · DHT22&lt;/font&gt;" vertex="1">
-          <mxGeometry x="440" y="730" width="140" height="60" as="geometry" />
-        </mxCell>
-
-        <mxCell id="sn6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=11;verticalAlign=middle;align=center;shadow=1;" value="&lt;b&gt;Sensor Node N&lt;/b&gt;&lt;br&gt;&lt;font color='#666' style='font-size:10px'&gt;ESP32 · Cảm biến&lt;br&gt;tương tự&lt;/font&gt;" vertex="1">
-          <mxGeometry x="440" y="80" width="140" height="60" as="geometry" />
-        </mxCell>
-
-        <!-- ===== GATEWAYS — center area ===== -->
-
-        <mxCell id="gw1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5CAE9;strokeColor=#283593;strokeWidth=2;fontSize=12;verticalAlign=middle;align=center;shadow=1;" value="&lt;b&gt;Gateway 1&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px' color='#555'&gt;ESP32 · LoRa ↔ WiFi&lt;/font&gt;" vertex="1">
-          <mxGeometry x="280" y="280" width="160" height="55" as="geometry" />
-        </mxCell>
-
-        <mxCell id="gw2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5CAE9;strokeColor=#283593;strokeWidth=2;fontSize=12;verticalAlign=middle;align=center;shadow=1;" value="&lt;b&gt;Gateway 2&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px' color='#555'&gt;ESP32 · LoRa ↔ WiFi&lt;/font&gt;" vertex="1">
-          <mxGeometry x="280" y="520" width="160" height="55" as="geometry" />
-        </mxCell>
-
-        <!-- ===== CLOUD (Server + DB) — right side ===== -->
-
-        <mxCell id="cloud_bg" parent="1" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;opacity=80;" value="" vertex="1">
-          <mxGeometry x="700" y="200" width="420" height="340" as="geometry" />
-        </mxCell>
-
-        <mxCell id="cloud_label" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=13;fontColor=#1565C0;fontStyle=1;" value="Cloud Server (DigitalOcean)" vertex="1">
-          <mxGeometry x="790" y="250" width="220" height="25" as="geometry" />
-        </mxCell>
-
-        <mxCell id="nginx" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90CAF9;strokeColor=#1565C0;strokeWidth=1.5;fontSize=11;verticalAlign=middle;align=center;" value="&lt;b&gt;Nginx&lt;/b&gt;&lt;br&gt;&lt;font color='#555' style='font-size:10px'&gt;Reverse Proxy&lt;/font&gt;" vertex="1">
-          <mxGeometry x="760" y="290" width="100" height="45" as="geometry" />
-        </mxCell>
-
-        <mxCell id="server" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64B5F6;strokeColor=#1565C0;strokeWidth=1.5;fontSize=11;verticalAlign=middle;align=center;fontColor=#FFFFFF;" value="&lt;b&gt;Backend&lt;/b&gt;&lt;br&gt;Node.js + Express&lt;br&gt;&lt;font style='font-size:10px'&gt;REST API · Socket.IO&lt;/font&gt;" vertex="1">
-          <mxGeometry x="890" y="290" width="150" height="55" as="geometry" />
-        </mxCell>
-
-        <mxCell id="db" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=8;fillColor=#42A5F5;strokeColor=#1565C0;strokeWidth=1.5;fontSize=11;fontColor=#FFFFFF;fontStyle=1;verticalAlign=middle;" value="&lt;b&gt;PostgreSQL&lt;/b&gt;&lt;br&gt;TimescaleDB" vertex="1">
-          <mxGeometry x="850" y="390" width="130" height="70" as="geometry" />
-        </mxCell>
-
-        <!-- ===== WEB DASHBOARD — far right ===== -->
-
-        <mxCell id="webapp" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=2;fontSize=12;verticalAlign=middle;align=center;shadow=1;" value="&lt;b&gt;Web Dashboard&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px' color='#555'&gt;React · Bản đồ · Biểu đồ&lt;/font&gt;" vertex="1">
-          <mxGeometry x="1180" y="340" width="170" height="55" as="geometry" />
-        </mxCell>
-
-        <!-- ===== USERS — far right bottom ===== -->
-
-        <mxCell id="user_icon" parent="1" style="shape=mxgraph.basic.smiley;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=1.5;" value="" vertex="1">
-          <mxGeometry x="1190" y="480" width="35" height="35" as="geometry" />
-        </mxCell>
-        <mxCell id="user_label" parent="1" style="text;html=1;align=center;verticalAlign=top;resizable=0;points=[];fontSize=11;fontColor=#2E7D32;fontStyle=1;" value="Người dùng" vertex="1">
-          <mxGeometry x="1168" y="515" width="80" height="20" as="geometry" />
-        </mxCell>
-
-        <mxCell id="admin_icon" parent="1" style="shape=mxgraph.basic.smiley;whiteSpace=wrap;html=1;fillColor=#FFCC80;strokeColor=#E65100;strokeWidth=1.5;" value="" vertex="1">
-          <mxGeometry x="1300" y="480" width="35" height="35" as="geometry" />
-        </mxCell>
-        <mxCell id="admin_label" parent="1" style="text;html=1;align=center;verticalAlign=top;resizable=0;points=[];fontSize=11;fontColor=#E65100;fontStyle=1;" value="Quản trị viên" vertex="1">
-          <mxGeometry x="1275" y="515" width="90" height="20" as="geometry" />
-        </mxCell>
-
-        <!-- ===== EDGES: Sensor → Gateway (LoRa) ===== -->
-
-        <mxCell id="e1" edge="1" parent="1" source="sn1" target="gw1" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;curved=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e2" edge="1" parent="1" source="sn2" target="gw1" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;curved=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e6" edge="1" parent="1" source="sn6" target="gw1" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;curved=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e3" edge="1" parent="1" source="sn3" target="gw2" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;curved=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e4" edge="1" parent="1" source="sn4" target="gw2" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;curved=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e5" edge="1" parent="1" source="sn5" target="gw2" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;curved=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- LoRa label — between sensors & gateways -->
-        <mxCell id="lora_lbl" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontColor=#E65100;fontStyle=1;labelBackgroundColor=#FFFFFF;rounded=1;spacingLeft=4;spacingRight=4;" value="LoRa 433 MHz" vertex="1">
-          <mxGeometry x="130" y="430" width="100" height="20" as="geometry" />
-        </mxCell>
-
-        <!-- ===== EDGES: Gateway → Cloud (HTTP) ===== -->
-
-        <mxCell id="e_gw1_cloud" edge="1" parent="1" source="gw1" target="nginx" style="rounded=1;strokeColor=#1565C0;strokeWidth=2;endArrow=blockThin;endFill=1;curved=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e_gw2_cloud" edge="1" parent="1" source="gw2" target="nginx" style="rounded=1;strokeColor=#1565C0;strokeWidth=2;endArrow=blockThin;endFill=1;curved=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- HTTP label -->
-        <mxCell id="http_lbl" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontColor=#1565C0;fontStyle=1;labelBackgroundColor=#FFFFFF;rounded=1;spacingLeft=4;spacingRight=4;" value="HTTP POST / JSON&lt;br&gt;(WiFi → Internet)" vertex="1">
-          <mxGeometry x="540" y="370" width="130" height="35" as="geometry" />
-        </mxCell>
-
-        <!-- Nginx → Server -->
-        <mxCell id="e_ng_sv" edge="1" parent="1" source="nginx" target="server" style="rounded=1;strokeColor=#1565C0;strokeWidth=1.5;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- Server ↔ DB -->
-        <mxCell id="e_sv_db" edge="1" parent="1" source="server" target="db" style="rounded=1;strokeColor=#1565C0;strokeWidth=1.5;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- ===== EDGES: Cloud ↔ Web Dashboard ===== -->
-
-        <mxCell id="e_sv_web" edge="1" parent="1" source="server" target="webapp" style="rounded=1;strokeColor=#2E7D32;strokeWidth=2;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;curved=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e_sv_web_label" parent="e_sv_web" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#2E7D32;fontStyle=1;labelBackgroundColor=#FFFFFF;" value="REST API · WebSocket" vertex="1" connectable="0">
-          <mxGeometry x="0.1" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-
-        <!-- ===== EDGES: Users ↔ Web ===== -->
-
-        <mxCell id="e_user_web" edge="1" parent="1" source="user_icon" target="webapp" style="rounded=1;strokeColor=#2E7D32;strokeWidth=1.5;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e_admin_web" edge="1" parent="1" source="admin_icon" target="webapp" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- ===== LEGEND (small, bottom-right) ===== -->
-        <mxCell id="legend_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#BDBDBD;strokeWidth=1;fontSize=10;verticalAlign=top;align=left;spacingTop=5;spacingLeft=8;" value="&lt;b&gt;Giao thức truyền thông&lt;/b&gt;" vertex="1">
-          <mxGeometry x="30" y="790" width="320" height="65" as="geometry" />
-        </mxCell>
-
-        <mxCell id="leg1_line" edge="1" parent="1" style="endArrow=blockThin;html=1;rounded=0;strokeColor=#E65100;strokeWidth=2;endFill=1;" value="">
-          <mxGeometry relative="1" width="50" as="geometry">
-            <mxPoint x="45" y="830" as="sourcePoint" />
-            <mxPoint x="75" y="830" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="leg1_txt" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=10;" value="LoRa 433 MHz (không dây)" vertex="1">
-          <mxGeometry x="80" y="820" width="160" height="20" as="geometry" />
-        </mxCell>
-
-        <mxCell id="leg2_line" edge="1" parent="1" style="endArrow=blockThin;html=1;rounded=0;strokeColor=#1565C0;strokeWidth=2;endFill=1;" value="">
-          <mxGeometry relative="1" width="50" as="geometry">
-            <mxPoint x="45" y="845" as="sourcePoint" />
-            <mxPoint x="75" y="845" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="leg2_txt" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=10;" value="HTTP / WiFi / Internet" vertex="1">
-          <mxGeometry x="80" y="835" width="160" height="20" as="geometry" />
-        </mxCell>
-
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="65bd71144e">
+    <diagram id="simple1" name="System Architecture (Simple)">
+        <mxGraphModel dx="338" dy="737" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="Kiến trúc hệ thống giám sát chất lượng không khí" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;fontColor=#212121;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="15" width="420" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="coverage_gw1" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#7986CB;strokeWidth=1.5;dashed=1;dashPattern=8 4;opacity=40;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="70" width="440" height="380" as="geometry"/>
+                </mxCell>
+                <mxCell id="coverage_gw2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#7986CB;strokeWidth=1.5;dashed=1;dashPattern=8 4;opacity=40;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="370" width="440" height="400" as="geometry"/>
+                </mxCell>
+                <mxCell id="cov_label_gw1" value="Vùng phủ sóng GW1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#7986CB;fontStyle=3;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="78" width="130" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="cov_label_gw2" value="Vùng phủ sóng GW2" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#7986CB;fontStyle=3;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="745" width="130" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="sn1" value="&lt;b&gt;Sensor Node 1&lt;/b&gt;&lt;br&gt;&lt;font color='#666' style='font-size:10px'&gt;ESP32 · PMS7003&lt;br&gt;CCS811 · AHT10&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=11;verticalAlign=middle;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="130" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="sn2" value="&lt;b&gt;Sensor Node 2&lt;/b&gt;&lt;br&gt;&lt;font color='#666' style='font-size:10px'&gt;ESP32 · PMS7003&lt;br&gt;CCS811 · AHT10&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=11;verticalAlign=middle;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="120" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="sn3" value="&lt;b&gt;Sensor Node 3&lt;/b&gt;&lt;br&gt;&lt;font color='#666' style='font-size:10px'&gt;ESP32 · PMS7003&lt;br&gt;CCS811 · AHT10&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;fontSize=11;verticalAlign=middle;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="400" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="sn4" value="&lt;b&gt;Sensor Node 4&lt;/b&gt;&lt;br&gt;&lt;font color='#666' style='font-size:10px'&gt;ESP32 · PMS7003&lt;br&gt;CCS811 · AHT10&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;fontSize=11;verticalAlign=middle;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="420" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="sn5" value="&lt;b&gt;Sensor Node 5&lt;/b&gt;&lt;br&gt;&lt;font color='#666' style='font-size:10px'&gt;ESP32 · PMS7003&lt;br&gt;CCS811 · AHT10&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=11;verticalAlign=middle;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="650" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="sn6" value="&lt;b&gt;Sensor Node N&lt;/b&gt;&lt;br&gt;&lt;font color='#666' style='font-size:10px'&gt;ESP32 · Cảm biến&lt;br&gt;tương tự&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=1.5;fontSize=11;verticalAlign=middle;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="650" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="gw1" value="&lt;b&gt;Gateway 1&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px' color='#555'&gt;ESP32 · LoRa ↔ WiFi&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5CAE9;strokeColor=#283593;strokeWidth=2;fontSize=12;verticalAlign=middle;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="250" width="160" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="gw2" value="&lt;b&gt;Gateway 2&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px' color='#555'&gt;ESP32 · LoRa ↔ WiFi&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5CAE9;strokeColor=#283593;strokeWidth=2;fontSize=12;verticalAlign=middle;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="540" width="160" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="cloud_bg" value="" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;opacity=80;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="200" width="420" height="340" as="geometry"/>
+                </mxCell>
+                <mxCell id="cloud_label" value="Cloud Server (DigitalOcean)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=13;fontColor=#1565C0;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="250" width="220" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="nginx" value="&lt;b&gt;Nginx&lt;/b&gt;&lt;br&gt;&lt;font color='#555' style='font-size:10px'&gt;Reverse Proxy&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90CAF9;strokeColor=#1565C0;strokeWidth=1.5;fontSize=11;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="760" y="290" width="100" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="server" value="&lt;b&gt;Backend&lt;/b&gt;&lt;br&gt;Node.js + Express&lt;br&gt;&lt;font style='font-size:10px'&gt;REST API · Socket.IO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64B5F6;strokeColor=#1565C0;strokeWidth=1.5;fontSize=11;verticalAlign=middle;align=center;fontColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="890" y="290" width="150" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="db" value="&lt;b&gt;PostgreSQL&lt;/b&gt;&lt;br&gt;TimescaleDB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=8;fillColor=#42A5F5;strokeColor=#1565C0;strokeWidth=1.5;fontSize=11;fontColor=#FFFFFF;fontStyle=1;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="850" y="390" width="130" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="webapp" value="&lt;b&gt;Web Dashboard&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px' color='#555'&gt;React · Bản đồ · Biểu đồ&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=2;fontSize=12;verticalAlign=middle;align=center;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="1180" y="340" width="170" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="user_icon" value="" style="shape=mxgraph.basic.smiley;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=1.5;" parent="1" vertex="1">
+                    <mxGeometry x="1190" y="480" width="35" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="user_label" value="Người dùng" style="text;html=1;align=center;verticalAlign=top;resizable=0;points=[];fontSize=11;fontColor=#2E7D32;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="1168" y="515" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="admin_icon" value="" style="shape=mxgraph.basic.smiley;whiteSpace=wrap;html=1;fillColor=#FFCC80;strokeColor=#E65100;strokeWidth=1.5;" parent="1" vertex="1">
+                    <mxGeometry x="1300" y="480" width="35" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="admin_label" value="Quản trị viên" style="text;html=1;align=center;verticalAlign=top;resizable=0;points=[];fontSize=11;fontColor=#E65100;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="1275" y="515" width="90" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;curved=1;" parent="1" source="sn1" target="gw1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;curved=1;" parent="1" source="sn2" target="gw1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3a" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;curved=1;" parent="1" source="sn3" target="gw1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3b" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;curved=1;" parent="1" source="sn3" target="gw2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4a" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;curved=1;" parent="1" source="sn4" target="gw1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4b" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;curved=1;" parent="1" source="sn4" target="gw2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;curved=1;" parent="1" source="sn5" target="gw2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e6" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;curved=1;" parent="1" source="sn6" target="gw2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="lora_lbl" value="LoRa 433 MHz&lt;br&gt;&lt;font style='font-size:10px;font-style:italic'&gt;(Broadcast)&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontColor=#E65100;fontStyle=1;labelBackgroundColor=#FFFFFF;rounded=1;spacingLeft=4;spacingRight=4;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="475" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="overlap_note" value="Vùng chồng lấn:&lt;br&gt;SN3, SN4 được cả 2 GW nhận" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#C62828;fontStyle=2;labelBackgroundColor=#FFF9C4;rounded=1;spacingLeft=4;spacingRight=4;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="370" width="170" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_gw1_cloud" style="rounded=1;strokeColor=#1565C0;strokeWidth=2;endArrow=blockThin;endFill=1;curved=1;" parent="1" source="gw1" target="nginx" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_gw2_cloud" style="rounded=1;strokeColor=#1565C0;strokeWidth=2;endArrow=blockThin;endFill=1;curved=1;" parent="1" source="gw2" target="nginx" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="http_lbl" value="HTTP POST / JSON&lt;br&gt;(WiFi → Internet)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontColor=#1565C0;fontStyle=1;labelBackgroundColor=#FFFFFF;rounded=1;spacingLeft=4;spacingRight=4;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="370" width="130" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_ng_sv" style="rounded=1;strokeColor=#1565C0;strokeWidth=1.5;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;" parent="1" source="nginx" target="server" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_sv_db" style="rounded=1;strokeColor=#1565C0;strokeWidth=1.5;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;" parent="1" source="server" target="db" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_sv_web" style="rounded=1;strokeColor=#2E7D32;strokeWidth=2;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;curved=1;" parent="1" source="server" target="webapp" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_sv_web_label" value="REST API · WebSocket" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#2E7D32;fontStyle=1;labelBackgroundColor=#FFFFFF;" parent="e_sv_web" vertex="1" connectable="0">
+                    <mxGeometry x="0.1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_user_web" style="rounded=1;strokeColor=#2E7D32;strokeWidth=1.5;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;" parent="1" source="user_icon" target="webapp" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_admin_web" style="rounded=1;strokeColor=#E65100;strokeWidth=1.5;endArrow=blockThin;endFill=1;startArrow=blockThin;startFill=1;" parent="1" source="admin_icon" target="webapp" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_bg" value="&lt;b&gt;Giao thức truyền thông&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#BDBDBD;strokeWidth=1;fontSize=10;verticalAlign=top;align=left;spacingTop=5;spacingLeft=8;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="790" width="350" height="85" as="geometry"/>
+                </mxCell>
+                <mxCell id="leg1_line" value="" style="endArrow=blockThin;html=1;rounded=0;strokeColor=#E65100;strokeWidth=2;endFill=1;" parent="1" edge="1">
+                    <mxGeometry width="50" relative="1" as="geometry">
+                        <mxPoint x="45" y="825" as="sourcePoint"/>
+                        <mxPoint x="75" y="825" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="leg1_txt" value="LoRa 433 MHz — Broadcast (không dây)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="815" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="leg2_line" value="" style="endArrow=blockThin;html=1;rounded=0;strokeColor=#1565C0;strokeWidth=2;endFill=1;" parent="1" edge="1">
+                    <mxGeometry width="50" relative="1" as="geometry">
+                        <mxPoint x="45" y="845" as="sourcePoint"/>
+                        <mxPoint x="75" y="845" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="leg2_txt" value="HTTP / WiFi / Internet" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="835" width="160" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="leg3_ellipse" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#7986CB;strokeWidth=1;dashed=1;dashPattern=5 3;" parent="1" vertex="1">
+                    <mxGeometry x="49" y="852" width="22" height="14" as="geometry"/>
+                </mxCell>
+                <mxCell id="leg3_txt" value="Vùng phủ sóng LoRa của Gateway" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="850" width="220" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>

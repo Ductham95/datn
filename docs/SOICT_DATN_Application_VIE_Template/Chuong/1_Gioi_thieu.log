@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  20 JUN 2026 20:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  21 JUN 2026 21:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1091,7 +1091,9 @@ File: t5utm.fd 2005/08/24 Fontinst v1.929 font definitions for T5/ptm.
 LaTeX Warning: Unused global option(s):
     [13pt,3p].
 
-(1_Gioi_thieu.aux)
+(1_Gioi_thieu.aux
+\g__glossaries_gls_ref_acronym_int=\count519
+)
 \openout1 = `1_Gioi_thieu.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
@@ -1151,16 +1153,16 @@ LaTeX Font Info:    ... okay on input line 2.
 
 (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count519
+\scratchcounter=\count520
 \scratchdimen=\dimen290
 \scratchbox=\box83
-\nofMPsegments=\count520
-\nofMParguments=\count521
+\nofMPsegments=\count521
+\nofMParguments=\count522
 \everyMPshowfont=\toks56
-\MPscratchCnt=\count522
+\MPscratchCnt=\count523
 \MPscratchDim=\dimen291
-\MPnumerator=\count523
-\makeMPintoPDFobject=\count524
+\MPnumerator=\count524
+\makeMPintoPDFobject=\count525
 \everyMPtoPDFconversion=\toks57
 ) (C:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1185,7 +1187,7 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count525
+\c@lstlisting=\count526
 Package tocbasic Info: omitting babel extension for `lol'
 (tocbasic)             because of missing \bbl@set@language on input line 2.
 Package biblatex Info: Trying to load language 'english'...
@@ -1305,30 +1307,7 @@ Package glossaries Warning: No \printnoidxglossary or \printnoidxglossaries
  found. (Remove \makenoidxglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-
-Package glossaries Warning: entry `LoRa' indexing changed since previous run (or no previous run) on input line 46.
-
-
-Package glossaries Warning: entry `TVOC' indexing changed since previous run (or no previous run) on input line 46.
-
-
-Package glossaries Warning: entry `AQI' indexing changed since previous run (or no previous run) on input line 46.
-
-
-Package glossaries Warning: entry `USEPA' indexing changed since previous run (or no previous run) on input line 46.
-
-
-Package glossaries Warning: entry `IoT' indexing changed since previous run (or no previous run) on input line 46.
-
-
-Package glossaries Warning: entry `JSON' indexing changed since previous run (or no previous run) on input line 46.
-
-
-Package glossaries Warning: Rerun required to get \printnoidxglossary up to date on input line 46.
-
-[4] (1_Gioi_thieu.aux
-\g__glossaries_gls_ref_acronym_int=\count526
-)
+[4] (1_Gioi_thieu.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -1340,9 +1319,6 @@ LaTeX Font Warning: Size substitutions with differences
 
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `1_Gioi_thieu.out' has not changed.
 (rerunfilecheck)             Checksum: 38D544A01DCE6487AF342B7B18815B4C;631.
@@ -1356,15 +1332,15 @@ Package logreq Info: Writing requests to '1_Gioi_thieu.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33626 strings out of 467691
- 626182 string characters out of 5425054
- 1531955 words of memory out of 5000000
- 62201 multiletter control sequences out of 15000+600000
+ 33716 strings out of 467691
+ 627496 string characters out of 5425054
+ 1533332 words of memory out of 5000000
+ 62291 multiletter control sequences out of 15000+600000
  640448 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,5n,124p,2609b,865s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb>
-Output written on 1_Gioi_thieu.pdf (4 pages, 87036 bytes).
+Output written on 1_Gioi_thieu.pdf (4 pages, 87637 bytes).
 PDF statistics:
  65 PDF objects out of 1000 (max. 8388607)
  9 named destinations out of 1000 (max. 500000)

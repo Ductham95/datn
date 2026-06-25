@@ -63,41 +63,43 @@
 \contentsline {subsection}{\numberline {4.2.3}Thiết kế giao diện}{33}{subsection.4.2.3}%
 \contentsline {subsection}{\numberline {4.2.4}Thiết kế module Backend}{34}{subsection.4.2.4}%
 \contentsline {subsection}{\numberline {4.2.5}Thiết kế cơ sở dữ liệu}{37}{subsection.4.2.5}%
-\contentsline {section}{\numberline {4.3}Xây dựng ứng dụng}{39}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Thư viện và công cụ sử dụng}{39}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Kết quả đạt được}{40}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Minh họa các chức năng chính}{41}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Kiểm thử}{48}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Kiểm thử chức năng Xem dashboard}{48}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Kiểm thử chức năng Quản lý thiết bị}{49}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Kiểm thử chức năng Giám sát cảnh báo}{49}{subsection.4.4.3}%
-\contentsline {subsection}{\numberline {4.4.4}Kiểm thử chức năng Xem lịch sử dữ liệu}{50}{subsection.4.4.4}%
-\contentsline {subsection}{\numberline {4.4.5}Kiểm thử chức năng Xem bản đồ AQI}{50}{subsection.4.4.5}%
-\contentsline {subsection}{\numberline {4.4.6}Kiểm thử chức năng Xuất dữ liệu CSV}{50}{subsection.4.4.6}%
-\contentsline {subsection}{\numberline {4.4.7}Kiểm thử đơn vị module tính AQI}{50}{subsection.4.4.7}%
-\contentsline {subsection}{\numberline {4.4.8}Tổng kết kiểm thử}{51}{subsection.4.4.8}%
-\contentsline {section}{\numberline {4.5}Triển khai}{52}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Kết quả vận hành thực tế}{53}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}So sánh với các hệ thống hiện có}{67}{subsection.4.5.2}%
-\contentsline {chapter}{\numberline {5}CÁC GIẢI PHÁP VÀ ĐÓNG GÓP NỔI BẬT}{70}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Xây dựng hệ thống IoT đa tầng end-to-end}{70}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Bài toán và thách thức}{70}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Giải pháp}{70}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Kết quả}{71}{subsection.5.1.3}%
-\contentsline {section}{\numberline {5.2}Thiết kế giao thức LoRa binary và cơ chế chống trùng lặp dữ liệu}{71}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Bài toán và thách thức}{71}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Giải pháp}{71}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Kết quả}{72}{subsection.5.2.3}%
-\contentsline {section}{\numberline {5.3}Kiến trúc Backend phân lớp và pipeline xử lý telemetry}{72}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Bài toán và thách thức}{72}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Giải pháp}{73}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Kết quả}{73}{subsection.5.3.3}%
-\contentsline {section}{\numberline {5.4}Hệ thống chi phí thấp với mã nguồn mở hoàn toàn}{74}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Bài toán và thách thức}{74}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Giải pháp}{74}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Kết quả}{74}{subsection.5.4.3}%
-\contentsline {chapter}{\numberline {6}KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN}{76}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Kết luận}{76}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Hướng phát triển}{77}{section.6.2}%
-\contentsline {chapter}{TÀI LIỆU THAM KHẢO}{80}{section*.80}%
+\contentsline {section}{\numberline {4.3}Xây dựng ứng dụng}{38}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Thư viện và công cụ sử dụng}{38}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Kết quả đạt được}{39}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Minh họa các chức năng chính}{40}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Kiểm thử}{47}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Kiểm thử chức năng Xem dashboard}{47}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Kiểm thử chức năng Quản lý thiết bị}{48}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Kiểm thử chức năng Giám sát cảnh báo}{48}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Kiểm thử chức năng Xem lịch sử dữ liệu}{49}{subsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.4.5}Kiểm thử chức năng Xem bản đồ AQI}{49}{subsection.4.4.5}%
+\contentsline {subsection}{\numberline {4.4.6}Kiểm thử chức năng Xuất dữ liệu CSV}{49}{subsection.4.4.6}%
+\contentsline {subsection}{\numberline {4.4.7}Kiểm thử đơn vị module tính AQI}{49}{subsection.4.4.7}%
+\contentsline {subsection}{\numberline {4.4.8}Tổng kết kiểm thử}{50}{subsection.4.4.8}%
+\contentsline {section}{\numberline {4.5}Triển khai}{51}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Kết quả vận hành thực tế}{52}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}So sánh với các hệ thống hiện có}{66}{subsection.4.5.2}%
+\contentsline {chapter}{\numberline {5}CÁC GIẢI PHÁP VÀ ĐÓNG GÓP NỔI BẬT}{69}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Xây dựng hệ thống IoT đa tầng end-to-end}{69}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Bài toán và thách thức}{69}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Giải pháp}{69}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Kết quả}{70}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}Thiết kế giao thức LoRa binary và cơ chế chống trùng lặp dữ liệu}{70}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Bài toán và thách thức}{70}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Giải pháp}{70}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Kết quả}{71}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}Kiến trúc Backend phân lớp và pipeline xử lý telemetry}{71}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Bài toán và thách thức}{71}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Giải pháp}{72}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Kết quả}{72}{subsection.5.3.3}%
+\contentsline {section}{\numberline {5.4}Hệ thống chi phí thấp với mã nguồn mở hoàn toàn}{73}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Bài toán và thách thức}{73}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Giải pháp}{73}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Kết quả}{73}{subsection.5.4.3}%
+\contentsline {chapter}{\numberline {6}KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN}{75}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Kết luận}{75}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Hướng phát triển}{76}{section.6.2}%
+\contentsline {chapter}{TÀI LIỆU THAM KHẢO}{79}{section*.80}%
+\ttl@change@i {\@ne }{chapter}{0.0cm}{\bfseries \vspace {0.3cm}}{{\bfseries {\scshape } \thecontentslabel .\ }}{}{\titlerule *[0.3pc]{.}\contentspage }\relax 
+\ttl@change@v {chapter}{}{}{}\relax 
 \contentsfinish 

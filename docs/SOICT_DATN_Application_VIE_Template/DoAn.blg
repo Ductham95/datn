@@ -22,21 +22,12 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: DoAn-blx.bib
 Database file #2: Danh_sach_tai_lieu_tham_khao.bib
-Warning--I didn't find a database entry for "hovy1993automated"
-Warning--I didn't find a database entry for "peterson2007computer"
-Warning--I didn't find a database entry for "NguyenThucHai"
-Warning--I didn't find a database entry for "poesio2001discourse"
-Warning--I didn't find a database entry for "knott1996data"
-Warning--I didn't find a database entry for "BernersTim"
-Warning--I didn't find a database entry for "LectureA"
-Warning--I didn't find a database entry for "scott2013sdn"
-Warning--I didn't find a database entry for "ashton2009internet"
 Biblatex version: 3.21
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 You've used 25 entries,
             6402 wiz_defined-function locations,
-            1328 strings with 12526 characters,
+            1316 strings with 12365 characters,
 and the built_in function-call counts, 145907 in all, are:
 = -- 8456
 > -- 7356
@@ -75,4 +66,3 @@ warning$ -- 0
 while$ -- 1739
 width$ -- 0
 write$ -- 588
-(There were 9 warnings)
