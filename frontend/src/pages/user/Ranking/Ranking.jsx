@@ -55,13 +55,7 @@ export default function Ranking() {
               style={{ animationDelay: `${index * 50}ms` }}
             >
               <div className={styles.rankNumber}>
-                {index < 3 ? (
-                  <span className={styles.medal}>
-                    {index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'}
-                  </span>
-                ) : (
-                  <span className={styles.rankDigit}>{item.rank || index + 1}</span>
-                )}
+                <span className={styles.rankDigit}>{item.rank || index + 1}</span>
               </div>
               <div className={styles.stationInfo}>
                 <span className={styles.stationName}>{item.name}</span>
