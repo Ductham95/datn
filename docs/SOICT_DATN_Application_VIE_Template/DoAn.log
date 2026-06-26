@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  26 JUN 2026 11:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.20)  26 JUN 2026 22:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2376,57 +2376,77 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
 [65]
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
 []|\T5/ptm/b/n/11.86258 Thíi
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
 []|\T5/ptm/b/n/11.86258 Nhi»t
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
 []|\T5/ptm/m/n/11.86258 Tr÷îc
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
 []|\T5/ptm/m/n/11.86258 Tr÷îc
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
 []|\T5/ptm/m/n/11.86258 Tr÷îc
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
 []|\T5/ptm/b/n/11.86258 ^^^ang
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
 []|\T5/ptm/m/n/11.86258 ^^^ang
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
 []|\T5/ptm/m/n/11.86258 ^^^ang
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
 []|\T5/ptm/m/n/11.86258 ^^^ang
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
 []|\T5/ptm/m/n/11.86258 ^^^ang
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
+[]|\T5/ptm/m/n/11.86258 ^^^ang
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
+[]|\T5/ptm/m/n/11.86258 ^^^ang
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
+[]|\T5/ptm/m/n/11.86258 ^^^ang
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
+[]|\T5/ptm/m/n/11.86258 ^^^ang
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
 []|\T5/ptm/m/n/11.86258 ^^^ang
  []
 
@@ -2446,75 +2466,6 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
 [67]
-Underfull \hbox (badness 3039) in paragraph at lines 1130--1130
-[]|\T5/ptm/b/n/11.86258 H» thèng
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1130
-[]|\T5/ptm/m/n/11.86258 PM2.5,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1130
-\T5/ptm/m/n/11.86258 PM10,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1130
-\T5/ptm/m/n/11.86258 CO$[]$,
- []
-
-
-Underfull \hbox (badness 2343) in paragraph at lines 1130--1130
-\T5/ptm/m/n/11.86258 TVOC, T,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1130
-[]|\T5/ptm/m/n/11.86258 Truy·n
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1130
-[]|\T5/ptm/m/n/11.86258 LoRa +
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1130
-[]|\T5/ptm/m/n/11.86258 Chi
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1130
-[]|\T5/ptm/m/n/11.86258 Câ (to n
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1130
-[]|\T5/ptm/m/n/11.86258 Câ (433
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1130
-[]|\T5/ptm/m/n/11.86258 Realtime
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1130
-[]|\T5/ptm/m/n/11.86258 Câ
- []
-
-
-Overfull \hbox (3.1952pt too wide) in paragraph at lines 1130--1130
-\T5/ptm/m/n/11.86258 (Socket.IO)| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1130
-[]|\T5/ptm/m/n/11.86258 Admin
- []
-
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
 (fancyhdr)                Make it at least 34.6375pt, for example:
@@ -2523,6 +2474,75 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-24.6375pt}.
 
 [68]
+Underfull \hbox (badness 3039) in paragraph at lines 1138--1138
+[]|\T5/ptm/b/n/11.86258 H» thèng
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1138--1138
+[]|\T5/ptm/m/n/11.86258 PM2.5,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1138--1138
+\T5/ptm/m/n/11.86258 PM10,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1138--1138
+\T5/ptm/m/n/11.86258 CO$[]$,
+ []
+
+
+Underfull \hbox (badness 2343) in paragraph at lines 1138--1138
+\T5/ptm/m/n/11.86258 TVOC, T,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1138--1138
+[]|\T5/ptm/m/n/11.86258 Truy·n
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1138--1138
+[]|\T5/ptm/m/n/11.86258 LoRa +
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1138--1138
+[]|\T5/ptm/m/n/11.86258 Chi
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1138--1138
+[]|\T5/ptm/m/n/11.86258 Câ (to n
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1138--1138
+[]|\T5/ptm/m/n/11.86258 Câ (433
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1138--1138
+[]|\T5/ptm/m/n/11.86258 Realtime
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1138--1138
+[]|\T5/ptm/m/n/11.86258 Câ
+ []
+
+
+Overfull \hbox (3.1952pt too wide) in paragraph at lines 1138--1138
+\T5/ptm/m/n/11.86258 (Socket.IO)| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1138--1138
+[]|\T5/ptm/m/n/11.86258 Admin
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
 (fancyhdr)                Make it at least 34.6375pt, for example:
@@ -2719,15 +2739,15 @@ Package logreq Info: Writing requests to 'DoAn.run.xml'.
 Here is how much of TeX's memory you used:
  35151 strings out of 467691
  659939 string characters out of 5425054
- 1575481 words of memory out of 5000000
+ 1578450 words of memory out of 5000000
  63266 multiletter control sequences out of 15000+600000
  679969 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,14n,107p,2554b,1622s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/ucrr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmb8v.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmr8v.pfb><C:/Program Files/MiKTeX/fonts/type1/vntex/urwvn/utmri8v.pfb>
-Output written on DoAn.pdf (96 pages, 19589570 bytes).
+Output written on DoAn.pdf (96 pages, 19592124 bytes).
 PDF statistics:
- 1659 PDF objects out of 1728 (max. 8388607)
+ 1660 PDF objects out of 1728 (max. 8388607)
  324 named destinations out of 1000 (max. 500000)
  1001 words of extra memory for PDF output out of 10000 (max. 10000000)
 

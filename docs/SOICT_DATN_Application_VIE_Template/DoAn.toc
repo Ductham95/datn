@@ -78,7 +78,7 @@
 \contentsline {subsection}{\numberline {4.4.8}Tổng kết kiểm thử}{50}{subsection.4.4.8}%
 \contentsline {section}{\numberline {4.5}Triển khai}{51}{section.4.5}%
 \contentsline {subsection}{\numberline {4.5.1}Kết quả vận hành thực tế}{52}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}So sánh với các hệ thống hiện có}{68}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.2}So sánh với các hệ thống hiện có}{69}{subsection.4.5.2}%
 \contentsline {chapter}{\numberline {5}CÁC GIẢI PHÁP VÀ ĐÓNG GÓP NỔI BẬT}{72}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Xây dựng hệ thống IoT đa tầng end-to-end}{72}{section.5.1}%
 \contentsline {subsection}{\numberline {5.1.1}Bài toán và thách thức}{72}{subsection.5.1.1}%

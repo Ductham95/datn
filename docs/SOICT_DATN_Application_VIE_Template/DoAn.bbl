@@ -354,7 +354,8 @@
     \field{title}{{CCS811} Ultra-Low Power Digital Gas Sensor for Monitoring
   Indoor Air Quality -- Datasheet}
     \verb{url}
-    \verb https://ams.com/ccs811
+    \verb https://cdn.sparkfun.com/assets/learn_tutorials/1/4/3/CCS811_Datashee
+    \verb t-DS000459.pdf
     \endverb
     \field{year}{2023}
     \field{urlday}{01}
