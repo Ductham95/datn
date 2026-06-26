@@ -24,11 +24,15 @@
 \contentsline {table}{\numberline {4.9}{\ignorespaces Trường hợp kiểm thử chức năng Xem bản đồ AQI}}{49}{table.caption.53}%
 \contentsline {table}{\numberline {4.10}{\ignorespaces Trường hợp kiểm thử chức năng Xuất dữ liệu CSV}}{49}{table.caption.54}%
 \contentsline {table}{\numberline {4.11}{\ignorespaces Kết quả kiểm thử đơn vị module \texttt {aqiService}}}{50}{table.caption.55}%
-\contentsline {table}{\numberline {4.12}{\ignorespaces Dữ liệu đo lường kịch bản đốt hương}}{59}{table.caption.69}%
-\contentsline {table}{\numberline {4.13}{\ignorespaces Kết quả thử nghiệm thời gian sử dụng pin tối đa}}{65}{table.caption.75}%
-\contentsline {table}{\numberline {4.14}{\ignorespaces Kết quả thử nghiệm khoảng cách truyền LoRa tối đa}}{66}{table.caption.76}%
-\contentsline {table}{\numberline {4.15}{\ignorespaces So sánh hệ thống đề xuất với các hệ thống hiện có}}{67}{table.caption.77}%
-\contentsline {table}{\numberline {4.16}{\ignorespaces Chi phí linh kiện (BOM) cho Sensor Node và Gateway}}{68}{table.caption.78}%
+\contentsline {table}{\numberline {4.12}{\ignorespaces Dữ liệu đo lường kịch bản đốt hương}}{58}{table.caption.69}%
+\contentsline {table}{\numberline {4.13}{\ignorespaces Kết quả thử nghiệm thời gian sử dụng pin tối đa}}{63}{table.caption.75}%
+\contentsline {table}{\numberline {4.14}{\ignorespaces Kết quả thử nghiệm khoảng cách truyền LoRa tối đa}}{64}{table.caption.76}%
+\contentsline {table}{\numberline {4.15}{\ignorespaces Dữ liệu đo lường ven đường giao thông}}{65}{table.caption.77}%
+\contentsline {table}{\numberline {4.16}{\ignorespaces Dữ liệu đo lường trong phòng khách}}{66}{table.caption.78}%
+\contentsline {table}{\numberline {4.17}{\ignorespaces Dữ liệu đo lường trong bếp khi nấu ăn}}{67}{table.caption.79}%
+\contentsline {table}{\numberline {4.18}{\ignorespaces So sánh giá trị trung bình giữa ba môi trường}}{67}{table.caption.80}%
+\contentsline {table}{\numberline {4.19}{\ignorespaces So sánh hệ thống đề xuất với các hệ thống hiện có}}{69}{table.caption.81}%
+\contentsline {table}{\numberline {4.20}{\ignorespaces Chi phí linh kiện (BOM) cho Sensor Node và Gateway}}{70}{table.caption.82}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsfinish 

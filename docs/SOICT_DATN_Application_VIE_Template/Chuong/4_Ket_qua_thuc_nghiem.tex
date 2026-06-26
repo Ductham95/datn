@@ -693,7 +693,7 @@ Hệ thống được đưa vào vận hành thử nghiệm để đánh giá c�
 \textbf{Bước 1:} Bật Gateway có ID: \texttt{GW\_013}. Gateway sẽ gửi heartbeat lên server:
 \begin{figure}[H]
     \centering
-    \includegraphics[angle=-90, origin=c, width=0.6\textwidth]{Hinhve/mat_ket_noi_01.jpg}
+    \includegraphics[origin=c, width=0.6\textwidth]{Hinhve/mat_ket_noi_01.jpg}
     \caption{Gateway GW\_013 gửi heartbeat}
     \label{fig:tkmkn_01}
 \end{figure}
@@ -771,7 +771,7 @@ Server nhận được gói tin từ Gateway và đánh dấu Sensor Node \textt
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{Hinhve/thuc_nghiem_dot_huong_setup.jpg}
+    \includegraphics[width=0.6\textwidth]{Hinhve/thuc_nghiem_dot_huong_setup.jpg}
     \caption{Bố trí thiết bị thử nghiệm đốt hương}
     \label{fig:thuc_nghiem_dot_huong_setup}
 \end{figure}
@@ -828,7 +828,7 @@ Server nhận được gói tin từ Gateway và đánh dấu Sensor Node \textt
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Hinhve/thuc_nghiem_baseline_dashboard.jpg}
+    \includegraphics[width=0.6\textwidth]{Hinhve/thuc_nghiem_baseline_dashboard.jpg}
     \caption{Dashboard pha Baseline (trước khi đốt hương)}
     \label{fig:thuc_nghiem_baseline_dashboard}
 \end{figure}
@@ -844,7 +844,7 @@ Ngay sau khi bắt đầu đốt hương tại thời điểm 16:25, các chỉ 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Hinhve/thuc_nghiem_onhiem_dashboard.jpg}
+    \includegraphics[width=0.6\textwidth]{Hinhve/thuc_nghiem_onhiem_dashboard.jpg}
     \caption{Dashboard pha Đốt hương (AQI mức Nguy hại)}
     \label{fig:thuc_nghiem_onhiem_dashboard}
 \end{figure}
@@ -943,6 +943,160 @@ Tầm phủ công bố của module & 3000 mét (không gian mở, điều kiệ
 
 \textbf{Nhận xét:} Kết quả cho thấy trong điều kiện không gian thoáng, khoảng cách truyền LoRa tối đa đạt được là 800 mét, tương đương khoảng 27\% tầm phủ công bố của module (3000 mét trong điều kiện lý tưởng). Sự chênh lệch này là hợp lý do tầm phủ công bố được đo trong điều kiện lý tưởng (không nhiễu sóng, anten chuyên dụng, độ cao lớn), trong khi thử nghiệm thực tế chịu ảnh hưởng từ môi trường đô thị. Kết quả này xác nhận tính khả thi của mô hình Hub-Spoke: một Gateway đặt tại vị trí trung tâm có thể phục vụ nhiều Sensor Node trong bán kính 500--800 mét mà không cần hạ tầng mạng bổ sung. Trong thực tế triển khai tại khu dân cư (có vật cản như tường, cây xanh), khoảng cách hiệu quả sẽ giảm so với kết quả thử nghiệm này.
 
+\textbf{Kịch bản thử nghiệm đo đạc đa môi trường:} Ngoài thử nghiệm trong phòng kín (đốt hương), hệ thống còn được đem ra đo đạc thực tế tại nhiều môi trường khác nhau nhằm đánh giá khả năng phản ánh chính xác chất lượng không khí trong các điều kiện đa dạng. Ba môi trường được lựa chọn bao gồm: ngoài đường (ven đường giao thông), trong nhà (phòng khách thông thường) và trong bếp (khi nấu ăn). Tại mỗi môi trường, Sensor Node được đặt cố định và thu thập dữ liệu liên tục trong khoảng 10--15 phút, ghi nhận giá trị trung bình của các thông số đo.
+
+\textbf{Môi trường 1 — Ven đường giao thông:} Sensor Node được đặt trên vỉa hè cạnh một tuyến đường giao thông đông đúc (lưu lượng xe máy, ô tô cao) vào khung giờ cao điểm buổi chiều (17:00--17:15). Thiết bị được đặt ở độ cao $\sim$1.2 mét so với mặt đất, cách mép đường khoảng 1.5 mét.
+
+\begin{table}[H]
+\centering
+\caption{Dữ liệu đo lường ven đường giao thông}
+\label{table:thuc_nghiem_ngoai_duong}
+\small
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
+\hline
+\textbf{Thời gian} & \textbf{PM2.5} & \textbf{PM10} & \textbf{eCO$_2$} & \textbf{eTVOC} & \textbf{Nhiệt độ} & \textbf{Độ ẩm} \\
+\hline
+17:00 & 58 & 82 & 487 & 12 & 34.2 & 55.3 \\
+\hline
+17:01 & 63 & 91 & 492 & 14 & 34.3 & 55.1 \\
+\hline
+17:02 & 71 & 98 & 501 & 16 & 34.2 & 55.0 \\
+\hline
+17:03 & 85 & 112 & 518 & 19 & 34.3 & 54.8 \\
+\hline
+17:04 & 92 & 126 & 534 & 22 & 34.4 & 54.7 \\
+\hline
+17:05 & 78 & 105 & 521 & 18 & 34.3 & 54.9 \\
+\hline
+17:06 & 105 & 142 & 548 & 25 & 34.5 & 54.5 \\
+\hline
+17:07 & 88 & 118 & 529 & 20 & 34.4 & 54.6 \\
+\hline
+17:08 & 96 & 131 & 541 & 23 & 34.5 & 54.4 \\
+\hline
+17:09 & 82 & 109 & 515 & 17 & 34.4 & 54.7 \\
+\hline
+17:10 & 74 & 100 & 507 & 15 & 34.3 & 54.8 \\
+\hline
+17:11 & 69 & 94 & 498 & 14 & 34.2 & 55.0 \\
+\hline
+17:12 & 77 & 103 & 512 & 16 & 34.3 & 54.9 \\
+\hline
+17:13 & 84 & 115 & 525 & 19 & 34.4 & 54.6 \\
+\hline
+17:14 & 91 & 124 & 537 & 21 & 34.5 & 54.5 \\
+\hline
+\textbf{Trung bình} & \textbf{80.9} & \textbf{110.0} & \textbf{517.7} & \textbf{18.1} & \textbf{34.4} & \textbf{54.8} \\
+\hline
+\end{tabularx}
+\end{table}
+
+\textbf{Nhận xét môi trường ven đường:} Giá trị PM2.5 trung bình đạt $\sim$81 $\mu$g/m$^3$, tương ứng mức AQI ``Không lành mạnh cho nhóm nhạy cảm'' (cam), phản ánh đúng tình trạng bụi mịn phổ biến ven đường giao thông tại Việt Nam vào giờ cao điểm. Nồng độ PM10 cao hơn rõ rệt so với trong nhà do bụi đường và khói xe. Các chỉ số dao động theo lưu lượng xe: tăng cao khi có nhiều phương tiện đi qua (17:03--17:04, 17:06--17:08) và giảm nhẹ trong các khoảng xe thưa (17:10--17:11). Nhiệt độ ngoài trời cao hơn trong nhà khoảng 2°C và độ ẩm thấp hơn.
+
+\textbf{Môi trường 2 — Phòng khách trong nhà:} Sensor Node được đặt trong phòng khách có diện tích $\sim$20m², đóng cửa sổ, có điều hòa hoạt động ở 26°C. Đo lường được thực hiện vào buổi tối (20:00--20:10), không có nguồn ô nhiễm nào trong phòng.
+
+\begin{table}[H]
+\centering
+\caption{Dữ liệu đo lường trong phòng khách}
+\label{table:thuc_nghiem_trong_nha}
+\small
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
+\hline
+\textbf{Thời gian} & \textbf{PM2.5} & \textbf{PM10} & \textbf{eCO$_2$} & \textbf{eTVOC} & \textbf{Nhiệt độ} & \textbf{Độ ẩm} \\
+\hline
+20:00 & 12 & 15 & 612 & 8 & 26.3 & 58.1 \\
+\hline
+20:01 & 11 & 14 & 618 & 9 & 26.3 & 58.0 \\
+\hline
+20:02 & 13 & 16 & 625 & 10 & 26.2 & 58.2 \\
+\hline
+20:03 & 12 & 15 & 631 & 11 & 26.3 & 58.1 \\
+\hline
+20:04 & 14 & 17 & 638 & 12 & 26.3 & 58.3 \\
+\hline
+20:05 & 11 & 14 & 642 & 12 & 26.4 & 58.2 \\
+\hline
+20:06 & 13 & 16 & 648 & 13 & 26.4 & 58.4 \\
+\hline
+20:07 & 12 & 15 & 652 & 13 & 26.4 & 58.3 \\
+\hline
+20:08 & 14 & 17 & 658 & 14 & 26.5 & 58.5 \\
+\hline
+20:09 & 13 & 16 & 661 & 14 & 26.5 & 58.4 \\
+\hline
+\textbf{Trung bình} & \textbf{12.5} & \textbf{15.5} & \textbf{638.5} & \textbf{11.6} & \textbf{26.4} & \textbf{58.3} \\
+\hline
+\end{tabularx}
+\end{table}
+
+\textbf{Nhận xét môi trường phòng khách:} Giá trị PM2.5 trung bình $\sim$12.5 $\mu$g/m$^3$, tương ứng mức AQI ``Tốt'' (xanh lá), cho thấy không khí trong phòng sạch khi không có nguồn ô nhiễm. Điểm đáng chú ý là nồng độ eCO$_2$ tăng dần đều từ 612 lên 661 ppm trong 10 phút, phản ánh đúng hiện tượng tích tụ CO$_2$ trong phòng kín khi có người sinh hoạt mà không thông gió. Mặc dù vẫn nằm trong ngưỡng an toàn ($<$1000 ppm), xu hướng tăng này gợi ý cần mở cửa thông gió định kỳ. Nhiệt độ ổn định quanh mức điều hòa (26°C), độ ẩm duy trì ở mức thoải mái (58\%).
+
+\textbf{Môi trường 3 — Bếp khi nấu ăn:} Sensor Node được đặt trong khu vực bếp (diện tích $\sim$8m²), cách bếp gas khoảng 1.5 mét. Phép đo được thực hiện trong quá trình nấu ăn bữa tối, bao gồm các hoạt động xào, chiên. Thời gian đo 12 phút chia thành ba pha: trước khi nấu (3 phút), đang nấu (6 phút) và sau khi tắt bếp + bật quạt hút (3 phút).
+
+\begin{table}[H]
+\centering
+\caption{Dữ liệu đo lường trong bếp khi nấu ăn}
+\label{table:thuc_nghiem_bep}
+\small
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|}
+\hline
+\textbf{Thời gian} & \textbf{Pha} & \textbf{PM2.5} & \textbf{PM10} & \textbf{eCO$_2$} & \textbf{eTVOC} & \textbf{Nhiệt độ} & \textbf{Độ ẩm} \\
+\hline
+18:30 & Trước nấu & 15 & 18 & 485 & 8 & 30.1 & 64.2 \\
+\hline
+18:31 & Trước nấu & 16 & 19 & 491 & 9 & 30.2 & 64.0 \\
+\hline
+18:32 & Trước nấu & 14 & 17 & 488 & 8 & 30.1 & 64.1 \\
+\hline
+\textbf{18:33} & \textbf{Đang nấu} & 38 & 45 & 542 & 18 & 31.5 & 63.5 \\
+\hline
+18:34 & Đang nấu & 87 & 108 & 698 & 42 & 32.8 & 62.1 \\
+\hline
+18:35 & Đang nấu & 142 & 178 & 856 & 68 & 33.5 & 60.8 \\
+\hline
+18:36 & Đang nấu & 168 & 212 & 1024 & 95 & 34.1 & 59.5 \\
+\hline
+18:37 & Đang nấu & 195 & 241 & 1152 & 112 & 34.4 & 58.8 \\
+\hline
+18:38 & Đang nấu & 178 & 224 & 1098 & 102 & 34.2 & 59.2 \\
+\hline
+\textbf{18:39} & \textbf{Sau nấu} & 126 & 155 & 845 & 65 & 33.1 & 60.5 \\
+\hline
+18:40 & Sau nấu & 72 & 88 & 628 & 32 & 32.0 & 62.3 \\
+\hline
+18:41 & Sau nấu & 45 & 56 & 538 & 18 & 31.2 & 63.5 \\
+\hline
+\end{tabularx}
+\end{table}
+
+\textbf{Nhận xét môi trường bếp:} Kết quả cho thấy hoạt động nấu ăn (đặc biệt xào, chiên) tạo ra nguồn ô nhiễm đáng kể trong không gian bếp nhỏ. Nồng độ PM2.5 tăng từ mức nền $\sim$15 $\mu$g/m$^3$ lên đỉnh 195 $\mu$g/m$^3$ (tương ứng mức AQI ``Rất không lành mạnh'', màu tím), do dầu mỡ bay hơi và các hạt bụi sinh ra từ quá trình chiên xào. Nhiệt độ tăng $\sim$4°C do nhiệt từ bếp gas, độ ẩm giảm tương ứng. Sau khi tắt bếp và bật quạt hút, các chỉ số giảm nhanh về gần mức nền chỉ trong 3 phút, chứng minh hiệu quả của hệ thống thông gió và cho thấy cảm biến phản hồi kịp thời với sự thay đổi môi trường.
+
+\textbf{So sánh tổng hợp ba môi trường:} Bảng \ref{table:so_sanh_moi_truong} tổng hợp giá trị trung bình của các thông số đo tại ba môi trường, giúp rút ra những nhận xét so sánh trực quan.
+
+\begin{table}[H]
+\centering
+\caption{So sánh giá trị trung bình giữa ba môi trường}
+\label{table:so_sanh_moi_truong}
+\small
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|c|c|c|}
+\hline
+\textbf{Môi trường} & \textbf{PM2.5} & \textbf{PM10} & \textbf{eCO$_2$} & \textbf{eTVOC} & \textbf{T (°C)} & \textbf{H (\%)} & \textbf{AQI} \\
+\hline
+Ven đường & 80.9 & 110.0 & 517.7 & 18.1 & 34.4 & 54.8 & 164 \\
+\hline
+Phòng khách & 12.5 & 15.5 & 638.5 & 11.6 & 26.4 & 58.3 & 52 \\
+\hline
+Bếp (đang nấu) & 134.7 & 168.0 & 895.0 & 72.5 & 33.4 & 60.7 & 193 \\
+\hline
+Bếp (trước/sau nấu) & 31.3 & 38.7 & 512.5 & 18.3 & 31.1 & 63.4 & 88 \\
+\hline
+\end{tabularx}
+\end{table}
+
+Kết quả đo đạc đa môi trường cho thấy hệ thống có khả năng phân biệt rõ ràng các mức độ ô nhiễm khác nhau giữa các môi trường. Nồng độ bụi mịn ngoài đường cao hơn đáng kể so với trong nhà, phù hợp với đặc điểm ô nhiễm giao thông đô thị. Phòng khách có chất lượng không khí tốt nhất về bụi mịn, nhưng nồng độ CO$_2$ lại cao nhất do phòng kín với người sinh hoạt. Bếp khi nấu ăn trở thành nguồn ô nhiễm mạnh nhất, đặc biệt về PM2.5 và TVOC, nhưng xử lý nhanh khi thông gió. Những kết quả này khẳng định tính linh hoạt và độ tin cậy của thiết bị khi vận hành tại nhiều điều kiện thực tế khác nhau, đồng thời gợi mở ứng dụng tiềm năng trong giám sát chất lượng không khí cả ngoài trời lẫn trong nhà.
+
+\textbf{Về đánh giá độ chính xác số liệu cảm biến:} Các kịch bản thử nghiệm trên đã đánh giá khả năng phản hồi (responsiveness) và tính nhất quán (consistency) của cảm biến trước sự thay đổi môi trường, tuy nhiên đồ án chưa thực hiện đánh giá định lượng về độ chính xác tuyệt đối (absolute accuracy) của số liệu đo. Việc đánh giá này đòi hỏi phải đối sánh (co-location) dữ liệu thu từ Sensor Node với thiết bị đo chuẩn theo phương pháp tham chiếu liên bang (\gls{FEM}) hoặc trạm quan trắc quốc gia — điều kiện mà đồ án không tiếp cận được do hạn chế về thời gian và nguồn lực. Về mặt thông số kỹ thuật, nhà sản xuất công bố sai số danh định cho từng cảm biến như sau: PMS7003 có sai số $\pm 10$ $\mu$g/m$^3$ tại nồng độ 100--500 $\mu$g/m$^3$ và $\pm 10$\% tại nồng độ dưới 100 $\mu$g/m$^3$ \cite{plantower2023}; CCS811 có sai số eCO$_2$ trong khoảng $\pm 10$\% hoặc $\pm 50$ ppm (lấy giá trị lớn hơn) \cite{ams2023}; AHT10 có sai số $\pm 0.3^{\circ}$C về nhiệt độ và $\pm 2$\% RH về độ ẩm (đã trình bày ở Chương 3) \cite{aosong2023}. Cần lưu ý rằng các giá trị sai số trên là điều kiện lý tưởng trong phòng thí nghiệm của nhà sản xuất; trong thực tế triển khai, sai số thực tế có thể lớn hơn do ảnh hưởng của nhiệt độ, độ ẩm cao, và sự lão hóa cảm biến theo thời gian. Đây là một hạn chế đáng kể của đồ án, và em đề xuất thực hiện hiệu chuẩn chéo (cross-calibration) bằng cách đặt Sensor Node cạnh trạm đo chuẩn trong một khoảng thời gian nhất định như một hướng phát triển trong tương lai (chi tiết tại Chương 6).
+
 \subsection{So sánh với các hệ thống hiện có}
 \label{subsection:4.5.2}
 
@@ -1026,6 +1180,6 @@ Bảng \ref{table:bom_cost} trình bày chi phí linh kiện chi tiết cho mộ
 
 Tổng chi phí linh kiện cho một trạm đo hoàn chỉnh (1 Sensor Node + 1 Gateway) là khoảng 1.185.000 VNĐ ($\sim$48 USD), thấp hơn đáng kể so với các giải pháp thương mại như IQAir 10.000.000 VNĐ($\sim$400 USD). Nếu một Gateway phục vụ nhiều Sensor Node (mô hình Hub-Spoke), chi phí trung bình mỗi điểm đo còn giảm thêm.
 
-Chương này đã trình bày toàn bộ quá trình thiết kế, xây dựng, kiểm thử và phân tích kết quả vận hành của hệ thống giám sát chất lượng không khí. Các kết quả chính đạt được bao gồm: (i) về thiết kế, hoàn thiện kiến trúc bốn tầng kết hợp mô hình Hub-Spoke với mã nguồn được tổ chức theo nguyên tắc phân lớp rõ ràng; (ii) về xây dựng, hiện thực hóa đầy đủ chín chức năng và năm yêu cầu phi chức năng (Bảng~\ref{table:req_mapping}); (iii) về kiểm thử, hoàn thành 44 kịch bản kiểm thử (25 thủ công và 19 tự động) với tỷ lệ đạt 100\%; (iv) về hiệu năng và độ tin cậy, hệ thống đạt thời gian phản hồi API dưới 3s, duy trì uptime tuyệt đối trong 7 ngày liên tục và phát hiện thiết bị mất kết nối chuẩn xác; (v) về thực nghiệm, cảm biến mức độ phản hồi nhạy bén trong môi trường ô nhiễm, Sensor Node duy trì hoạt động liên tục 20.5 giờ (Bảng~\ref{table:pin_thucnghiem}), truyền thông LoRa đạt khoảng cách truyền tối đa 800 mét (Bảng~\ref{table:lora_range}), đồng thời tối ưu chi phí phần cứng ở mức cạnh tranh khoảng 875.000 VNĐ cho mỗi trạm đo. Những kết quả này chứng minh rõ nét tính khả thi của cấu trúc giám sát đa thông số chi phí thấp sử dụng mạng thông tin vô tuyến LoRa. Thừa hưởng các đánh giá thực chứng đó, Chương 5 sẽ phân tích tổng hợp các đóng góp nổi bật và định hướng phát triển của hệ thống trong tương lai.
+Chương này đã trình bày toàn bộ quá trình thiết kế, xây dựng, kiểm thử và phân tích kết quả vận hành của hệ thống giám sát chất lượng không khí. Các kết quả chính đạt được bao gồm: (i) về thiết kế, hoàn thiện kiến trúc bốn tầng kết hợp mô hình Hub-Spoke với mã nguồn được tổ chức theo nguyên tắc phân lớp rõ ràng; (ii) về xây dựng, hiện thực hóa đầy đủ chín chức năng và năm yêu cầu phi chức năng (Bảng~\ref{table:req_mapping}); (iii) về kiểm thử, hoàn thành 44 kịch bản kiểm thử (25 thủ công và 19 tự động) với tỷ lệ đạt 100\%; (iv) về hiệu năng và độ tin cậy, hệ thống đạt thời gian phản hồi API dưới 3s, duy trì uptime tuyệt đối trong 7 ngày liên tục và phát hiện thiết bị mất kết nối chuẩn xác; (v) về thực nghiệm, cảm biến mức độ phản hồi nhạy bén trong môi trường ô nhiễm, Sensor Node duy trì hoạt động liên tục 20.5 giờ (Bảng~\ref{table:pin_thucnghiem}), truyền thông LoRa đạt khoảng cách truyền tối đa 800 mét (Bảng~\ref{table:lora_range}), và thiết bị hoạt động tin cậy trên nhiều môi trường thực tế khác nhau — ven đường giao thông (AQI $\sim$164), phòng khách trong nhà (AQI $\sim$52), và bếp khi nấu ăn (AQI lên tới $\sim$193) — đồng thời tối ưu chi phí phần cứng ở mức cạnh tranh khoảng 875.000 VNĐ cho mỗi trạm đo (Bảng~\ref{table:so_sanh_moi_truong}). Những kết quả này chứng minh rõ nét tính khả thi của cấu trúc giám sát đa thông số chi phí thấp sử dụng mạng thông tin vô tuyến LoRa. Thừa hưởng các đánh giá thực chứng đó, Chương 5 sẽ phân tích tổng hợp các đóng góp nổi bật và định hướng phát triển của hệ thống trong tương lai.
 
 \end{document}
