@@ -767,18 +767,18 @@ Server nhận được gói tin từ Gateway và đánh dấu Sensor Node \textt
     \label{fig:tkmkn_10}
 \end{figure}
 
-\textbf{Kịch bản thử nghiệm môi trường ô nhiễm (đốt hương):} Để đánh giá tốc độ phản hồi và độ nhạy của các cảm biến, một thử nghiệm đốt hương (nhang) được thực hiện trong không gian phòng kín (diện tích $\sim$15m² -- xem Hình \ref{fig:thuc_nghiem_dot_huong_setup} về cách bố trí không gian). Quá trình thử nghiệm diễn ra trong 17 phút và được chia làm ba pha: pha Baseline (từ 16:20 đến 16:24, phòng đóng cửa, không có nguồn ô nhiễm), pha Đốt hương (từ 16:25 đến 16:32, thắp một nén hương cách Sensor Node khoảng 1 mét), và pha Phục hồi (từ 16:33 đến 16:37, dập tắt hương và mở cửa sổ để không khí lưu thông). Dữ liệu thu thập được từ Sensor Node trong suốt quá trình thử nghiệm được trình bày chi tiết tại Bảng \ref{table:thuc_nghiem_dot_huong}.
+\textbf{Kịch bản thử nghiệm môi trường ô nhiễm (môi trường khói hương):} Để đánh giá tốc độ phản hồi và độ nhạy của các cảm biến, một thử nghiệm môi trường khói hương (nhang) được thực hiện trong không gian phòng kín (diện tích $\sim$15m² -- xem Hình \ref{fig:thuc_nghiem_dot_huong_setup} về cách bố trí không gian). Quá trình thử nghiệm diễn ra trong 17 phút và được chia làm ba pha: pha Baseline (từ 16:20 đến 16:24, phòng đóng cửa, không có nguồn ô nhiễm), pha Môi trường khói hương (từ 16:25 đến 16:32, thắp một nén hương cách Sensor Node khoảng 30 cm), và pha Phục hồi (từ 16:33 đến 16:37, dập tắt hương và mở cửa sổ để không khí lưu thông). Dữ liệu thu thập được từ Sensor Node trong suốt quá trình thử nghiệm được trình bày chi tiết tại Bảng \ref{table:thuc_nghiem_dot_huong}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{Hinhve/thuc_nghiem_dot_huong_setup.jpg}
-    \caption{Bố trí thiết bị thử nghiệm đốt hương}
+    \caption{Bố trí thiết bị thử nghiệm môi trường khói hương}
     \label{fig:thuc_nghiem_dot_huong_setup}
 \end{figure}
 
 \begin{table}[H]
 \centering
-\caption{Dữ liệu đo lường kịch bản đốt hương}
+\caption{Dữ liệu đo lường kịch bản môi trường khói hương}
 \label{table:thuc_nghiem_dot_huong}
 \small
 \begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|}
@@ -829,7 +829,7 @@ Server nhận được gói tin từ Gateway và đánh dấu Sensor Node \textt
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{Hinhve/thuc_nghiem_baseline_dashboard.jpg}
-    \caption{Dashboard pha Baseline (trước khi đốt hương)}
+    \caption{Dashboard pha Baseline (trước môi trường khói hương)}
     \label{fig:thuc_nghiem_baseline_dashboard}
 \end{figure}
 
@@ -840,12 +840,12 @@ Server nhận được gói tin từ Gateway và đánh dấu Sensor Node \textt
     \label{fig:thuc_nghiem_baseline_chart}
 \end{figure}
 
-Ngay sau khi bắt đầu đốt hương tại thời điểm 16:25, các chỉ số ô nhiễm gia tăng đột biến, thể hiện rõ ở pha Ô nhiễm. Do khói hương tỏa ra trực tiếp chứa số lượng lớn hạt bụi mịn, nồng độ PM2.5 tăng vọt từ 22 $\mu$g/m$^3$ lên đỉnh điểm 416 $\mu$g/m$^3$ chỉ trong vòng một phút (tại 16:26), tức là tăng gần 20 lần. Giá trị này quy đổi ra chỉ số AQI vượt mức ``Nguy hại'' (màu nâu đỏ), cảnh báo khẩn cấp tới sức khỏe (Hình \ref{fig:thuc_nghiem_onhiem_dashboard}). Bên cạnh đó, quá trình đốt cháy cũng sinh ra các khí độc hại, khiến nồng độ eCO$_2$ và eTVOC bắt đầu tăng kể từ phút thứ hai sau khi đốt. Sự thay đổi đồng loạt của tất cả các thông số (AQI, PM2.5, PM10, CO$_2$, TVOC) được theo dõi sắc nét thông qua danh sách đo lường cùng cấu trúc tương ứng với pha trước (Hình \ref{fig:thuc_nghiem_onhiem_chart}).
+Ngay sau khi bắt đầu tạo môi trường khói hương tại thời điểm 16:25, các chỉ số ô nhiễm gia tăng đột biến, thể hiện rõ ở pha Ô nhiễm. Do khói hương tỏa ra trực tiếp chứa số lượng lớn hạt bụi mịn, nồng độ PM2.5 tăng vọt từ 22 $\mu$g/m$^3$ lên đỉnh điểm 416 $\mu$g/m$^3$ chỉ trong vòng một phút (tại 16:26), tức là tăng gần 20 lần. Giá trị này quy đổi ra chỉ số AQI vượt mức ``Nguy hại'' (màu nâu đỏ), cảnh báo khẩn cấp tới sức khỏe (Hình \ref{fig:thuc_nghiem_onhiem_dashboard}). Bên cạnh đó, quá trình đốt cháy cũng sinh ra các khí độc hại, khiến nồng độ eCO$_2$ và eTVOC bắt đầu tăng kể từ phút thứ hai sau khi đốt. Sự thay đổi đồng loạt của tất cả các thông số (AQI, PM2.5, PM10, CO$_2$, TVOC) được theo dõi sắc nét thông qua danh sách đo lường cùng cấu trúc tương ứng với pha trước (Hình \ref{fig:thuc_nghiem_onhiem_chart}).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{Hinhve/thuc_nghiem_onhiem_dashboard.jpg}
-    \caption{Dashboard pha Đốt hương (AQI mức Nguy hại)}
+    \caption{Dashboard pha Môi trường khói hương (AQI mức Nguy hại)}
     \label{fig:thuc_nghiem_onhiem_dashboard}
 \end{figure}
 
@@ -943,7 +943,7 @@ Tầm phủ công bố của module & 3000 mét (không gian mở, điều kiệ
 
 \textbf{Nhận xét:} Kết quả cho thấy trong điều kiện không gian thoáng, khoảng cách truyền LoRa tối đa đạt được là 800 mét, tương đương khoảng 27\% tầm phủ công bố của module (3000 mét trong điều kiện lý tưởng). Sự chênh lệch này là hợp lý do tầm phủ công bố được đo trong điều kiện lý tưởng (không nhiễu sóng, anten chuyên dụng, độ cao lớn), trong khi thử nghiệm thực tế chịu ảnh hưởng từ môi trường đô thị. Kết quả này xác nhận tính khả thi của mô hình Hub-Spoke: một Gateway đặt tại vị trí trung tâm có thể phục vụ nhiều Sensor Node trong bán kính 500--800 mét mà không cần hạ tầng mạng bổ sung. Trong thực tế triển khai tại khu dân cư (có vật cản như tường, cây xanh), khoảng cách hiệu quả sẽ giảm so với kết quả thử nghiệm này.
 
-\textbf{Kịch bản thử nghiệm đo đạc đa môi trường:} Ngoài thử nghiệm trong phòng kín (đốt hương), hệ thống còn được đem ra đo đạc thực tế tại nhiều môi trường khác nhau nhằm đánh giá khả năng phản ánh chính xác chất lượng không khí trong các điều kiện đa dạng. Ba môi trường được lựa chọn bao gồm: ngoài đường (ven đường giao thông), trong nhà (phòng khách thông thường) và trong bếp (khi nấu ăn). Tại mỗi môi trường, Sensor Node được đặt cố định và thu thập dữ liệu liên tục trong khoảng 10--15 phút.
+\textbf{Kịch bản thử nghiệm đo đạc đa môi trường:} Ngoài thử nghiệm trong phòng kín (môi trường khói hương), hệ thống còn được đem ra đo đạc thực tế tại nhiều môi trường khác nhau nhằm đánh giá khả năng phản ánh chính xác chất lượng không khí trong các điều kiện đa dạng. Ba môi trường được lựa chọn bao gồm: ngoài đường (ven đường giao thông), trong nhà (phòng khách thông thường) và trong bếp (khi nấu ăn). Tại mỗi môi trường, Sensor Node được đặt cố định và thu thập dữ liệu liên tục trong khoảng 10--15 phút.
 
 \textbf{Môi trường 1 — Ven đường giao thông:} Sensor Node được đặt trên vỉa hè cạnh một tuyến đường giao thông (lưu lượng xe máy, ô tô trung bình--thấp) vào khung giờ cao điểm buổi chiều (17:16--17:30). Thiết bị được đặt ở độ cao $\sim$1.2 mét so với mặt đất, cách mép đường khoảng 0.5 mét.
 
@@ -1077,7 +1077,7 @@ Tầm phủ công bố của module & 3000 mét (không gian mở, điều kiệ
 \end{tabularx}
 \end{table}
 
-\textbf{Nhận xét môi trường bếp:} Kết quả cho thấy hoạt động nấu ăn (xào, chiên) tạo ra nguồn ô nhiễm khí đáng kể trong không gian bếp nhỏ. Khác với thử nghiệm đốt hương (nơi bụi mịn tăng vọt), ở bếp nấu ăn nồng độ PM2.5 chỉ dao động nhẹ quanh mức nền $\sim$13--20 $\mu$g/m$^3$, trong khi eCO$_2$ và eTVOC tăng mạnh — eCO$_2$ đạt đỉnh 1528 ppm (gấp $\sim$3 lần mức nền) và eTVOC đạt đỉnh 191 ppb (gấp $\sim$7 lần mức nền). Hiện tượng này phù hợp với đặc thù nấu ăn bằng bếp gas: quá trình đốt cháy khí gas sinh ra nhiều CO$_2$ và các hợp chất hữu cơ bay hơi, nhưng không tạo lượng lớn hạt bụi mịn như đốt nhang. Nhiệt độ tăng dần $\sim$1.3°C (từ 33.3 lên 34.5°C) do nhiệt từ bếp gas, độ ẩm giảm tương ứng. Sau khi tắt bếp, nồng độ eCO$_2$ và eTVOC giảm nhưng chưa trở về mức nền ngay (eCO$_2$ vẫn ở mức $\sim$602 ppm sau 3 phút), cho thấy không gian bếp nhỏ cần thời gian thông gió lâu hơn.
+\textbf{Nhận xét môi trường bếp:} Kết quả cho thấy hoạt động nấu ăn (xào, chiên) tạo ra nguồn ô nhiễm khí đáng kể trong không gian bếp nhỏ. Khác với thử nghiệm môi trường khói hương (nơi bụi mịn tăng vọt), ở bếp nấu ăn nồng độ PM2.5 chỉ dao động nhẹ quanh mức nền $\sim$13--20 $\mu$g/m$^3$, trong khi eCO$_2$ và eTVOC tăng mạnh — eCO$_2$ đạt đỉnh 1528 ppm (gấp $\sim$3 lần mức nền) và eTVOC đạt đỉnh 191 ppb (gấp $\sim$7 lần mức nền). Hiện tượng này phù hợp với đặc thù nấu ăn bằng bếp gas: quá trình đốt cháy khí gas sinh ra nhiều CO$_2$ và các hợp chất hữu cơ bay hơi, nhưng không tạo lượng lớn hạt bụi mịn như khói nhang. Nhiệt độ tăng dần $\sim$1.3°C (từ 33.3 lên 34.5°C) do nhiệt từ bếp gas, độ ẩm giảm tương ứng. Sau khi tắt bếp, nồng độ eCO$_2$ và eTVOC giảm nhưng chưa trở về mức nền ngay (eCO$_2$ vẫn ở mức $\sim$602 ppm sau 3 phút), cho thấy không gian bếp nhỏ cần thời gian thông gió lâu hơn.
 
 \textbf{So sánh tổng hợp ba môi trường:} Bảng \ref{table:so_sanh_moi_truong} tổng hợp giá trị trung bình của các thông số đo tại ba môi trường, giúp rút ra những nhận xét so sánh trực quan.
 
