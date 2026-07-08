@@ -3,3 +3,4 @@
 certbot/
 nginx/active.conf
 .claude/settings.local.json
+*.drawio.bkp

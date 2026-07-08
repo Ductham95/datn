@@ -1,0 +1,91 @@
+<mxfile host="Electron" agent="1.0">
+  <diagram name="Firmware Flowchart" id="firmware-flowchart">
+    <mxGraphModel dx="1373" dy="899" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title_sn" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=18;fontColor=#1A1A2E;" value="&lt;b&gt;Firmware Sensor Node&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="440" x="60" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="sn_sleep" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1B5E20;fontColor=#FFFFFF;strokeColor=#1B5E20;fontSize=18;arcSize=50;" value="&lt;b&gt;Deep-sleep&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="140" x="210" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="sn_decision" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=18;" value="Nguồn&lt;br&gt;đánh thức?" vertex="1">
+          <mxGeometry height="70" width="130" x="215" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sleep_dec" edge="1" parent="1" source="sn_sleep" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#333333;strokeWidth=1.5;fontSize=18;" target="sn_decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sn_init" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontSize=18;" value="Khởi tạo&lt;br&gt;phần cứng" vertex="1">
+          <mxGeometry height="40" width="120" x="60" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="e_dec_init" edge="1" parent="1" source="sn_decision" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#1565C0;strokeWidth=1.5;fontStyle=1;fontSize=18;" target="sn_init" value="Timer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="120" y="175" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sn_read" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontSize=18;" value="Đọc cảm biến&lt;br&gt;+ Warm-up" vertex="1">
+          <mxGeometry height="40" width="120" x="60" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="e_init_read" edge="1" parent="1" source="sn_init" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#333333;strokeWidth=1.5;fontSize=18;" target="sn_read">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sn_adc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontSize=18;" value="Đo pin&lt;br&gt;(ADC)" vertex="1">
+          <mxGeometry height="40" width="120" x="60" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="e_read_adc" edge="1" parent="1" source="sn_read" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#333333;strokeWidth=1.5;fontSize=18;" target="sn_adc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sn_lora" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=18;" value="Đóng gói 18B&lt;br&gt;+ Gửi LoRa" vertex="1">
+          <mxGeometry height="40" width="120" x="60" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="e_adc_lora" edge="1" parent="1" source="sn_adc" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#333333;strokeWidth=1.5;fontSize=18;" target="sn_lora">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sn_rtc_save" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontSize=18;" value="Lưu RTC&lt;br&gt;Memory" vertex="1">
+          <mxGeometry height="40" width="120" x="60" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="e_lora_rtc" edge="1" parent="1" source="sn_lora" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#333333;strokeWidth=1.5;fontSize=18;" target="sn_rtc_save">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rtc_sleep_left" edge="1" parent="1" source="sn_rtc_save" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#1B5E20;strokeWidth=1.5;dashed=1;fontSize=18;" target="sn_sleep">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="30" y="510" />
+              <mxPoint x="30" y="90" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sn_rtc_read" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=18;" value="Đọc dữ liệu&lt;br&gt;từ RTC" vertex="1">
+          <mxGeometry height="40" width="120" x="380" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="e_dec_rtc" edge="1" parent="1" source="sn_decision" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#E65100;strokeWidth=1.5;fontStyle=1;fontSize=18;" target="sn_rtc_read" value="Nút BOOT">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="175" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sn_oled" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=18;" value="Hiển thị&lt;br&gt;OLED 10s" vertex="1">
+          <mxGeometry height="40" width="120" x="380" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rtc_oled" edge="1" parent="1" source="sn_rtc_read" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#333333;strokeWidth=1.5;fontSize=18;" target="sn_oled">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_oled_sleep_right" edge="1" parent="1" source="sn_oled" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#1B5E20;strokeWidth=1.5;dashed=1;fontSize=18;" target="sn_sleep">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="330" />
+              <mxPoint x="530" y="90" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="separator" parent="1" style="line;strokeWidth=2;strokeColor=#BDBDBD;dashed=1;fontSize=18;" value="" vertex="1">
+          <mxGeometry height="540" width="1" x="580" y="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

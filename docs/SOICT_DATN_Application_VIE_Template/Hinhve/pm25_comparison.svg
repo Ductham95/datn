@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 560" width="450" height="560">
+  <defs>
+    <linearGradient id="gradHanoi" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b6b" />
+      <stop offset="100%" stop-color="#e00000" />
+    </linearGradient>
+    <linearGradient id="gradVN" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffb347" />
+      <stop offset="100%" stop-color="#e07000" />
+    </linearGradient>
+    <linearGradient id="gradWHO" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#66d97a" />
+      <stop offset="100%" stop-color="#1a9e35" />
+    </linearGradient>
+    <style>
+      .title    { font-family: 'Segoe UI', Arial, sans-serif; font-size: 17px; font-weight: bold; fill: #1a1a2e; text-anchor: middle; }
+      .subtitle { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11.5px; fill: #666677; text-anchor: middle; }
+      .bar-name { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; fill: #1a1a2e; text-anchor: middle; }
+      .bar-val  { font-family: 'Segoe UI', Arial, sans-serif; font-size: 20px; font-weight: bold; text-anchor: middle; }
+      .bar-desc { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; fill: #555566; text-anchor: middle; font-style: italic; }
+      .grid-line { stroke: #ddddee; stroke-width: 1; stroke-dasharray: 4,4; }
+      .axis-line { stroke: #ccccdd; stroke-width: 1.5; }
+      .grid-text { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; fill: #999aaa; text-anchor: end; }
+      .source   { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; fill: #aaaaaa; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- White background -->
+  <rect width="100%" height="100%" fill="#ffffff" rx="12" ry="12"/>
+
+  <!-- Title -->
+  <text x="225" y="38" class="title">Nồng độ PM2.5 (µg/m³)</text>
+  <text x="225" y="57" class="subtitle">Việt Nam so với ngưỡng WHO — IQAir 2024 &amp; WHO 2021</text>
+
+  <!-- Chart area: x from 60 to 410, y from 80 (top) to 440 (bottom) -->
+  <!-- Scale: max = 50, chart height = 360px → 1 µg/m³ = 7.2px -->
+
+  <!-- Horizontal grid lines at 0, 10, 20, 30, 40, 50 -->
+  <line x1="60" y1="440" x2="410" y2="440" class="axis-line"/>
+
+  <line x1="60" y1="368" x2="410" y2="368" class="grid-line"/>
+  <text x="55" y="372" class="grid-text">10</text>
+
+  <line x1="60" y1="296" x2="410" y2="296" class="grid-line"/>
+  <text x="55" y="300" class="grid-text">20</text>
+
+  <line x1="60" y1="224" x2="410" y2="224" class="grid-line"/>
+  <text x="55" y="228" class="grid-text">30</text>
+
+  <line x1="60" y1="152" x2="410" y2="152" class="grid-line"/>
+  <text x="55" y="156" class="grid-text">40</text>
+
+  <line x1="60" y1="80"  x2="410" y2="80"  class="grid-line"/>
+  <text x="55" y="84"  class="grid-text">50</text>
+
+  <!-- Bar width = 80, spacing so 3 bars fit nicely in 350px wide area -->
+  <!-- Bar centers: Hanoi=135, VN=225, WHO=315 -->
+  <!-- bar left = center - 40 -->
+
+  <!-- Bar 1: Hà Nội — 45.4 µg/m³ → height = 45.4*7.2 = 326.9 → top y = 440-327 = 113 -->
+  <rect x="95" y="113" width="80" height="327" fill="url(#gradHanoi)" rx="6" ry="6"/>
+  <text x="135" y="101" class="bar-val" fill="#e00000">45.4</text>
+  <text x="135" y="468" class="bar-name">Hà Nội</text>
+  <text x="135" y="483" class="bar-desc">Gấp 9× WHO</text>
+
+  <!-- Bar 2: Việt Nam — 28.7 µg/m³ → height = 28.7*7.2 = 206.6 → top y = 440-207 = 233 -->
+  <rect x="185" y="233" width="80" height="207" fill="url(#gradVN)" rx="6" ry="6"/>
+  <text x="225" y="221" class="bar-val" fill="#e07000">28.7</text>
+  <text x="225" y="468" class="bar-name">Việt Nam</text>
+  <text x="225" y="483" class="bar-desc">Gấp ~6× WHO</text>
+
+  <!-- Bar 3: WHO — 5.0 µg/m³ → height = 5*7.2 = 36 → top y = 440-36 = 404 -->
+  <rect x="275" y="404" width="80" height="36" fill="url(#gradWHO)" rx="6" ry="6"/>
+  <text x="315" y="392" class="bar-val" fill="#1a9e35">5.0</text>
+  <text x="315" y="468" class="bar-name">Ngưỡng WHO</text>
+  <text x="315" y="483" class="bar-desc">An toàn</text>
+
+  <!-- Source note -->
+  <text x="225" y="530" class="source">Nguồn: IQAir 2024, WHO 2021, BTNMT 2023</text>
+</svg>

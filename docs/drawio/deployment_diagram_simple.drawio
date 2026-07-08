@@ -1,0 +1,98 @@
+<mxfile host="Electron" agent="Antigravity">
+  <diagram name="Page-1" id="deployment_simple">
+    <mxGraphModel dx="1373" dy="899" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=24;fontStyle=1;fontFamily=Arial;" value="Biểu đồ triển khai hệ thống" vertex="1">
+          <mxGeometry height="40" width="310" x="465" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="sensor_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#333333;strokeWidth=2;arcSize=8;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="120" width="160" x="30" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="sensor_icon" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontFamily=Arial;" value="📡" vertex="1">
+          <mxGeometry height="40" width="60" x="80" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="sensor_label" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontFamily=Arial;" value="&lt;b&gt;Sensor Node&lt;/b&gt;&lt;br&gt;ESP32 + Cảm biến&lt;br&gt;Deep-sleep" vertex="1">
+          <mxGeometry height="60" width="150" x="35" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="gw_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#333333;strokeWidth=2;arcSize=8;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="120" width="160" x="30" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="gw_icon" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontFamily=Arial;" value="📶" vertex="1">
+          <mxGeometry height="40" width="60" x="80" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="gw_label" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontFamily=Arial;" value="&lt;b&gt;Gateway&lt;/b&gt;&lt;br&gt;ESP32 + WiFi&lt;br&gt;Ring buffer" vertex="1">
+          <mxGeometry height="60" width="150" x="35" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_s2g" edge="1" parent="1" source="sensor_box" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="gw_box" value="LoRa 433 MHz">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vps_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#1A73E8;strokeWidth=2;dashed=1;dashPattern=8 4;arcSize=6;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="460" width="530" x="330" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="vps_title" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontFamily=Arial;fontColor=#1A73E8;" value="&lt;b&gt;VPS DigitalOcean&lt;/b&gt;&lt;br&gt;&lt;font&gt;1 vCPU · 1 GB RAM · Ubuntu 22.04&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="320" x="430" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="nginx_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;strokeWidth=1.5;arcSize=10;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="90" width="220" x="360" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="nginx_label" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontFamily=Arial;" value="&lt;b&gt;🐳 Nginx&lt;/b&gt;&lt;br&gt;Reverse Proxy + Static Files&lt;br&gt;SSL (Let&#39;s Encrypt)" vertex="1">
+          <mxGeometry height="80" width="210" x="365" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="backend_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.5;arcSize=10;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="90" width="220" x="610" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="backend_label" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontFamily=Arial;" value="&lt;b&gt;🐳 Backend&lt;/b&gt;&lt;br&gt;Node.js + Express&lt;br&gt;REST API + Socket.IO" vertex="1">
+          <mxGeometry height="80" width="210" x="615" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="db_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D6A461;strokeWidth=1.5;arcSize=10;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="90" width="220" x="595" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="db_label" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontFamily=Arial;" value="&lt;b&gt;🐳 Database&lt;/b&gt;&lt;br&gt;PostgreSQL 15&lt;br&gt;TimescaleDB + PostGIS" vertex="1">
+          <mxGeometry height="80" width="210" x="600" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="certbot_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;strokeWidth=1.5;arcSize=10;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="90" width="150" x="385" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="certbot_label" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontFamily=Arial;" value="&lt;b&gt;🐳 Certbot&lt;/b&gt;" vertex="1">
+          <mxGeometry height="80" width="140" x="385" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_n2b" edge="1" parent="1" source="nginx_box" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#555555;strokeWidth=1.5;" target="backend_box" value="proxy">
+          <mxGeometry relative="1" x="0.3333" y="-15" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow_b2d" edge="1" parent="1" source="backend_box" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#555555;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.558;entryY=0.041;entryDx=0;entryDy=0;entryPerimeter=0;" target="db_box" value="SQL">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_c2n" edge="1" parent="1" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#9673A6;strokeWidth=1.5;dashed=1;entryX=0.3;entryY=1;entryDx=0;entryDy=0;" target="nginx_box" value="cert">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="426" y="360" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow_g2n" edge="1" parent="1" source="gw_box" style="endArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="nginx_box" value="HTTP POST&lt;br&gt;JSON batch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="browser_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#333333;strokeWidth=2;arcSize=8;fontSize=16;" value="" vertex="1">
+          <mxGeometry height="120" width="160" x="1020" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="browser_icon" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontFamily=Arial;" value="🌐" vertex="1">
+          <mxGeometry height="40" width="60" x="1070" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="browser_label" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontFamily=Arial;" value="&lt;b&gt;Trình duyệt Web&lt;/b&gt;&lt;br&gt;React 19 SPA&lt;br&gt;+ Socket.IO" vertex="1">
+          <mxGeometry height="60" width="150" x="1025" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_n2br" edge="1" parent="1" source="vps_box" style="endArrow=classic;startArrow=classic;html=1;fontSize=16;fontFamily=Arial;strokeColor=#333333;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="browser_box" value="HTTPS + WSS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="domain_label" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontFamily=Arial;fontStyle=2;" value="&lt;font color=&quot;#666666&quot;&gt;datn.thamnguyen.dev&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="160" x="890" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="docker_label" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=16;fontFamily=Arial;fontStyle=1;fontColor=#1A73E8;" value="🐳 Docker Compose" vertex="1">
+          <mxGeometry height="25" width="180" x="350" y="560" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
