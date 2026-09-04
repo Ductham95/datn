@@ -1,134 +1,144 @@
 # 🌍 Hệ Thống Giám Sát Chất Lượng Không Khí Đô Thị
 
-Hệ thống IoT giám sát chất lượng không khí theo thời gian thực sử dụng **ESP32**, **LoRa AS32-TTL-100** (433 MHz), cảm biến bụi mịn **PMS7003**, cảm biến khí **CCS811**, cảm biến nhiệt độ/độ ẩm **DHT22**. Dữ liệu được truyền qua LoRa đến Gateway, gửi lên server qua HTTP POST và hiển thị trên dashboard web React.
+Đồ án tốt nghiệp — Đại học Bách khoa Hà Nội
+
+Hệ thống IoT để đo và theo dõi chất lượng không khí theo thời gian thực. Các sensor node (ESP32 + cảm biến) đo bụi mịn PM2.5/PM10, CO₂, TVOC, nhiệt độ, độ ẩm rồi gửi dữ liệu qua LoRa 433MHz về gateway. Gateway kết nối WiFi đẩy dữ liệu lên server, hiển thị trên web dashboard cho người dùng xem.
+
+## Kiến trúc tổng quan
+
+![Kiến trúc hệ thống](docs/SOICT_DATN_Application_VIE_Template/Hinhve/system_architecture.png)
+
+Tóm tắt luồng: **Sensor Node** → LoRa → **Gateway** → HTTP → **Backend (Node.js)** → WebSocket → **Web Dashboard (React)**
+
+Database dùng PostgreSQL + TimescaleDB để lưu dữ liệu chuỗi thời gian, PostGIS để tính toán vị trí.
+
+## Thiết bị thực tế
+
+Mỗi sensor node gồm ESP32, cảm biến PMS7003 (bụi mịn), CCS811 (CO₂/TVOC), AHT10 (nhiệt độ/độ ẩm), module LoRa AS32-TTL-100, màn hình OLED, pin 18650. Tất cả đặt trong hộp in 3D.
+
+![Sensor node thực tế đang chạy](docs/SOICT_DATN_Application_VIE_Template/Hinhve/thuc_nghiem_baseline_dashboard.jpg)
 
 ---
 
-## Kiến trúc hệ thống
+## Giao diện người dùng
 
-```
-[Sensor Node]              [Gateway]              [Backend]           [Frontend]
- ESP32 + LoRa    --LoRa-->  ESP32 + LoRa  --HTTP-->  Node.js   <--HTTP/WS-->  React
- PMS7003                    WiFi + HTTP       PostgreSQL           ECharts
- CCS811                     POST batch        TimescaleDB          Leaflet
- DHT22                                        PostGIS + Prisma     Socket.IO
-```
+### Trang tổng quan (Dashboard)
+
+Người dùng mở web lên sẽ thấy ngay chỉ số AQI, PM2.5, PM10, CO₂, nhiệt độ, độ ẩm của trạm gần nhất. Có bản đồ AQI khu vực, biểu đồ lịch sử, khuyến nghị sức khỏe và thời tiết hiện tại.
+
+![Dashboard người dùng](docs/SOICT_DATN_Application_VIE_Template/Hinhve/dashboard.png)
+
+### Bản đồ AQI
+
+Bản đồ hiển thị tất cả các trạm quan trắc trên cả nước, click vào từng trạm để xem chi tiết. Màu sắc marker thay đổi theo mức AQI (xanh → vàng → cam → đỏ).
+
+![Bản đồ chất lượng không khí](docs/SOICT_DATN_Application_VIE_Template/Hinhve/ban_do_aqi.png)
+
+### Lịch sử dữ liệu
+
+Xem biểu đồ lịch sử theo từng trạm, chọn khoảng thời gian 24h / 7 ngày / 30 ngày, chọn loại chỉ số cần xem.
+
+![Lịch sử dữ liệu](docs/SOICT_DATN_Application_VIE_Template/Hinhve/lich_su.png)
+
+### Xếp hạng ô nhiễm
+
+Sắp xếp các trạm theo AQI từ cao đến thấp, dễ so sánh giữa các khu vực.
+
+![Xếp hạng ô nhiễm](docs/SOICT_DATN_Application_VIE_Template/Hinhve/xep_hang.png)
+
+---
+
+## Giao diện quản trị (Admin)
+
+### Tổng quan hệ thống
+
+Admin đăng nhập vào sẽ thấy tổng quan: số lượng node/gateway, cảnh báo chờ xử lý, AQI trung bình, tình trạng thiết bị, hoạt động gần đây.
+
+![Dashboard quản trị](docs/SOICT_DATN_Application_VIE_Template/Hinhve/dashboard_quan_tri.png)
+
+### Quản lý thiết bị (Sensor Nodes)
+
+Xem danh sách tất cả sensor node, trạng thái online/offline, mức pin, RSSI, gateway kết nối, thời gian cập nhật cuối.
+
+![Quản lý sensor node](docs/SOICT_DATN_Application_VIE_Template/Hinhve/quan_ly_thiet_bi.png)
+
+### Cảnh báo
+
+Danh sách cảnh báo khi thiết bị mất kết nối hoặc chỉ số vượt ngưỡng. Có lọc theo thiết bị, mức độ, trạng thái xác nhận.
+
+![Quản lý cảnh báo](docs/SOICT_DATN_Application_VIE_Template/Hinhve/giam_sat_canh_bao.png)
+
+### Cấu hình ngưỡng
+
+Chỉnh ngưỡng cảnh báo và ngưỡng nguy hiểm cho từng chỉ số (PM2.5, PM10, CO₂, TVOC, nhiệt độ), cài khoảng cách lấy mẫu.
+
+![Cấu hình hệ thống](docs/SOICT_DATN_Application_VIE_Template/Hinhve/cau_hinh.png)
+
+### Quản lý tài khoản
+
+Tạo, sửa, xóa tài khoản admin.
+
+![Quản lý tài khoản](docs/SOICT_DATN_Application_VIE_Template/Hinhve/quan_ly_tai_khoan.png)
+
+### Nhật ký hệ thống
+
+Ghi lại toàn bộ thao tác của admin (tạo/sửa/xóa node, gateway, cảnh báo...) để kiểm soát.
+
+![Nhật ký hệ thống](docs/SOICT_DATN_Application_VIE_Template/Hinhve/nhat_ky_he_thong.png)
+
+### Xuất dữ liệu CSV
+
+Chọn sensor node và khoảng thời gian để xuất dữ liệu đo lường ra file CSV.
+
+![Xuất CSV](docs/SOICT_DATN_Application_VIE_Template/Hinhve/xuat_csv.png)
+
+---
+
+## Công nghệ sử dụng
+
+| Thành phần | Công nghệ |
+|---|---|
+| Firmware | ESP32, FreeRTOS, PlatformIO |
+| Truyền thông | LoRa AS32-TTL-100 (433 MHz, UART) |
+| Backend | Node.js, Express, Prisma ORM, Socket.IO |
+| Database | PostgreSQL + TimescaleDB + PostGIS |
+| Frontend | React, Vite, ECharts, Leaflet, Socket.IO |
+| Deploy | Docker, PM2, Nginx, DigitalOcean |
 
 ## Cấu trúc thư mục
 
 ```
 datn/
-├── backend/              # Backend Node.js (Express + Prisma + PostgreSQL)
-│   ├── database/         # SQL init scripts (TimescaleDB + PostGIS)
-│   ├── prisma/           # Prisma schema (ORM)
-│   └── src/
-│       ├── controllers/  # Request handlers
-│       ├── services/     # Business logic (AQI, telemetry, cron...)
-│       ├── routes/       # REST API endpoints
-│       ├── middlewares/  # Auth (JWT), validation
-│       └── server.js     # Entry point
-├── firmware/             # Firmware ESP32 (PlatformIO)
-│   ├── sensor-node/      # FreeRTOS (4 task: Sensor, LoRa, Battery, Watchdog)
-│   └── gateway/          # Superloop (WiFi + LoRa RX + HTTP POST batch)
-├── frontend/             # Frontend React + Vite (đang phát triển)
-├── hardware/             # Sơ đồ nguyên lý mạch
-├── docs/                 # 📖 Tài liệu kỹ thuật
-└── docker-compose.yml    # Docker cho TimescaleDB
+├── firmware/          # Firmware ESP32 (PlatformIO)
+│   ├── sensor-node/   # FreeRTOS: đọc cảm biến + gửi LoRa
+│   └── gateway/       # Nhận LoRa + gửi HTTP lên server
+├── backend/           # Node.js API server
+├── frontend/          # React web dashboard
+├── nginx/             # Cấu hình reverse proxy
+├── docs/              # Tài liệu
+└── docker-compose.yml
 ```
 
 ## Quick Start
 
-### 1. Clone
-
 ```bash
+# 1. Clone
 git clone <repository-url>
 cd datn
-```
 
-### 2. Khởi động Database
-
-```bash
+# 2. Database
 docker compose up -d
-```
 
-### 3. Chạy Backend
-
-```bash
-cd backend
-npm install
+# 3. Backend
+cd backend && npm install
 npx prisma generate
-npm run dev
-```
+npm run dev              # http://localhost:3000
 
-Server chạy tại: `http://localhost:3000`
+# 4. Frontend
+cd frontend && npm install
+npm run dev              # http://localhost:5173
 
-### 4. Chạy Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Frontend chạy tại: `http://localhost:5173`
-
-### 5. Flash Firmware (nếu có ESP32)
-
-```bash
-cd firmware/sensor-node    # hoặc firmware/gateway
+# 5. Firmware (nếu có ESP32)
+cd firmware/sensor-node
 pio run -e esp32dev -t upload --upload-port <COM_PORT>
-pio device monitor --port <COM_PORT> --baud 115200
 ```
-
----
-
-## Yêu cầu
-
-### Phần mềm
-
-| Công cụ | Phiên bản | Mục đích |
-|---------|-----------|----------|
-| Node.js | >= 18 | Chạy backend server |
-| Docker | >= 20 | Chạy database (TimescaleDB) |
-| PlatformIO | >= 6.0 | Nạp firmware ESP32 |
-| Git | >= 2.0 | Quản lý mã nguồn |
-
-### Phần cứng
-
-- 4x ESP32 DevKit V1 (3 node + 1 gateway)
-- 4x Module LoRa AS32-TTL-100 (433MHz, UART)
-- 3x Cảm biến bụi mịn PMS7003
-- 3x Cảm biến khí CCS811
-- 3x Cảm biến nhiệt độ/độ ẩm DHT22
-- Pin 18650, TP4056, breadboard, dây nối
-
-## Công nghệ sử dụng
-
-| Thành phần | Công nghệ |
-|------------|-----------|
-| Frontend | React, Vite, ECharts, Leaflet, Socket.IO |
-| Backend | Node.js, Express, Prisma, Socket.IO |
-| Database | PostgreSQL + TimescaleDB + PostGIS |
-| Firmware | ESP32 Arduino (PlatformIO), FreeRTOS |
-| LoRa | AS32-TTL-100 (UART, 433 MHz) |
-| Infrastructure | Docker, PM2, Nginx |
-
-## Tài liệu
-
-📖 Xem tài liệu đầy đủ tại [docs/README.md](docs/README.md)
-
-## API Endpoints
-
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| GET | `/api/v1/stations/dashboard` | Dashboard tất cả trạm + AQI |
-| GET | `/api/v1/stations/nearest?lat=&lng=` | Trạm gần nhất (PostGIS) |
-| GET | `/api/v1/stations/:id/history` | Lịch sử dữ liệu |
-| GET | `/api/v1/weather?lat=&lng=` | Thời tiết (OpenWeatherMap) |
-| POST | `/api/v1/telemetry` | Nhận dữ liệu từ Gateway |
-| POST | `/api/v1/admin/login` | Đăng nhập admin (JWT) |
-| GET | `/api/v1/admin/gateways` | Danh sách gateways |
-| GET | `/api/v1/admin/nodes` | Danh sách sensor nodes |
-| GET | `/api/v1/admin/export/measurements` | Xuất CSV |
-
-Xem chi tiết: [docs/backend/api-reference.md](docs/backend/api-reference.md)
